@@ -18,46 +18,20 @@ export default React.createClass({
 
   propTypes: { },
 
-  getInitialState: function() {
-    return {
-      emailValue: ''
-    };
-  },
-
   componentDidMount: function() {
 
   },
 
-  onEmailValueChange: function(){
-
-    this.setState({
-      emailValue: this.refs.emailValueRef.getValue()
-    });
-
-  },
-
-
   render: function() {
 
-    var connectPath = '/oauth/connect/' + this.state.emailValue;
+    var connectPath = '/auth/connect/';
 
     return (
       <div className={'login'}>
           <div className="login-box">
             <h1>Base</h1>
 
-              <Bootstrap.Input
-                   type='text'
-                   value={this.state.emailValue}
-                   placeholder='Enter your email'
-                   hasFeedback
-                   ref='emailValueRef'
-                   groupClassName='group-class'
-                   wrapperClassName='wrapper-class'
-                   labelClassName='label-class'
-                   onChange={this.onEmailValueChange} />
-
-                 <a href={connectPath}>Sign in with your email</a>
+                 <a href={connectPath}>Sign in with Google</a>
           </div>
 
       </div>

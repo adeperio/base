@@ -7,7 +7,6 @@ import invariant from 'react/lib/invariant';
 
 import NotFoundPage from '../NotFoundPage';
 import Home from '../Home';
-import EmailStore from '../../Flux/stores/EmailStore';
 import ActionTypes from '../../Flux/constants/ActionTypes';
 
 var DefaultRoute = Router.DefaultRoute;
@@ -21,8 +20,8 @@ var App = React.createClass({
   },
 
   componentDidMount: function() {
-    EmailStore.on(ActionTypes.EMAIL_GET_THREADS_RES_ERR, this.onApplicationError);
-    EmailStore.on(ActionTypes.EMAIL_GET_MSGS_RES_ERR, this.onApplicationError);
+    // EmailStore.on(ActionTypes.EMAIL_GET_THREADS_RES_ERR, this.onApplicationError);
+    // EmailStore.on(ActionTypes.EMAIL_GET_MSGS_RES_ERR, this.onApplicationError);
   },
 
   onApplicationError: function(){

@@ -2,15 +2,24 @@
 
 import path from 'path';
 import express from 'express';
-import nylas from 'nylas';
 
 import config from './config.js';
 import authRoutes from './routes/authRoutes.js';
 
-import AuthService from './services/AuthService.js';
-import NylasAuthStrategy from './nylas/NylasAuthStrategy.js';
+import passport from 'passport';
+import passportgoogle from 'passport-google';
+var GoogleStrategy = passportgoogle.Strategy;
 
 var server = express();
+
+passport.use(new GoogleStrategy({
+    returnURL: 'http://localhost:3000/auth/google/callback',
+    realm: 'http://localhost:3000/'
+  },
+  function(identifier, profile, done) {
+    done();
+  }
+));
 
 //Set port
 server.set('port', (process.env.PORT || 5000));
@@ -23,11 +32,8 @@ server.use(express.static(path.join(__dirname)));
 //set configs
 global.Config = new config();
 
-//Set singleton Auth Service
-global.AuthService = new AuthService(new NylasAuthStrategy());
-
 //setup routes
-server.use('/oauth', authRoutes);
+server.use('/auth', authRoutes);
 
 //Initial SPA load
 server.get('/*', function (req, res) {

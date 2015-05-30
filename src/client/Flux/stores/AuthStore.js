@@ -7,9 +7,6 @@ var eventEmitter = new events.EventEmitter();
 
 import Dispatcher from '../core/Dispatcher';
 import ActionTypes from '../constants/ActionTypes';
-import Note from './models/Note.js';
-import TaskStore from './TaskStore.js';
-import ProjectStore from './ProjectStore.js';
 
 
 var _accessToken = '';
