@@ -1,0 +1,25 @@
+{
+  "name": "Base",
+  "version": "0.1.1",
+  "authors": [
+    "Antonio de Perio <antoniodeperio@gmail.com>"
+  ],
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "rangyinputs": "~1.2.0"
+  }
+}

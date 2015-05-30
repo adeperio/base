@@ -1,0 +1,17 @@
+doctype html.no-js(lang='')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title Base
+    meta(name='description', content='Base Starter Kit')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='apple-touch-icon', href='apple-touch-icon.png')
+    link(rel='stylesheet', href='/css/bootstrap.css')
+    script(type="text/javascript").
+      window.getAccessToken = function (){
+        return '#{sessionToken}';
+      }
+
+    script(src='/app.js')
+  body
+    div(id="appContainer")
