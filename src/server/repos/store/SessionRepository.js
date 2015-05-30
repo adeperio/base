@@ -2,7 +2,6 @@
 
 import query from 'pg-query';
 import UserRepository from './UserRepository.js';
-import EmailRepository from '../email/EmailRepository.js';
 import NylasEmailStrategy from '../../nylas/NylasEmailStrategy.js';
 import RandomizerService from '../../services/RandomizerService.js';
 
@@ -12,8 +11,6 @@ function SessionRepository () {
 
   this.createSession = function(nylas_access_token) {
 
-    var emailRepo = new EmailRepository(new NylasEmailStrategy());
-
     //generate application base token
     var randomizer = new RandomizerService();
     var base_access_token = randomizer.getRandomUUIDv4();
@@ -22,12 +19,8 @@ function SessionRepository () {
       nylas_access_token : nylas_access_token
     };
 
-    return emailRepo.getEmail(session)
-                .then(function(account){
-                    var userRepo = new UserRepository();
-                    return userRepo.createUser(account);
-
-                })
+    var userRepo = new UserRepository();
+    return userRepo.createUser(account)
                 .then(function(account){
 
                     var sql = 'INSERT INTO sessions (user_id_fkey, email_address, base_access_token, nylas_access_token, nylas_namespace) ' +
