@@ -28,7 +28,8 @@ export default React.createClass({
 
             </div>
             <div className="col-md-7 container-full">
-              <h1>Welcome</h1>
+              <h1>Welcome to your Base</h1>
+              <img src="/assets/logo.png" />
             </div>
             <div className="col-md-3 container-full">
 
