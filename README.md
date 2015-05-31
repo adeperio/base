@@ -1,4 +1,4 @@
-# Base
+# Base ![Alt text](/logo.png?raw=true "Base")
 ## A starter kit / hack stack
 
 Forked from the great work being done over at https://github.com/kriasoft/react-starter-kit.
