@@ -1,8 +1,9 @@
 # Base
 ## A starter kit / hack stack
 
-Forked and standing on the shoulders of the great work being done over at https://github.com/kriasoft/react-starter-kit
-Gulp+Webpack+React+Flux+Express+Postgres
+Forked from the great work being done over at https://github.com/kriasoft/react-starter-kit.
+
+Gulp+Webpack+React+Flux+Express+Postgres+Passportjs+Bootstrap
 
 ## Features
 
