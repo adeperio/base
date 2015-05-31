@@ -6,11 +6,15 @@ import RandomizerService from '../services/RandomizerService.js';
 var router = express.Router();
 
 
-router.get('/connect', passport.authenticate('google'));
+router.get('/connect', passport.authenticate('google', { scope:
+    [ 'https://www.googleapis.com/auth/plus.login',
+    , 'https://www.googleapis.com/auth/plus.profile.emails.read' ] }));
 
-router.get('/google/callback', passport.authenticate(
-                                'google',
-                                { successRedirect: '/home', failureRedirect: '/login' }
+router.get('/google/callback', passport.authenticate('google',
+                                {
+                                  successRedirect: '/home',
+                                  failureRedirect: '/login'
+                                }
                             ));
 
 

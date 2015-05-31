@@ -2,21 +2,25 @@
 
 import path from 'path';
 import express from 'express';
-
 import config from './config.js';
 import authRoutes from './routes/authRoutes.js';
 
 import passport from 'passport';
-import passportgoogle from 'passport-google';
-var GoogleStrategy = passportgoogle.Strategy;
+import passportGoogleOauth2 from 'passport-google-oauth2';
+var GoogleStrategy = passportGoogleOauth2.Strategy;
+
+//set configs
+global.Config = new config();
 
 var server = express();
 
 passport.use(new GoogleStrategy({
-    returnURL: 'http://localhost:3000/auth/google/callback',
-    realm: 'http://localhost:3000/'
+  clientID:     Config.auth.clientID,
+  clientSecret: Config.auth.clientSecret,
+  callbackURL: Config.auth.callbackURL,
+  passReqToCallback   : true
   },
-  function(identifier, profile, done) {
+  function(request, accessToken, refreshToken, profile, done) {
     done();
   }
 ));
@@ -29,8 +33,7 @@ server.set('view engine', 'jade');
 //Setup location to static assets
 server.use(express.static(path.join(__dirname)));
 
-//set configs
-global.Config = new config();
+
 
 //setup routes
 server.use('/auth', authRoutes);

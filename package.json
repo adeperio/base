@@ -23,6 +23,7 @@
     "node-uuid": "^1.4.3",
     "passport": "^0.2.2",
     "passport-google": "^0.3.0",
+    "passport-google-oauth2": "^0.1.6",
     "pg": "^4.3.0",
     "pg-query": "^0.11.0",
     "rangy": "^1.3.0-beta.2",
