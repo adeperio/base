@@ -24,9 +24,7 @@ export default React.createClass({
 
     return (
         <div className="home row container-full no-pad">
-            <div className="col-md-2 container-full">
-
-            </div>
+            <div className="col-md-2 container-full"></div>
             <div className="col-md-7 container-full">
               <h1>Welcome to your Base</h1>
               <img src="/assets/logo.png" />
