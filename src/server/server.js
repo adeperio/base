@@ -4,7 +4,6 @@ import path from 'path';
 import express from 'express';
 import config from './config.js';
 import authRoutes from './routes/authRoutes.js';
-
 import passport from 'passport';
 import passportGoogleOauth2 from 'passport-google-oauth2';
 var GoogleStrategy = passportGoogleOauth2.Strategy;
@@ -33,8 +32,6 @@ server.set('view engine', 'jade');
 //Setup location to static assets
 server.use(express.static(path.join(__dirname)));
 
-
-
 //setup routes
 server.use('/auth', authRoutes);
 
@@ -42,7 +39,6 @@ server.use('/auth', authRoutes);
 server.get('/*', function (req, res) {
   res.render('index');
 });
-
 
 //Run up the server
 server.listen(server.get('port'), function() {
