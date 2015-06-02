@@ -16,13 +16,26 @@ var server = express();
 passport.use(new GoogleStrategy({
   clientID:     Config.auth.clientID,
   clientSecret: Config.auth.clientSecret,
-  callbackURL: Config.auth.callbackURL,
+  callbackURL:  Config.auth.callbackURL,
   passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {
-    done();
+    var user = {};
+    done(null, user);
   }
 ));
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+server.use(passport.initialize());
+server.use(passport.session());
+
 
 //Set port
 server.set('port', (process.env.PORT || 5000));
