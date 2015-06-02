@@ -23,16 +23,12 @@ export default React.createClass({
 
 
     return (
-        <div className="home row container-full no-pad">
-            <div className="col-md-2 container-full"></div>
-            <div className="col-md-7 container-full">
+      <div className={'home'}>
+          <div className="home-box">
               <h1>Welcome to your Base</h1>
               <img src="/logo.png" />
-            </div>
-            <div className="col-md-3 container-full">
-
-            </div>
-        </div>
+          </div>
+      </div>
     );
 
   }
