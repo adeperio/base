@@ -19,6 +19,7 @@
     "front-matter": "1.0.0",
     "jade": "1.9.2",
     "lodash": "^3.4.0",
+    "mocha": "^2.2.5",
     "moment": "^2.10.2",
     "node-uuid": "^1.4.3",
     "passport": "^0.2.2",
