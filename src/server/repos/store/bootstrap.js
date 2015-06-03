@@ -7,13 +7,13 @@ client.connect();
 var createUsers = 'CREATE TABLE IF NOT EXISTS ' +
   'users(' +
     'id SERIAL PRIMARY KEY, ' +
-    'auth_provider_id_fkey VARCHAR(255) UNIQUE not null, ' + //id supplied by auth proivder
+    'auth_provider_lookup_id_fkey integer references auth_providers_lookup(id), ' +
+    'auth_provider_user_id VARCHAR(255) not null, ' +//user designation from auth proivder
     'email_address VARCHAR(255) UNIQUE not null)';
 
-var createAuthProviders = 'CREATE TABLE IF NOT EXISTS ' +
-  'auth_providers(' +
+var createAuthProvidersLookup = 'CREATE TABLE IF NOT EXISTS ' +
+  'auth_providers_lookup(' +
     'id SERIAL PRIMARY KEY, ' +
-    'provider_id VARCHAR(255) not null, ' + //a provider specific id
     'type VARCHAR(255) UNIQUE not null)'; //ie google, twitter, facebook
 
 var createSessions = 'CREATE TABLE IF NOT EXISTS ' +
@@ -25,14 +25,11 @@ var createSessions = 'CREATE TABLE IF NOT EXISTS ' +
     'provider_access_token VARCHAR(255) UNIQUE not null,' +
     'created timestamp default current_timestamp)';
 
-var sql = 'insert into users (email_address)' +
-      'select ' +
-          '\'' + account.email_address + '\'' +
-      'where not exists (' +
-          'select * from users where email_address = \'' + account.email_address + '\')';
+var insertAuthProviders = 'insert into auth_providers_lookup (type) VALUES (\'google\')';
 
 client.query(createUsers);
 client.query(createAuthProviders);
+client.query(insertAuthProviders);
 client.query(createSessions)
   .on('end', function() {
     client.end();
