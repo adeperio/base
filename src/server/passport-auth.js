@@ -3,6 +3,7 @@
 import passport from 'passport';
 import passportGoogleOauth2 from 'passport-google-oauth2';
 import UserRepository from './repos/store/UserRepository.js';
+import ProviderLookup from './repos/store/ProviderLookup.js';
 var GoogleStrategy = passportGoogleOauth2.Strategy;
 
 
@@ -14,13 +15,11 @@ passport.use(new GoogleStrategy({
   },
   function(request, accessToken, refreshToken, profile, done) {
     var userRepo = new UserRepository();
-    console.log('PROFILE ' + JSON.stringify(profile));
-    return done(null, profile);
-    // userRepo.createUser({ googleId: profile.id }, function (err, user) {
-    //   return done(err, user);
-    // });
+    userRepo.getUser(ProviderLookup.Google, profile.id, function (err, results) {
 
-
+        console.log('RESULTS ' + results);
+        return done(err, {});
+    });
   }
 ));
 

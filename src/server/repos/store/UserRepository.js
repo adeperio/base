@@ -6,22 +6,17 @@ function UserRepository () {
 
   query.connectionParameters = Config.connectionString;
 
-  this.createUser = function(email_address) {
 
-    var sql = 'insert into users (email_address)' +
-          'select ' +
-              '\'' + account.email_address + '\'' +
-          'where not exists (' +
-              'select * from users where email_address = \'' + account.email_address + '\')';
+  this.getUser = function(auth_provider_name, provider_user_id) {
+
+    var sql = 'SELECT * FROM users INNER JOIN auth_providers_lookup ' +
+              'ON users.auth_provider_lookup_id_fkey = auth_providers_lookup.id ' +
+              'WHERE auth_providers_lookup.name = \'' + auth_provider_name + '\' AND users.auth_provider_user_id LIKE \''+ provider_user_id + '\'';
 
     return query(sql)
               .then(function(result){
-                  return account;
+                  return result;
               });
-  };
-
-  this.getUser = function(auth_provider_id){
-
   }
 
 }

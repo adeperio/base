@@ -14,7 +14,7 @@ var createUsers = 'CREATE TABLE IF NOT EXISTS ' +
 var createAuthProvidersLookup = 'CREATE TABLE IF NOT EXISTS ' +
   'auth_providers_lookup(' +
     'id SERIAL PRIMARY KEY, ' +
-    'type VARCHAR(255) UNIQUE not null)'; //ie google, twitter, facebook
+    'name VARCHAR(255) UNIQUE not null)'; //ie google, twitter, facebook
 
 var createSessions = 'CREATE TABLE IF NOT EXISTS ' +
   'sessions(' +
@@ -25,7 +25,7 @@ var createSessions = 'CREATE TABLE IF NOT EXISTS ' +
     'provider_access_token VARCHAR(255) UNIQUE not null,' +
     'created timestamp default current_timestamp)';
 
-var insertAuthProviders = 'insert into auth_providers_lookup (type) VALUES (\'google\')';
+var insertAuthProviders = 'insert into auth_providers_lookup (name) VALUES (\'google\')';
 
 var dropAuthProvidersLookup = 'DROP TABLE IF EXISTS auth_providers_lookup';
 var dropSessions = 'DROP TABLE IF EXISTS sessions';
