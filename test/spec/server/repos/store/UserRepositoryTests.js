@@ -8,7 +8,7 @@ var UserRepository = require(appRoot + '/src/server/repos/store/UserRepository.j
 var ProviderLookup = require(appRoot + '/src/server/repos/store/ProviderLookup.js');
 var config = require(appRoot + '/src/server/config.js');
 
-describe('email store repository', function(){
+describe('user store repository', function(){
 
   beforeEach(function(done){
     global.Config = new config();
@@ -16,8 +16,8 @@ describe('email store repository', function(){
     done();
   });
 
-  describe('create thread', function(){
-    it('should create threads', function(done){
+  describe('get user with non existant provider id', function(){
+    it('should get no user', function(done){
 
       var userRepo = new UserRepository();
 
@@ -26,8 +26,6 @@ describe('email store repository', function(){
           winston.log('debug', JSON.stringify(result));
           done();
       });
-
-
 
     })
   });
