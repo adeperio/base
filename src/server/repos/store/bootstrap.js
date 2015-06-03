@@ -25,6 +25,12 @@ var createSessions = 'CREATE TABLE IF NOT EXISTS ' +
     'provider_access_token VARCHAR(255) UNIQUE not null,' +
     'created timestamp default current_timestamp)';
 
+var sql = 'insert into users (email_address)' +
+      'select ' +
+          '\'' + account.email_address + '\'' +
+      'where not exists (' +
+          'select * from users where email_address = \'' + account.email_address + '\')';
+
 client.query(createUsers);
 client.query(createAuthProviders);
 client.query(createSessions)
