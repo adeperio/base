@@ -6,7 +6,7 @@ function UserRepository () {
 
   query.connectionParameters = Config.connectionString;
 
-  this.createUser = function(account) {
+  this.createUser = function(email_address) {
 
     var sql = 'insert into users (email_address)' +
           'select ' +
@@ -14,10 +14,16 @@ function UserRepository () {
           'where not exists (' +
               'select * from users where email_address = \'' + account.email_address + '\')';
 
-    return query(sql).then(function(result){
+    return query(sql)
+              .then(function(result){
                   return account;
               });
   };
+
+  this.getUser = function(auth_provider_id){
+
+  }
+
 }
 
 module.exports = UserRepository;

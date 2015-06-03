@@ -7,6 +7,7 @@ client.connect();
 var createUsers = 'CREATE TABLE IF NOT EXISTS ' +
   'users(' +
     'id SERIAL PRIMARY KEY, ' +
+    'auth_provider_id VARCHAR(255) UNIQUE not null, ' + //id supplied by auth proivder
     'email_address VARCHAR(255) UNIQUE not null)';
 
 var createSessions = 'CREATE TABLE IF NOT EXISTS ' +
