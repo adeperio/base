@@ -1,5 +1,5 @@
 var pg = require('pg');
-var config = new require('../../config.js')();
+var config = new require('./config.js')();
 
 var client = new pg.Client(config.connectionString);
 client.connect();
@@ -27,8 +27,20 @@ var createSessions = 'CREATE TABLE IF NOT EXISTS ' +
 
 var insertAuthProviders = 'insert into auth_providers_lookup (type) VALUES (\'google\')';
 
+var dropAuthProvidersLookup = 'DROP TABLE IF EXISTS auth_providers_lookup';
+var dropSessions = 'DROP TABLE IF EXISTS sessions';
+var dropUsers = 'DROP TABLE IF EXISTS users';
+
+//execute data bootstrap
+
+//drop tables
+client.query(dropSessions);
+client.query(dropUsers);
+client.query(dropAuthProvidersLookup);
+
+//create and bootstrap tables
+client.query(createAuthProvidersLookup);
 client.query(createUsers);
-client.query(createAuthProviders);
 client.query(insertAuthProviders);
 client.query(createSessions)
   .on('end', function() {
