@@ -221,7 +221,7 @@ gulp.task('pagespeed', function(cb) {
 });
 
 gulp.task('test', ['bootstrap-test'], shell.task([
-  'mocha --recursive --compilers js:mocha-traceur'
+  'export NODE_ENV=test; mocha --recursive --compilers js:mocha-traceur'
 ]));
 
 gulp.task('bootstrap-test', shell.task([
