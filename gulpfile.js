@@ -220,8 +220,12 @@ gulp.task('pagespeed', function(cb) {
   }, cb);
 });
 
-gulp.task('test', ['bootstrap'], shell.task([
+gulp.task('test', ['bootstrap-test'], shell.task([
   'mocha --recursive --compilers js:mocha-traceur'
+]));
+
+gulp.task('bootstrap-test', shell.task([
+  'export NODE_ENV=test; node src/server/repos/store/bootstrap.js'
 ]));
 
 gulp.task('bootstrap', shell.task([
