@@ -223,3 +223,7 @@ gulp.task('pagespeed', function(cb) {
 gulp.task('test', shell.task([
   'mocha --recursive --compilers js:mocha-traceur'
 ]));
+
+gulp.task('bootstrap', shell.task([
+  'node src/server/bootstrap.js'
+]));
