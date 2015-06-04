@@ -3,6 +3,7 @@
 // Include Gulp and other build automation tools and utilities
 // See: https://github.com/gulpjs/gulp/blob/master/docs/API.md
 var gulp = require('gulp');
+var shell = require('gulp-shell');
 var $ = require('gulp-load-plugins')();
 var del = require('del');
 var path = require('path');
@@ -218,3 +219,7 @@ gulp.task('pagespeed', function(cb) {
     // key: 'YOUR_API_KEY'
   }, cb);
 });
+
+gulp.task('test', shell.task([
+  'mocha --recursive --compilers js:mocha-traceur'
+]));
