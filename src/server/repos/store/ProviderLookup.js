@@ -4,4 +4,4 @@ var authProviderLookup = {
   Google: 'google'
 }
 
-module.export = authProviderLookup;
+module.exports = authProviderLookup;

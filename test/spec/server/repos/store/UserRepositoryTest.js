@@ -10,17 +10,30 @@ var config = require(appRoot + '/src/server/config.js');
 
 describe('user store repository', function(){
 
-  beforeEach(function(done){
+  before(function(done){
     global.Config = new config();
     winston.level = 'debug';
     done();
   });
 
-  describe('get user with non existant provider id', function(){
+  describe('getUser', function(){
     it('should get no user', function(done){
 
       var userRepo = new UserRepository();
       userRepo.getUser(ProviderLookup.Google, 'testprovideruserid')
+      .then(function(rows){
+
+          winston.log('debug', JSON.stringify(rows));
+          done();
+      });
+    })
+  });
+
+  describe('createUser', function(){
+    it('should return newly inserted user row or an existing user row', function(done){
+
+      var userRepo = new UserRepository();
+      userRepo.createUser(ProviderLookup.Google, 'testprovideruserid')
       .then(function(rows){
 
           winston.log('debug', JSON.stringify(rows));
