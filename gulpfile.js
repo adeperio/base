@@ -220,7 +220,7 @@ gulp.task('pagespeed', function(cb) {
   }, cb);
 });
 
-gulp.task('test', shell.task([
+gulp.task('test', ['bootstrap'], shell.task([
   'mocha --recursive --compilers js:mocha-traceur'
 ]));
 
