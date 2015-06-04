@@ -16,7 +16,7 @@ passport.use(new GoogleStrategy({
   function(request, accessToken, refreshToken, profile, done) {
     var userRepo = new UserRepository();
     userRepo.createUser(ProviderLookup.Google, profile.id, function (err, users) {
-      if(users.length > 0){
+      if(users.length > 0 && users.email_address != null){
         return done(err, users);
       } else{
         return done(err, {});
