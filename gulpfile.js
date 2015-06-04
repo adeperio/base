@@ -225,5 +225,5 @@ gulp.task('test', shell.task([
 ]));
 
 gulp.task('bootstrap', shell.task([
-  'node src/server/bootstrap.js'
+  'node src/server/repos/store/bootstrap.js'
 ]));

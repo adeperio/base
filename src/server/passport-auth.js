@@ -15,10 +15,13 @@ passport.use(new GoogleStrategy({
   },
   function(request, accessToken, refreshToken, profile, done) {
     var userRepo = new UserRepository();
-    userRepo.getUser(ProviderLookup.Google, profile.id, function (err, results) {
-
-        console.log('RESULTS ' + results);
+    userRepo.getUser(ProviderLookup.Google, profile.id, function (err, users) {
+      if(users.length > 0){
+        return done(err, users);
+      } else{
         return done(err, {});
+      }
+
     });
   }
 ));

@@ -6,7 +6,6 @@ function UserRepository () {
 
   query.connectionParameters = Config.connectionString;
 
-
   this.getUser = function(auth_provider_name, provider_user_id) {
 
     var sql = 'SELECT * FROM users INNER JOIN auth_providers_lookup ' +
