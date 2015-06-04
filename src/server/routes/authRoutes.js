@@ -13,6 +13,8 @@ router.get('/google/callback', function(req, res, next) {
   passport.authenticate('google', function(err, user, info) {
     if (user === null) {
       res.redirect('/error');
+    } else if (user.email_address === null) {
+      res.redirect('/signup');
     } else {
       res.redirect('/home');
     }
