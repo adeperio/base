@@ -15,7 +15,11 @@ function UserRepository () {
 
     return query(sql)
               .then(function(result){
-                  return result;
+                  if(result && result.rows){
+                    return result.rows;
+                  } else{
+                    return [];
+                  }
               });
   }
 
