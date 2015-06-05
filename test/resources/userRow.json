@@ -1,0 +1,7 @@
+{
+    "id":1,
+    "auth_provider_lookup_id_fkey":1,
+    "auth_provider_user_id":"testprovideruserid",
+    "email_address":null,
+    "created":"2015-06-05T01:57:30.379Z"
+}

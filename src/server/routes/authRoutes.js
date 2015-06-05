@@ -1,6 +1,7 @@
 import express from 'express';
 import passport from 'passport';
 import UserRepository from '../repos/store/UserRepository.js';
+import SessionRepository from '../repos/store/SessionRepository.js';
 import RandomizerService from '../services/RandomizerService.js';
 
 var router = express.Router();
@@ -13,10 +14,19 @@ router.get('/google/callback', function(req, res, next) {
   passport.authenticate('google', function(err, user, info) {
     if (user === null) {
       res.redirect('/error');
-    } else if (user.email_address === null) {
-      res.redirect('/signup');
     } else {
-      res.redirect('/home');
+
+      var sessionRepo = new SessionRepository();
+
+      sessionRepo.createSession(user, info.providerToken)
+        .then(function(){
+          if (user.email_address === null) {
+            res.redirect('/signup');
+          } else{
+            res.redirect('/home');
+          }
+        });
+
     }
   })(req, res, next);
 });

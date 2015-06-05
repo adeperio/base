@@ -9,7 +9,9 @@ function UserRepository () {
   //this will Insert a user and return the new row or return an existing row
   this.createUser = function(auth_provider_name, provider_user_id){
 
-      var sql = 'with d as ( ' +
+      var sql = 'BEGIN; ' +
+                'LOCK TABLE users IN SHARE ROW EXCLUSIVE MODE; ' +
+                'with d as ( ' +
                 '    select id FROM auth_providers_lookup ' +
                 '    where "name" = \'' + auth_provider_name + '\' ' +
                 '), s as ( ' +
@@ -22,11 +24,11 @@ function UserRepository () {
                 '    where not exists (select 1 from s) ' +
                 '    returning users.* ' +
                 ') ' +
-                'select i.* from i union all select s.* from s';
+                'select i.* from i union all select s.* from s;' +
+                'COMMIT;';
 
       return query(sql)
               .then(function(result){
-
                   if(result && result[1] && result[1].rows){
                     return result[1].rows;
                   } else{

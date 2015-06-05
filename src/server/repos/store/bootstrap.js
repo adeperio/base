@@ -23,7 +23,7 @@ var createSessions = 'CREATE TABLE IF NOT EXISTS ' +
     'user_id_fkey integer references users(id), ' +
     'email_address VARCHAR(255) not null, ' +
     'base_access_token VARCHAR(255) UNIQUE not null,' +
-    'provider_access_token VARCHAR(255) UNIQUE not null,' +
+    'auth_provider_access_token VARCHAR(255) UNIQUE not null,' +
     'created timestamp default current_timestamp)';
 
 var insertAuthProviders = 'insert into auth_providers_lookup (name) VALUES (\'google\')';

@@ -18,7 +18,7 @@ passport.use(new GoogleStrategy({
     userRepo.createUser(ProviderLookup.Google, profile.id)
     .then(function(users){
         if(users.length == 1){
-          done(null, users[0]);
+          done(null, users[0], { providerToken: accessToken});
         }else{
           done(null, null);
         }
