@@ -39,7 +39,6 @@ describe('session repository', function(){
                         assert.equal(1, sessions.length);
                         done();
                     }).catch(function(err){
-
                         done(err);
                     });
     })
