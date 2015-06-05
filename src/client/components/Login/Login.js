@@ -30,8 +30,7 @@ export default React.createClass({
       <div className={'login'}>
           <div className="login-box">
             <h1>Base</h1>
-
-                 <a href={connectPath}>Sign in with Google</a>
+            <a href={connectPath}>Sign in with Google</a>
           </div>
 
       </div>

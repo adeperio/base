@@ -1,4 +1,3 @@
-
 'use strict'
 import winston from 'winston';
 import assert from 'assert';

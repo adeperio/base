@@ -21,18 +21,27 @@ export default React.createClass({
   propTypes: { },
 
   componentDidMount: function() {
+
   },
 
   onEmailValueChange: function(){
 
+    this.setState({
+      emailValue: this.refs.emailValueRef.getValue()
+    });
+
   },
 
   onFirstNameChange: function(){
-
+    this.setState({
+      firstNameValue: this.refs.firstNameValueRef.getValue()
+    });
   },
 
   onLastNameChange: function(){
-
+    this.setState({
+      firstNameValue: this.refs.lastNameValueRef.getValue()
+    });
   },
 
   render: function() {
@@ -49,17 +58,18 @@ export default React.createClass({
                    value={this.state.firstNameValue}
                    placeholder='First Name'
                    hasFeedback
-                   ref='emailValueRef'
+                   ref='firstNameValueRef'
                    groupClassName='group-class'
                    wrapperClassName='wrapper-class'
                    labelClassName='label-class'
                    onChange={this.onFirstNameChange} />
+
              <Bootstrap.Input
                   type='text'
                   value={this.state.lastNameValue}
                   placeholder='Last Name'
                   hasFeedback
-                  ref='emailValueRef'
+                  ref='lastNameValueRef'
                   groupClassName='group-class'
                   wrapperClassName='wrapper-class'
                   labelClassName='label-class'
@@ -75,6 +85,8 @@ export default React.createClass({
                    wrapperClassName='wrapper-class'
                    labelClassName='label-class'
                    onChange={this.onEmailValueChange} />
+
+
           </div>
       </div>
     );
