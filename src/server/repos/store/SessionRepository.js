@@ -14,7 +14,7 @@ function SessionRepository () {
     var base_access_token = randomizer.getRandomUUIDv4();
 
     var sql = 'INSERT INTO sessions (user_id_fkey, email_address, base_access_token, auth_provider_access_token) ' +
-              'VALUES ($1, $2, $3, $4) RETURNING *;';
+              'VALUES ($1, $2, $3, $4) RETURNING *; ';
 
     return query(sql, [user.id, '', base_access_token, provider_token])
             .then(function(result){

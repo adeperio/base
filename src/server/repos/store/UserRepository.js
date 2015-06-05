@@ -9,25 +9,22 @@ function UserRepository () {
   //this will Insert a user and return the new row or return an existing row
   this.createUser = function(auth_provider_name, provider_user_id){
 
-      var sql = 'BEGIN; ' +
-                'LOCK TABLE users IN SHARE ROW EXCLUSIVE MODE; ' +
-                'with d as ( ' +
+      var sql = 'with d as ( ' +
                 '    select id FROM auth_providers_lookup ' +
-                '    where "name" = \'' + auth_provider_name + '\' ' +
+                '    where "name" = $1' +
                 '), s as ( ' +
                 '    select users.* ' +
                 '    from users, auth_providers_lookup ' +
-                '    where "name" = \'' + auth_provider_name + '\' and auth_provider_user_id = \'' + provider_user_id + '\' ' +
+                '    where "name" = $2 and auth_provider_user_id = $3 ' +
                 '), i as ( ' +
                 '    insert into users (auth_provider_lookup_id_fkey, auth_provider_user_id) ' +
-                '    select id, \'' + provider_user_id + '\' from d  ' +
+                '    select id, $4 from d  ' +
                 '    where not exists (select 1 from s) ' +
                 '    returning users.* ' +
                 ') ' +
-                'select i.* from i union all select s.* from s;' +
-                'COMMIT;';
+                'select i.* from i union all select s.* from s;';
 
-      return query(sql)
+      return query(sql, [auth_provider_name, auth_provider_name, provider_user_id, provider_user_id])
               .then(function(result){
                   if(result && result[1] && result[1].rows){
                     return result[1].rows;
@@ -40,9 +37,9 @@ function UserRepository () {
   this.getUser = function(auth_provider_name, provider_user_id) {
 
       var sql = 'SELECT users.* FROM users, auth_providers_lookup ' +
-                'WHERE auth_providers_lookup.name = \'' + auth_provider_name + '\' AND users.auth_provider_user_id LIKE \''+ provider_user_id + '\'';
+                'WHERE auth_providers_lookup.name = $1 AND users.auth_provider_user_id LIKE $2';
 
-    return query(sql)
+    return query(sql, [auth_provider_name, provider_user_id])
               .then(function(result){
 
                   if(result && result[1] && result[1].rows){
