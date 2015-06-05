@@ -5,6 +5,7 @@ import appRoot from 'app-root-path';
 import query from 'pg-query';
 
 var SessionRepository = require(appRoot + '/src/server/repos/store/SessionRepository.js');
+var RandomizerService = require(appRoot + '/src/server/services/RandomizerService.js');
 var config = require(appRoot + '/src/server/config.js');
 var userRow = require(appRoot + '/test/resources/userRow.json');
 
@@ -21,24 +22,26 @@ describe('session repository', function(){
                    'COMMIT;';
 
     return query(sqlSetup)
-      .then(function(result){
-        done();
-      });
+              .then(function(result){
+                done();
+              });
   });
 
   describe('createSession', function(){
     it('should return the created session', function(done){
-      done();
-      // var sessionRepo = new SessionRepository();
-      // sessionRepo.createSession(userRow, 'providertokenstring')
-      // .then(function(session){
-      //     console.log(JSON.stringify(session));
-      //
-      //     done();
-      // }).catch(function(err){
-      //   console.log('Error ' + JSON.stringify(err));
-      //   done(err);
-      // });
+
+      var randomizer = new RandomizerService();
+      var test_token = randomizer.getRandomUUIDv4();
+
+      var sessionRepo = new SessionRepository();
+      sessionRepo.createSession(userRow, test_token)
+                    .then(function(sessions){
+                        assert.equal(1, sessions.length);
+                        done();
+                    }).catch(function(err){
+
+                        done(err);
+                    });
     })
   });
 
