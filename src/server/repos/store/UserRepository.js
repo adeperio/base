@@ -39,7 +39,9 @@ function UserRepository () {
       var sql = 'SELECT users.* FROM users, auth_providers_lookup ' +
                 'WHERE auth_providers_lookup.name = $1 AND users.auth_provider_user_id LIKE $2';
 
-    return query(sql, [auth_provider_name, provider_user_id])
+    var paramsArray = [auth_provider_name, provider_user_id];
+    console.log('PARAMS \n' + JSON.stringify(paramsArray));
+    return query(sql, paramsArray)
               .then(function(result){
 
                   if(result && result[1] && result[1].rows){
