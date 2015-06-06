@@ -16,10 +16,7 @@ function SessionRepository () {
     var sql = 'INSERT INTO sessions (user_id_fkey, email_address, base_access_token, auth_provider_access_token) ' +
               'VALUES ($1, $2, $3, $4) RETURNING *; ';
 
-    var params = [user.id, '', base_access_token, provider_token];
-    console.log('PARAMS ' + JSON.stringify(params) + '\n');
-    console.log('USER ' + JSON.stringify(user) + '\n');
-    return query(sql, params)
+    return query(sql, [user.id, '', base_access_token, provider_token])
             .then(function(result){
                 if(result && result[1] && result[1].rows){
                   return result[1].rows;
