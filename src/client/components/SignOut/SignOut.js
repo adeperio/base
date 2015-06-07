@@ -11,21 +11,20 @@ export default React.createClass({
 
   propTypes: { },
 
-  componentDidMount: function() { },
+  componentDidMount: function() {
+  },
 
   onSignout: function(){
-
-    AuthActions.revoke(AuthStore.getSessionObject());
+    AuthActions.signOut(AuthStore.getSessionObject());
   },
 
   render: function() {
     return (
       <div className={'signOut'}>
-        <Bootstrap.Button onClick={this.onSignout}>
+        <Bootstrap.Button className="btn-primary" onClick={this.onSignout}>
           Sign out
         </Bootstrap.Button>
       </div>
     );
-
   }
 });

@@ -41,6 +41,22 @@ function SessionRepository () {
 
   };
 
+  this.deleteSession = function(base_access_token){
+
+    var sql = 'DELETE FROM sessions WHERE base_access_token = $1';
+
+    return query(sql, [base_access_token])
+            .then(function(result){
+
+                if(result && result[1] && result[1].rowCount == 1){
+                  return result[1].rowCount;
+                } else{
+                  throw new Error('There was an error revoking the session');
+                }
+            });
+
+  }
+
 
 }
 

@@ -74,4 +74,26 @@ describe('session repository', function(){
   });
 
 
+  describe('deleteSession', function(){
+    it('should delete a session', function(done){
+
+      var randomizer = new RandomizerService();
+      var test_provider_token = randomizer.getRandomUUIDv4();
+
+      var sessionRepo = new SessionRepository();
+      sessionRepo.createSession(userRow, test_provider_token)
+                    .then(function(session){
+                        return sessionRepo.deleteSession(session.base_access_token);
+                        done();
+                    }).then(function(result){
+                        assert.equal(1, result);
+
+                        done();
+                    }).catch(function(err){
+                        done(err);
+                    });
+    })
+  });
+
+
 });

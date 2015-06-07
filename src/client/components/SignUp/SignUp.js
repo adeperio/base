@@ -2,9 +2,13 @@
 import './SignUp.less';
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
+
+import SignOut from '../components/SignOut.js';
+
 import AuthActions from '../../Flux/actions/AuthActions';
 import AuthStore from '../../Flux/stores/AuthStore';
 import ActionTypes from '../../Flux/constants/ActionTypes';
+
 
 export default React.createClass({
 
@@ -68,6 +72,12 @@ export default React.createClass({
                         this.state.emailValue);
   },
 
+  onSignOut: function(){
+
+    AuthActions.revoke(AuthStore.getSessionObject());
+
+  },
+
   render: function() {
 
 
@@ -113,6 +123,10 @@ export default React.createClass({
 
               <Bootstrap.Button className="btn-primary" onClick={this.onSignUp}>
                 Sign up
+              </Bootstrap.Button>
+
+              <Bootstrap.Button className="btn-danger" onClick={this.onSignOut}>
+                Sign out
               </Bootstrap.Button>
 
 

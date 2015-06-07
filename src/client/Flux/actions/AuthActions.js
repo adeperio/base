@@ -13,21 +13,21 @@ module.exports = {
     });
   },
 
-  revoke: function(sessionObject){
+  signOut: function(sessionObject){
 
-    http.get('/revoke')
+    http.get('/auth/signout')
       .accept('application/json')
       .set('Authorization', 'Bearer ' + sessionObject.base_access_token)
       .end((err, res) => {
 
         if(!err && !res.error) {
-          console.log("Did revoke: SUCCESS");
+          console.log("Did signout: SUCCESS");
           Dispatcher.handleServerAction({
             actionType: ActionTypes.REVOKE_RES,
             data: res.body
           });
-        } else{
-          console.log("Did revoke: ERROR");
+        } else {
+          console.log("Did signout: ERROR");
           Dispatcher.handleServerAction({
             actionType: ActionTypes.REVOKE_ERR,
             data: res.error
@@ -38,7 +38,7 @@ module.exports = {
 
   signUp: function(sessionObject, firstName, lastName, emailAddress){
 
-    http.get('/signup?firstName=' + firstName + '&lastName=' + lastName + '&emailAddress=' + emailAddress)
+    http.get('/auth/signup?firstName=' + firstName + '&lastName=' + lastName + '&emailAddress=' + emailAddress)
       .accept('application/json')
       .set('Authorization', 'Bearer ' + sessionObject.base_access_token)
       .end((err, res) => {
