@@ -4,6 +4,7 @@ import passport from 'passport';
 var BearerStrategy = require('passport-http-bearer').Strategy;
 import passportGoogleOauth2 from 'passport-google-oauth2';
 import UserRepository from '../repos/store/UserRepository.js';
+import SessionRepository from '../repos/store/SessionRepository.js';
 import ProviderLookup from '../repos/store/ProviderLookup.js';
 var GoogleStrategy = passportGoogleOauth2.Strategy;
 
@@ -41,21 +42,20 @@ passport.deserializeUser(function(user, done) {
 
 
 //token auth setup
-passport.use(
-    new BearerStrategy(
+passport.use( new BearerStrategy(
         function(token, done) {
-            // User.findOne({ access_token: token },
-            //     function(err, user) {
-            //         if(err) {
-            //             return done(err)
-            //         }
-            //         if(!user) {
-            //             return done(null, false)
-            //         }
-            //
-            //         return done(null, user, { scope: 'all' })
-            //     }
-            // );
+            var sessionRepo = new SessionRepository();
+            sessionRepo.getSession(token)
+                .then(function(session){
+                  if(!session) {
+                      return done(null, false);
+                  }
+
+                  return done(null, session, { scope: 'all' });
+
+                }).catch(function(e){
+                  return done(e);
+                });
         }
     )
 );
