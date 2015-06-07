@@ -13,6 +13,8 @@ var ActionTypes = keyMirror({
   SESSION_OBJECT_SET: null,
   REVOKE_RES: null,
   REVOKE_ERR: null,
+  SIGNUP_RES: null,
+  SIGNUP_ERR: null,
 
   //Email
   EMAIL_GET_NAMESPACES_REQ: null,
