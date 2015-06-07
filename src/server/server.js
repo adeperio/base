@@ -7,7 +7,7 @@ global.Config = new config();
 import path from 'path';
 import express from 'express';
 import signInRoutes from './routes/signInRoutes.js';
-import passport from './passport-auth.js';
+import passport from './auth/passport-auth.js';
 
 var server = express();
 
