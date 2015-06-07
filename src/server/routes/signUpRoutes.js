@@ -8,26 +8,19 @@ var router = express.Router();
 
 router.get( '/signup', passport.authenticate('bearer', { session: false }), function(req, res) {
 
-  var session = req.user; //session object, supplied by Bearer strategy
-  
+  var emailAddress = req.query['emailAddress'];
   var firstName = req.query['firstName'];
   var lastName = req.query['lastName'];
-  var emailAddress = req.query['emailAddress'];
-
+  var session = req.user; //session object, supplied by Bearer strategy
 
   var userRepo = new UserRepository();
-
-
-  userRepo.updateUser()
-
-
-
-  .then(function(messages) {
-            res.json(messages);
-        })
-        .catch(function (e) {
-            res.status(401).send(e.message);
-        });
+  userRepo.updateUser(emailAddress, firstName, lastName, session.auth_provider_name, session.auth_provider_user_id)
+              .then(function(user) {
+                  res.redirect('/home');
+              })
+              .catch(function (e) {
+                  res.status(500).send(e.message);
+              });
 
 });
 
