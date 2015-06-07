@@ -22,15 +22,20 @@ export default React.createClass({
 
   },
 
-  render: function() {
+  onGoToSignIn: function(){
+    window.location = '/auth/connect/';
+  },
 
-    var connectPath = '/auth/connect/';
+  render: function() {
 
     return (
       <div className={'login'}>
           <div className="login-box">
             <h1>Base</h1>
-            <a href={connectPath}>Sign in with Google</a>
+
+            <Bootstrap.Button className="btn-danger" onClick={this.onGoToSignIn}>
+              Sign in with Google
+            </Bootstrap.Button>
           </div>
 
       </div>

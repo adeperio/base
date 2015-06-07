@@ -87,6 +87,9 @@ export default React.createClass({
                    onChange={this.onEmailValueChange} />
 
 
+                 <Bootstrap.Button className="btn-primary" onClick={this.onSignUp}>Sign up</Bootstrap.Button>
+
+
           </div>
       </div>
     );

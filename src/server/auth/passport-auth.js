@@ -51,6 +51,7 @@ passport.use( new BearerStrategy(
                       return done(null, false);
                   }
 
+                  //WIP check for scopes
                   return done(null, session, { scope: 'all' });
 
                 }).catch(function(e){
