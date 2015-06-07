@@ -15,6 +15,11 @@ passport.use(new GoogleStrategy({
   passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {
+
+    //if attempting to signup we create a user record for them if a user doesn't exist using the provider id as an identifier
+    //this user gets a very limited scope
+    //when the session associated with this expires or is revoke we should delete this user
+    //WIP move this code into the sign in routes logic
     var userRepo = new UserRepository();
     userRepo.createUser(ProviderLookup.Google, profile.id)
     .then(function(users){
