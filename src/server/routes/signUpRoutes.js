@@ -8,6 +8,7 @@ var router = express.Router();
 
 router.get( '/signup', passport.authenticate('bearer', { session: false }), function(req, res) {
 
+
   var emailAddress = req.query['emailAddress'];
   var firstName = req.query['firstName'];
   var lastName = req.query['lastName'];
@@ -16,7 +17,7 @@ router.get( '/signup', passport.authenticate('bearer', { session: false }), func
   var userRepo = new UserRepository();
   userRepo.updateUser(emailAddress, firstName, lastName, session.auth_provider_name, session.auth_provider_user_id)
               .then(function(user) {
-                  res.redirect('/home');
+                  res.json(user);
               })
               .catch(function (e) {
                   res.status(500).send(e.message);

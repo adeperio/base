@@ -7,6 +7,8 @@ global.Config = new config();
 import path from 'path';
 import express from 'express';
 import signInRoutes from './routes/signInRoutes.js';
+import signOutRoutes from './routes/signOutRoutes.js';
+import signUpRoutes from './routes/signUpRoutes.js';
 import passport from './auth/passport-auth.js';
 
 var server = express();
@@ -24,6 +26,8 @@ server.use(express.static(path.join(__dirname)));
 
 //setup routes
 server.use('/auth', signInRoutes);
+server.use('/auth', signOutRoutes);
+server.use('/auth', signUpRoutes);
 
 //Initial SPA load
 server.get('/*', function (req, res) {

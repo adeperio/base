@@ -17,7 +17,7 @@ module.exports = {
 
     http.get('/auth/signout')
       .accept('application/json')
-      .set('Authorization', 'Bearer ' + sessionObject.base_access_token)
+      .set('Authorization', 'Bearer ' + sessionObject.token)
       .end((err, res) => {
 
         if(!err && !res.error) {
@@ -40,7 +40,7 @@ module.exports = {
 
     http.get('/auth/signup?firstName=' + firstName + '&lastName=' + lastName + '&emailAddress=' + emailAddress)
       .accept('application/json')
-      .set('Authorization', 'Bearer ' + sessionObject.base_access_token)
+      .set('Authorization', 'Bearer ' + sessionObject.token)
       .end((err, res) => {
 
         if(!err && !res.error) {

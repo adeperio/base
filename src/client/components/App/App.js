@@ -14,14 +14,21 @@ var DefaultRoute = Router.DefaultRoute;
 var Link = Router.Link;
 var Route = Router.Route;
 var RouteHandler = Router.RouteHandler;
-var App = React.createClass({
 
+var App = React.createClass({
   contextTypes: {
     router: React.PropTypes.func
   },
 
   componentDidMount: function() {
     AuthStore.on(ActionTypes.REVOKE_RES, this.onRevoke);
+
+    if(this.context.router){
+      var sessionObject = getSessionObject(); //global get session function
+      if(sessionObject){
+        AuthActions.setSessionObject(sessionObject);
+      }
+    }
   },
 
   onRevoke: function(){

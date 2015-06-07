@@ -2,7 +2,9 @@
 import './Home.less';
 
 import React from 'react';
+import Bootstrap from 'react-bootstrap';
 import AuthActions from '../../Flux/actions/AuthActions';
+import AuthStore from '../../Flux/stores/AuthStore';
 
 //This is the entry point after the auth callback
 //see the route map in app.js
@@ -13,18 +15,15 @@ export default React.createClass({
   },
 
   componentDidMount: function() {
+    var sessionObject = AuthStore.getSessionObject();
+    if(!sessionObject.email_address){
+      this.goToSignup();
+    }
+  },
+
+  goToHome: function(){
     if(this.context.router){
-      var sessionObject = getSessionObject(); //global get session function
-      if(sessionObject){
-        AuthActions.setSessionObject(sessionObject);
-
-        if(!sessionObject.email_address){
-          this.goToSignup();
-        }
-
-      } else{
-        this.onApplicationError();
-      }
+      this.context.router.transitionTo('home');
     }
   },
 
@@ -40,6 +39,11 @@ export default React.createClass({
     }
   },
 
+  onSignOut: function(){
+    AuthActions.signOut(AuthStore.getSessionObject());
+
+  },
+
   render: function() {
 
     return (
@@ -47,6 +51,9 @@ export default React.createClass({
           <div className="home-box">
               <h1>Welcome to your Base</h1>
               <img src="/logo.png" />
+              <Bootstrap.Button className="btn-danger" onClick={this.onSignOut}>
+                Sign out
+              </Bootstrap.Button>
           </div>
       </div>
     );

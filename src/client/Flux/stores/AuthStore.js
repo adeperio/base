@@ -44,7 +44,8 @@ AuthStore.dispatcherToken = Dispatcher.register((payload) => {
         AuthStore.emit(ActionTypes.REVOKE_RES);
         break;
     case ActionTypes.SIGNUP_RES:
-
+        var user = action.data;
+        _sessionObject.email_address = user.email_address;
         AuthStore.emit(ActionTypes.SIGNUP_RES);
         break;
     case ActionTypes.SIGNUP_ERR:

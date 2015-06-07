@@ -32,9 +32,9 @@ export default React.createClass({
 
   onUserSignedUpSuccess: function(){
     if(this.context.router){
+      //get session
       this.context.router.transitionTo('home');
     }
-
   },
 
   onUserSignedUpError: function(){

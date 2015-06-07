@@ -18,7 +18,7 @@ router.get('/signout', passport.authenticate('bearer', { session: false }), func
 
               })
               .catch(function (e) {
-                console.log(JSON.stringify(e));
+
                   res.status(500).send(e.message);
               });
 
