@@ -11,22 +11,37 @@ var router = express.Router();
 router.get('/connect', passport.authenticate('google', { scope:
     [ 'https://www.googleapis.com/auth/plus.login'] }));
 
+router.get('/google/callback',
+    passport.authenticate('google', { session: false, failureRedirect: "/error" }),
+    function(req, res) {
 
-router.get('/google/callback', function(req, res, next) {
-  passport.authenticate('google', function(err, user, info) {
-    if (user === null) {
-      res.redirect('/error');
-    } else {
-      var sessionRepo = new SessionRepository();
-      sessionRepo.createSession(user, info.providerToken)
-        .then(function(session){
-          res.render('index', {
-                                  sessionToken: session.base_access_token,
-                                  sessionEmail: session.email_address
-                              });
-        });
+        var sessionRepo = new SessionRepository();
+        sessionRepo.createSession(req.user, req.user.providerToken)
+          .then(function(session){
+            res.render('index', {
+                                    sessionToken: session.base_access_token,
+                                    sessionEmail: session.email_address
+                                });
+          });
     }
-  })(req, res, next);
-});
+);
+
+//
+// router.get('/google/callback', function(req, res, next) {
+//   passport.authenticate('google', function(err, user, info) {
+//     if (user === null) {
+//       res.redirect('/error');
+//     } else {
+//       var sessionRepo = new SessionRepository();
+//       sessionRepo.createSession(user, info.providerToken)
+//         .then(function(session){
+//           res.render('index', {
+//                                   sessionToken: session.base_access_token,
+//                                   sessionEmail: session.email_address
+//                               });
+//         });
+//     }
+//   })(req, res, next);
+// });
 
 module.exports = router;

@@ -2,10 +2,9 @@
 
 import passport from 'passport';
 import passportGoogleOauth2 from 'passport-google-oauth2';
-import UserRepository from './repos/store/UserRepository.js';
-import ProviderLookup from './repos/store/ProviderLookup.js';
+import UserRepository from '../repos/store/UserRepository.js';
+import ProviderLookup from '../repos/store/ProviderLookup.js';
 var GoogleStrategy = passportGoogleOauth2.Strategy;
-
 
 passport.use(new GoogleStrategy({
   clientID:     Config.auth.clientID,
@@ -18,7 +17,9 @@ passport.use(new GoogleStrategy({
     userRepo.createUser(ProviderLookup.Google, profile.id)
     .then(function(users){
         if(users.length == 1){
-          done(null, users[0], { providerToken: accessToken});
+          var user = users[0];
+          user.providerToken = accessToken;
+          done(null, user);
         }else{
           done(null, null);
         }
