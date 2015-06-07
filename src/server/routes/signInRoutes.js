@@ -23,6 +23,8 @@ router.get('/google/callback',
                                     sessionToken: session.base_access_token,
                                     sessionEmail: session.email_address
                                 });
+          }).catch(function(e){
+            res.redirect('/error');
           });
     }
 );
