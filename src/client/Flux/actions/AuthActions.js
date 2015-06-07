@@ -58,6 +58,4 @@ module.exports = {
         }
       });
   }
-
-
 };

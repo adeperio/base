@@ -6,7 +6,7 @@ function UserRepository () {
 
   query.connectionParameters = Config.connectionString;
 
-  //this will Insert a user and return the new row or return an existing row
+  //this will Insert a user and return the new row or return an existing row based on the provider id
   this.createUser = function(auth_provider_name, provider_user_id){
 
       var sql = 'with d as ( ' +
@@ -32,6 +32,10 @@ function UserRepository () {
                     return [];
                   }
               });
+  };
+
+  this.updateUser = function(auth_provider_name, provider_user_id, firstName, lastName, emailAddress){
+
   };
 
   this.getUser = function(auth_provider_name, provider_user_id) {

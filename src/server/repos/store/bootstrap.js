@@ -10,6 +10,8 @@ var createUsers = 'CREATE TABLE IF NOT EXISTS ' +
     'auth_provider_lookup_id_fkey integer not null references auth_providers_lookup(id), ' +
     'auth_provider_user_id VARCHAR(255) not null, ' + //user designation from auth proivder
     'email_address VARCHAR(255) UNIQUE null, ' +
+    'first_name VARCHAR(255) null, ' +
+    'last_name VARCHAR(255) null, ' +
     'created timestamp default current_timestamp)';
 
 var createAuthProvidersLookup = 'CREATE TABLE IF NOT EXISTS ' +
