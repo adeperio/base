@@ -6,7 +6,7 @@ global.Config = new config();
 
 import path from 'path';
 import express from 'express';
-import authRoutes from './routes/authRoutes.js';
+import signInRoutes from './routes/signInRoutes.js';
 import passport from './passport-auth.js';
 
 var server = express();
@@ -23,7 +23,7 @@ server.set('view engine', 'jade');
 server.use(express.static(path.join(__dirname)));
 
 //setup routes
-server.use('/auth', authRoutes);
+server.use('/auth', signInRoutes);
 
 //Initial SPA load
 server.get('/*', function (req, res) {
