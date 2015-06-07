@@ -19,14 +19,13 @@ router.get('/google/callback', function(req, res, next) {
       var sessionRepo = new SessionRepository();
 
       sessionRepo.createSession(user, info.providerToken)
-        .then(function(){
+        .then(function(session){
           if (user.email_address === null) {
             res.redirect('/signup');
           } else{
             res.redirect('/home');
           }
         });
-
     }
   })(req, res, next);
 });

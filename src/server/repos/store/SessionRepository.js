@@ -18,10 +18,11 @@ function SessionRepository () {
 
     return query(sql, [user.id, '', base_access_token, provider_token])
             .then(function(result){
-                if(result && result[1] && result[1].rows){
-                  return result[1].rows;
+                
+                if(result && result[1] && result[1].rows && result[1].rows.length == 1){
+                  return result[1].rows[0];
                 } else{
-                  return [];
+                  throw new Error('There was an error creating your session');
                 }
             });
   };

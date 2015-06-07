@@ -1,6 +1,7 @@
 'use strict'
 import winston from 'winston';
-import assert from 'assert';
+import chai from 'chai';
+var assert = chai.assert;
 import appRoot from 'app-root-path';
 import query from 'pg-query';
 
@@ -15,6 +16,7 @@ describe('session repository', function(){
     winston.level = 'debug';
     global.Config = new config();
     query.connectionParameters = Config.connectionString;
+
     var sqlSetup = 'BEGIN; ' +
                    'LOCK TABLE users IN SHARE ROW EXCLUSIVE MODE; ' +
                    'insert into users (auth_provider_lookup_id_fkey, auth_provider_user_id) ' +
@@ -35,8 +37,9 @@ describe('session repository', function(){
 
       var sessionRepo = new SessionRepository();
       sessionRepo.createSession(userRow, test_token)
-                    .then(function(sessions){
-                        assert.equal(1, sessions.length);
+                    .then(function(session){
+                        assert.isNotNull(session, 'created session returned');
+                        assert.equal(session.email_address, '');
                         done();
                     }).catch(function(err){
                         done(err);
