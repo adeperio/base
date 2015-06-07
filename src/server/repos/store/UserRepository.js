@@ -36,8 +36,12 @@ function UserRepository () {
 
   this.updateUser = function(emailAddress, firstName, lastName, auth_provider_name, provider_user_id){
 
-    var sql = 'UPDATE users SET email_address = $1, first_name = $2, last_name = $3 ' +
-              'WHERE exists (SELECT 1 FROM users, auth_providers_lookup WHERE "name" = $4 AND auth_provider_user_id = $5) ' +
+
+    var sql = 'UPDATE users AS a SET email_address = $1, first_name = $2, last_name = $3 ' +
+              'FROM auth_providers_lookup AS b ' +
+              'WHERE b.name = $4 ' +
+              'AND a.auth_provider_user_id LIKE $5 ' +
+              'AND a.auth_provider_lookup_id_fkey = b.id ' +
               'RETURNING *; ';
 
     return query(sql, [emailAddress, firstName, lastName, auth_provider_name, provider_user_id])
