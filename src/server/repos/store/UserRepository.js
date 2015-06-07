@@ -34,7 +34,20 @@ function UserRepository () {
               });
   };
 
-  this.updateUser = function(auth_provider_name, provider_user_id, firstName, lastName, emailAddress){
+  this.updateUser = function(emailAddress, firstName, lastName, auth_provider_name, provider_user_id){
+
+    var sql = 'UPDATE users SET email_address = $1, first_name = $2, last_name = $3 ' +
+              'WHERE exists (SELECT 1 FROM users, auth_providers_lookup WHERE "name" = $4 AND auth_provider_user_id = $5) ' +
+              'RETURNING *; ';
+
+    return query(sql, [emailAddress, firstName, lastName, auth_provider_name, provider_user_id])
+            .then(function(result){
+                if(result && result[1] && result[1].rows){
+                  return result[1].rows;
+                } else{
+                  return [];
+                }
+            });
 
   };
 

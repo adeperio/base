@@ -37,16 +37,42 @@ describe('user repository', function(){
     it('should return newly inserted user row or an existing user row', function(done){
 
       var randomizer = new RandomizerService();
-      var test_token = randomizer.getRandomUUIDv4();
+      var mockProviderId = randomizer.getRandomUUIDv4();
       var userRepo = new UserRepository();
-      userRepo.createUser(ProviderLookup.Google, test_token)
-      .then(function(rows){
-          winston.log('debug', JSON.stringify(rows));
-          assert.equal(1, rows.length);
-          done();
-      }).catch(function(err){
-        done(err);
-      });
+      userRepo.createUser(ProviderLookup.Google, mockProviderId)
+        .then(function(rows){
+            winston.log('debug', JSON.stringify(rows));
+            assert.equal(1, rows.length);
+            done();
+        }).catch(function(err){
+          done(err);
+        });
+    })
+  });
+
+
+  describe('updateUser', function(){
+    it('should update user, and return the updated user', function(done){
+
+      var randomizer = new RandomizerService();
+      var mockProviderId = randomizer.getRandomUUIDv4();
+      var userRepo = new UserRepository();
+
+      var mockEmail = randomizer.getRandomUUIDv4();
+      var mockFirstName = randomizer.getRandomUUIDv4();
+      var mockLastName = randomizer.getRandomUUIDv4();
+
+      userRepo.createUser(ProviderLookup.Google, mockProviderId)
+        .then(function(users){
+            return userRepo.updateUser(mockEmail, mockFirstName, mockLastName, ProviderLookup.Google, mockProviderId);
+            done();
+        }).then(function(rows){
+            winston.log('debug', JSON.stringify(rows));
+            assert.equal(1, rows.length);
+            done();
+        }).catch(function(err){
+          done(err);
+        });
     })
   });
 });
