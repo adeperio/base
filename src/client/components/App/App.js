@@ -8,6 +8,7 @@ import NotFoundPage from '../NotFoundPage';
 import Home from '../Home';
 import ActionTypes from '../../Flux/constants/ActionTypes';
 import AuthActions from '../../Flux/actions/AuthActions';
+import AuthStore from '../../Flux/stores/AuthStore';
 
 var DefaultRoute = Router.DefaultRoute;
 var Link = Router.Link;
@@ -19,8 +20,15 @@ var App = React.createClass({
     router: React.PropTypes.func
   },
 
+  componentDidMount: function() {
+    AuthStore.on(ActionTypes.REVOKE_RES, this.onRevoke);
+  },
 
-  propTypes: { },
+  onRevoke: function(){
+    if(this.context.router){
+      this.context.router.transitionTo('app');
+    }
+  },
 
   render() {
     return (

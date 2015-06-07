@@ -7,14 +7,18 @@ var router = express.Router();
 
 router.get('/signout', passport.authenticate('bearer', { session: false }), function(req, res) {
 
-  var emailAddress = req.query['emailAddress'];
+  var session = req.user; //session object, supplied by Bearer strategy
 
   var sessionRepo = new SessionRepository();
-  sessionRepo.updateUser(emailAddress, firstName, lastName, session.auth_provider_name, session.auth_provider_user_id)
-              .then(function(user) {
-                  res.redirect('/home');
+  sessionRepo.deleteSession(session.base_access_token)
+              .then(function(result) {
+                  if(result ==1){
+                    res.redirect('/');
+                  }
+
               })
               .catch(function (e) {
+                console.log(JSON.stringify(e));
                   res.status(500).send(e.message);
               });
 

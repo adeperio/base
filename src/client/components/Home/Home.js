@@ -28,12 +28,6 @@ export default React.createClass({
     }
   },
 
-  goToHome:function(){
-    if(this.context.router){
-      this.context.router.transitionTo('signup');
-    }
-  },
-
   goToSignup: function(){
     if(this.context.router){
       this.context.router.transitionTo('signup');

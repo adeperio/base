@@ -1,6 +1,0 @@
-{
-  "name": "SignOut",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./SignOut.js"
-}

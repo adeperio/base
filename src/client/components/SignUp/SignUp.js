@@ -3,8 +3,6 @@ import './SignUp.less';
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
 
-import SignOut from '../components/SignOut.js';
-
 import AuthActions from '../../Flux/actions/AuthActions';
 import AuthStore from '../../Flux/stores/AuthStore';
 import ActionTypes from '../../Flux/constants/ActionTypes';
@@ -29,6 +27,7 @@ export default React.createClass({
   componentDidMount: function() {
     AuthStore.on(ActionTypes.SIGNUP_RES, this.onUserSignedUpSuccess);
     AuthStore.on(ActionTypes.SIGNUP_ERR, this.onUserSignedUpError);
+
   },
 
   onUserSignedUpSuccess: function(){
@@ -74,7 +73,7 @@ export default React.createClass({
 
   onSignOut: function(){
 
-    AuthActions.revoke(AuthStore.getSessionObject());
+    AuthActions.signOut(AuthStore.getSessionObject());
 
   },
 
