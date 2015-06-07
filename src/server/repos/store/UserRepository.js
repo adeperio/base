@@ -36,11 +36,10 @@ function UserRepository () {
 
   this.getUser = function(auth_provider_name, provider_user_id) {
 
-      var sql = 'SELECT users.* FROM users, auth_providers_lookup ' +
+    var sql = 'SELECT users.* FROM users, auth_providers_lookup ' +
                 'WHERE auth_providers_lookup.name = $1 AND users.auth_provider_user_id LIKE $2';
 
     var paramsArray = [auth_provider_name, provider_user_id];
-    console.log('PARAMS \n' + JSON.stringify(paramsArray));
     return query(sql, paramsArray)
               .then(function(result){
 

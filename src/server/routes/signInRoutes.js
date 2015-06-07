@@ -1,3 +1,5 @@
+'use strict';
+
 import express from 'express';
 import passport from 'passport';
 import UserRepository from '../repos/store/UserRepository.js';
@@ -15,13 +17,13 @@ router.get('/google/callback', function(req, res, next) {
     if (user === null) {
       res.redirect('/error');
     } else {
-
       var sessionRepo = new SessionRepository();
-
       sessionRepo.createSession(user, info.providerToken)
         .then(function(session){
-          res.render('index', { sessionToken : session.base_access_token, sessionEmail: session.email_address});
-
+          res.render('index', {
+                                  sessionToken: session.base_access_token,
+                                  sessionEmail: session.email_address
+                              });
         });
     }
   })(req, res, next);

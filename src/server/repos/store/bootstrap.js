@@ -26,7 +26,7 @@ var createSessions = 'CREATE TABLE IF NOT EXISTS ' +
     'auth_provider_access_token VARCHAR(255) UNIQUE not null,' +
     'created timestamp default current_timestamp)';
 
-
+//pull from provider lookup class
 var insertAuthProviders = 'insert into auth_providers_lookup (name) VALUES (\'google\')';
 
 var dropAuthProvidersLookup = 'DROP TABLE IF EXISTS auth_providers_lookup';
