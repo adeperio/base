@@ -20,11 +20,8 @@ router.get('/google/callback', function(req, res, next) {
 
       sessionRepo.createSession(user, info.providerToken)
         .then(function(session){
-          if (user.email_address === null) {
-            res.redirect('/signup');
-          } else{
-            res.redirect('/home');
-          }
+          res.render('index', { sessionToken : session.base_access_token, sessionEmail: session.email_address});
+
         });
     }
   })(req, res, next);

@@ -38,6 +38,7 @@ describe('session repository', function(){
       var sessionRepo = new SessionRepository();
       sessionRepo.createSession(userRow, test_token)
                     .then(function(session){
+                        console.log('SESSION ' + JSON.stringify(session) + '\n');
                         assert.isNotNull(session, 'created session returned');
                         assert.equal(session.email_address, '');
                         done();

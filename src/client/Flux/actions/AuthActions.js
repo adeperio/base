@@ -6,18 +6,18 @@ import http from 'superagent';
 
 module.exports = {
 
-  setAccessToken: function(accessToken){
+  setSessionObject: function(sessionObject){
     Dispatcher.handleViewAction({
-      actionType: ActionTypes.ACCESS_TOKEN_REC,
-      data: accessToken
+      actionType: ActionTypes.SESSION_OBJECT_REC,
+      data: sessionObject
     });
   },
 
-  revoke: function(accessToken){
+  revoke: function(sessionObject){
 
     http.get('/revoke')
       .accept('application/json')
-      .set('Authorization', 'Bearer ' + accessToken)
+      .set('Authorization', 'Bearer ' + sessionObject.base_access_token)
       .end((err, res) => {
 
         if(!err && !res.error) {

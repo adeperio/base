@@ -15,7 +15,7 @@ export default React.createClass({
 
   onSignout: function(){
 
-    AuthActions.revoke(AuthStore.getAccessToken());
+    AuthActions.revoke(AuthStore.getSessionObject());
   },
 
   render: function() {

@@ -9,12 +9,12 @@ import Dispatcher from '../core/Dispatcher';
 import ActionTypes from '../constants/ActionTypes';
 
 
-var _accessToken = '';
+var _sessionObject = '';
 
 var AuthStore = {
 
-  getAccessToken: function(){
-    return _accessToken;
+  getSessionObject: function(){
+    return _sessionObject;
   },
 
   emit: function(event) {
@@ -35,9 +35,9 @@ AuthStore.dispatcherToken = Dispatcher.register((payload) => {
 
   switch (action.actionType) {
 
-    case ActionTypes.ACCESS_TOKEN_REC:
-      _accessToken = action.data;
-      AuthStore.emit(ActionTypes.ACCESS_TOKEN_REC_SET);
+    case ActionTypes.SESSION_OBJECT_REC:
+      _sessionObject = action.data;
+      AuthStore.emit(ActionTypes.SESSION_OBJECT_SET);
 
       break;
     case ActionTypes.REVOKE_RES:

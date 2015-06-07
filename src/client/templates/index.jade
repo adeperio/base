@@ -8,8 +8,8 @@ head
     link(rel='apple-touch-icon', href='apple-touch-icon.png')
     link(rel='stylesheet', href='/css/bootstrap.css')
     script(type="text/javascript").
-      window.getAccessToken = function (){
-        return '#{sessionToken}';
+      window.getSessionObject = function (){
+        return { token: '#{sessionToken}', email_address: '#{sessionEmail}' };
       }
 
     script(src='/app.js')

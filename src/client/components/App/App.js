@@ -4,10 +4,10 @@ import './App.less';
 import React from 'react';
 import Router from 'react-router';
 import invariant from 'react/lib/invariant';
-
 import NotFoundPage from '../NotFoundPage';
 import Home from '../Home';
 import ActionTypes from '../../Flux/constants/ActionTypes';
+import AuthActions from '../../Flux/actions/AuthActions';
 
 var DefaultRoute = Router.DefaultRoute;
 var Link = Router.Link;
@@ -19,16 +19,6 @@ var App = React.createClass({
     router: React.PropTypes.func
   },
 
-  componentDidMount: function() {
-    // EmailStore.on(ActionTypes.EMAIL_GET_THREADS_RES_ERR, this.onApplicationError);
-    // EmailStore.on(ActionTypes.EMAIL_GET_MSGS_RES_ERR, this.onApplicationError);
-  },
-
-  onApplicationError: function(){
-    if(this.context.router){
-      this.context.router.transitionTo('error');
-    }
-  },
 
   propTypes: { },
 
