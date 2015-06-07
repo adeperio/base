@@ -36,7 +36,7 @@ module.exports = {
       });
   },
 
-  signup: function(sessionObject, firstName, lastName, emailAddress){
+  signUp: function(sessionObject, firstName, lastName, emailAddress){
 
     http.get('/signup?firstName=' + firstName + '&lastName=' + lastName + '&emailAddress=' + emailAddress)
       .accept('application/json')
@@ -57,7 +57,7 @@ module.exports = {
           });
         }
       });
-  },
-
   }
+
+
 };

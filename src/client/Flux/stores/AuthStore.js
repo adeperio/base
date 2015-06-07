@@ -43,6 +43,15 @@ AuthStore.dispatcherToken = Dispatcher.register((payload) => {
     case ActionTypes.REVOKE_RES:
         AuthStore.emit(ActionTypes.REVOKE_RES);
         break;
+    case ActionTypes.SIGNUP_RES:
+
+        AuthStore.emit(ActionTypes.SIGNUP_RES);
+        break;
+    case ActionTypes.SIGNUP_ERR:
+
+        AuthStore.emit(ActionTypes.SIGNUP_ERR);
+        break;
+
 
     default:
       // Do nothing

@@ -3,6 +3,8 @@ import './SignUp.less';
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
 import AuthActions from '../../Flux/actions/AuthActions';
+import AuthStore from '../../Flux/stores/AuthStore';
+import ActionTypes from '../../Flux/constants/ActionTypes';
 
 export default React.createClass({
 
@@ -21,7 +23,23 @@ export default React.createClass({
   propTypes: { },
 
   componentDidMount: function() {
+    AuthStore.on(ActionTypes.SIGNUP_RES, this.onUserSignedUpSuccess);
+    AuthStore.on(ActionTypes.SIGNUP_ERR, this.onUserSignedUpError);
 
+
+  },
+
+  onUserSignedUpSuccess: function(){
+    if(this.context.router){
+      this.context.router.transitionTo('home');
+    }
+
+  },
+
+  onUserSignedUpError: function(){
+    if(this.context.router){
+      this.context.router.transitionTo('error');
+    }
   },
 
   onEmailValueChange: function(){
@@ -40,8 +58,16 @@ export default React.createClass({
 
   onLastNameChange: function(){
     this.setState({
-      firstNameValue: this.refs.lastNameValueRef.getValue()
+      lastNameValue: this.refs.lastNameValueRef.getValue()
     });
+  },
+
+  onSignUp: function(){
+
+    AuthActions.signUp(AuthStore.getSessionObject(),
+                        this.state.firstNameValue,
+                        this.state.lastNameValue,
+                        this.state.emailValue);
   },
 
   render: function() {
@@ -87,7 +113,9 @@ export default React.createClass({
                    onChange={this.onEmailValueChange} />
 
 
-              <Bootstrap.Button className="btn-primary" onClick={this.onSignUp}>Sign up</Bootstrap.Button>
+              <Bootstrap.Button className="btn-primary" onClick={this.onSignUp}>
+                Sign up
+              </Bootstrap.Button>
 
 
           </div>
