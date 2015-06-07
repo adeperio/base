@@ -5,6 +5,7 @@ import passport from 'passport';
 import UserRepository from '../repos/store/UserRepository.js';
 import SessionRepository from '../repos/store/SessionRepository.js';
 import RandomizerService from '../services/RandomizerService.js';
+import ProviderLookup from '../repos/store/ProviderLookup.js';
 
 var router = express.Router();
 
@@ -16,7 +17,7 @@ router.get('/google/callback',
     function(req, res) {
 
         var sessionRepo = new SessionRepository();
-        sessionRepo.createSession(req.user, req.user.providerToken)
+        sessionRepo.createSession(req.user, req.user.providerToken, ProviderLookup.Google, )
           .then(function(session){
             res.render('index', {
                                     sessionToken: session.base_access_token,

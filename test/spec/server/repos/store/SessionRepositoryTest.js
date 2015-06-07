@@ -33,14 +33,17 @@ describe('session repository', function(){
     it('should return the created session', function(done){
 
       var randomizer = new RandomizerService();
-      var test_provider_token = randomizer.getRandomUUIDv4();
+      var mockProviderToken = randomizer.getRandomUUIDv4();
+      var mockProviderName = randomizer.getRandomUUIDv4();
+      var mokeProviderUserId = randomizer.getRandomUUIDv4();
+
 
       var sessionRepo = new SessionRepository();
-      sessionRepo.createSession(userRow, test_provider_token)
+      sessionRepo.createSession(userRow, mockProviderToken, mockProviderName, mokeProviderUserId)
                     .then(function(session){
                         console.log('SESSION ' + JSON.stringify(session) + '\n');
                         assert.isNotNull(session, 'created session returned');
-                        assert.equal(session.email_address, '');
+                        assert.isNull(session.email_address, 'email is null');
                         done();
                     }).catch(function(err){
                         done(err);

@@ -7,16 +7,16 @@ function SessionRepository () {
 
   query.connectionParameters = Config.connectionString;
 
-  this.createSession = function(user, provider_token) {
+  this.createSession = function(user, auth_provider_token, auth_provider_name, auth_provider_user_id) {
 
     //generate
     var randomizer = new RandomizerService();
     var base_access_token = randomizer.getRandomUUIDv4();
 
-    var sql = 'INSERT INTO sessions (user_id_fkey, email_address, base_access_token, auth_provider_access_token) ' +
-              'VALUES ($1, $2, $3, $4) RETURNING *; ';
+    var sql = 'INSERT INTO sessions (user_id_fkey, email_address, base_access_token, auth_provider_access_token, auth_provider_name, auth_provider_user_id) ' +
+              'VALUES ($1, $2, $3, $4, $5, $6) RETURNING *; ';
 
-    return query(sql, [user.id, '', base_access_token, provider_token])
+    return query(sql, [user.id, user.email_address, base_access_token, auth_provider_token, auth_provider_name, auth_provider_user_id])
             .then(function(result){
 
                 if(result && result[1] && result[1].rows && result[1].rows.length == 1){

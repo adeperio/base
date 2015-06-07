@@ -26,6 +26,8 @@ var createSessions = 'CREATE TABLE IF NOT EXISTS ' +
     'email_address VARCHAR(255) null, ' +
     'base_access_token VARCHAR(255) UNIQUE not null,' +
     'auth_provider_access_token VARCHAR(255) UNIQUE not null,' +
+    'auth_provider_name VARCHAR(255) null,' +
+    'auth_provider_user_id VARCHAR(255) null,' +
     'created timestamp default current_timestamp)';
 
 //pull from provider lookup class
