@@ -58,17 +58,20 @@ describe('user repository', function(){
       var mockProviderId = randomizer.getRandomUUIDv4();
       var userRepo = new UserRepository();
 
-      // var mockEmail = randomizer.getRandomUUIDv4();
+      var mockEmail = randomizer.getRandomUUIDv4();
       var mockFirstName = randomizer.getRandomUUIDv4();
       var mockLastName = randomizer.getRandomUUIDv4();
 
       userRepo.createUser(ProviderLookup.Google, mockProviderId)
         .then(function(users){
-            return userRepo.updateUser('', mockFirstName, mockLastName, ProviderLookup.Google, mockProviderId);
+            return userRepo.updateUser(mockEmail, mockFirstName, mockLastName, ProviderLookup.Google, mockProviderId);
             done();
         }).then(function(rows){
             winston.log('debug', JSON.stringify(rows));
             assert.equal(1, rows.length);
+            assert.equal(mockEmail, rows[0].email_address);
+            assert.equal(mockFirstName, rows[0].first_name);
+            assert.equal(mockLastName, rows[0].last_name);
             done();
         }).catch(function(err){
           done(err);
