@@ -18,7 +18,7 @@ function SessionRepository () {
 
     return query(sql, [user.id, '', base_access_token, provider_token])
             .then(function(result){
-                
+
                 if(result && result[1] && result[1].rows && result[1].rows.length == 1){
                   return result[1].rows[0];
                 } else{
@@ -26,6 +26,22 @@ function SessionRepository () {
                 }
             });
   };
+
+  this.getSession = function(base_access_token){
+
+    var sql = 'SELECT * FROM sessions WHERE base_access_token = $1';
+    return query(sql, [base_access_token])
+            .then(function(result){
+                if(result && result[1] && result[1].rows && result[1].rows.length == 1){
+                  return result[1].rows[0];
+                } else{
+                  throw new Error('There was an error getting the session');
+                }
+            });
+
+  };
+
+
 }
 
 module.exports = SessionRepository;

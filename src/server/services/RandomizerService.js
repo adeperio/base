@@ -1,6 +1,7 @@
 'use strict'
 import uuid from 'node-uuid';
 
+//might need to replace this out with a proper implementation
 function RandomizerService(){
 
   //Generates a random challenge token
