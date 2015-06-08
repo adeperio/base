@@ -2,7 +2,7 @@
 ![Alt text](/logo.png?raw=true "Base")
 ## A starter kit / hack stack on React, Flux, Express, and Postgres
 
-Forked from some great stuff at https://github.com/kriasoft/react-starter-kit. We are extending this implementation to a full front-edn back-end working stack with OAuth2
+Forked from some great stuff at https://github.com/kriasoft/react-starter-kit. We are extending this implementation to a full front-end back-end working stack with OAuth2
 
 Gulp+Webpack+React+Flux+Express+Postgres+Passportjs+Bootstrap
 
@@ -59,6 +59,6 @@ Base uses Oauth2 as it's authentication framework, and specifically the authoriz
 
 In order to adhere to the OAuth2 spec,
 
-> YOU MUST RUN YOUR APP OVER SSL. 
+> YOU MUST RUN YOUR APP OVER SSL.
 
-This is to ensure that protected assets stay protected while in transit. The relevant SSL checks and verifications also need to be in placein order to adhere to the OAuth2 spec. The RFC is a pretty hefty, but detailed resource if you want to go in depth into the requirements for the correct implementation of OAuth2 - https://tools.ietf.org/html/rfc6749
+This is to ensure that protected assets stay protected while in transit. The relevant SSL checks and verifications also need to be in place in order to adhere to the OAuth2 spec. The RFC is a pretty hefty, but detailed resource if you want to go in depth into the requirements for the correct implementation of OAuth2 - https://tools.ietf.org/html/rfc6749
