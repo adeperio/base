@@ -1,6 +1,6 @@
 # Base
 ![Alt text](/logo.png?raw=true "Base")
-## A starter kit / hack stack
+## A starter kit / hack stack on React, Flux, Express, and Postgres
 
 Forked from some great stuff at https://github.com/kriasoft/react-starter-kit.
 
