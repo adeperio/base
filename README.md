@@ -23,7 +23,7 @@ $ npm install -g gulp           # Install Gulp task runner globally
 $ npm install                   # Install Node.js components listed in ./package.json
 ```
 
-## Config
+### Config
 
 There is a config.sample.js file in the src/server directory. Before running the server, create a config.js file from this sample file and enter your OAuth2 sign in credentials from your auth provider (clientID, clientSecret, callbackURL).
 
@@ -43,7 +43,7 @@ To run the application, run:
 $ gulp
 ```
 
-## Tests
+### Tests
 
 Base has a suite of tests that runs against a test database. To run the tests, you will need to make sure you have a running instance of a test Postgres db (e.g. postgres://postgres:postgres@localhost:5432/base-test). The settings for this can be entered under the "TEST" NODE_ENV section of the config.js file.
 
@@ -53,7 +53,7 @@ Once this is setup, run the tests by:
 $ gulp test
 ```
 
-#OAuth2
+## OAuth2
 
 Base uses Oauth2 as it's authentication framework, and specifically the authorization grant type. It leverages http://passportjs.org to provide authentication strategies to popular social authentication providers, and also to provide api end point protection using token bearer strategies.
 
