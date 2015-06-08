@@ -31,8 +31,10 @@ export default React.createClass({
   },
 
   onUserSignedUpSuccess: function(){
+
     if(this.context.router){
       //get session
+      console.log('onUserSignedUpSuccess');
       this.context.router.transitionTo('home');
     }
   },

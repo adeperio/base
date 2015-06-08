@@ -46,10 +46,10 @@ function UserRepository () {
 
     return query(sql, [emailAddress, firstName, lastName, auth_provider_name, provider_user_id])
             .then(function(result){
-                if(result && result[1] && result[1].rows){
-                  return result[1].rows;
+                if(result && result[1] && result[1].rows && result[1].rows.length == 1){
+                  return result[1].rows[0];
                 } else{
-                  return [];
+                  throw new Error('More than one user was updated');
                 }
             });
 
