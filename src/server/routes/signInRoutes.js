@@ -19,9 +19,12 @@ router.get('/google/callback',
         var sessionRepo = new SessionRepository();
         sessionRepo.createSession(req.user, req.user.providerToken, ProviderLookup.Google, req.user.auth_provider_user_id)
           .then(function(session){
+
+            //This call back will render the index page on the callback route.
+            //View the app.js file for the route mapping for /google/callback.
             res.render('index', {
-                                    sessionToken: session.base_access_token,
-                                    sessionEmail: session.email_address
+                                    access_token: session.base_access_token,
+                                    email_address: session.email_address
                                 });
           }).catch(function(e){
             res.redirect('/error');

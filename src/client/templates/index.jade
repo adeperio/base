@@ -10,8 +10,8 @@ head
     script(type="text/javascript").
       window.getSessionObject = function (){
         return {
-          token: '#{sessionToken}',
-          email_address: '#{sessionEmail}' };
+          access_token: '#{access_token}',
+          email_address: '#{email_address}' };
       }
 
     script(src='/app.js')

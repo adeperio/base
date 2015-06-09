@@ -51,6 +51,8 @@ passport.use(new BearerStrategy(
             var sessionRepo = new SessionRepository();
             sessionRepo.getSession(token)
                 .then(function(session){
+
+
                   if(!session) {
                       return done(null, false);
                   }

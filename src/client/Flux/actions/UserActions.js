@@ -6,11 +6,11 @@ import http from 'superagent';
 
 module.exports = {
 
-  getMe: function(sessionObject){
+  getMe: function(session){
 
     http.get('/me')
       .accept('application/json')
-      .set('Authorization', 'Bearer ' + sessionObject.token)
+      .set('Authorization', 'Bearer ' + session.access_token)
       .end((err, res) => {
 
         if(!err && !res.error) {

@@ -13,11 +13,11 @@ module.exports = {
     });
   },
 
-  signOut: function(sessionObject){
+  signOut: function(session){
 
     http.get('/auth/signout')
       .accept('application/json')
-      .set('Authorization', 'Bearer ' + sessionObject.token)
+      .set('Authorization', 'Bearer ' + session.access_token)
       .end((err, res) => {
 
         if(!err && !res.error) {
@@ -36,11 +36,11 @@ module.exports = {
       });
   },
 
-  signUp: function(sessionObject, firstName, lastName, emailAddress){
+  signUp: function(session, firstName, lastName, emailAddress){
 
     http.get('/auth/signup?firstName=' + firstName + '&lastName=' + lastName + '&emailAddress=' + emailAddress)
       .accept('application/json')
-      .set('Authorization', 'Bearer ' + sessionObject.token)
+      .set('Authorization', 'Bearer ' + session.access_token)
       .end((err, res) => {
 
         if(!err && !res.error) {

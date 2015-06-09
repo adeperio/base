@@ -7,7 +7,8 @@ var eventEmitter = new events.EventEmitter();
 
 import Dispatcher from '../core/Dispatcher';
 import ActionTypes from '../constants/ActionTypes';
-var _sessionObject = '';
+import Session from '../models/Session';
+var _sessionObject = new Session();
 
 var AuthStore = {
 
@@ -34,7 +35,10 @@ AuthStore.dispatcherToken = Dispatcher.register((payload) => {
   switch (action.actionType) {
 
     case ActionTypes.SESSION_OBJECT_REC:
-      _sessionObject = action.data;
+      var sessionData = action.data;
+      _sessionObject.access_token = sessionData.access_token;
+      _sessionObject.email_address = sessionData.email_address;
+
       AuthStore.emit(ActionTypes.SESSION_OBJECT_SET);
       break;
     case ActionTypes.REVOKE_RES:
