@@ -5,7 +5,7 @@ This is a seed / scaffolding project for a full front-end / back-end web applica
 
 ## Goals
 
-Base aims to scaffold out user access functionality and API security, using industry standard Oauth2, on top of a modern web development stack, out of the box. So you can spend more time on what matters most - building, designing and hacking out your products and ideas.
+Base aims to scaffold out a modern web application stack, with industry standard OAuth2 user access functionality and API security, right out of the box. So you can spend more time on what matters most - building, designing and hacking out your products and ideas.
 
 ## Features
 
@@ -18,9 +18,10 @@ Gulp + Webpack + React + Flux + Express + Postgres + Passportjs + Bootstrap + Ja
 3. API endpoint protection using Oauth2 bearer tokens.
 3. Sign in with Google, Facebook Twitter, or Local logins
 4. React+Flux Scaffolding
-5. WebPack+Gulp Build system
-6. Postgres persistent layer
-7. NodeJS Express web server
+5. React-router
+6. WebPack+Gulp Build system
+7. Postgres persistent layer
+8. NodeJS Express web server
 
 ## Installation
 
