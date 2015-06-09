@@ -15,6 +15,12 @@ export default React.createClass({
     router: React.PropTypes.func
   },
 
+  getInitialState: function() {
+    return {
+      me: null
+    };
+  },
+
   componentDidMount: function() {
 
     UserStore.on(ActionTypes.ME_RES, this.onGetMe);
@@ -26,6 +32,10 @@ export default React.createClass({
   },
 
   onGetMe: function(){
+
+    this.setState({
+      me: UserStore.getMe()
+    });
 
   },
 
@@ -54,10 +64,16 @@ export default React.createClass({
 
   render: function() {
 
+    var welcomeString = 'Welcome to your Base';
+
+    if(this.state.me){
+      welcomeString = 'Welcome to your Base, ' + me.first_name;
+    }
+
     return (
       <div className={'home'}>
           <div className="home-box">
-              <h1>Welcome to your Base</h1>
+              <h1>{welcomeString}</h1>
               <img src="/logo.png" />
               <Bootstrap.Button className="btn-danger" onClick={this.onSignOut}>
                 Sign out
