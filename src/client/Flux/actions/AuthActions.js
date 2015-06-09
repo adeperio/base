@@ -6,13 +6,6 @@ import http from 'superagent';
 
 module.exports = {
 
-  setSessionObject: function(sessionObject){
-    Dispatcher.handleViewAction({
-      actionType: ActionTypes.SESSION_OBJECT_REC,
-      data: sessionObject
-    });
-  },
-
   signOut: function(session){
 
     http.get('/auth/signout')

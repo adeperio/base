@@ -13,6 +13,11 @@ var _sessionObject = new Session();
 var AuthStore = {
 
   getSessionObject: function(){
+    if(!_sessionObject.access_token || !_sessionObject.email_address){
+      var session = getSessionGlobal(); //global function call, see index.jade for function
+      _sessionObject.access_token = session.access_token;
+      _sessionObject.email_address = session.email_address;
+    }
     return _sessionObject;
   },
 

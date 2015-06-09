@@ -22,13 +22,6 @@ var App = React.createClass({
 
   componentDidMount: function() {
     AuthStore.on(ActionTypes.REVOKE_RES, this.onRevoke);
-
-    if(this.context.router){
-      var sessionObject = getSessionObject(); //global get session function
-      if(sessionObject){
-        AuthActions.setSessionObject(sessionObject);
-      }
-    }
   },
 
   onRevoke: function(){

@@ -9,8 +9,6 @@ var ActionTypes = keyMirror({
   CHANGE_LOCATION: null,
 
   //Auth
-  SESSION_OBJECT_REC: null,
-  SESSION_OBJECT_SET: null,
   REVOKE_RES: null,
   REVOKE_ERR: null,
   SIGNUP_RES: null,

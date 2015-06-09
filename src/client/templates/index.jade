@@ -8,7 +8,7 @@ head
     link(rel='apple-touch-icon', href='apple-touch-icon.png')
     link(rel='stylesheet', href='/css/bootstrap.css')
     script(type="text/javascript").
-      window.getSessionObject = function (){
+      window.getSessionGlobal = function (){
         return {
           access_token: '#{access_token}',
           email_address: '#{email_address}' };
