@@ -1,18 +1,31 @@
 # Base
 ![Alt text](/logo.png?raw=true "Base")
-## A starter kit for ReactJS, Flux, Express, and Postgres
 
-Forked from some great stuff at https://github.com/kriasoft/react-starter-kit. We are extending this implementation to a full front-end back-end working stack with OAuth2.
+## A product starter kit.
+## Built with ReactJS, Flux, Express, and Postgres
 
-Gulp + Webpack + React + Flux + Express + Postgres + Passportjs + Bootstrap + Jade + Mocha + Chai
+This is a seed / scaffolding project for a full front-end / back-end web application stack with OAuth2.
+
+## Goals
+
+Product development often times involves doing things for people. And that most of the time means ensuring that users stay safe and secure.
+
+Base aims to give developers a modern web development stack, which can run out of the box with an implementation of industry standard OAuth2. Scaffold out user management and security so you can spend more time on what matters to you most - building and designing your product.
 
 ## Features
 
-1. OAuth2 Implementation
-2. React+Flux Scaffolding
-3. WebPack+Gulp Build system
-4. Postgres persistent layer
-5. NodeJS Express web server
+Base runs with:
+
+Gulp + Webpack + React + Flux + Express + Postgres + Passportjs + Bootstrap + Jade + Mocha + Chai.
+
+1. Out of the box OAuth2 implementation.
+2. Sign-in, Sign-up, and Sign-out.
+3. API endpoint protection using Oauth2 bearer tokens.
+3. Sign in with Google, Facebook Twitter, or Local logins
+4. React+Flux Scaffolding
+5. WebPack+Gulp Build system
+6. Postgres persistent layer
+7. NodeJS Express web server
 
 ## Installation
 
@@ -66,3 +79,7 @@ In order to adhere to the OAuth2 spec,
 > YOU MUST RUN YOUR APP OVER SSL.
 
 This is to ensure that protected assets stay protected while in transit. The relevant SSL checks and verifications also need to be in place in order to adhere to the OAuth2 spec. The RFC is a pretty hefty, but detailed resource if you want to go in depth into the requirements for the correct implementation of OAuth2 - https://tools.ietf.org/html/rfc6749
+
+## Acknowledgements
+
+Forked from some great work at https://github.com/kriasoft/react-starter-kit.
