@@ -7,8 +7,8 @@ This is a seed / scaffolding project for a full front-end / back-end web applica
 
 Base aims to scaffold out a modern web application stack, with industry standard OAuth2 user access functionality and API security, right out of the box. So you can spend more time on what matters most - building, designing and hacking out your products and ideas.
 
-1. Oauth2 and secure API access can be complicated and time consuming to implement. Using PassportJS we provide the scaffolding needed for common Oauth2 sign in flows.
-2. We love React+Flux and think you will to. Base scaffolds out React components along with related Flux actions and stores, and provides a starter framework for getting a ReactJS front-end chatting with an Express back-end.
+1. Oauth2 and secure API access (bearer tokens) can be complicated and time consuming to implement. Using PassportJS we provide the scaffolding needed for common Oauth2 sign in flows.
+2. We love React+Flux and think you will to. Base scaffolds out React components along with related Flux actions and stores, and provides a starter framework for getting a ReactJS front-end chatting with an Express / Postgres back-end.
 
 ## Features
 
@@ -19,12 +19,12 @@ Gulp + Webpack + React + Flux + Express + Postgres + Passportjs + Bootstrap + Ja
 1. Out of the box OAuth2 implementation.
 2. Sign-in, Sign-up, and Sign-out.
 3. API endpoint protection using Oauth2 bearer tokens.
-3. Sign in with Google, Facebook Twitter, or Local logins
-4. React+Flux Scaffolding
-5. React-router
-6. WebPack+Gulp Build system
-7. Postgres persistent layer
-8. NodeJS Express web server  
+4. Sign in with Google, Facebook Twitter, or Local logins
+5. React+Flux Scaffolding
+6. React-router
+7. WebPack+Gulp Build system
+8. Postgres persistent layer
+9. NodeJS Express web server  
 
 ## Installation
 
