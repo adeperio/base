@@ -10,11 +10,11 @@ router.get( '/user/:emailAddress', passport.authenticate('bearer', { session: fa
 
   var emailAddress = req.params.emailAddress;
   var session = req.user; //session object, supplied by Bearer strategy
-  
+
   var userRepo = new UserRepository();
   userRepo.getUser(session.auth_provider_name, session.auth_provider_user_id)
-            .then(function(users){
-              res.json(users);
+            .then(function(user){
+              res.json(user);
             }).catch(function(err){
               done(err);
             });
