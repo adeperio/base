@@ -3,9 +3,12 @@
 
 This is a seed / scaffolding project for a full front-end / back-end web application stack with OAuth2. Built with ReactJS, Flux, Express, and Postgres.
 
-## Goals
+## Why
 
 Base aims to scaffold out a modern web application stack, with industry standard OAuth2 user access functionality and API security, right out of the box. So you can spend more time on what matters most - building, designing and hacking out your products and ideas.
+
+1. Oauth2 and secure API access can be complicated and time consuming to implement. Using PassportJS we provide the scaffolding needed for common Oauth2 sign in flows.
+2. We love React+Flux and think you will to. Base scaffolds out React components along with related Flux actions and stores, and provides a starter framework for getting a ReactJS front-end chatting with an Express back-end.
 
 ## Features
 
@@ -21,7 +24,7 @@ Gulp + Webpack + React + Flux + Express + Postgres + Passportjs + Bootstrap + Ja
 5. React-router
 6. WebPack+Gulp Build system
 7. Postgres persistent layer
-8. NodeJS Express web server
+8. NodeJS Express web server  
 
 ## Installation
 
