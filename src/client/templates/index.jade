@@ -9,7 +9,9 @@ head
     link(rel='stylesheet', href='/css/bootstrap.css')
     script(type="text/javascript").
       window.getSessionObject = function (){
-        return { token: '#{sessionToken}', email_address: '#{sessionEmail}' };
+        return {
+          token: '#{sessionToken}',
+          email_address: '#{sessionEmail}' };
       }
 
     script(src='/app.js')

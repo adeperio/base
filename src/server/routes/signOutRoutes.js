@@ -15,10 +15,8 @@ router.get('/signout', passport.authenticate('bearer', { session: false }), func
                   if(result ==1){
                     res.redirect('/');
                   }
-
               })
               .catch(function (e) {
-
                   res.status(500).send(e.message);
               });
 

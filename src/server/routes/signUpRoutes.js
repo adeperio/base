@@ -8,7 +8,6 @@ var router = express.Router();
 
 router.get( '/signup', passport.authenticate('bearer', { session: false }), function(req, res) {
 
-
   var emailAddress = req.query['emailAddress'];
   var firstName = req.query['firstName'];
   var lastName = req.query['lastName'];
