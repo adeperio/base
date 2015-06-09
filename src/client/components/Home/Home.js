@@ -41,27 +41,15 @@ export default React.createClass({
     });
   },
 
-  goToHome: function(){
-    if(this.context.router){
-      this.context.router.transitionTo('home');
-    }
-  },
-
   goToSignup: function(){
     if(this.context.router){
       this.context.router.transitionTo('signup');
     }
   },
 
-  goToError: function(){
-    if(this.context.router){
-      this.context.router.transitionTo('error');
-    }
-  },
 
   onSignOut: function(){
     AuthActions.signOut(AuthStore.getSessionObject());
-
   },
 
   render: function() {
