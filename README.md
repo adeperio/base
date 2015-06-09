@@ -5,9 +5,7 @@ This is a seed / scaffolding project for a full front-end / back-end web applica
 
 ## Goals
 
-Product development often times involves doing things for people. And that most of the time means ensuring that users stay safe and secure.
-
-Base aims to scaffold out industry standard Oauth2 user sign-in functionality and security, on a modern web development stack out of the box, so developers can spend more time on what matters most - building, designing and hacking out products and ideas.
+Base aims to scaffold out user access functionality and API security, using industry standard Oauth2, on top of a modern web development stack, out of the box. So you can spend more time on what matters most - building, designing and hacking out your products and ideas.
 
 ## Features
 
