@@ -48,7 +48,7 @@ function UserRepository () {
             .then(function(result){
                 if(result && result[1] && result[1].rows && result[1].rows.length == 1){
                   return result[1].rows[0];
-                } else{
+                } else {
                   throw new Error('More than one user was updated');
                 }
             });
@@ -64,11 +64,16 @@ function UserRepository () {
     return query(sql, paramsArray)
               .then(function(result){
 
-                  if(result && result[1] && result[1].rows){
-                    return result[1].rows;
-                  } else{
-                    return [ ];
+                if(result && result[1] && result[1].rows && result[1].rows.length > 0){
+                  if(result[1].rows.length>1){
+                    throw new Error('Expected only one result');
+                  }else{
+                    return result[1].rows[0];
                   }
+
+                } else{
+                  return [];
+                }
               });
   };
 
