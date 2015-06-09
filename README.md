@@ -1,16 +1,13 @@
 # Base
 ![Alt text](/logo.png?raw=true "Base")
 
-## A product starter kit.
-## Built with ReactJS, Flux, Express, and Postgres
-
-This is a seed / scaffolding project for a full front-end / back-end web application stack with OAuth2.
+This is a seed / scaffolding project for a full front-end / back-end web application stack with OAuth2. Built with ReactJS, Flux, Express, and Postgres.
 
 ## Goals
 
 Product development often times involves doing things for people. And that most of the time means ensuring that users stay safe and secure.
 
-Base aims to give developers a modern web development stack, which can run out of the box with an implementation of industry standard OAuth2. Scaffold out user management and security so you can spend more time on what matters to you most - building and designing your product.
+Base aims to scaffold out industry standard Oauth2 user sign-in functionality and security, on a modern web development stack out of the box, so developers can spend more time on what matters most - building, designing and hacking out products and ideas.
 
 ## Features
 
