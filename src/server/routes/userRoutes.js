@@ -6,9 +6,8 @@ import UserRepository from '../repos/store/UserRepository.js';
 import SessionRepository from '../repos/store/SessionRepository.js';
 var router = express.Router();
 
-router.get( '/user/:emailAddress', passport.authenticate('bearer', { session: false }), function(req, res) {
+router.get( '/me', passport.authenticate('bearer', { session: false }), function(req, res) {
 
-  var emailAddress = req.params.emailAddress;
   var session = req.user; //session object, supplied by Bearer strategy
 
   var userRepo = new UserRepository();

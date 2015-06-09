@@ -5,6 +5,7 @@ import React from 'react';
 import Bootstrap from 'react-bootstrap';
 import AuthActions from '../../Flux/actions/AuthActions';
 import AuthStore from '../../Flux/stores/AuthStore';
+import UserStore from '../../Flux/stores/UserStore';
 
 //This is the entry point after the auth callback
 //see the route map in app.js
@@ -15,10 +16,17 @@ export default React.createClass({
   },
 
   componentDidMount: function() {
+
+    UserStore.on(ActionTypes.ME_RES, this.onGetMe);
+
     var sessionObject = AuthStore.getSessionObject();
     if(!sessionObject.email_address){
       this.goToSignup();
     }
+  },
+
+  onGetMe: function(){
+
   },
 
   goToHome: function(){

@@ -7,8 +7,6 @@ var eventEmitter = new events.EventEmitter();
 
 import Dispatcher from '../core/Dispatcher';
 import ActionTypes from '../constants/ActionTypes';
-
-
 var _sessionObject = '';
 
 var AuthStore = {
@@ -38,7 +36,6 @@ AuthStore.dispatcherToken = Dispatcher.register((payload) => {
     case ActionTypes.SESSION_OBJECT_REC:
       _sessionObject = action.data;
       AuthStore.emit(ActionTypes.SESSION_OBJECT_SET);
-
       break;
     case ActionTypes.REVOKE_RES:
         AuthStore.emit(ActionTypes.REVOKE_RES);
@@ -49,10 +46,8 @@ AuthStore.dispatcherToken = Dispatcher.register((payload) => {
         AuthStore.emit(ActionTypes.SIGNUP_RES);
         break;
     case ActionTypes.SIGNUP_ERR:
-
         AuthStore.emit(ActionTypes.SIGNUP_ERR);
         break;
-
 
     default:
       // Do nothing
