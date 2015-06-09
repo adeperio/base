@@ -68,8 +68,8 @@ export default React.createClass({
 
     var welcomeString = 'Welcome to your Base';
 
-    if(this.state.me){
-      welcomeString = 'Welcome to your Base, ' + this.state.me.first_name;
+    if(this.state.me && this.state.me.firstName){
+      welcomeString = 'Welcome to your Base, ' + this.state.me.firstName;
     }
 
     return (

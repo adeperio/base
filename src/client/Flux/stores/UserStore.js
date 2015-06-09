@@ -7,8 +7,9 @@ var eventEmitter = new events.EventEmitter();
 
 import Dispatcher from '../core/Dispatcher';
 import ActionTypes from '../constants/ActionTypes';
+import User from '../models/User';
 
-var _me = null;
+var _me = new User();
 
 var UserStore = {
 
@@ -27,6 +28,7 @@ var UserStore = {
   removeListener: function(event, callback) {
     eventEmitter.removeListener(event, callback);
   }
+
 }
 
 UserStore.dispatcherToken = Dispatcher.register((payload) => {
@@ -35,10 +37,12 @@ UserStore.dispatcherToken = Dispatcher.register((payload) => {
   switch (action.actionType) {
 
     case ActionTypes.ME_RES:
-      _me = action.data;
+      var user = action.data;
+      _me.emailAddress = user.email_address;
+      _me.firstName = user.first_name;
+      _me.lastName = user.last_name;
       UserStore.emit(ActionTypes.ME_RES);
       break;
-
 
     default:
       // Do nothing
