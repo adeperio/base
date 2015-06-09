@@ -9,6 +9,7 @@ import express from 'express';
 import signInRoutes from './routes/signInRoutes.js';
 import signOutRoutes from './routes/signOutRoutes.js';
 import signUpRoutes from './routes/signUpRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 import passport from './auth/passport-auth.js';
 
 var server = express();
@@ -28,6 +29,8 @@ server.use(express.static(path.join(__dirname)));
 server.use('/auth', signInRoutes);
 server.use('/auth', signOutRoutes);
 server.use('/auth', signUpRoutes);
+server.use('/', userRoutes);
+
 
 //Initial SPA load
 server.get('/*', function (req, res) {

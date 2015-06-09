@@ -34,8 +34,10 @@ export default React.createClass({
   },
 
   onGetMe: function(){
+    var meObject = UserStore.getMe();
+
     this.setState({
-      me: UserStore.getMe()
+      me:meObject
     });
   },
 
@@ -67,7 +69,7 @@ export default React.createClass({
     var welcomeString = 'Welcome to your Base';
 
     if(this.state.me){
-      welcomeString = 'Welcome to your Base, ' + me.first_name;
+      welcomeString = 'Welcome to your Base, ' + this.state.me.first_name;
     }
 
     return (

@@ -48,11 +48,10 @@ passport.deserializeUser(function(user, done) {
 //token auth setup
 passport.use(new BearerStrategy(
         function(token, done) {
+
             var sessionRepo = new SessionRepository();
             sessionRepo.getSession(token)
                 .then(function(session){
-
-
                   if(!session) {
                       return done(null, false);
                   }

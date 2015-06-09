@@ -1,5 +1,7 @@
 'use strict';
 
+import React from 'react';
+
 import assign from 'react/lib/Object.assign';
 import _ from 'lodash';
 var events = require('eventemitter3');
