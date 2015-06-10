@@ -5,7 +5,7 @@ var assert = chai.assert;
 import appRoot from 'app-root-path';
 import query from 'pg-query';
 
-var SessionRepository = require(appRoot + '/src/server/repos/store/SessionRepository.js');
+var SessionRepository = require(appRoot + '/src/server/repos/store/session-repository.js');
 var RandomizerService = require(appRoot + '/src/server/services/RandomizerService.js');
 var config = require(appRoot + '/src/server/config.js');
 var userRow = require(appRoot + '/test/resources/userRow.json');

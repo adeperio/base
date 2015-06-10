@@ -2,10 +2,10 @@
 
 import express from 'express';
 import passport from 'passport';
-import UserRepository from '../repos/store/UserRepository.js';
-import SessionRepository from '../repos/store/SessionRepository.js';
+import UserRepository from '../repos/store/user-repository.js';
+import SessionRepository from '../repos/store/session-repository.js';
 import RandomizerService from '../services/RandomizerService.js';
-import ProviderLookup from '../repos/store/ProviderLookup.js';
+import ProviderLookup from '../repos/store/provider-lookup.js';
 
 var router = express.Router();
 
@@ -17,7 +17,7 @@ router.get('/google/callback',
     function(req, res) {
 
         var googleUser = req.user;
-        
+
         var sessionRepo = new SessionRepository();
         sessionRepo.createSession(googleUser, googleUser.providerToken, ProviderLookup.Google, googleUser.auth_provider_user_id)
           .then(function(session){
