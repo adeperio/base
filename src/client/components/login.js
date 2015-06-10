@@ -1,5 +1,5 @@
 'use strict';
-import './Login.less';
+import './login.less';
 
 import React from 'react';
 import Bootstrap from 'react-bootstrap';

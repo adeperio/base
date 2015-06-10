@@ -7,7 +7,7 @@ import App from './components/app';
 
 import Home from './components/home';
 import SignUp from './components/SignUp';
-import Login from './components/Login';
+import Login from './components/login';
 import Error from './components/error';
 import Router from 'react-router';
 
