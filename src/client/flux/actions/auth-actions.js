@@ -1,7 +1,7 @@
 'use strict';
 
-import Dispatcher from '../core/Dispatcher';
-import ActionTypes from '../constants/ActionTypes';
+import Dispatcher from '../core/dispatcher';
+import ActionTypes from '../constants/action-types';
 import http from 'superagent';
 
 module.exports = {

@@ -5,7 +5,7 @@ import Bootstrap from 'react-bootstrap';
 
 import AuthActions from '../../flux/actions/auth-actions';
 import AuthStore from '../../flux/stores/AuthStore';
-import ActionTypes from '../../flux/constants/ActionTypes';
+import ActionTypes from '../../flux/constants/action-types';
 
 
 export default React.createClass({

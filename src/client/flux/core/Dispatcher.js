@@ -2,7 +2,7 @@
 'use strict';
 
 import Flux from 'flux';
-import PayloadSources from '../constants/PayloadSources';
+import PayloadSources from '../constants/payload-sources';
 import assign from 'react/lib/Object.assign';
 
 /**

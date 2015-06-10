@@ -5,9 +5,9 @@ import _ from 'lodash';
 var events = require('eventemitter3');
 var eventEmitter = new events.EventEmitter();
 
-import Dispatcher from '../core/Dispatcher';
-import ActionTypes from '../constants/ActionTypes';
-import User from '../models/User';
+import Dispatcher from '../core/dispatcher';
+import ActionTypes from '../constants/action-types';
+import User from '../models/user';
 
 var _me = new User();
 

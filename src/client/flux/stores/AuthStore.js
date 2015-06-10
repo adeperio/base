@@ -7,9 +7,9 @@ import _ from 'lodash';
 var events = require('eventemitter3');
 var eventEmitter = new events.EventEmitter();
 
-import Dispatcher from '../core/Dispatcher';
-import ActionTypes from '../constants/ActionTypes';
-import Session from '../models/Session';
+import Dispatcher from '../core/dispatcher';
+import ActionTypes from '../constants/action-types';
+import Session from '../models/session';
 var _sessionObject = new Session();
 
 var AuthStore = {

@@ -7,7 +7,7 @@ import AuthActions from '../../flux/actions/auth-actions';
 import UserActions from '../../flux/actions/user-actions';
 import AuthStore from '../../flux/stores/AuthStore';
 import UserStore from '../../flux/stores/UserStore';
-import ActionTypes from '../../flux/constants/ActionTypes';
+import ActionTypes from '../../flux/constants/action-types';
 
 //This is the entry point after the auth callback
 //see the route map in app.js
