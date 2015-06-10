@@ -1,5 +1,5 @@
 'use strict';
-import './App.less';
+import './app.less';
 
 import React from 'react';
 import Router from 'react-router';
