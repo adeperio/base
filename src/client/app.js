@@ -6,7 +6,7 @@ import emptyFunction from 'react/lib/emptyFunction';
 import App from './components/app';
 
 import Home from './components/home';
-import SignUp from './components/SignUp';
+import SignUp from './components/sign-up';
 import Login from './components/login';
 import Error from './components/error';
 import Router from 'react-router';

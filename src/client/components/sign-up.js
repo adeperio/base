@@ -1,5 +1,5 @@
 'use strict';
-import './SignUp.less';
+import './sign-up.less';
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
 
