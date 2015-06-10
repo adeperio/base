@@ -17,6 +17,7 @@ router.get('/google/callback',
     function(req, res) {
 
         var googleUser = req.user;
+        
         var sessionRepo = new SessionRepository();
         sessionRepo.createSession(googleUser, googleUser.providerToken, ProviderLookup.Google, googleUser.auth_provider_user_id)
           .then(function(session){
