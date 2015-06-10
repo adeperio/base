@@ -6,9 +6,9 @@ import Router from 'react-router';
 import invariant from 'react/lib/invariant';
 import NotFoundPage from '../NotFoundPage';
 import Home from '../Home';
-import ActionTypes from '../../Flux/constants/ActionTypes';
-import AuthActions from '../../Flux/actions/AuthActions';
-import AuthStore from '../../Flux/stores/AuthStore';
+import ActionTypes from '../../flux/constants/ActionTypes';
+import AuthActions from '../../flux/actions/AuthActions';
+import AuthStore from '../../flux/stores/AuthStore';
 
 var DefaultRoute = Router.DefaultRoute;
 var Link = Router.Link;

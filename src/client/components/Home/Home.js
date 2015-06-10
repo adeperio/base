@@ -3,11 +3,11 @@ import './Home.less';
 
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
-import AuthActions from '../../Flux/actions/AuthActions';
-import UserActions from '../../Flux/actions/UserActions';
-import AuthStore from '../../Flux/stores/AuthStore';
-import UserStore from '../../Flux/stores/UserStore';
-import ActionTypes from '../../Flux/constants/ActionTypes';
+import AuthActions from '../../flux/actions/AuthActions';
+import UserActions from '../../flux/actions/UserActions';
+import AuthStore from '../../flux/stores/AuthStore';
+import UserStore from '../../flux/stores/UserStore';
+import ActionTypes from '../../flux/constants/ActionTypes';
 
 //This is the entry point after the auth callback
 //see the route map in app.js

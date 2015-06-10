@@ -3,9 +3,9 @@ import './SignUp.less';
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
 
-import AuthActions from '../../Flux/actions/AuthActions';
-import AuthStore from '../../Flux/stores/AuthStore';
-import ActionTypes from '../../Flux/constants/ActionTypes';
+import AuthActions from '../../flux/actions/AuthActions';
+import AuthStore from '../../flux/stores/AuthStore';
+import ActionTypes from '../../flux/constants/ActionTypes';
 
 
 export default React.createClass({
