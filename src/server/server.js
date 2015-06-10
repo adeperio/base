@@ -6,10 +6,10 @@ global.Config = new config();
 
 import path from 'path';
 import express from 'express';
-import signInRoutes from './routes/signInRoutes.js';
-import signOutRoutes from './routes/signOutRoutes.js';
-import signUpRoutes from './routes/signUpRoutes.js';
-import userRoutes from './routes/userRoutes.js';
+import signInRoutes from './routes/sign-in-routes.js';
+import signOutRoutes from './routes/sign-out-routes.js';
+import signUpRoutes from './routes/sign-up-routes.js';
+import userRoutes from './routes/user-routes.js';
 import passport from './middleware/passport.js';
 
 var server = express();

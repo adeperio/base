@@ -4,7 +4,7 @@ import assert from 'assert';
 import appRoot from 'app-root-path';
 
 var UserRepository = require(appRoot + '/src/server/repos/store/user-repository.js');
-var RandomizerService = require(appRoot + '/src/server/services/RandomizerService.js');
+var RandomizerService = require(appRoot + '/src/server/services/randomizer-service.js');
 var ProviderLookup = require(appRoot + '/src/server/repos/store/provider-lookup.js');
 var config = require(appRoot + '/src/server/config.js');
 
