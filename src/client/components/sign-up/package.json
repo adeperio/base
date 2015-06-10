@@ -1,5 +1,5 @@
 {
-  "name": "SignUp",
+  "name": "sign-up",
   "version": "0.0.0",
   "private": true,
   "main": "./sign-up.js"
