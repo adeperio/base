@@ -16,8 +16,9 @@ router.get('/google/callback',
     passport.authenticate('google', { session: false, failureRedirect: "/error" }),
     function(req, res) {
 
+        var googleUser = req.user;
         var sessionRepo = new SessionRepository();
-        sessionRepo.createSession(req.user, req.user.providerToken, ProviderLookup.Google, req.user.auth_provider_user_id)
+        sessionRepo.createSession(googleUser, googleUser.providerToken, ProviderLookup.Google, googleUser.auth_provider_user_id)
           .then(function(session){
 
             //This call back will render the index page on the callback route.
