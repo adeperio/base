@@ -8,7 +8,7 @@ import App from './components/app';
 import Home from './components/Home';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
-import Error from './components/Error';
+import Error from './components/error';
 import Router from 'react-router';
 
 var DefaultRoute = Router.DefaultRoute;

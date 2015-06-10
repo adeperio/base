@@ -1,5 +1,5 @@
 'use strict';
-import './Error.less';
+import './error.less';
 import React from 'react';
 export default React.createClass({
 
