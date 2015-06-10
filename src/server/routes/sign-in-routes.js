@@ -2,10 +2,10 @@
 
 import express from 'express';
 import passport from 'passport';
-import UserRepository from '../repos/store/user-repository.js';
-import SessionRepository from '../repos/store/session-repository.js';
+import UserRepository from '../repos/user-repository.js';
+import SessionRepository from '../repos/session-repository.js';
 import RandomizerService from '../services/randomizer-service.js';
-import ProviderLookup from '../repos/store/provider-lookup.js';
+import ProviderLookup from '../repos/provider-lookup.js';
 
 var router = express.Router();
 

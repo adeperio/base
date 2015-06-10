@@ -225,9 +225,9 @@ gulp.task('test', ['bootstrap-test'], shell.task([
 ]));
 
 gulp.task('bootstrap-test', shell.task([
-  'export NODE_ENV=test; node src/server/repos/store/bootstrap.js'
+  'export NODE_ENV=test; node src/server/repos/bootstrap.js'
 ]));
 
 gulp.task('bootstrap', shell.task([
-  'node src/server/repos/store/bootstrap.js'
+  'node src/server/repos/bootstrap.js'
 ]));

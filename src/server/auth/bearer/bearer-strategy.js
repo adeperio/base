@@ -1,7 +1,7 @@
 'use strict'
 
 var BearerStrategy = require('passport-http-bearer').Strategy;
-import SessionRepository from '../../repos/store/session-repository.js';
+import SessionRepository from '../../repos/session-repository.js';
 
 module.exports = new BearerStrategy(
     function(token, done) {

@@ -2,7 +2,7 @@
 
 import express from 'express';
 import passport from 'passport';
-import SessionRepository from '../repos/store/session-repository.js';
+import SessionRepository from '../repos/session-repository.js';
 var router = express.Router();
 
 router.get('/signout', passport.authenticate('bearer', { session: false }), function(req, res) {
