@@ -10,12 +10,9 @@ import signInRoutes from './routes/signInRoutes.js';
 import signOutRoutes from './routes/signOutRoutes.js';
 import signUpRoutes from './routes/signUpRoutes.js';
 import userRoutes from './routes/userRoutes.js';
-import passport from './auth/passport-auth.js';
+import passport from './middleware/passport.js';
 
 var server = express();
-
-server.use(passport.initialize());
-server.use(passport.session());
 
 //Set port
 server.set('port', (process.env.PORT || 5000));
@@ -24,6 +21,10 @@ server.set('view engine', 'jade');
 
 //Setup location to static assets
 server.use(express.static(path.join(__dirname)));
+
+//middle ware setup
+server.use(passport.initialize());
+server.use(passport.session());
 
 //setup routes
 server.use('/auth', signInRoutes);
