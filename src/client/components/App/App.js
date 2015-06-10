@@ -8,7 +8,7 @@ import NotFoundPage from '../NotFoundPage';
 import Home from '../Home';
 import ActionTypes from '../../flux/constants/action-types';
 import AuthActions from '../../flux/actions/auth-actions';
-import AuthStore from '../../flux/stores/AuthStore';
+import AuthStore from '../../flux/stores/auth-store';
 
 var DefaultRoute = Router.DefaultRoute;
 var Link = Router.Link;

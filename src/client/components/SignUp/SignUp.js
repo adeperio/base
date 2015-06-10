@@ -4,7 +4,7 @@ import React from 'react';
 import Bootstrap from 'react-bootstrap';
 
 import AuthActions from '../../flux/actions/auth-actions';
-import AuthStore from '../../flux/stores/AuthStore';
+import AuthStore from '../../flux/stores/auth-store';
 import ActionTypes from '../../flux/constants/action-types';
 
 

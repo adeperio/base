@@ -6,7 +6,7 @@ import Bootstrap from 'react-bootstrap';
 import Router from 'react-router';
 
 import AuthActions from '../../flux/actions/auth-actions';
-import AuthStore from '../../flux/stores/AuthStore';
+import AuthStore from '../../flux/stores/auth-store';
 import ActionTypes from '../../flux/constants/action-types';
 
 var DefaultRoute = Router.DefaultRoute;
