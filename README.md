@@ -5,7 +5,7 @@ This is a seed / scaffolding project for a full front-end / back-end web applica
 
 ## Why
 
-Base aims to scaffold out a modern web application stack, with industry standard OAuth2 user access functionality and API security, right out of the box. So you can spend more time on what matters most - building, designing and hacking out your products and ideas.
+Base aims to scaffold out a modern web application stack, with industry standard OAuth2 user access functionality and API security, right out of the box. So you can spend more time on what matters most - building, designing and hacking out your apps.
 
 1. Oauth2 and secure API access (bearer tokens) can be complicated and time consuming to implement. Using PassportJS we provide the scaffolding needed for common Oauth2 sign in flows.
 2. We love React+Flux and think you will to. Base scaffolds out React components along with related Flux actions and stores, and provides a starter framework for getting a ReactJS front-end chatting with an Express / Postgres back-end.
