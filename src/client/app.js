@@ -5,7 +5,7 @@ import React from 'react';
 import emptyFunction from 'react/lib/emptyFunction';
 import App from './components/app';
 
-import Home from './components/Home';
+import Home from './components/home';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Error from './components/error';

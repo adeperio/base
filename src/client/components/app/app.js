@@ -4,7 +4,7 @@ import './app.less';
 import React from 'react';
 import Router from 'react-router';
 import invariant from 'react/lib/invariant';
-import Home from '../Home';
+import Home from '../home';
 import ActionTypes from '../../flux/constants/action-types';
 import AuthActions from '../../flux/actions/auth-actions';
 import AuthStore from '../../flux/stores/auth-store';
