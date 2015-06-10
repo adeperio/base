@@ -3,7 +3,7 @@ import './SignUp.less';
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
 
-import AuthActions from '../../flux/actions/AuthActions';
+import AuthActions from '../../flux/actions/auth-actions';
 import AuthStore from '../../flux/stores/AuthStore';
 import ActionTypes from '../../flux/constants/ActionTypes';
 

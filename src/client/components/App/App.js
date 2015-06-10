@@ -7,7 +7,7 @@ import invariant from 'react/lib/invariant';
 import NotFoundPage from '../NotFoundPage';
 import Home from '../Home';
 import ActionTypes from '../../flux/constants/ActionTypes';
-import AuthActions from '../../flux/actions/AuthActions';
+import AuthActions from '../../flux/actions/auth-actions';
 import AuthStore from '../../flux/stores/AuthStore';
 
 var DefaultRoute = Router.DefaultRoute;

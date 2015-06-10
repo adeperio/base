@@ -3,8 +3,8 @@ import './Home.less';
 
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
-import AuthActions from '../../flux/actions/AuthActions';
-import UserActions from '../../flux/actions/UserActions';
+import AuthActions from '../../flux/actions/auth-actions';
+import UserActions from '../../flux/actions/user-actions';
 import AuthStore from '../../flux/stores/AuthStore';
 import UserStore from '../../flux/stores/UserStore';
 import ActionTypes from '../../flux/constants/ActionTypes';
