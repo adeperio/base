@@ -3,8 +3,10 @@ import winston from 'winston';
 import assert from 'assert';
 import appRoot from 'app-root-path';
 
+
 var config = require(appRoot + '/src/server/config.js');
-var Mapper = require(appRoot + '/src/server/repos/pg-data-mapper.js');
+
+var mapper = require(appRoot + '/src/server/repos/pg-data-mapper.js');
 var userRows = require(appRoot + '/test/resources/userRows.json');
 var userRowFilled = require(appRoot + '/test/resources/userRowFilled.json');
 
@@ -16,17 +18,32 @@ describe('pg data mapper', function(){
     done();
   });
 
-  describe('mapToUser', function(){
+  // describe('mapToUser', function(){
+  //   it('should get a user object', function(done){
+  //
+  //     var mapper = new Mapper();
+  //     var user = mapper.mapToUser(userRowFilled);
+  //     winston.log('debug', JSON.stringify(user));
+  //     assert.equal('test1@email.com', user.emailAddress);
+  //     assert.equal('firstName1', user.firstName);
+  //     assert.equal('lastName1', user.lastName);
+  //     assert.equal('myuser1bio', user.bio);
+  //     done();
+  //   })
+  // });
+
+  describe('mapToUsers', function(){
     it('should get an array of user objects', function(done){
 
-      var mapper = new Mapper();
-      var user = mapper.mapToUser(userRowFilled);
-      winston.log('debug', JSON.stringify(user));
-      assert.equal('test1@email.com', user.emailAddress);
-      assert.equal('firstName1', user.firstName);
-      assert.equal('lastName1', user.lastName);
-      assert.equal('myuser1bio', user.bio);
-      done();
+      mapper.mapToUsersAsync(userRows)
+      .then(function(users){
+        winston.log('1. ', JSON.stringify(users));
+        done();
+      }).catch(function(e){
+        winston.log('1. ', JSON.stringify(e));
+        done(e);
+      });
+
 
     })
   });
