@@ -19,7 +19,7 @@ function SessionRepository () {
 
     return query(sql, [userId, emailAddress, base_access_token, auth_provider_token, auth_provider_name, auth_provider_user_id])
             .then(function(result){
-
+              
                 if(result && result[1] && result[1].rows && result[1].rows.length == 1){
                   return result[1].rows[0];
                 } else{

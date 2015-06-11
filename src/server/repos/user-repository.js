@@ -51,6 +51,7 @@ function UserRepository () {
 
       return query(sql, [auth_provider_name, auth_provider_name, provider_user_id, provider_user_id])
                 .then(function(result){
+
                     if(result && result[1] && result[1].rows && result[1].rows.length == 1){
                       return result[1].rows[0];
                     } else {
@@ -78,6 +79,7 @@ function UserRepository () {
 
     return query(sql, [emailAddress, firstName, lastName, auth_provider_name, provider_user_id])
             .then(function(result){
+
                 if(result && result[1] && result[1].rows && result[1].rows.length == 1){
                   return result[1].rows[0];
                 } else {

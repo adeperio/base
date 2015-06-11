@@ -28,7 +28,7 @@ module.exports = new GoogleStrategy({
           var googleUser = new GoogleUser();
           googleUser.user = user;
           googleUser.access_token = accessToken;
-          googleUser.googleUserId = user.auth_provider_user_id;
+          googleUser.googleUserId = profile.id;
 
           done(null, googleUser);
         }else{

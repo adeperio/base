@@ -12,6 +12,7 @@ module.exports = new BearerStrategy(
               if(!session) {
                   return done(null, false);
               }
+
               //WIP check for scopes
               return done(null, session, { scope: 'all' });
 
