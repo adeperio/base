@@ -11,7 +11,7 @@ import signOutRoutes from './routes/sign-out-routes.js';
 import signUpRoutes from './routes/sign-up-routes.js';
 import userRoutes from './routes/user-routes.js';
 import passport from './middleware/passport.js';
-
+import helmet from 'helmet';
 var server = express();
 
 //Set port
@@ -21,6 +21,23 @@ server.set('view engine', 'jade');
 
 //Setup location to static assets
 server.use(express.static(path.join(__dirname)));
+
+//setup helmet js
+server.use(helmet());
+
+//setting CSP
+var scriptSources = ["'self'", "'unsafe-inline'", "'unsafe-eval'", "ajax.googleapis.com", "www.google-analytics.com"];
+var styleSources = ["'self'", "'unsafe-inline'", "ajax.googleapis.com"];
+var connectSources = ["'self'"];
+server.use(helmet.contentSecurityPolicy({
+    defaultSrc: ["'self'"],
+    scriptSrc: scriptSources,
+    styleSrc: styleSources,
+    connectSrc: connectSources,
+    reportOnly: false,
+    setAllHeaders: false,
+    safari5: false
+  }));
 
 //middle ware setup
 server.use(passport.initialize());
