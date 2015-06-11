@@ -1,5 +1,5 @@
 var pg = require('pg');
-var config = new require('../../config.js')();
+var config = new require('../config.js')();
 
 var client = new pg.Client(config.connectionString);
 client.connect();

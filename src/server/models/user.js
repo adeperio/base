@@ -5,6 +5,7 @@ function User(){
   this.emailAddress = '';
   this.firstName = '';
   this.lastName = '';
+  this.bio = '';
 
 }
 
