@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/adeperio/base.png?label=ready&title=Ready)](https://waffle.io/adeperio/base)
 # Base
 ![Alt text](/logo.png?raw=true "Base")
 
