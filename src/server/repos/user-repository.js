@@ -7,12 +7,12 @@ function UserRepository () {
 
   query.connectionParameters = Config.connectionString;
 
-  this.getUser = function(auth_provider_name, provider_user_id) {
+  this.getUser = function(authProviderName, providerUserId) {
 
     var sql = 'SELECT users.* FROM users, auth_providers_lookup ' +
                 'WHERE auth_providers_lookup.name = $1 AND users.auth_provider_user_id LIKE $2';
 
-    var paramsArray = [auth_provider_name, provider_user_id];
+    var paramsArray = [authProviderName, providerUserId];
     return query(sql, paramsArray)
               .then(function(result){
                   if(result && result[1] && result[1].rows && result[1].rows.length == 1){
@@ -32,7 +32,7 @@ function UserRepository () {
   };
 
   //this will Insert a user and return the new row or return an existing row based on the provider id
-  this.createUser = function(auth_provider_name, provider_user_id){
+  this.createUser = function(authProviderName, providerUserId){
 
       var sql = 'with d as ( ' +
                 '    select id FROM auth_providers_lookup ' +
@@ -49,7 +49,7 @@ function UserRepository () {
                 ') ' +
                 'select i.* from i union all select s.* from s;';
 
-      return query(sql, [auth_provider_name, auth_provider_name, provider_user_id, provider_user_id])
+      return query(sql, [authProviderName, authProviderName, providerUserId, providerUserId])
                 .then(function(result){
 
                     if(result && result[1] && result[1].rows && result[1].rows.length == 1){
@@ -67,7 +67,7 @@ function UserRepository () {
                 });
   };
 
-  this.updateUser = function(emailAddress, firstName, lastName, auth_provider_name, provider_user_id){
+  this.updateUser = function(emailAddress, firstName, lastName, authProviderName, providerUserId){
 
 
     var sql = 'UPDATE users AS a SET email_address = $1, first_name = $2, last_name = $3 ' +
@@ -77,7 +77,7 @@ function UserRepository () {
               'AND a.auth_provider_lookup_id_fkey = b.id ' +
               'RETURNING *; ';
 
-    return query(sql, [emailAddress, firstName, lastName, auth_provider_name, provider_user_id])
+    return query(sql, [emailAddress, firstName, lastName, authProviderName, providerUserId])
             .then(function(result){
 
                 if(result && result[1] && result[1].rows && result[1].rows.length == 1){

@@ -8,18 +8,18 @@ function SessionRepository () {
   query.connectionParameters = Config.connectionString;
 
 
-  this.createSession = function(userId, emailAddress, auth_provider_token, auth_provider_name, auth_provider_user_id) {
+  this.createSession = function(userId, emailAddress, authProviderToken, authProviderName, authProviderUserId) {
 
     //generate
     var randomizer = new RandomizerService();
-    var base_access_token = randomizer.getRandomUUIDv4();
+    var baseAccessToken = randomizer.getRandomUUIDv4();
 
     var sql = 'INSERT INTO sessions (user_id_fkey, email_address, base_access_token, auth_provider_access_token, auth_provider_name, auth_provider_user_id) ' +
               'VALUES ($1, $2, $3, $4, $5, $6) RETURNING *; ';
 
-    return query(sql, [userId, emailAddress, base_access_token, auth_provider_token, auth_provider_name, auth_provider_user_id])
+    return query(sql, [userId, emailAddress, baseAccessToken, authProviderToken, authProviderName, authProviderUserId])
             .then(function(result){
-              
+
                 if(result && result[1] && result[1].rows && result[1].rows.length == 1){
                   return result[1].rows[0];
                 } else{
@@ -28,10 +28,10 @@ function SessionRepository () {
             });
   };
 
-  this.getSession = function(base_access_token){
+  this.getSession = function(baseAccessToken){
 
     var sql = 'SELECT * FROM sessions WHERE base_access_token = $1';
-    return query(sql, [base_access_token])
+    return query(sql, [baseAccessToken])
             .then(function(result){
                 if(result && result[1] && result[1].rows && result[1].rows.length == 1){
                   return result[1].rows[0];
@@ -42,11 +42,11 @@ function SessionRepository () {
 
   };
 
-  this.deleteSession = function(base_access_token){
+  this.deleteSession = function(baseAccessToken){
 
     var sql = 'DELETE FROM sessions WHERE base_access_token = $1';
 
-    return query(sql, [base_access_token])
+    return query(sql, [baseAccessToken])
             .then(function(result){
 
                 if(result && result[1] && result[1].rowCount == 1){
