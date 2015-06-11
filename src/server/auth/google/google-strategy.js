@@ -7,7 +7,6 @@ import GoogleUser from './google-user.js';
 import UserRepository from '../../repos/user-repository.js';
 import ProviderLookup from '../../repos/provider-lookup.js';
 
-
 var GoogleStrategy = passportGoogleOauth2.Strategy;
 
 module.exports = new GoogleStrategy({
@@ -24,12 +23,12 @@ module.exports = new GoogleStrategy({
     //WIP move this code into the sign in routes logic
     var userRepo = new UserRepository();
     userRepo.createUser(ProviderLookup.Google, profile.id)
-    .then(function(users){
-        if(users.length == 1){
-          var user = users[0];
+    .then(function(user){
+        if(user){
           var googleUser = new GoogleUser();
           googleUser.user = user;
           googleUser.access_token = accessToken;
+          googleUser.googleUserId = user.auth_provider_user_id;
 
           done(null, googleUser);
         }else{

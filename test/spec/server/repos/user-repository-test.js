@@ -1,6 +1,7 @@
 'use strict'
 import winston from 'winston';
-import assert from 'assert';
+import Chai from 'chai';
+var assert = Chai.assert;
 import appRoot from 'app-root-path';
 
 var UserRepository = require(appRoot + '/src/server/repos/user-repository.js');
@@ -23,9 +24,8 @@ describe('user repository', function(){
       var test_token = randomizer.getRandomUUIDv4();
       var userRepo = new UserRepository();
       userRepo.getUser(ProviderLookup.Google, test_token)
-      .then(function(rows){
-          winston.log('debug', JSON.stringify(rows));
-          assert.equal(0, rows.length);
+      .then(function(user){
+          assert.isNull(user, 'user is null');
           done();
       }).catch(function(err){
         done(err);
@@ -40,9 +40,9 @@ describe('user repository', function(){
       var mockProviderId = randomizer.getRandomUUIDv4();
       var userRepo = new UserRepository();
       userRepo.createUser(ProviderLookup.Google, mockProviderId)
-        .then(function(rows){
-            winston.log('debug', JSON.stringify(rows));
-            assert.equal(1, rows.length);
+        .then(function(createdUser){
+            winston.log('debug', JSON.stringify(createdUser));
+            assert.isDefined(createdUser, 'there was a user created');
             done();
         }).catch(function(err){
           done(err);
@@ -67,9 +67,9 @@ describe('user repository', function(){
             return userRepo.updateUser(mockEmail, mockFirstName, mockLastName, ProviderLookup.Google, mockProviderId);
         }).then(function(updateduser){
             winston.log('debug', JSON.stringify(updateduser));
-            assert.equal(mockEmail, updateduser.email_address);
-            assert.equal(mockFirstName, updateduser.first_name);
-            assert.equal(mockLastName, updateduser.last_name);
+            assert.equal(mockEmail, updateduser.emailAddress);
+            assert.equal(mockFirstName, updateduser.firstName);
+            assert.equal(mockLastName, updateduser.lastName);
             done();
         }).catch(function(err){
           done(err);

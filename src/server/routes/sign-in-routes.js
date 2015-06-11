@@ -20,9 +20,10 @@ router.get('/google/callback',
         var googleUser = req.user;
         var user = googleUser.user;
         var access_token = googleUser.access_token;
+        var googleUserId = googleUser.googleUserId;
 
         var sessionRepo = new SessionRepository();
-        sessionRepo.createSession(user, access_token, ProviderLookup.Google, user.auth_provider_user_id)
+        sessionRepo.createSession(user, access_token, ProviderLookup.Google, user.googleUserId)
           .then(function(session){
 
             //This call back will render the index page on the callback route.

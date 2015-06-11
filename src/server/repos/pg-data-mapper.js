@@ -23,10 +23,14 @@ function Mapper(){
   this.mapToUser = function(userRow, cb){
 
     var user = new User();
+    user._id = userRow.id;
     user.emailAddress = userRow.email_address;
     user.firstName = userRow.first_name;
     user.lastName = userRow.last_name;
     user.bio = userRow.bio;
+    user.created = userRow.created;
+
+
     cb(null, user);
 
   }
