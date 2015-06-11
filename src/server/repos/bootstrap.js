@@ -12,6 +12,7 @@ var createUsers = 'CREATE TABLE IF NOT EXISTS ' +
     'email_address VARCHAR(255) UNIQUE null, ' +
     'first_name VARCHAR(255) null, ' +
     'last_name VARCHAR(255) null, ' +
+    'bio VARCHAR(1024) null, ' +
     'created timestamp default current_timestamp)';
 
 var createAuthProvidersLookup = 'CREATE TABLE IF NOT EXISTS ' +
