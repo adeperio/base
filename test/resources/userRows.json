@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "auth_provider_lookup_id_fkey": 1,
+        "auth_provider_user_id": "e71886b1-65d3-4c54-93f6-f12d70255e21",
+        "email_address": "test1@email.com",
+        "first_name": "firstName1",
+        "last_name": "lastName1",
+        "created": "2015-06-11T01:15:01.237Z",
+        "name": "google"
+    },
+    {
+        "id": 2,
+        "auth_provider_lookup_id_fkey": 1,
+        "auth_provider_user_id": "e71886b1-65d3-1234-93f6-f12d70255e21",
+        "email_address": "test2@email.com",
+        "first_name": "firstName2",
+        "last_name": "lastName2",
+        "created": "2015-06-11T01:15:01.237Z",
+        "name": "google"
+    }
+]

@@ -27,7 +27,9 @@ function UserRepository () {
       return query(sql, [auth_provider_name, auth_provider_name, provider_user_id, provider_user_id])
               .then(function(result){
                   if(result && result[1] && result[1].rows){
+                    console.log('1. ' + JSON.stringify(result[1].rows));
                     return result[1].rows;
+
                   } else{
                     return [];
                   }
@@ -47,6 +49,7 @@ function UserRepository () {
     return query(sql, [emailAddress, firstName, lastName, auth_provider_name, provider_user_id])
             .then(function(result){
                 if(result && result[1] && result[1].rows && result[1].rows.length == 1){
+                  console.log('2. ' + JSON.stringify(result[1].rows));
                   return result[1].rows[0];
                 } else {
                   throw new Error('More than one user was updated');
@@ -68,6 +71,7 @@ function UserRepository () {
                   if(result[1].rows.length>1){
                     throw new Error('Expected only one result');
                   }else{
+                    console.log('3. ' + JSON.stringify(result[1].rows));
                     return result[1].rows[0];
                   }
 
