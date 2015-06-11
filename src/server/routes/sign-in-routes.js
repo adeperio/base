@@ -5,7 +5,7 @@ import passport from 'passport';
 import UserRepository from '../repos/user-repository.js';
 import SessionRepository from '../repos/session-repository.js';
 import RandomizerService from '../services/randomizer-service.js';
-import ProviderLookup from '../repos/provider-lookup.js';
+import ProviderLookup from '../auth/provider-lookup.js';
 
 var router = express.Router();
 

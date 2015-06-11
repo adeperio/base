@@ -6,7 +6,7 @@ import appRoot from 'app-root-path';
 
 var UserRepository = require(appRoot + '/src/server/repos/user-repository.js');
 var RandomizerService = require(appRoot + '/src/server/services/randomizer-service.js');
-var ProviderLookup = require(appRoot + '/src/server/repos/provider-lookup.js');
+var ProviderLookup = require(appRoot + '/src/server/auth/provider-lookup.js');
 var config = require(appRoot + '/src/server/config.js');
 
 describe('user repository', function(){
