@@ -9,8 +9,6 @@ function User(){
   this.bio = '';
   this.created = null;
 
-
-
 }
 
 module.exports = User;
