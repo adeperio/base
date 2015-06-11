@@ -46,7 +46,7 @@ describe('session repository', function(){
                         assert.isNull(session.email_address, 'email is null');
                         done();
                     }).catch(function(err){
-                        done(err);
+                        throw err;
                     });
     })
   });
@@ -68,7 +68,7 @@ describe('session repository', function(){
 
                         done();
                     }).catch(function(err){
-                        done(err);
+                        throw err;
                     });
     })
   });
@@ -90,7 +90,7 @@ describe('session repository', function(){
 
                         done();
                     }).catch(function(err){
-                        done(err);
+                        throw err;
                     });
     })
   });
