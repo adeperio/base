@@ -26,8 +26,8 @@ server.use(express.static(path.join(__dirname)));
 server.use(helmet());
 
 //setting CSP
-var scriptSources = ["'self'", "'unsafe-inline'", "'unsafe-eval'", "ajax.googleapis.com", "www.google-analytics.com"];
-var styleSources = ["'self'", "'unsafe-inline'", "ajax.googleapis.com"];
+var scriptSources = ["'self'", "ajax.googleapis.com", "www.google-analytics.com"];
+var styleSources = ["'self'", "ajax.googleapis.com"];
 var connectSources = ["'self'"];
 server.use(helmet.contentSecurityPolicy({
     defaultSrc: ["'self'"],
@@ -37,7 +37,7 @@ server.use(helmet.contentSecurityPolicy({
     reportOnly: false,
     setAllHeaders: false,
     safari5: false
-  }));
+}));
 
 //middle ware setup
 server.use(passport.initialize());
