@@ -39,7 +39,7 @@ describe('session repository', function(){
 
 
       var sessionRepo = new SessionRepository();
-      sessionRepo.createSession(userRow, mockProviderToken, mockProviderName, mokeProviderUserId)
+      sessionRepo.createSession(1, null, mockProviderToken, mockProviderName, mokeProviderUserId)
                     .then(function(session){
                         console.log('SESSION ' + JSON.stringify(session) + '\n');
                         assert.isNotNull(session, 'created session returned');
@@ -59,7 +59,7 @@ describe('session repository', function(){
       var test_provider_token = randomizer.getRandomUUIDv4();
 
       var sessionRepo = new SessionRepository();
-      sessionRepo.createSession(userRow, test_provider_token)
+      sessionRepo.createSession(1, null, test_provider_token)
                     .then(function(session){
                         return sessionRepo.getSession(session.base_access_token);
                         done();
@@ -81,7 +81,7 @@ describe('session repository', function(){
       var test_provider_token = randomizer.getRandomUUIDv4();
 
       var sessionRepo = new SessionRepository();
-      sessionRepo.createSession(userRow, test_provider_token)
+      sessionRepo.createSession(1, null, test_provider_token)
                     .then(function(session){
                         return sessionRepo.deleteSession(session.base_access_token);
                         done();

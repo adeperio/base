@@ -38,9 +38,9 @@ UserStore.dispatcherToken = Dispatcher.register((payload) => {
 
     case ActionTypes.ME_RES:
       var user = action.data;
-      _me.emailAddress = user.email_address;
-      _me.firstName = user.first_name;
-      _me.lastName = user.last_name;
+      _me.emailAddress = user.emailAddress;
+      _me.firstName = user.firstName;
+      _me.lastName = user.lastName;
       UserStore.emit(ActionTypes.ME_RES);
       break;
 
