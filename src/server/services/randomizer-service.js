@@ -1,4 +1,5 @@
 'use strict'
+
 import uuid from 'node-uuid';
 
 //might need to replace this out with a proper implementation

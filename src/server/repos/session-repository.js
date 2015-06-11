@@ -1,7 +1,7 @@
 'use strict'
 
 import query from 'pg-query';
-import RandomizerService from '../../services/randomizer-service.js';
+import RandomizerService from '../services/randomizer-service.js';
 
 function SessionRepository () {
 

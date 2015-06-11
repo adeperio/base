@@ -3,8 +3,10 @@
 import passport from 'passport';
 import passportGoogleOauth2 from 'passport-google-oauth2';
 
+import GoogleUser from './google-user.js';
 import UserRepository from '../../repos/user-repository.js';
 import ProviderLookup from '../../repos/provider-lookup.js';
+
 
 var GoogleStrategy = passportGoogleOauth2.Strategy;
 
@@ -25,8 +27,11 @@ module.exports = new GoogleStrategy({
     .then(function(users){
         if(users.length == 1){
           var user = users[0];
-          user.providerToken = accessToken;
-          done(null, user);
+          var googleUser = new GoogleUser();
+          googleUser.user = user;
+          googleUser.access_token = accessToken;
+
+          done(null, googleUser);
         }else{
           done(null, null);
         }

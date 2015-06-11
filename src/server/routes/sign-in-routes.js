@@ -9,6 +9,7 @@ import ProviderLookup from '../repos/provider-lookup.js';
 
 var router = express.Router();
 
+//The authentication url
 router.get('/connect', passport.authenticate('google', { scope:
     [ 'https://www.googleapis.com/auth/plus.login'] }));
 
@@ -17,9 +18,11 @@ router.get('/google/callback',
     function(req, res) {
 
         var googleUser = req.user;
+        var user = googleUser.user;
+        var access_token = googleUser.access_token;
 
         var sessionRepo = new SessionRepository();
-        sessionRepo.createSession(googleUser, googleUser.providerToken, ProviderLookup.Google, googleUser.auth_provider_user_id)
+        sessionRepo.createSession(user, access_token, ProviderLookup.Google, user.auth_provider_user_id)
           .then(function(session){
 
             //This call back will render the index page on the callback route.
