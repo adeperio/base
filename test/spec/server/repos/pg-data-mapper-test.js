@@ -18,19 +18,24 @@ describe('pg data mapper', function(){
     done();
   });
 
-  // describe('mapToUser', function(){
-  //   it('should get a user object', function(done){
-  //
-  //     var mapper = new Mapper();
-  //     var user = mapper.mapToUser(userRowFilled);
-  //     winston.log('debug', JSON.stringify(user));
-  //     assert.equal('test1@email.com', user.emailAddress);
-  //     assert.equal('firstName1', user.firstName);
-  //     assert.equal('lastName1', user.lastName);
-  //     assert.equal('myuser1bio', user.bio);
-  //     done();
-  //   })
-  // });
+  describe('mapToUser', function(){
+    it('should get a user object', function(done){
+
+      mapper.mapToUserAsync(userRowFilled)
+      .then(function(user){
+        winston.log('debug', JSON.stringify(user));
+        assert.equal('test1@email.com', user.emailAddress);
+        assert.equal('firstName1', user.firstName);
+        assert.equal('lastName1', user.lastName);
+        assert.equal('myuser1bio', user.bio);
+        done();
+      }).catch(function(e){
+        done(e);
+      });
+
+
+    })
+  });
 
   describe('mapToUsers', function(){
     it('should get an array of user objects', function(done){

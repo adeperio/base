@@ -5,14 +5,15 @@ import Promise from 'bluebird';
 import User from '../models/user.js';
 
 //This module takes in postgres database rows and results and maps them to domain models
+//Note: This is promisified
 function Mapper(){
 
   //will map postgres results to an array of user objects
   this.mapToUsers = function(userRows, cb){
 
     var users = _.each(userRows, function(userRow){
-                        return userRow;
-                      });
+                    return userRow;
+                  });
 
     cb(null, users);
 
