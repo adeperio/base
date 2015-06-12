@@ -24,7 +24,6 @@ module.exports = function(){
               }
             };
 
-
         case 'production':
             return {
               connectionString: 'postgres://postgres:postgres@productionhost.com:5432/base',
