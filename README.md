@@ -76,7 +76,9 @@ $ gulp test
 Base uses Oauth2 as it's authentication framework, and specifically the authorization grant type. It leverages http://passportjs.org to provide authentication strategies to popular social authentication providers, and also to provide api end point protection using token bearer strategies.
 
 # SSL - Coming up...
-In order to adhere to the OAuth2 spec, SSL and correct errorhandling aroudn this needs to be implmented. Currently on the roadmap....
+In order to adhere to the OAuth2 spec, SSL and correct SSL error handling needs to be implemented. Currently on the roadmap....
+
+
 
 The RFC is a pretty hefty, but detailed resource if you want to go in depth into the requirements for the correct implementation of OAuth2 - https://tools.ietf.org/html/rfc6749
 
