@@ -32,8 +32,6 @@ describe('pg data mapper', function(){
       }).catch(function(e){
         done(e);
       });
-
-
     })
   });
 
