@@ -1,6 +1,8 @@
 [![Stories in Ready](https://badge.waffle.io/adeperio/base.png?label=ready&title=Ready)](https://waffle.io/adeperio/base) [![Stories in Progress](https://badge.waffle.io/adeperio/base.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/adeperio/base)
 
 # Base
+
+[![Join the chat at https://gitter.im/adeperio/base](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/adeperio/base?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 ![Alt text](/logo.png?raw=true "Base")
 
 
