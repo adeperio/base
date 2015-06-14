@@ -2,6 +2,7 @@
 
 import query from 'pg-query';
 import mapper from './pg-data-mapper.js';
+import validator from 'validator';
 
 function UserRepository () {
 
@@ -77,22 +78,27 @@ function UserRepository () {
               'AND a.auth_provider_lookup_id_fkey = b.id ' +
               'RETURNING *; ';
 
-    return query(sql, [emailAddress, firstName, lastName, authProviderName, providerUserId])
-            .then(function(result){
+    if(!validator.isEmail(emailAddress)){
+      throw new Error('This is not a valid email address');
+    } else {
+      return query(sql, [emailAddress, firstName, lastName, authProviderName, providerUserId])
+              .then(function(result){
 
-                if(result && result[1] && result[1].rows && result[1].rows.length == 1){
-                  return result[1].rows[0];
-                } else {
-                  throw new Error('There was a problem updating the user');
+                  if(result && result[1] && result[1].rows && result[1].rows.length == 1){
+                    return result[1].rows[0];
+                  } else {
+                    throw new Error('There was a problem updating the user');
+                  }
+              })
+              .then(function(userRow){
+                if(userRow){
+                  return mapper.mapToUserAsync(userRow);
+                } else{
+                  return null;
                 }
-            })
-            .then(function(userRow){
-              if(userRow){
-                return mapper.mapToUserAsync(userRow);
-              } else{
-                return null;
-              }
-            });
+              });
+    }
+
   };
 
 

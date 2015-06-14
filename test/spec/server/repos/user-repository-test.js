@@ -58,7 +58,7 @@ describe('user repository', function(){
       var mockProviderId = randomizer.getRandomUUIDv4();
       var userRepo = new UserRepository();
 
-      var mockEmail = randomizer.getRandomUUIDv4();
+      var mockEmail = randomizer.getRandomUUIDv4().substring(0,4) + '@test.com';
       var mockFirstName = randomizer.getRandomUUIDv4();
       var mockLastName = randomizer.getRandomUUIDv4();
 
