@@ -1,13 +1,13 @@
 'use strict'
 import 'babel/polyfill';
 import React from 'react';
-import App from './components/app';
+import Router from 'react-router';
 
+import App from './components/app';
 import Home from './components/home';
 import SignUp from './components/sign-up';
 import Login from './components/login';
 import Error from './components/error';
-import Router from 'react-router';
 
 var DefaultRoute = Router.DefaultRoute;
 var Link = Router.Link;
