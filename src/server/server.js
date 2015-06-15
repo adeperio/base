@@ -22,13 +22,13 @@ server.set('view engine', 'jade');
 //Setup location to static assets
 server.use(express.static(path.join(__dirname)));
 
+
 //setup helmet js
 server.use(helmet());
 
 //setting CSP
 var scriptSources = ["'self'", "'unsafe-inline'", "'unsafe-eval'", "ajax.googleapis.com", "www.google-analytics.com"];
 var styleSources = ["'self'", "'unsafe-inline'", "ajax.googleapis.com"];
-
 var connectSources = ["'self'"];
 server.use(helmet.contentSecurityPolicy({
     defaultSrc: ["'self'"],
@@ -39,6 +39,8 @@ server.use(helmet.contentSecurityPolicy({
     setAllHeaders: false,
     safari5: false
 }));
+
+//enforcing SSL for production environments
 
 //middle ware setup
 server.use(passport.initialize());
