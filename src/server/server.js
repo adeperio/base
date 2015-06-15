@@ -16,6 +16,8 @@ import express_enforces_ssl from 'express-enforces-ssl';
 
 var server = express();
 
+// ======== *** VIEWS AND TEMPLATES ***
+
 //Set port
 server.set('port', (process.env.PORT || 5000));
 server.set('views', path.join(__dirname, 'templates'));
@@ -24,6 +26,8 @@ server.set('view engine', 'jade');
 //Setup location to static assets
 server.use(express.static(path.join(__dirname)));
 
+
+// ======== *** SECURITY MIDDLEWARE ***
 
 //setup helmet js
 server.use(helmet());
@@ -47,16 +51,22 @@ if(process.env.NODE_ENV == 'production'){
   server.use(express_enforces_ssl());
 }
 
-//middle ware setup
+//passport setup
 server.use(passport.initialize());
 server.use(passport.session());
 
-//setup routes
+
+
+// ========= *** ROUTES ***
 server.use('/auth', signInRoutes);
 server.use('/auth', signOutRoutes);
 server.use('/auth', signUpRoutes);
 server.use('/', userRoutes);
 
+
+
+
+// ========= *** SERVER LOAD ***
 
 //Initial SPA load
 server.get('/*', function (req, res) {
