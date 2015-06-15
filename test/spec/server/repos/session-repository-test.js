@@ -2,6 +2,7 @@
 import winston from 'winston';
 import chai from 'chai';
 var assert = chai.assert;
+var expect = chai.expect;
 import appRoot from 'app-root-path';
 import query from 'pg-query';
 
@@ -40,13 +41,40 @@ describe('session repository', function(){
       var sessionRepo = new SessionRepository();
       sessionRepo.createSession(1, null, mockProviderToken, mockProviderName, mokeProviderUserId)
                     .then(function(session){
-                        console.log('SESSION ' + JSON.stringify(session) + '\n');
+                        console.log('createSession ' + JSON.stringify(session) + '\n');
                         assert.isNotNull(session, 'created session returned');
                         assert.isNull(session.email_address, 'email is null');
                         done();
                     }).catch(function(err){
                         throw err;
                     });
+    })
+  });
+
+  describe('createSessionWithInValidEmail', function(){
+    it('should throw an error', function(done){
+
+      var randomizer = new RandomizerService();
+      var mockProviderToken = randomizer.getRandomUUIDv4();
+      var mockProviderName = randomizer.getRandomUUIDv4();
+      var mokeProviderUserId = randomizer.getRandomUUIDv4();
+      setTimeout( function () {
+
+                      expect(function(){
+                        var sessionRepo = new SessionRepository();
+                        sessionRepo
+                          .createSession(1, 'adssafsafasfasddfsd', mockProviderToken, mockProviderName, mokeProviderUserId)
+                          .catch(function(err){
+                              done();
+                              throw err;
+                          });
+                      }).to.throw(Error);
+
+                      done();
+
+                  }, 100 );
+
+
     })
   });
 
