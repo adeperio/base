@@ -37,7 +37,6 @@ describe('session repository', function(){
       var mockProviderName = randomizer.getRandomUUIDv4();
       var mokeProviderUserId = randomizer.getRandomUUIDv4();
 
-
       var sessionRepo = new SessionRepository();
       sessionRepo.createSession(1, null, mockProviderToken, mockProviderName, mokeProviderUserId)
                     .then(function(session){
