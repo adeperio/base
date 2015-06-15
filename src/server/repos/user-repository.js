@@ -78,7 +78,7 @@ function UserRepository () {
               'AND a.auth_provider_lookup_id_fkey = b.id ' +
               'RETURNING *; ';
 
-    if(!validator.isEmail(emailAddress)){
+    if(!validator.isEmail(emailAddress) && !validator.isNull(emailAddress)){
       throw new Error('This is not a valid email address');
     } else {
       return query(sql, [emailAddress, firstName, lastName, authProviderName, providerUserId])

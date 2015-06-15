@@ -59,22 +59,14 @@ describe('session repository', function(){
       var mockProviderName = randomizer.getRandomUUIDv4();
       var mokeProviderUserId = randomizer.getRandomUUIDv4();
       setTimeout( function () {
+            expect(function(){
+              var sessionRepo = new SessionRepository();
+              sessionRepo.createSession(1, 'adssafsafasfasddfsd', mockProviderToken, mockProviderName, mokeProviderUserId);
+            }).to.throw(Error);
 
-                      expect(function(){
-                        var sessionRepo = new SessionRepository();
-                        sessionRepo
-                          .createSession(1, 'adssafsafasfasddfsd', mockProviderToken, mockProviderName, mokeProviderUserId)
-                          .catch(function(err){
-                              done();
-                              throw err;
-                          });
-                      }).to.throw(Error);
+            done();
 
-                      done();
-
-                  }, 100 );
-
-
+      }, 100 );
     })
   });
 
@@ -92,7 +84,6 @@ describe('session repository', function(){
                         done();
                     }).then(function(session){
                         assert.equal(session.auth_provider_access_token, test_provider_token);
-
                         done();
                     }).catch(function(err){
                         throw err;

@@ -1,7 +1,8 @@
 'use strict'
 import winston from 'winston';
-import Chai from 'chai';
-var assert = Chai.assert;
+import chai from 'chai';
+var assert = chai.assert;
+var expect = chai.expect;
 import appRoot from 'app-root-path';
 
 var UserRepository = require(appRoot + '/src/server/repos/user-repository.js');
@@ -74,6 +75,30 @@ describe('user repository', function(){
         }).catch(function(err){
           done(err);
         });
+    })
+  });
+
+  describe('updateUserInvalidEmail', function(){
+    it('should throw an error on invalid email', function(done){
+
+      var randomizer = new RandomizerService();
+      var mockProviderId = randomizer.getRandomUUIDv4();
+
+
+      var mockEmail = 'sfasfasf';
+      var mockFirstName = randomizer.getRandomUUIDv4();
+      var mockLastName = randomizer.getRandomUUIDv4();
+
+      setTimeout( function () {
+
+        expect(function(){
+          var userRepo = new UserRepository();
+          return userRepo.updateUser(mockEmail, mockFirstName, mockLastName, ProviderLookup.Google, mockProviderId);
+        }).to.throw(Error);
+
+        done();
+
+      }, 100 );
     })
   });
 });
