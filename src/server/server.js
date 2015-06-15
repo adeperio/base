@@ -12,6 +12,8 @@ import signUpRoutes from './routes/sign-up-routes.js';
 import userRoutes from './routes/user-routes.js';
 import passport from './middleware/passport.js';
 import helmet from 'helmet';
+import express_enforces_ssl from 'express-enforces-ssl';
+
 var server = express();
 
 //Set port
@@ -41,6 +43,9 @@ server.use(helmet.contentSecurityPolicy({
 }));
 
 //enforcing SSL for production environments
+if(process.env.NODE_ENV == 'production'){
+  server.use(express_enforces_ssl());
+}
 
 //middle ware setup
 server.use(passport.initialize());
