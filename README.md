@@ -82,8 +82,9 @@ In order to adhere to the OAuth2 spec, SSL and correct SSL error handling needs 
 The SSL approach on this project will be an evolving discussion an dopen to critique. The goals here are to provide an appropriate implementation of SSL out of the box for developers that is
 
 1. Takes into account running environments.
-2. Provides a good balance between security and ease of setup and useability.
+2. A configuration that provides a good balance between security, ease of setup, and use-ability.
 3. Where appropriate provide documentation on recommendations for developers to setup.
+4. Ensure assumptions are well documented.
 
 Currently the approach we are taking (again open for critique):
 
