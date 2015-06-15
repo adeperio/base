@@ -55,15 +55,11 @@ if(process.env.NODE_ENV == 'production'){
 server.use(passport.initialize());
 server.use(passport.session());
 
-
-
 // ========= *** ROUTES ***
 server.use('/auth', signInRoutes);
 server.use('/auth', signOutRoutes);
 server.use('/auth', signUpRoutes);
 server.use('/', userRoutes);
-
-
 
 
 // ========= *** SERVER LOAD ***
