@@ -59,7 +59,7 @@ server.use(passport.session());
 server.use('/auth', signInRoutes);
 server.use('/auth', signOutRoutes);
 server.use('/auth', signUpRoutes);
-server.use('/', userRoutes);
+server.use('/api/v1', userRoutes);
 
 
 // ========= *** SERVER LOAD ***

@@ -7,7 +7,7 @@ import http from 'superagent';
 module.exports = {
 
   getMe: function(session){
-    http.get('/me')
+    http.get('/api/v1/me')
       .accept('application/json')
       .set('Authorization', 'Bearer ' + session.access_token)
       .end((err, res) => {
