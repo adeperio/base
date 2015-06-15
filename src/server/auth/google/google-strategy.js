@@ -25,6 +25,7 @@ module.exports = new GoogleStrategy({
     userRepo.createUser(ProviderLookup.Google, profile.id)
     .then(function(user){
         if(user){
+
           var googleUser = new GoogleUser();
           googleUser.user = user;
           googleUser.access_token = accessToken;

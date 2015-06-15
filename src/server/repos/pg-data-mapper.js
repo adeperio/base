@@ -3,6 +3,7 @@
 import _ from 'lodash';
 import Promise from 'bluebird';
 import User from '../models/user.js';
+import Session from '../models/session.js';
 
 //This module takes in postgres database rows and results and maps them to domain models
 //Note: This is promisified
@@ -33,6 +34,26 @@ function Mapper(){
 
     cb(null, user);
 
+  };
+
+  this.mapToSessions = function(sessionRows, cb){
+
+    var sessions = _.each(sessionRows, function(sessionRow){
+                    return sessionRow;
+                  });
+
+    cb(null, sessions);
+
+  };
+
+  this.mapToSession = function(sessionRow, cb){
+    var session = new Session();
+    this.user = null;
+    this.baseToken = sessionRow.base_access_token;
+    this.providerToken = sessionRow.auth_provider_access_token;
+    this.providerName = sessionRow.auth_provider_name;
+    this.providerUserId = sessionRow.auth_provider_user_id;
+    this.created = sessionRow.created;
   }
 }
 
