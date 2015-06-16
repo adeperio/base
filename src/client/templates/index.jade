@@ -10,7 +10,7 @@ head
 
     script(src='/app.js')
     script(type="text/javascript").
-      window.setSessionGlobal('#{accessToken}', '#{emailAddress}');
+      window.sessionStoreGlobal.setSessionGlobal('#{accessToken}', '#{emailAddress}');
 
   body
     div(id="appContainer")

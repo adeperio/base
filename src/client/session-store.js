@@ -2,16 +2,21 @@
 
 import Session from './flux/models/session.js';
 
-(function(){
-  var _globalSession = new Session();
+//These are global functions to get access to a session object
+//Note: setSessionGlobal gets called
+//and it's parameters are rendered in the index.jade file after a successful sign in from Express
+function SessionStore(){
 
-  window.setSessionGlobal = function (accessToken, emailAddress){
-    _globalSession.accessToken = accessToken;
-    _globalSession.emailAddress = emailAddress;
-  }
+  this.globalSession = new Session();
 
-  window.getSessionGlobal = function (){
-    return _globalSession;
-  }
+  this.setSessionGlobal = function(accessToken, emailAddress) {
+    this.globalSession.accessToken = accessToken;
+    this.globalSession.emailAddress = emailAddress;
+  };
 
-})();
+  this.getSessionGlobal = function(){
+    return this.globalSession;
+  };
+}
+
+module.exports = SessionStore;

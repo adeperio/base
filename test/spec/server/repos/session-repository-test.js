@@ -9,6 +9,7 @@ import query from 'pg-query';
 var SessionRepository = require(appRoot + '/src/server/repos/session-repository.js');
 var RandomizerService = require(appRoot + '/src/server/services/randomizer-service.js');
 var config = require(appRoot + '/src/server/config.js');
+
 var userRow = require(appRoot + '/test/resources/userRow.json');
 
 describe('session-repository', function(){

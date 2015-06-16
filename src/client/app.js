@@ -3,7 +3,10 @@
 import React from 'react';
 import Router from 'react-router';
 import routes from './routes.js';
-import sessionStore from './session-store.js';
+import SessionStore from './session-store.js';
+
+var sessionStore = new SessionStore();
+window.sessionStoreGlobal = sessionStore;
 
 function run() {
   Router.run(routes, Router.HistoryLocation, function (Handler) {
@@ -19,4 +22,5 @@ Promise.all([
       window.attachEvent('onload', resolve);
     }
   })
-]).then(run);
+])
+.then(run);

@@ -16,14 +16,12 @@ var _sessionObject = new Session();
 const AuthStore = assign({}, EventEmitter.prototype, {
 
   getSessionObject: function() {
-
     if(!_sessionObject.accessToken || !_sessionObject.emailAddress) {
-      var session = getSessionGlobal(); //global function call, see index.jade for function
+      var session = sessionStoreGlobal.getSessionGlobal(); //global function call, see index.jade for function
       _sessionObject.accessToken = session.accessToken;
       _sessionObject.emailAddress = session.emailAddress;
     }
     return _sessionObject;
-    
   }
 });
 
