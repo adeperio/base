@@ -9,7 +9,7 @@ module.exports = {
   getMe: function(session){
     http.get('/api/v1/me')
       .accept('application/json')
-      .set('Authorization', 'Bearer ' + session.access_token)
+      .set('Authorization', 'Bearer ' + session.accessToken)
       .end((err, res) => {
 
         if(!err && !res.error) {

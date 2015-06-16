@@ -15,10 +15,11 @@ var _sessionObject = new Session();
 var AuthStore = {
 
   getSessionObject: function(){
-    if(!_sessionObject.access_token || !_sessionObject.email_address){
+    if(!_sessionObject.accessToken || !_sessionObject.emailAddress){
       var session = getSessionGlobal(); //global function call, see index.jade for function
-      _sessionObject.access_token = session.access_token;
-      _sessionObject.email_address = session.email_address;
+      console.log(JSON.stringify(session));
+      _sessionObject.accessToken = session.accessToken;
+      _sessionObject.emailAddress = session.emailAddress;
     }
     return _sessionObject;
   },
@@ -41,19 +42,12 @@ AuthStore.dispatcherToken = Dispatcher.register((payload) => {
 
   switch (action.actionType) {
 
-    case ActionTypes.SESSION_OBJECT_REC:
-      var sessionData = action.data;
-      _sessionObject.access_token = sessionData.access_token;
-      _sessionObject.email_address = sessionData.email_address;
-
-      AuthStore.emit(ActionTypes.SESSION_OBJECT_SET);
-      break;
     case ActionTypes.REVOKE_RES:
         AuthStore.emit(ActionTypes.REVOKE_RES);
         break;
     case ActionTypes.SIGNUP_RES:
         var user = action.data;
-        _sessionObject.email_address = user.emailAddress;
+        _sessionObject.emailAddress = user.emailAddress;
         AuthStore.emit(ActionTypes.SIGNUP_RES);
         break;
     case ActionTypes.SIGNUP_ERR:

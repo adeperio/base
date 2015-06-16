@@ -2,8 +2,8 @@
 
 function Session(){
 
-  this.access_token = '';
-  this.email_address = '';
+  this.accessToken = '';
+  this.emailAddress = '';
 
 }
 

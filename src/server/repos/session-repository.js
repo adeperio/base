@@ -33,7 +33,6 @@ function SessionRepository () {
               .then(function(sessionRow){
 
                 if(sessionRow){
-                  console.log(JSON.stringify(sessionRow));
                   return mapper.mapToSessionAsync(sessionRow);
                 } else{
                   return null;

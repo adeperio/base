@@ -6,7 +6,7 @@ import UserRepository from '../repos/user-repository.js';
 import SessionRepository from '../repos/session-repository.js';
 var router = express.Router();
 
-router.get( '/signup', passport.authenticate('bearer', { session: false }), function(req, res) {
+router.get('/signup', passport.authenticate('bearer', { session: false }), function(req, res) {
 
   var emailAddress = req.query['emailAddress'];
   var firstName = req.query['firstName'];
@@ -14,7 +14,7 @@ router.get( '/signup', passport.authenticate('bearer', { session: false }), func
   var session = req.user; //session object, supplied by Bearer strategy
 
   var userRepo = new UserRepository();
-  userRepo.updateUser(emailAddress, firstName, lastName, session.auth_provider_name, session.auth_provider_user_id)
+  userRepo.updateUser(emailAddress, firstName, lastName, session.providerName, session.providerUserId)
               .then(function(user) {
                   res.json(user);
               })
