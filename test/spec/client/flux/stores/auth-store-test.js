@@ -5,7 +5,7 @@ import appRoot from 'app-root-path';
 import rewire from 'rewire';
 
 var AuthStore = rewire(appRoot + '/src/client/flux/stores/auth-store.js');
-// var registeredCallback = AuthStore.__get__("registeredCallback");
+var registeredCallback = AuthStore.__get__("DispatcherCallBack");
 
 describe('auth-store', function(){
 
@@ -13,6 +13,11 @@ describe('auth-store', function(){
     global.Config = new config();
     winston.level = 'debug';
     done();
+  });
+
+  beforeEach(function () {
+    AuthStore = rewire(appRoot + '/src/client/flux/stores/auth-store.js');
+    registeredCallback = this.AuthStore.__get__("DispatcherCallBack");
   });
 
 });
