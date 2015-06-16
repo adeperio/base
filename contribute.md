@@ -6,9 +6,9 @@
 
 Antonio de Perio
 
-## Learn & listen
+## Check out the README
 
-Base is maintained by Antonio de Perio. Have a look at the README.md file to get a quick intro on what Base is all about.
+There's a good overview of what Base is all about.
 
 ## Adding new features
 
