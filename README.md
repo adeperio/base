@@ -15,8 +15,10 @@ We love React+Flux and think you will to. Base scaffolds out React components al
 #### Secure web application stack using OAuth2.
 We wanted a starter kit that scaffolds out a standard implementation of a modern secure web application.
 
+##### Authentication and Sign-In
 The aim is to provide a reference implementation for how to setup an OAuth2 sign-in flow, using authorization grant types, Bearer tokens, and social logins (Google, Twitter, and Facebook) for web apps, so that developers can get started quickly with a secure default configuration right out of the box.
 
+##### API and web app security
 Beyond authentication we are also aiming to provide levels of security in protecting all areas of the application stack and API. Features such as scopes, 2 Factor auth, XSS and SQL injection filters, SSL checks etc are all being documented and placed on the roadmap. We are also hoping that by open sourcing our security implementation, we are able to invite others to help us find and plug security related issues as they arise.
 
 We're not trying to be a silver bullet. But we'd like to give developers a level of security that can get them started quickly when building apps for users.
