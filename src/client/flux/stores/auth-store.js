@@ -1,19 +1,21 @@
 'use strict';
 
 import React from 'react';
-
 import assign from 'react/lib/Object.assign';
 import _ from 'lodash';
-var events = require('eventemitter3');
-var eventEmitter = new events.EventEmitter();
+
+import Events from 'events';
+var EventEmitter = Events.EventEmitter;
 
 import Dispatcher from '../core/dispatcher';
 import ActionTypes from '../constants/action-types';
 import Session from '../models/session';
+
+
 var _sessionObject = new Session();
 
-var AuthStore = {
-
+// Define the store's public getter methods
+const AuthStore = assign({}, EventEmitter.prototype, {
   getSessionObject: function(){
     if(!_sessionObject.accessToken || !_sessionObject.emailAddress){
       var session = getSessionGlobal(); //global function call, see index.jade for function
@@ -21,20 +23,9 @@ var AuthStore = {
       _sessionObject.emailAddress = session.emailAddress;
     }
     return _sessionObject;
-  },
-
-  emit: function(event) {
-    eventEmitter.emit(event);
-  },
-
-  on: function(event, callback) {
-    eventEmitter.on(event, callback);
-  },
-
-  removeListener: function(event, callback) {
-    eventEmitter.removeListener(event, callback);
   }
-}
+});
+
 
 AuthStore.dispatcherToken = Dispatcher.register((payload) => {
   var action = payload.action;

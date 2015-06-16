@@ -2,6 +2,10 @@
 import winston from 'winston';
 import assert from 'assert';
 import appRoot from 'app-root-path';
+import rewire from 'rewire';
+
+var AuthStore = rewire(appRoot + '/src/client/flux/stores/auth-store.js');
+// var registeredCallback = AuthStore.__get__("registeredCallback");
 
 describe('auth-store', function(){
 
