@@ -15,9 +15,10 @@ var _me = new User();
 // Public Getters
 const UserStore = assign({}, EventEmitter.prototype, {
 
-  getMe: function(){
+  getMe: function() {
     return _me;
   }
+
 });
 
 //UserStore callback

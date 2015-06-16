@@ -4,9 +4,6 @@ import React from 'react';
 import Router from 'react-router';
 import routes from './routes.js';
 
-var _accessToken = '';
-var _emailAddress = '';
-
 var _globalSession = {
   accessToken: '',
   emailAddress: ''
