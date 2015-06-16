@@ -18,7 +18,6 @@ describe('auth-store', function(){
     winston.level = 'debug';
     var sessionStore = new SessionStore();
     global.sessionStoreGlobal = sessionStore;
-
     done();
   });
 

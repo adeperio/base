@@ -29,7 +29,8 @@ var createSessions = 'CREATE TABLE IF NOT EXISTS ' +
     'auth_provider_access_token VARCHAR(255) UNIQUE not null,' +
     'auth_provider_name VARCHAR(255) null,' +
     'auth_provider_user_id VARCHAR(255) null,' +
-    'created timestamp default current_timestamp)';
+    'expiry timestamp not null, ' +
+    'created timestamp not null default current_timestamp)';
 
 //pull from provider lookup class
 var insertAuthProviders = 'insert into auth_providers_lookup (name) VALUES (\'google\')';

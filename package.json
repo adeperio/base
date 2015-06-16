@@ -22,7 +22,7 @@
     "helmet": "^0.9.1",
     "jade": "1.9.2",
     "lodash": "^3.4.0",
-    "moment": "^2.10.2",
+    "moment": "^2.10.3",
     "node-uuid": "^1.4.3",
     "passport": "^0.2.2",
     "passport-google": "^0.3.0",

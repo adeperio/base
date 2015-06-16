@@ -55,6 +55,7 @@ function Mapper(){
     session.providerToken = sessionRow.auth_provider_access_token;
     session.providerName = sessionRow.auth_provider_name;
     session.providerUserId = sessionRow.auth_provider_user_id;
+    session.expiry = sessionRow.expiry;
     session.created = sessionRow.created;
 
 
