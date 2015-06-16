@@ -7,13 +7,10 @@ head
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='apple-touch-icon', href='apple-touch-icon.png')
     link(rel='stylesheet', href='/css/bootstrap.css')
-    script(type="text/javascript").
-      window.getSessionGlobal = function (){
-        return {
-          accessToken: '#{accessToken}',
-          emailAddress: '#{emailAddress}' };
-      }
 
     script(src='/app.js')
+    script(type="text/javascript").
+      window.setSessionGlobal('#{accessToken}', '#{emailAddress}');
+
   body
     div(id="appContainer")
