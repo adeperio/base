@@ -17,7 +17,6 @@ var AuthStore = {
   getSessionObject: function(){
     if(!_sessionObject.accessToken || !_sessionObject.emailAddress){
       var session = getSessionGlobal(); //global function call, see index.jade for function
-      console.log(JSON.stringify(session));
       _sessionObject.accessToken = session.accessToken;
       _sessionObject.emailAddress = session.emailAddress;
     }
