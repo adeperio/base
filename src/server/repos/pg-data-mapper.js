@@ -31,7 +31,6 @@ function Mapper(){
     user.bio = userRow.bio;
     user.created = userRow.created;
 
-
     cb(null, user);
 
   };
@@ -48,12 +47,18 @@ function Mapper(){
 
   this.mapToSession = function(sessionRow, cb){
     var session = new Session();
-    this.user = null;
-    this.baseToken = sessionRow.base_access_token;
-    this.providerToken = sessionRow.auth_provider_access_token;
-    this.providerName = sessionRow.auth_provider_name;
-    this.providerUserId = sessionRow.auth_provider_user_id;
-    this.created = sessionRow.created;
+
+    session.user._id = sessionRow.user_id_fkey;
+    session.user.emailAddress = sessionRow.email_address;
+
+    session.baseToken = sessionRow.base_access_token;
+    session.providerToken = sessionRow.auth_provider_access_token;
+    session.providerName = sessionRow.auth_provider_name;
+    session.providerUserId = sessionRow.auth_provider_user_id;
+    session.created = sessionRow.created;
+
+
+    cb(null, session);
   }
 }
 

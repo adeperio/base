@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = function(){
-  console.log('\nCURRENT NODE_ENV: ' + process.env.NODE_ENV + '\n');
+  
   switch(process.env.NODE_ENV){
 
         case 'development':

@@ -9,6 +9,7 @@ var config = require(appRoot + '/src/server/config.js');
 var mapper = require(appRoot + '/src/server/repos/pg-data-mapper.js');
 var userRows = require(appRoot + '/test/resources/userRows.json');
 var userRowFilled = require(appRoot + '/test/resources/userRowFilled.json');
+var sessionRow = require(appRoot + '/test/resources/sessionRow.json');
 
 describe('pg data mapper', function(){
 
@@ -48,6 +49,20 @@ describe('pg data mapper', function(){
       });
 
 
+    })
+  });
+
+  describe('mapToSession', function(){
+    it('should get a session object', function(done){
+
+      mapper.mapToSessionAsync(sessionRow)
+      .then(function(session){
+        assert.equal('test1@email.com', session.user.emailAddress);
+        assert.equal('baseToken1', session.baseToken);
+        done();
+      }).catch(function(e){
+        done(e);
+      });
     })
   });
 

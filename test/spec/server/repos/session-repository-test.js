@@ -41,11 +41,12 @@ describe('session repository', function(){
       var sessionRepo = new SessionRepository();
       sessionRepo.createSession(1, null, mockProviderToken, mockProviderName, mokeProviderUserId)
                     .then(function(session){
-                        console.log('createSession ' + JSON.stringify(session) + '\n');
+                        winston.log('debug', 'createSession ' + JSON.stringify(session) + '\n');
                         assert.isNotNull(session, 'created session returned');
-                        assert.isNull(session.email_address, 'email is null');
+                        assert.isNull(session.user.emailAddress, 'email is null');
                         done();
                     }).catch(function(err){
+                        winston.log(JSON.stringify(err));
                         throw err;
                     });
     })
@@ -80,10 +81,10 @@ describe('session repository', function(){
       var sessionRepo = new SessionRepository();
       sessionRepo.createSession(1, null, test_provider_token)
                     .then(function(session){
-                        return sessionRepo.getSession(session.base_access_token);
+                        return sessionRepo.getSession(session.baseToken);
                         done();
                     }).then(function(session){
-                        assert.equal(session.auth_provider_access_token, test_provider_token);
+                        assert.equal(session.providerToken, test_provider_token);
                         done();
                     }).catch(function(err){
                         throw err;
@@ -101,11 +102,10 @@ describe('session repository', function(){
       var sessionRepo = new SessionRepository();
       sessionRepo.createSession(1, null, test_provider_token)
                     .then(function(session){
-                        return sessionRepo.deleteSession(session.base_access_token);
+                        return sessionRepo.deleteSession(session.baseToken);
                         done();
                     }).then(function(result){
                         assert.equal(1, result);
-
                         done();
                     }).catch(function(err){
                         throw err;

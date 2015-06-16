@@ -3,6 +3,7 @@
 import query from 'pg-query';
 import RandomizerService from '../services/randomizer-service.js';
 import validator from 'validator';
+import mapper from './pg-data-mapper.js';
 
 function SessionRepository () {
 
@@ -28,6 +29,15 @@ function SessionRepository () {
                   } else{
                     throw new Error('There was an error creating your session');
                   }
+              })
+              .then(function(sessionRow){
+
+                if(sessionRow){
+                  console.log(JSON.stringify(sessionRow));
+                  return mapper.mapToSessionAsync(sessionRow);
+                } else{
+                  return null;
+                }
               });
     }
 
@@ -43,6 +53,14 @@ function SessionRepository () {
                 } else{
                   throw new Error('There was an error getting the session');
                 }
+            })
+            .then(function(sessionRow){
+
+              if(sessionRow){
+                return mapper.mapToSessionAsync(sessionRow);
+              } else{
+                return null;
+              }
             });
 
   };

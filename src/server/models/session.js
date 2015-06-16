@@ -1,9 +1,9 @@
 'use strict'
-
+import User from './user.js';
 function Session(){
 
   this._id = '';
-  this.user = null; //a User object
+  this.user = new User(); //a User object
   this.baseToken = ''; //access token managed by Base
   this.providerToken = ''; //token provided by auth provider, if any
   this.providerName = ''; //ie google, twitter, see provider-lookup.js
