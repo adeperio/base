@@ -33,9 +33,9 @@ describe('session-store', function(){
       var mockAccessToken = randomizer.getRandomUUIDv4();
       var mockEmail = randomizer.getRandomUUIDv4();
 
-      global.sessionStoreGlobal.setSessionGlobal(mockAccessToken, mockEmail);
+      sessionStoreGlobal.setSessionGlobal(mockAccessToken, mockEmail);
 
-      var globalSession = global.sessionStoreGlobal.getSessionGlobal();
+      var globalSession = sessionStoreGlobal.getSessionGlobal();
 
       assert.isNotNull(globalSession, 'global session created');
       assert.equal(mockAccessToken, globalSession.accessToken);

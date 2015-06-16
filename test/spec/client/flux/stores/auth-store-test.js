@@ -5,13 +5,15 @@ import appRoot from 'app-root-path';
 import rewire from 'rewire';
 
 var config = require(appRoot + '/src/server/config.js');
-// var sessionStore = require(appRoot + '/src/client/session-store.js');
+var SessionStore = require(appRoot + '/src/client/session-store.js');
 
 describe('auth-store', function(){
 
   before(function(done){
     global.Config = new config();
     winston.level = 'debug';
+    var sessionStore = new SessionStore();
+    global.sessionStoreGlobal = sessionStore;
     done();
   });
 
