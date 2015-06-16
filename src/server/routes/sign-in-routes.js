@@ -27,6 +27,8 @@ router.get('/google/callback', passport.authenticate('google', { session: false,
         sessionRepo.createSession(user.id, user.emailAddress, accessToken, ProviderLookup.Google, googleUserId)
           .then(function(session){
 
+
+
             //This call back will render the index page on the callback route.
             //View the app.js file for the route mapping for /google/callback.
             //check out http://adeper.io/2015/06/tokens-express-react-how-to-get-your-bearer-token-from-the-server-to-the-client/

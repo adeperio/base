@@ -15,7 +15,7 @@ router.get('/me', passport.authenticate('bearer', { session: false }), function(
             .then(function(user){
               res.json(user);
             }).catch(function(err){
-              done(err);
+              res.redirect('/error');
             });
 
 });

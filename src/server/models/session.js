@@ -9,7 +9,7 @@ function Session(){
   this.providerToken = ''; //token provided by auth provider, if any
   this.providerName = ''; //ie google, twitter, see provider-lookup.js
   this.providerUserId = ''; //the user identifier provided by the auth provider
-  this.timeToLiveInMilliseconds = Config.token.timeToLiveInMilliseconds;
+  this.expiry = null;
   this.created = null;
 }
 

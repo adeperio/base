@@ -1,7 +1,9 @@
 'use strict'
 
+import moment from 'moment';
 var BearerStrategy = require('passport-http-bearer').Strategy;
 import SessionRepository from '../../repos/session-repository.js';
+
 
 //This is where token validation is checked
 module.exports = new BearerStrategy(
@@ -11,13 +13,15 @@ module.exports = new BearerStrategy(
         sessionRepo.getSession(token)
             .then(function(session){
 
-              var ttlInMilliSeconds = session.timeToLiveInMilliseconds;
-              var createdDate = session.created;
 
+              if(!session ) {
+                  return done(null, false);
+              }
 
+              var now = new Date();
+              var tokenIsExpired = (moment(now).isAfter(session.expiry));
 
-
-              if(!session && ) {
+              if(tokenIsExpired) {
                   return done(null, false);
               }
 
