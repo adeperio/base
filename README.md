@@ -17,6 +17,9 @@ We wanted a starter kit that scaffolds out a reference implementation of a moder
 
 We're not trying to be a silver bullet. But we'd like to give developers a level of security that can get them started quickly when building apps for users.
 
+### Express / Node
+We are trying to continue to make technology choices that support a balance of functionality, with light, powerful and un-opinionated implementations. We think ReactJS has been great for this, and we try to continue this trend through to Express and NodeJS. Express and NodeJS provides a powerful and scalable web stack as a base, but we hope enough flexibility and freedom to use and integrate other web frameworks as preferred on top (e.g Backbone etc).
+
 ### An RDBMS Alternative
 MongoDB is a very popular persistent store on the web, and with many good reasons. But we thnk there are many apps out there where an RDBMs is still the most relevant choice. We chose Postgres as a fast, scalable, open source, and well supported RDBMS option.
 
