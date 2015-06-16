@@ -11,11 +11,11 @@ import Dispatcher from '../core/dispatcher';
 import ActionTypes from '../constants/action-types';
 import Session from '../models/session';
 
-
 var _sessionObject = new Session();
 
-// Define the store's public getter methods
+// Public Getters
 const AuthStore = assign({}, EventEmitter.prototype, {
+
   getSessionObject: function(){
     if(!_sessionObject.accessToken || !_sessionObject.emailAddress){
       var session = getSessionGlobal(); //global function call, see index.jade for function
@@ -24,10 +24,11 @@ const AuthStore = assign({}, EventEmitter.prototype, {
     }
     return _sessionObject;
   }
+
 });
 
-
-AuthStore.dispatcherToken = Dispatcher.register((payload) => {
+//Our store callback
+const dispatcherCallBack = function (payload) {
   var action = payload.action;
 
   switch (action.actionType) {
@@ -43,11 +44,12 @@ AuthStore.dispatcherToken = Dispatcher.register((payload) => {
     case ActionTypes.SIGNUP_ERR:
         AuthStore.emit(ActionTypes.SIGNUP_ERR);
         break;
-
     default:
       // Do nothing
   }
+};
 
-});
+//Register callback
+AuthStore.dispatcherToken = Dispatcher.register(dispatcherCallBack);
 
 module.exports = AuthStore;
