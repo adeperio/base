@@ -95,14 +95,6 @@ Currently the approach we are taking (again open for critique):
 
 The RFC is a pretty hefty, but detailed resource if you want to go in depth into the requirements for the correct implementation of OAuth2 - https://tools.ietf.org/html/rfc6749
 
-## JS Coding Conventions
-
-There's plently of coding standards out there for JS. The following is what we try to adhere to in Base. The aim throughout the repo was to be consistent in its application.
-
-1. File names use lowercase and hyphens
-2. Class definitions are capitalised
-3. Method, instance and variable names use lower camel case.
-
 
 ## Acknowledgements
 

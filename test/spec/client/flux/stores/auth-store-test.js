@@ -11,9 +11,4 @@ describe('auth-store', function(){
     done();
   });
 
-
-
-
-
-
 });
