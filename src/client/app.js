@@ -3,11 +3,9 @@
 import React from 'react';
 import Router from 'react-router';
 import routes from './routes.js';
+import Session from './flux/models/session.js';
 
-var _globalSession = {
-  accessToken: '',
-  emailAddress: ''
-};
+var _globalSession = new Session();
 
 window.setSessionGlobal = function (accessToken, emailAddress){
   _globalSession.accessToken = accessToken;
