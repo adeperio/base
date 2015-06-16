@@ -10,8 +10,10 @@ import ProviderLookup from '../auth/provider-lookup.js';
 var router = express.Router();
 
 //The authentication url
-router.get('/connect', passport.authenticate('google', { scope:
+router.get('/connect/google', passport.authenticate('google', { scope:
     [ 'https://www.googleapis.com/auth/plus.login'] }));
+
+    
 
 //callback route after successful google authentication
 router.get('/google/callback', passport.authenticate('google', { session: false, failureRedirect: "/error" }),

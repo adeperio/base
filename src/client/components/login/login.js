@@ -22,8 +22,12 @@ export default React.createClass({
 
   },
 
-  onGoToSignIn: function(){
-    window.location = '/auth/connect/';
+  onGoToGoogleSignIn: function(){
+    window.location = '/auth/connect/google';
+  },
+
+  onGoToFacebookSignIn: function(){
+    window.location = '/auth/connect/facebook';
   },
 
   render: function() {
@@ -33,8 +37,11 @@ export default React.createClass({
           <div className="login-box">
             <h1>Base</h1>
 
-            <Bootstrap.Button className="btn-danger" onClick={this.onGoToSignIn}>
+            <Bootstrap.Button className="btn-danger login-button" onClick={this.onGoToGoogleSignIn}>
               Sign in with Google
+            </Bootstrap.Button>
+            <Bootstrap.Button className="btn-primary login-button" onClick={this.onGoToFacebookSignIn}>
+              Sign in with Facebook
             </Bootstrap.Button>
           </div>
 
