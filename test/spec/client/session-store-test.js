@@ -7,14 +7,21 @@ var assert = chai.assert;
 var expect = chai.expect;
 
 var RandomizerService = require(appRoot + '/src/server/services/randomizer-service.js');
-var sessionStore = require(appRoot + '/src/client/session-store.js');
+var SessionStore = require(appRoot + '/src/client/session-store.js');
 var config = require(appRoot + '/src/server/config.js');
+
+//emulates attaching the session object to window
+
 
 describe('session-store', function(){
 
   before(function(done){
     global.Config = new config();
     winston.level = 'debug';
+
+    var sessionStore = new SessionStore();
+    global.sessionStoreGlobal = sessionStore;
+
     done();
   });
 
@@ -26,9 +33,9 @@ describe('session-store', function(){
       var mockAccessToken = randomizer.getRandomUUIDv4();
       var mockEmail = randomizer.getRandomUUIDv4();
 
-      setSessionGlobal(mockAccessToken, mockEmail);
+      global.sessionStoreGlobal.setSessionGlobal(mockAccessToken, mockEmail);
 
-      var globalSession = getSessionGlobal();
+      var globalSession = global.sessionStoreGlobal.getSessionGlobal();
 
       assert.isNotNull(globalSession, 'global session created');
       assert.equal(mockAccessToken, globalSession.accessToken);
