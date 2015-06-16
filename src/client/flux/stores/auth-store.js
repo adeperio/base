@@ -3,14 +3,13 @@
 import React from 'react';
 import assign from 'react/lib/Object.assign';
 import _ from 'lodash';
-
 import Events from 'events';
-var EventEmitter = Events.EventEmitter;
 
 import Dispatcher from '../core/dispatcher';
 import ActionTypes from '../constants/action-types';
 import Session from '../models/session';
 
+var EventEmitter = Events.EventEmitter;
 var _sessionObject = new Session();
 
 // Public Getters
@@ -27,8 +26,8 @@ const AuthStore = assign({}, EventEmitter.prototype, {
 
 });
 
-//Our store callback
-const dispatcherCallBack = function (payload) {
+//AuthStore callback
+const DispatcherCallBack = function (payload) {
   var action = payload.action;
 
   switch (action.actionType) {
@@ -50,6 +49,6 @@ const dispatcherCallBack = function (payload) {
 };
 
 //Register callback
-AuthStore.dispatcherToken = Dispatcher.register(dispatcherCallBack);
+AuthStore.dispatcherToken = Dispatcher.register(DispatcherCallBack);
 
 module.exports = AuthStore;

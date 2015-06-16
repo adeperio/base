@@ -1,37 +1,29 @@
 'use strict';
 
+import React from 'react';
 import assign from 'react/lib/Object.assign';
 import _ from 'lodash';
-var events = require('eventemitter3');
-var eventEmitter = new events.EventEmitter();
+import Events from 'events';
 
 import Dispatcher from '../core/dispatcher';
 import ActionTypes from '../constants/action-types';
 import User from '../models/user';
 
+var EventEmitter = Events.EventEmitter;
 var _me = new User();
 
-var UserStore = {
+// Public Getters
+const UserStore = assign({}, EventEmitter.prototype, {
 
   getMe: function(){
     return _me;
-  },
-
-  emit: function(event) {
-    eventEmitter.emit(event);
-  },
-
-  on: function(event, callback) {
-    eventEmitter.on(event, callback);
-  },
-
-  removeListener: function(event, callback) {
-    eventEmitter.removeListener(event, callback);
   }
 
-}
+});
 
-UserStore.dispatcherToken = Dispatcher.register((payload) => {
+
+//UserStore callback
+const DispatcherCallBack = function (payload) {
   var action = payload.action;
 
   switch (action.actionType) {
@@ -47,7 +39,9 @@ UserStore.dispatcherToken = Dispatcher.register((payload) => {
     default:
       // Do nothing
   }
+};
 
-});
+
+UserStore.dispatcherToken = Dispatcher.register(DispatcherCallBack);
 
 module.exports = UserStore;
