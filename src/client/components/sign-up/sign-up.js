@@ -122,11 +122,11 @@ export default React.createClass({
                    onChange={this.onEmailValueChange} />
 
 
-              <Bootstrap.Button className="btn-primary" onClick={this.onSignUp}>
+                 <Bootstrap.Button className="btn-primary sign-up-button" onClick={this.onSignUp}>
                 Sign up
               </Bootstrap.Button>
 
-              <Bootstrap.Button className="btn-danger" onClick={this.onSignOut}>
+              <Bootstrap.Button className="btn-danger sign-up-button" onClick={this.onSignOut}>
                 Sign out
               </Bootstrap.Button>
 
