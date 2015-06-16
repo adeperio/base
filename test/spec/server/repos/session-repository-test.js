@@ -11,7 +11,7 @@ var RandomizerService = require(appRoot + '/src/server/services/randomizer-servi
 var config = require(appRoot + '/src/server/config.js');
 var userRow = require(appRoot + '/test/resources/userRow.json');
 
-describe('session repository', function(){
+describe('session-repository', function(){
 
   before(function(done){
     winston.level = 'debug';

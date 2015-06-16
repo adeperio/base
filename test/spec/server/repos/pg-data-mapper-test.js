@@ -11,7 +11,7 @@ var userRows = require(appRoot + '/test/resources/userRows.json');
 var userRowFilled = require(appRoot + '/test/resources/userRowFilled.json');
 var sessionRow = require(appRoot + '/test/resources/sessionRow.json');
 
-describe('pg data mapper', function(){
+describe('pg-data-mapper', function(){
 
   before(function(done){
     global.Config = new config();

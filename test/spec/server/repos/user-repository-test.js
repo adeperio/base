@@ -10,7 +10,7 @@ var RandomizerService = require(appRoot + '/src/server/services/randomizer-servi
 var ProviderLookup = require(appRoot + '/src/server/auth/provider-lookup.js');
 var config = require(appRoot + '/src/server/config.js');
 
-describe('user repository', function(){
+describe('user-repository', function(){
 
   before(function(done){
     global.Config = new config();
