@@ -16,9 +16,18 @@ var _sessionObject = new Session();
 const AuthStore = assign({}, EventEmitter.prototype, {
 
   getSessionObject: function() {
-    if(!_sessionObject.accessToken || !_sessionObject.emailAddress) {
-      var session = sessionStoreGlobal.getSessionGlobal(); //global function call, see index.jade for function
+
+    //global function call, see index.jade for function
+    //This is a little bit of redundancy but helps ensure a global call is in one place
+    //The global call is needed as it's how we insert the access token into the client app from the server
+    //that allows access by the React virtual DOM
+    var session = sessionStoreGlobal.getSessionGlobal();
+
+    if(!_sessionObject.accessToken){
       _sessionObject.accessToken = session.accessToken;
+    }
+
+    if(!_sessionObject.emailAddress) {
       _sessionObject.emailAddress = session.emailAddress;
     }
     return _sessionObject;

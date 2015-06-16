@@ -10,9 +10,6 @@ var RandomizerService = require(appRoot + '/src/server/services/randomizer-servi
 var SessionStore = require(appRoot + '/src/client/session-store.js');
 var config = require(appRoot + '/src/server/config.js');
 
-//emulates attaching the session object to window
-
-
 describe('session-store', function(){
 
   before(function(done){
@@ -34,7 +31,6 @@ describe('session-store', function(){
       var mockEmail = randomizer.getRandomUUIDv4();
 
       sessionStoreGlobal.setSessionGlobal(mockAccessToken, mockEmail);
-
       var globalSession = sessionStoreGlobal.getSessionGlobal();
 
       assert.isNotNull(globalSession, 'global session created');
