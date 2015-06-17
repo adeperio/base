@@ -3,7 +3,9 @@
 # Base
 ![Alt text](/logo.png?raw=true "Base")
 
-This is a seed / scaffolding project for a full front-end / back-end web application stack with OAuth2. Built with ReactJS, Flux, Express, and Postgres.
+This is a seed / scaffolding project for a web application stack with OAuth2.
+
+Built with ReactJS, Flux, Express, and Postgres.
 
 Base aims to scaffold out a modern web application stack, with industry standard OAuth2 user access functionality and API security, right out of the box. So you can spend more time on what matters most - building, designing and hacking out your apps.
 
@@ -21,7 +23,8 @@ The aim is to provide a reference implementation for how to setup an OAuth2 sign
 ##### API and web app security
 Beyond authentication we are also aiming to provide levels of security in protecting all areas of the application stack and API. Features such as scopes, 2 Factor auth, XSS and SQL injection filters, SSL checks etc are all being documented and placed on the roadmap. We are also hoping that by open sourcing our security implementation, we are able to invite others to help us find and plug security related issues as they arise.
 
-We're not trying to be a silver bullet. But we'd like to give developers a level of security that can get them started quickly when building apps for users.
+> We're not trying to be a silver bullet, and you will need to think about application security at all stages of your development
+> But we'd like to give developers a reference and level of security that can get them started on the right track when building their secure web apps
 
 #### Express / Node
 We are trying to continue to make technology choices that support a balance of functionality, with light, powerful and un-opinionated implementations. We think ReactJS has been great for this, and we try to continue this trend through to Express and NodeJS. Express and NodeJS provides a powerful and scalable web stack as a base, but we hope enough flexibility and freedom to use and integrate other web frameworks as preferred on top (e.g Backbone etc).
