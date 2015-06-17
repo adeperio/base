@@ -23,7 +23,7 @@ The aim is to provide a reference implementation for how to setup an OAuth2 sign
 ##### API and web app security
 Beyond authentication we are also aiming to provide levels of security in protecting all areas of the application stack and API. Features such as scopes, 2 Factor auth, XSS and SQL injection filters, SSL checks etc are all being documented and placed on the roadmap. We are also hoping that by open sourcing our security implementation, we are able to invite others to help us find and plug security related issues as they arise.
 
-##### We're not trying to be a silver bullet
+##### No silver bullet
 > Software security is hard, and you will need to think about application security at all stages of your development.
 > But we'd like to give developers a reference and level of security for common security protection implementations and to get them started on the right track.
 
