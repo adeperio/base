@@ -25,7 +25,8 @@ Beyond authentication we are also aiming to provide levels of security in protec
 
 ##### No silver bullet
 > Software security is hard, and application security happens at all stages of development.
-> But we'd like to give developers a solid start. Base aims to be a reference and provide a starting level of security for common protections and implementations for your web app.
+
+But we'd like to give developers a solid start. Base aims to be a reference and provide a starting level of security for common protections and implementations for your web app.
 
 #### Express / Node
 We are trying to continue to make technology choices that support a balance of functionality, with light, powerful and un-opinionated implementations. We think ReactJS has been great for this, and we try to continue this trend through to Express and NodeJS. Express and NodeJS provides a powerful and scalable web stack as a base, but we hope enough flexibility and freedom to use and integrate other web frameworks as preferred on top (e.g Backbone etc).
