@@ -5,8 +5,7 @@ import Router from 'react-router';
 import routes from './routes.js';
 import SessionStore from './session-store.js';
 
-var sessionStore = new SessionStore();
-window.sessionStoreGlobal = sessionStore;
+window.sessionStoreGlobal = new SessionStore();
 
 function run() {
   Router.run(routes, Router.HistoryLocation, function (Handler) {

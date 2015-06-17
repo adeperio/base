@@ -17,10 +17,18 @@ export default React.createClass({
   },
 
   componentDidMount: function() {
+
+    if(this.context.router){
+      var params = this.context.router.getCurrentParams();
+      console.log('PARAMS ' + JSON.stringify(params));
+    }
+
     var sessionObject = AuthStore.getSessionObject();
     if(!sessionObject.emailAddress){
       this.goToSignup();
     }
+
+
   },
 
   goToSignup: function(){

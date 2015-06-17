@@ -32,6 +32,7 @@ router.get('/google/callback', passport.authenticate('google', { session: false,
             //View the app.js file for the route mapping for /google/callback.
             //check out http://adeper.io/2015/06/tokens-express-react-how-to-get-your-bearer-token-from-the-server-to-the-client/
             //for why we use the express render method to send up the access token to the client
+
             res.render('index', {
                                     accessToken: session.baseToken,
                                     emailAddress: session.user.emailAddress

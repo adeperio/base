@@ -21,7 +21,7 @@ var routes = (
     <Route name="signup" path="/signup" handler={SignUp}/>
     <Route name="error" path="/error" handler={Error}/>
     <Redirect from="/auth/google/callback" to="/home" />
-    <Redirect from="/auth/facebook/callback" to="/home" />
+    <Redirect from="/auth/facebook/callback" to="/home"/>
     <DefaultRoute handler={Login}/>
   </Route>
 );
