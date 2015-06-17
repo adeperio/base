@@ -8,7 +8,7 @@ import FacebookUser from './facebook-user.js';
 import UserRepository from '../../repos/user-repository.js';
 import ProviderLookup from '../../auth/provider-lookup.js';
 
-passport.use(new FacebookStrategy({
+module.exports = new FacebookStrategy({
     clientID:     Config.auth.facebook.clientID,
     clientSecret: Config.auth.facebook.clientSecret,
     callbackURL:  Config.auth.facebook.callbackURL
@@ -34,4 +34,4 @@ passport.use(new FacebookStrategy({
         done(err, null);
     });
   }
-));
+);

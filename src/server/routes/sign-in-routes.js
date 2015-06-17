@@ -9,7 +9,7 @@ import ProviderLookup from '../auth/provider-lookup.js';
 
 var router = express.Router();
 
-//The authentication url
+//The authentication url for google
 router.get('/connect/google', passport.authenticate('google', { scope:
     [ 'https://www.googleapis.com/auth/plus.login'] }));
 
@@ -41,6 +41,10 @@ router.get('/google/callback', passport.authenticate('google', { session: false,
           });
     }
 );
+
+//The authentication url for FB
+router.get('/connect/facebook', passport.authenticate('facebook'));
+
 
 
 
