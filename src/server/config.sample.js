@@ -1,26 +1,46 @@
 'use strict'
 
 module.exports = function(){
-  
+
   switch(process.env.NODE_ENV){
 
-        case 'development':
-            return {
-              connectionString: 'postgres://postgres:postgres@localhost:5432/base',
-              auth: {
-                clientID: '',
-                clientSecret: '',
-                callbackURL: ''
-              }
-            };
+    case 'development':
+        return {
+          connectionString: 'postgres://postgres:postgres@localhost:5432/base',
+          auth: {
+            google: {
+              clientID: '',
+              clientSecret: '',
+              callbackURL: ''
+            },
+            facebook: {
+              clientID: '',
+              clientSecret: '',
+              callbackURL: ''
+            }
+          },
+          token: {
+            timeToLiveInMilliseconds:7200000
+          }
+        };
 
-        case 'test':
+    case 'test':
             return {
               connectionString: 'postgres://postgres:postgres@localhost:5432/base-test',
               auth: {
-                clientID: '',
-                clientSecret: '',
-                callbackURL: ''
+                google: {
+                  clientID: '',
+                  clientSecret: '',
+                  callbackURL: ''
+                },
+                facebook: {
+                  clientID: '',
+                  clientSecret: '',
+                  callbackURL: ''
+                }
+              },
+              token: {
+                timeToLiveInMilliseconds:7200000
               }
             };
 
@@ -28,9 +48,19 @@ module.exports = function(){
             return {
               connectionString: 'postgres://postgres:postgres@productionhost.com:5432/base',
               auth: {
-                clientID: '',
-                clientSecret: '',
-                callbackURL: ''
+                google: {
+                  clientID: '',
+                  clientSecret: '',
+                  callbackURL: ''
+                },
+                facebook: {
+                  clientID: '',
+                  clientSecret: '',
+                  callbackURL: ''
+                }
+              },
+              token: {
+                timeToLiveInMilliseconds:7200000
               }
             };
 
@@ -38,9 +68,19 @@ module.exports = function(){
             return {
               connectionString: 'postgres://postgres:postgres@localhost:5432/base',
               auth: {
-                clientID: '',
-                clientSecret: '',
-                callbackURL: ''
+                google: {
+                  clientID: '',
+                  clientSecret: '',
+                  callbackURL: ''
+                },
+                facebook: {
+                  clientID: '',
+                  clientSecret: '',
+                  callbackURL: ''
+                }
+              },
+              token: {
+                timeToLiveInMilliseconds:7200000
               }
             };
     }
