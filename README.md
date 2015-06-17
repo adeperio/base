@@ -11,6 +11,8 @@ Base aims to scaffold out a modern web application stack, with industry standard
 
 ## Why
 
+[Why Base? Good question ...](/docs/overview.md)
+
 #### A starter kit and reference implementation for Facebook's ReactJS+Flux.
 We love React+Flux and think you will to. Base scaffolds out React components along with related Flux actions and stores, and provides a starter framework for getting a ReactJS front-end chatting with an Express / Postgres back-end.
 
@@ -23,7 +25,7 @@ Express and NodeJS provides a powerful and scalable web stack as a base, but we 
 #### An RDBMS Alternative
 MongoDB is a very popular persistent store on the web, and with many good reasons. But we thnk there are many apps out there where an RDBMs is still the most relevant choice. We chose Postgres as a fast, scalable, open source, and well supported RDBMS option.
 
-[Why Base](/docs/overview.md)
+
 
 ## Features
 
