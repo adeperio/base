@@ -45,6 +45,33 @@ router.get('/google/callback', passport.authenticate('google', { session: false,
 //The authentication url for FB
 router.get('/connect/facebook', passport.authenticate('facebook'));
 
+//callback route after successful google authentication
+router.get('/facebook/callback', passport.authenticate('facebook', { session: false, failureRedirect: "/error" }),
+
+    function(req, res) {
+
+        var facebookUser = req.user;
+        var user = facebookUser.user;
+        var accessToken = facebookUser.accessToken;
+        var facebookUserId = facebookUser.facebookUserId;
+
+        var sessionRepo = new SessionRepository();
+        sessionRepo.createSession(user.id, user.emailAddress, accessToken, ProviderLookup.Facebook, facebookUserId)
+          .then(function(session){
+
+            //This call back will render the index page on the callback route.
+            //View the app.js file for the route mapping for /google/callback.
+            //check out http://adeper.io/2015/06/tokens-express-react-how-to-get-your-bearer-token-from-the-server-to-the-client/
+            //for why we use the express render method to send up the access token to the client
+            res.render('index', {
+                                    accessToken: session.baseToken,
+                                    emailAddress: session.user.emailAddress
+                                });
+          }).catch(function(e){
+            res.redirect('/error');
+          });
+    }
+);
 
 
 
