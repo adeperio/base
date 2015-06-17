@@ -19,7 +19,6 @@ router.get('/signup', passport.authenticate('bearer', { session: false }), funct
                   res.json(user);
               })
               .catch(function (e) {
-                  console.log(JSON.stringify(e));
                   res.status(500).send(e.message);
               });
 
