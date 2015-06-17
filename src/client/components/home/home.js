@@ -8,11 +8,8 @@ import UserActions from '../../flux/actions/user-actions';
 import AuthStore from '../../flux/stores/auth-store';
 import UserStore from '../../flux/stores/user-store';
 import ActionTypes from '../../flux/constants/action-types';
-
 import UserProfile from '../user-profile';
 
-//This is the entry point after the auth callback
-//see the route map in app.js
 export default React.createClass({
 
   contextTypes: {
@@ -39,12 +36,20 @@ export default React.createClass({
   render: function() {
 
     return (
-      <div className={'home'}>
-          <div className="home-box">
-              <UserProfile/>
-              <Bootstrap.Button className="btn-danger" onClick={this.onSignOut}>
-                Sign out
-              </Bootstrap.Button>
+      <div className="home row container-full">
+          <div className="col-md-2 container-full">
+            <div className="logo">
+              <img src="/logo.png" />
+              <img src="/basejs.svg" />
+            </div>
+
+          </div>
+          <div className="col-md-10 container-full">
+            <Bootstrap.Button className="btn-danger" onClick={this.onSignOut}>
+              Sign out
+            </Bootstrap.Button>
+
+            <UserProfile/>
           </div>
       </div>
     );

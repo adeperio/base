@@ -1,24 +1,50 @@
 @import "../../styles/variables.less";
 
 .home {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
- -ms-transform: translateY(-50%);
- transform: translateY(-50%);
-  height:500px;
-  width:100%;
+  height:100vmax;
+  overflow:hidden;
+
+  .logo{
+
+    height:100px;
+    margin-top:20px;
+
+    img:first-child {
+      width:150px;
+    }
+
+    img:last-child {
+      margin-top:20px;
+    }
+
+    img {
+      float:left;
+      display:inline-block;
+      vertical-align: middle;
+    }
+  }
+
 }
 
+
 .home-box {
-    background-color: #ffffff;
-    padding: 40px 40px 70px 40px;
-    border-radius: 1px;
-    border-color:#ccc;
-    min-width:320px;
-    max-width: 500px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align:center;
+
+ //  position: absolute;
+ //  top: 50%;
+ //  -webkit-transform: translateY(-50%);
+ // -ms-transform: translateY(-50%);
+ // transform: translateY(-50%);
+ //  height:500px;
+ //  width:100%;
+
+    // background-color: #ffffff;
+    // padding: 40px 40px 70px 40px;
+    // border-radius: 1px;
+    // border-color:#ccc;
+    // min-width:320px;
+    // max-width: 500px;
+    // display: block;
+    // margin-left: auto;
+    // margin-right: auto;
+    // text-align:center;
 }
