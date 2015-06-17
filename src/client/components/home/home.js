@@ -42,14 +42,20 @@ export default React.createClass({
               <img src="/logo.png" />
               <img src="/basejs.svg" />
             </div>
-
           </div>
           <div className="col-md-10 container-full right-panel">
-            <Bootstrap.Button className="btn-danger" onClick={this.onSignOut}>
-              Sign out
-            </Bootstrap.Button>
+            <div className="header-panel col-md-2 col-md-offset-10">
+              <Bootstrap.Button className="btn-default" onClick={this.onSignOut}>
+                Sign out
+              </Bootstrap.Button>
+            </div>
 
-            <UserProfile/>
+            <div className="user-panel col-md-2 col-md-offset-5">
+              <UserProfile/>
+            </div>
+
+
+
           </div>
       </div>
     );
