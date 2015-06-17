@@ -9,11 +9,13 @@ var createUsers = 'CREATE TABLE IF NOT EXISTS ' +
     'id SERIAL PRIMARY KEY, ' +
     'auth_provider_lookup_id_fkey integer not null references auth_providers_lookup(id), ' +
     'auth_provider_user_id VARCHAR(255) not null, ' + //user designation from auth proivder
-    'email_address VARCHAR(255) UNIQUE null, ' +
+    'email_address VARCHAR(255) null, ' +
     'first_name VARCHAR(255) null, ' +
     'last_name VARCHAR(255) null, ' +
     'bio VARCHAR(1024) null, ' +
     'created timestamp default current_timestamp)';
+
+var usersIndex = 'CREATE UNIQUE INDEX email_providerid_idx ON users (email_address, auth_provider_user_id);';
 
 var createAuthProvidersLookup = 'CREATE TABLE IF NOT EXISTS ' +
     'auth_providers_lookup(' +
@@ -50,6 +52,8 @@ client.query(dropAuthProvidersLookup);
 //create and bootstrap tables
 client.query(createAuthProvidersLookup);
 client.query(createUsers);
+client.query(usersIndex);
+
 
 client.query(insertGoogleProvider);
 client.query(insertFacebookProvider);
