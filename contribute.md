@@ -1,9 +1,5 @@
 # Contribute.md
 
-## Team members
-
-Antonio de Perio
-
 ## Check out the README
 
 There's a good overview of what Base is all about.
@@ -24,3 +20,7 @@ This section includes advice on how to build new features for the project & what
     * DB Table names and field names follow a lowercase / underscore naming pattern (e.g. email_address)
     * As much as possible we let the code be "self commenting". We use comments sparingly if needed, but as a general rule, if the code can't be understood on reading, then it's probably a smell to indicate that it needs a refactor.
 7. If you get stuck or have any questions or even just want to have a friendly chat, ping / DM me on twitter @adeperio
+
+## Team members
+
+Antonio de Perio
