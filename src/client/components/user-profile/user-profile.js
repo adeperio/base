@@ -55,7 +55,7 @@ export default React.createClass({
 
     return (
       <div className={'user-profile'}>
-        <img src="/profile-default.png" />
+        <img src="/avatar.png" />
         <h1>{usersName}</h1>
         <p>{emailAddress}</p>
         <p>{bio}</p>
