@@ -10,9 +10,9 @@ import ProviderLookup from '../../auth/provider-lookup.js';
 var GoogleStrategy = passportGoogleOauth2.Strategy;
 
 module.exports = new GoogleStrategy({
-  clientID:     Config.auth.clientID,
-  clientSecret: Config.auth.clientSecret,
-  callbackURL:  Config.auth.callbackURL,
+  clientID:     Config.auth.google.clientID,
+  clientSecret: Config.auth.google.clientSecret,
+  callbackURL:  Config.auth.google.callbackURL,
   passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {

@@ -2,7 +2,8 @@
 
 //these string values get bootsrapped from a lookup table
 var providerLookup = {
-  Google: 'google'
+  Google: 'google',
+  Facebook: 'facebook'
 }
 
 module.exports = providerLookup;

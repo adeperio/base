@@ -33,7 +33,8 @@ var createSessions = 'CREATE TABLE IF NOT EXISTS ' +
     'created timestamp not null default current_timestamp)';
 
 //pull from provider lookup class
-var insertAuthProviders = 'insert into auth_providers_lookup (name) VALUES (\'google\')';
+var insertGoogleProvider = 'insert into auth_providers_lookup (name) VALUES (\'google\')';
+var insertFacebookProvider = 'insert into auth_providers_lookup (name) VALUES (\'facebook\')';
 
 var dropAuthProvidersLookup = 'DROP TABLE IF EXISTS auth_providers_lookup';
 var dropSessions = 'DROP TABLE IF EXISTS sessions';
@@ -49,7 +50,10 @@ client.query(dropAuthProvidersLookup);
 //create and bootstrap tables
 client.query(createAuthProvidersLookup);
 client.query(createUsers);
-client.query(insertAuthProviders);
+
+client.query(insertGoogleProvider);
+client.query(insertFacebookProvider);
+
 client.query(createSessions)
   .on('end', function() {
     client.end();
