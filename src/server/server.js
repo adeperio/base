@@ -10,8 +10,8 @@ import path from 'path';
 import https from 'https';
 import fs from 'fs';
 import sslRootCas from 'ssl-root-cas';
-// import helmet from 'helmet';
-// import express_enforces_ssl from 'express-enforces-ssl';
+import helmet from 'helmet';
+import express_enforces_ssl from 'express-enforces-ssl';
 
 import signInRoutes from './routes/sign-in-routes.js';
 import signOutRoutes from './routes/sign-out-routes.js';
@@ -36,25 +36,26 @@ server.use(express.static(path.join(__dirname)));
 // ======== *** SECURITY MIDDLEWARE ***
 
 //setup helmet js
-// server.use(helmet());
+server.use(helmet());
 
 //setting CSP
-// var scriptSources = ["'self'", "'unsafe-inline'", "'unsafe-eval'", "ajax.googleapis.com", "www.google-analytics.com"];
-// var styleSources = ["'self'", "'unsafe-inline'", "ajax.googleapis.com"];
-// var connectSources = ["'self'"];
-// server.use(helmet.contentSecurityPolicy({
-//     defaultSrc: ["'self'"],
-//     scriptSrc: scriptSources,
-//     styleSrc: styleSources,
-//     connectSrc: connectSources,
-//     reportOnly: false,
-//     setAllHeaders: false,
-//     safari5: false
-// }));
+var scriptSources = ["'self'", "'unsafe-inline'", "'unsafe-eval'", "ajax.googleapis.com", "www.google-analytics.com"];
+var styleSources = ["'self'", "'unsafe-inline'", "ajax.googleapis.com"];
+var connectSources = ["'self'"];
+
+server.use(helmet.contentSecurityPolicy({
+    defaultSrc: ["'self'"],
+    scriptSrc: scriptSources,
+    styleSrc: styleSources,
+    connectSrc: connectSources,
+    reportOnly: false,
+    setAllHeaders: false,
+    safari5: false
+}));
 
 //enforcing SSL for production environments both
-// server.enable('trust proxy'); //use this if working on SSL behind a proxy
-// server.use(express_enforces_ssl()); //this enforces a TLS connection
+server.enable('trust proxy'); //use this if working on SSL behind a proxy
+server.use(express_enforces_ssl()); //this enforces a TLS connection
 
 //passport setup
 server.use(passport.initialize());
@@ -75,6 +76,7 @@ server.get('/*', function (req, res) {
 });
 
 // ========= *** HTTPS setup ***
+// We run in https by default even on local environments
 sslRootCas.inject().addFile(path.join(__dirname, 'certs', 'server', 'my-root-ca.crt.pem'));
 var sslOptions = {
                 key: fs.readFileSync(path.join(__dirname, 'certs', 'server', 'my-server.key.pem')),
