@@ -38,6 +38,7 @@
     "request": "^2.55.0",
     "request-promise": "^0.4.2",
     "rewire": "^2.3.4",
+    "ssl-root-cas": "^1.1.10",
     "superagent": "^0.21.0",
     "validator": "^3.40.1"
   },
