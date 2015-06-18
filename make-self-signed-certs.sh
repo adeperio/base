@@ -11,6 +11,7 @@ openssl genrsa \
 
 # Self-sign your Root Certificate Authority
 # Since this is private, the details can be as bogus as you like
+# Country param needs to be 2 characters max
 openssl req \
   -x509 \
   -new \
@@ -18,7 +19,7 @@ openssl req \
   -key certs/ca/my-root-ca.key.pem \
   -days 1024 \
   -out certs/ca/my-root-ca.crt.pem \
-  -subj "/C=AUS/ST=VIC/L=Melbourne/O=Joan/CN=basestackjs.com"
+  -subj "/C=AU/ST=Vic/L=Mel/O=Joan/CN=${FQDN}"
 
 # Create a Device Certificate for each domain,
 # such as example.com, *.example.com, awesome.example.com
@@ -28,10 +29,11 @@ openssl genrsa \
   2048
 
 # Create a request from your Device, which your Root CA will sign
+# Country param needs to be 2 characters max
 openssl req -new \
   -key certs/server/my-server.key.pem \
   -out certs/tmp/my-server.csr.pem \
-  -subj "/C=US/ST=Utah/L=Provo/O=ACME Tech Inc/CN=${FQDN}"
+  -subj "/C=AU/ST=VIC/L=Mel/O=Joan/CN=${FQDN}"
 
 # Sign the request from Device with your Root CA
 # -CAserial certs/ca/my-root-ca.srl
