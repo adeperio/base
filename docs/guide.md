@@ -14,6 +14,8 @@ $ npm install                   # Install Node.js components listed in ./package
 
 There is a config.sample.js file in the src/server directory. Before running the server, create a config.js file from this sample file and enter your OAuth2 sign in credentials from your auth provider (clientID, clientSecret, callbackURL).
 
+config.js is in the .gitignore list. For security reasons, DO NOT push any of your configs to a public repo.
+
 ### Database
 
 You will also need to ensure that you have a running instance of Postgresql and correctly bootstrapped with the correct database tables. The connection string for the DB should be entered in your config.js file (e.g. postgres://postgres:postgres@localhost:5432/base).
