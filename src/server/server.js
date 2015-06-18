@@ -48,7 +48,8 @@ server.use(helmet.contentSecurityPolicy({
 
 //enforcing SSL for production environments
 if(process.env.NODE_ENV == 'production'){
-  server.use(express_enforces_ssl());
+  server.enable('trust proxy'); //use this if working on SSL behind a proxy
+  server.use(express_enforces_ssl()); //this enforces a TLS connection
 }
 
 //passport setup
