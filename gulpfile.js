@@ -50,6 +50,13 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest('build/fonts'));
 });
 
+//certs
+gulp.task('certs', function() {
+  return gulp.src('certs/**')
+    .pipe(gulp.dest('build/certs'));
+});
+
+
 
 // Static files
 gulp.task('assets', function() {
@@ -110,7 +117,7 @@ gulp.task('bundle', function(cb) {
 
 // Build the app from source code
 gulp.task('build', ['clean'], function(cb) {
-  runSequence(['vendor', 'fonts', 'assets', 'styles', 'bundle'], cb);
+  runSequence(['certs', 'vendor', 'fonts', 'assets', 'styles', 'bundle'], cb);
 });
 
 // Build and start watching for modifications
@@ -171,10 +178,10 @@ gulp.task('sync', ['serve'], function(cb) {
     // Run as an https by setting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
-    https: false,
+    https: true,
     // Informs browser-sync to proxy our Express app which would run
     // at the following location
-    proxy: 'localhost:5000'
+    proxy: 'https://localhost:5000'
   }, cb);
 
   process.on('exit', function() {
