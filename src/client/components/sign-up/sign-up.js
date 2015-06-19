@@ -4,9 +4,7 @@ import React from 'react';
 import Bootstrap from 'react-bootstrap';
 
 import AuthActions from '../../flux/actions/auth-actions';
-import AuthStore from '../../flux/stores/auth-store';
 import ActionTypes from '../../flux/constants/action-types';
-
 
 export default React.createClass({
 
@@ -25,24 +23,7 @@ export default React.createClass({
   propTypes: { },
 
   componentDidMount: function() {
-    AuthStore.on(ActionTypes.SIGNUP_RES, this.onUserSignedUpSuccess);
-    AuthStore.on(ActionTypes.SIGNUP_ERR, this.onUserSignedUpError);
 
-  },
-
-  onUserSignedUpSuccess: function(){
-
-    if(this.context.router){
-      //get session
-      console.log('onUserSignedUpSuccess');
-      this.context.router.transitionTo('home');
-    }
-  },
-
-  onUserSignedUpError: function(){
-    if(this.context.router){
-      this.context.router.transitionTo('error');
-    }
   },
 
   onEmailValueChange: function(){
@@ -67,15 +48,14 @@ export default React.createClass({
 
   onSignUp: function(){
 
-    AuthActions.signUp(AuthStore.getSessionObject(),
-                        this.state.firstNameValue,
+    AuthActions.signUp(this.state.firstNameValue,
                         this.state.lastNameValue,
                         this.state.emailValue);
   },
 
   onSignOut: function(){
 
-    AuthActions.signOut(AuthStore.getSessionObject());
+    AuthActions.signOut();
 
   },
 

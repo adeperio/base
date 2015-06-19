@@ -7,7 +7,7 @@ import SessionRepository from '../repos/session-repository.js';
 var router = express.Router();
 
 router.get('/me', function(req, res) {
-  res.json(req.user.user);
+  res.json(req.user);
 });
 
 module.exports = router;

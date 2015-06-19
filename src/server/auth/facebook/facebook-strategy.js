@@ -20,12 +20,12 @@ module.exports = new FacebookStrategy({
     .then(function(user){
         if(user){
 
-          var facebookUser = new FacebookUser();
-          facebookUser.user = user;
-          facebookUser.accessToken = accessToken;
-          facebookUser.facebookUserId = profile.id;
+          // var facebookUser = new FacebookUser();
+          // facebookUser.user = user;
+          // facebookUser.accessToken = accessToken;
+          // facebookUser.facebookUserId = profile.id;
 
-          done(null, facebookUser);
+          done(null, user);
         }else{
           done(null, null);
         }

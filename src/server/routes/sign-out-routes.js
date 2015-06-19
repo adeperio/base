@@ -7,18 +7,24 @@ var router = express.Router();
 
 router.get('/signout', function(req, res) {
 
-  var session = req.user; //session object, supplied by Bearer strategy
+  if(req.isAuthenticated()){
+    req.logout();
+    req.session.messages = req.i18n.__("Log out successfully");
+  }
 
-  var sessionRepo = new SessionRepository();
-  sessionRepo.deleteSession(session.baseToken)
-              .then(function(result) {
-                  if(result ==1){
-                    res.redirect('/');
-                  }
-              })
-              .catch(function (e) {
-                  res.status(500).send(e.message);
-              });
+  res.redirect('/');
+
+
+  // var sessionRepo = new SessionRepository();
+  // sessionRepo.deleteSession(session.baseToken)
+  //             .then(function(result) {
+  //                 if(result ==1){
+  //                   res.redirect('/');
+  //                 }
+  //             })
+  //             .catch(function (e) {
+  //                 res.status(500).send(e.message);
+  //             });
 
 });
 

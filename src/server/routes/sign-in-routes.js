@@ -19,13 +19,7 @@ router.get('/google/callback', passport.authenticate('google', { session: true, 
 
     function(req, res) {
 
-
-        var googleUser = req.user;
-
-
-
-        req.logIn(googleUser, function(err) {
-
+        req.logIn(req.user, function(err) {
 
           if (err) {
             req.session.messages = "Error";
@@ -37,27 +31,6 @@ router.get('/google/callback', passport.authenticate('google', { session: true, 
           return res.redirect('/home');
         });
 
-
-        // var user = googleUser.user;
-        // var accessToken = googleUser.accessToken;
-        // var googleUserId = googleUser.googleUserId;
-        //
-        // var sessionRepo = new SessionRepository();
-        // sessionRepo.createSession(user.id, user.emailAddress, accessToken, ProviderLookup.Google, googleUserId)
-        //   .then(function(session){
-        //
-        //     //This call back will render the index page on the callback route.
-        //     //View the app.js file for the route mapping for /google/callback.
-        //     //check out http://adeper.io/2015/06/tokens-express-react-how-to-get-your-bearer-token-from-the-server-to-the-client/
-        //     //for why we use the express render method to send up the access token to the client
-        //
-        //     res.render('index', {
-        //                             accessToken: session.baseToken,
-        //                             emailAddress: session.user.emailAddress
-        //                         });
-        //   }).catch(function(e){
-        //     res.redirect('/error');
-        //   });
     }
 );
 

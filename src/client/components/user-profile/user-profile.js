@@ -5,7 +5,6 @@ import React from 'react';
 import Bootstrap from 'react-bootstrap';
 import AuthActions from '../../flux/actions/auth-actions';
 import UserActions from '../../flux/actions/user-actions';
-import AuthStore from '../../flux/stores/auth-store';
 import UserStore from '../../flux/stores/user-store';
 import ActionTypes from '../../flux/constants/action-types';
 
@@ -23,10 +22,7 @@ export default React.createClass({
   },
 
   onGetMe: function(){
-    var meObject = UserStore.getMe();
-    this.setState({
-      me:meObject
-    });
+    this.setState({ me:UserStore.getMe() });
   },
 
   render: function() {

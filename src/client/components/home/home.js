@@ -5,7 +5,6 @@ import React from 'react';
 import Bootstrap from 'react-bootstrap';
 import AuthActions from '../../flux/actions/auth-actions';
 import UserActions from '../../flux/actions/user-actions';
-import AuthStore from '../../flux/stores/auth-store';
 import UserStore from '../../flux/stores/user-store';
 import ActionTypes from '../../flux/constants/action-types';
 import UserProfile from '../user-profile';
@@ -21,7 +20,7 @@ export default React.createClass({
   },
 
   onSignOut: function(){
-    AuthActions.signOut(AuthStore.getSessionObject());
+    AuthActions.signOut();
   },
 
   render: function() {

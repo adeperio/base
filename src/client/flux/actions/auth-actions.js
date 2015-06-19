@@ -6,7 +6,7 @@ import http from 'superagent';
 
 module.exports = {
 
-  signOut: function(session){
+  signOut: function(){
 
     http.get('/auth/signout')
       .accept('application/json')
@@ -28,7 +28,7 @@ module.exports = {
       });
   },
 
-  signUp: function(session, firstName, lastName, emailAddress){
+  signUp: function(firstName, lastName, emailAddress){
 
     http.get('/auth/signup?firstName=' + firstName + '&lastName=' + lastName + '&emailAddress=' + emailAddress)
       .accept('application/json')
