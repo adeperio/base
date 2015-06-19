@@ -42,14 +42,14 @@ function UserRepository () {
                 '    from users, auth_providers_lookup ' +
                 '    where "name" = $2 and auth_provider_user_id = $3 ' +
                 '), i as ( ' +
-                '    insert into users (auth_provider_lookup_id_fkey, auth_provider_user_id) ' +
-                '    select id, $4 from d  ' +
+                '    insert into users (auth_provider_lookup_id_fkey, auth_provider_user_id, email_address, first_name, last_name) ' +
+                '    select id, $4, $5, $6, $7 from d  ' +
                 '    where not exists (select 1 from s) ' +
                 '    returning users.* ' +
                 ') ' +
                 'select i.* from i union all select s.* from s;';
 
-      return query(sql, [authProviderName, authProviderName, providerUserId, providerUserId])
+      return query(sql, [authProviderName, authProviderName, providerUserId, providerUserId, emailAddress, firstName, lastName])
                 .then(function(result){
                     if(result && result[1] && result[1].rows && result[1].rows.length == 1){
                       return result[1].rows[0];

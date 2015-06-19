@@ -16,12 +16,13 @@ module.exports = new FacebookStrategy({
   function(accessToken, refreshToken, profile, done) {
 
     var emailAddress = profile.emails[0].value;
-    var firstName = profile.name.familyName;
-    var lastName = profile.name.givenName;
+    var firstName = profile.name.givenName;
+    var lastName = profile.name.familyName;
 
     var userRepo = new UserRepository();
     userRepo.createUser(emailAddress, firstName, lastName, ProviderLookup.Facebook, profile.id)
     .then(function(user){
+
         if(user){
           done(null, user);
         }else{

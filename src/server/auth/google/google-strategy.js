@@ -18,12 +18,13 @@ module.exports = new GoogleStrategy({
   function(request, accessToken, refreshToken, profile, done) {
 
     var emailAddress = profile.email;
-    var firstName = profile.name.familyName;
-    var lastName = profile.name.givenName;
+    var firstName = profile.name.givenName;
+    var lastName = profile.name.familyName;
 
     var userRepo = new UserRepository();
     userRepo.createUser(emailAddress, firstName, lastName, ProviderLookup.Google, profile.id)
     .then(function(user){
+        console.log(JSON.stringify(user));
         if(user){
           done(null, user);
         }else{
