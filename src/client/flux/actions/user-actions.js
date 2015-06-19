@@ -12,14 +12,14 @@ module.exports = {
       .end((err, res) => {
 
         if(!err && !res.error) {
-          console.log("Did get me: SUCCESS " + JSON.stringify(res.body));
+          console.log("Did get me: SUCCESS");
 
           Dispatcher.handleServerAction({
             actionType: ActionTypes.ME_RES,
             data: res.body
           });
         } else{
-          console.log("Did get me: ERROR" + JSON.stringify(res));
+          console.log("Did get me: ERROR");
           Dispatcher.handleServerAction({
             actionType: ActionTypes.ME_ERR,
             data: res.error

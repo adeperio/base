@@ -15,6 +15,7 @@ module.exports = new FacebookStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
 
+    console.log('FACEBOOK PROFILE: ' + JSON.stringify(profile));
     var userRepo = new UserRepository();
     userRepo.createUser(ProviderLookup.Facebook, profile.id)
     .then(function(user){

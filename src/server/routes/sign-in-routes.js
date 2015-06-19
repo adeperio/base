@@ -3,7 +3,6 @@
 import express from 'express';
 import passport from 'passport';
 import UserRepository from '../repos/user-repository.js';
-import SessionRepository from '../repos/session-repository.js';
 import RandomizerService from '../services/randomizer-service.js';
 import ProviderLookup from '../auth/provider-lookup.js';
 
@@ -11,7 +10,9 @@ var router = express.Router();
 
 //The authentication url for google
 router.get('/connect/google', passport.authenticate('google', { scope:
-    [ 'https://www.googleapis.com/auth/plus.login'] }));
+    [ 'https://www.googleapis.com/auth/plus.login',
+    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.profile'] }));
 
 
 //callback route after successful google authentication
@@ -27,7 +28,7 @@ router.get('/google/callback', passport.authenticate('google', { session: true, 
           }
 
           // set the message
-          req.session.messages = "Login successfully";
+          req.session.messages = 'Login successfully';
           return res.redirect('/home');
         });
 
@@ -35,33 +36,25 @@ router.get('/google/callback', passport.authenticate('google', { session: true, 
 );
 
 //The authentication url for FB
-router.get('/connect/facebook', passport.authenticate('facebook'));
+router.get('/connect/facebook', passport.authenticate('facebook', { scope : ['email', 'public_profile']}));
 
 //callback route after successful google authentication
 router.get('/facebook/callback', passport.authenticate('facebook', { session: true, failureRedirect: "/error" }),
 
     function(req, res) {
 
-        var facebookUser = req.user;
-        var user = facebookUser.user;
-        var accessToken = facebookUser.accessToken;
-        var facebookUserId = facebookUser.facebookUserId;
+        req.logIn(req.user, function(err) {
 
-        var sessionRepo = new SessionRepository();
-        sessionRepo.createSession(user.id, user.emailAddress, accessToken, ProviderLookup.Facebook, facebookUserId)
-          .then(function(session){
+          if (err) {
+            req.session.messages = "Error";
+            return res.redirect('/error');
+          }
 
-            //This call back will render the index page on the callback route.
-            //View the app.js file for the route mapping for /google/callback.
-            //check out http://adeper.io/2015/06/tokens-express-react-how-to-get-your-bearer-token-from-the-server-to-the-client/
-            //for why we use the express render method to send up the access token to the client
-            res.render('index', {
-                                    accessToken: session.baseToken,
-                                    emailAddress: session.user.emailAddress
-                                });
-          }).catch(function(e){
-            res.redirect('/error');
-          });
+          // set the message
+          req.session.messages = 'Login successfully';
+          return res.redirect('/home');
+        });
+
     }
 );
 

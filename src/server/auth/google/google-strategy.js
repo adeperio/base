@@ -17,6 +17,7 @@ module.exports = new GoogleStrategy({
   },
   function(request, accessToken, refreshToken, profile, done) {
 
+    console.log('GOOGLE PROFILE: ' + JSON.stringify(profile));
     var userRepo = new UserRepository();
     userRepo.createUser(ProviderLookup.Google, profile.id)
     .then(function(user){

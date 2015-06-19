@@ -52,19 +52,6 @@ describe('pg-data-mapper', function(){
     })
   });
 
-  describe('mapToSession', function(){
-    it('should get a session object', function(done){
-
-      mapper.mapToSessionAsync(sessionRow)
-      .then(function(session){
-        assert.equal('test1@email.com', session.user.emailAddress);
-        assert.equal('baseToken1', session.baseToken);
-        done();
-      }).catch(function(e){
-        done(e);
-      });
-    })
-  });
 
 
 });
