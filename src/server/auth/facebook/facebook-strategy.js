@@ -15,17 +15,14 @@ module.exports = new FacebookStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
 
-    console.log('FACEBOOK PROFILE: ' + JSON.stringify(profile));
+    var emailAddress = profile.emails[0].value;
+    var firstName = profile.name.familyName;
+    var lastName = profile.name.givenName;
+
     var userRepo = new UserRepository();
-    userRepo.createUser(ProviderLookup.Facebook, profile.id)
+    userRepo.createUser(emailAddress, firstName, lastName, ProviderLookup.Facebook, profile.id)
     .then(function(user){
         if(user){
-
-          // var facebookUser = new FacebookUser();
-          // facebookUser.user = user;
-          // facebookUser.accessToken = accessToken;
-          // facebookUser.facebookUserId = profile.id;
-
           done(null, user);
         }else{
           done(null, null);

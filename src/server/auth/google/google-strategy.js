@@ -17,17 +17,14 @@ module.exports = new GoogleStrategy({
   },
   function(request, accessToken, refreshToken, profile, done) {
 
-    console.log('GOOGLE PROFILE: ' + JSON.stringify(profile));
+    var emailAddress = profile.email;
+    var firstName = profile.name.familyName;
+    var lastName = profile.name.givenName;
+
     var userRepo = new UserRepository();
-    userRepo.createUser(ProviderLookup.Google, profile.id)
+    userRepo.createUser(emailAddress, firstName, lastName, ProviderLookup.Google, profile.id)
     .then(function(user){
         if(user){
-
-          // var googleUser = new GoogleUser();
-          // googleUser.user = user;
-          // googleUser.accessToken = accessToken;
-          // googleUser.googleUserId = profile.id;
-
           done(null, user);
         }else{
           done(null, null);
