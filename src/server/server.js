@@ -63,10 +63,9 @@ server.use(express_enforces_ssl()); //this enforces a TLS connection
 //setup express sessions
 server.use(cookieParser());
 server.use(session({
-  secret: 'keyboard cat',
-  httpOnly:true,
-  secure: true,
-  resave: false
+  secret: Config.session.secret,
+  resave: false,
+  cookie: { httpOnly:true, secure: true },
 }));
 
 

@@ -24,7 +24,6 @@ module.exports = new GoogleStrategy({
     var userRepo = new UserRepository();
     userRepo.createUser(emailAddress, firstName, lastName, ProviderLookup.Google, profile.id)
     .then(function(user){
-        console.log(JSON.stringify(user));
         if(user){
           done(null, user);
         }else{
