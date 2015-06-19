@@ -5,6 +5,9 @@ import config from './config.js';
 global.Config = new config();
 
 import express from 'express';
+
+import session from 'express-session';
+import cookieParser from 'cookie-parser';
 import path from 'path';
 
 import https from 'https';
@@ -57,9 +60,19 @@ server.use(helmet.contentSecurityPolicy({
 server.enable('trust proxy'); //use this if working on SSL behind a proxy
 server.use(express_enforces_ssl()); //this enforces a TLS connection
 
+//setup express sessions
+server.use(cookieParser('S3CRE7'));
+server.use(session({
+  secret: 'keyboard cat',
+  httpOnly:true,
+  secure: true,
+  resave: false
+}));
+
+
 //passport setup
 server.use(passport.initialize());
-server.use(passport.session());
+server.use(passport.session()); //passport piggy backs of express sessions, still need to set express session options
 
 // ========= *** ROUTES ***
 server.use('/auth', signInRoutes);
@@ -67,13 +80,10 @@ server.use('/auth', signOutRoutes);
 server.use('/auth', signUpRoutes);
 server.use('/api/v1', userRoutes);
 
-
-// ========= *** SERVER LOAD ***
-
-//Initial SPA load
 server.get('/*', function (req, res) {
   res.render('index');
 });
+
 
 // ========= *** HTTPS setup ***
 // We run in https by default even on local environments

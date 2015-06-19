@@ -15,7 +15,7 @@ router.get('/connect/google', passport.authenticate('google', { scope:
 
 
 //callback route after successful google authentication
-router.get('/google/callback', passport.authenticate('google', { session: false, failureRedirect: "/error" }),
+router.get('/google/callback', passport.authenticate('google', { session: true, failureRedirect: "/error" }),
 
     function(req, res) {
 
@@ -47,7 +47,7 @@ router.get('/google/callback', passport.authenticate('google', { session: false,
 router.get('/connect/facebook', passport.authenticate('facebook'));
 
 //callback route after successful google authentication
-router.get('/facebook/callback', passport.authenticate('facebook', { session: false, failureRedirect: "/error" }),
+router.get('/facebook/callback', passport.authenticate('facebook', { session: true, failureRedirect: "/error" }),
 
     function(req, res) {
 
