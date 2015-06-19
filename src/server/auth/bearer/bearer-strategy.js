@@ -8,7 +8,7 @@ import SessionRepository from '../../repos/session-repository.js';
 //This is where token validation is checked
 module.exports = new BearerStrategy(
     function(token, done) {
-
+        return done(null, false);
         var sessionRepo = new SessionRepository();
         sessionRepo.getSession(token)
             .then(function(session){

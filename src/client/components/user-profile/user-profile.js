@@ -19,10 +19,7 @@ export default React.createClass({
 
   componentDidMount: function() {
     UserStore.on(ActionTypes.ME_RES, this.onGetMe);
-    var sessionObject = AuthStore.getSessionObject();
-    if(sessionObject.emailAddress){
-      UserActions.getMe(sessionObject);
-    }
+    UserActions.getMe();
   },
 
   onGetMe: function(){

@@ -61,7 +61,7 @@ server.enable('trust proxy'); //use this if working on SSL behind a proxy
 server.use(express_enforces_ssl()); //this enforces a TLS connection
 
 //setup express sessions
-server.use(cookieParser('S3CRE7'));
+server.use(cookieParser());
 server.use(session({
   secret: 'keyboard cat',
   httpOnly:true,

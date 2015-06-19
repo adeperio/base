@@ -6,7 +6,7 @@ import UserRepository from '../repos/user-repository.js';
 import SessionRepository from '../repos/session-repository.js';
 var router = express.Router();
 
-router.get('/signup', passport.authenticate('bearer', { session: true }), function(req, res) {
+router.get('/signup', function(req, res) {
 
   var emailAddress = req.query['emailAddress'];
   var firstName = req.query['firstName'];
@@ -21,7 +21,6 @@ router.get('/signup', passport.authenticate('bearer', { session: true }), functi
               .catch(function (e) {
                   res.status(500).send(e.message);
               });
-
 });
 
 module.exports = router;

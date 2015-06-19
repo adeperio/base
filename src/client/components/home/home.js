@@ -18,24 +18,6 @@ export default React.createClass({
 
   componentDidMount: function() {
 
-    var sessionObject = AuthStore.getSessionObject();
-    if(!sessionObject.accessToken){
-      this.goToSignIn();
-    } else if(!sessionObject.emailAddress){
-      this.goToSignup();
-    }
-  },
-
-  goToSignIn: function(){
-    if(this.context.router){
-      this.context.router.transitionTo('app');
-    }
-  },
-
-  goToSignup: function(){
-    if(this.context.router){
-      this.context.router.transitionTo('signup');
-    }
   },
 
   onSignOut: function(){

@@ -5,7 +5,7 @@ import passport from 'passport';
 import SessionRepository from '../repos/session-repository.js';
 var router = express.Router();
 
-router.get('/signout', passport.authenticate('bearer', { session: true }), function(req, res) {
+router.get('/signout', function(req, res) {
 
   var session = req.user; //session object, supplied by Bearer strategy
 

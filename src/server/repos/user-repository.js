@@ -15,8 +15,8 @@ function UserRepository () {
 
     var paramsArray = [authProviderName, providerUserId];
     return query(sql, paramsArray)
-              .then(function(result){
-                  if(result && result[1] && result[1].rows && result[1].rows.length == 1){
+              .then(function(result) {
+                  if(result && result[1] && result[1].rows && result[1].rows.length == 1) {
                     return result[1].rows[0];
                   } else {
                     return null;
@@ -25,10 +25,9 @@ function UserRepository () {
               .then(function(userRow){
                   if(userRow){
                     return mapper.mapToUserAsync(userRow);
-                  } else{
+                  } else {
                     return null;
                   }
-
               });
   };
 
@@ -52,7 +51,6 @@ function UserRepository () {
 
       return query(sql, [authProviderName, authProviderName, providerUserId, providerUserId])
                 .then(function(result){
-
                     if(result && result[1] && result[1].rows && result[1].rows.length == 1){
                       return result[1].rows[0];
                     } else {
@@ -68,8 +66,7 @@ function UserRepository () {
                 });
   };
 
-  this.updateUser = function(emailAddress, firstName, lastName, authProviderName, providerUserId){
-
+  this.updateUser = function(emailAddress, firstName, lastName, authProviderName, providerUserId) {
 
     var sql = 'UPDATE users AS a SET email_address = $1, first_name = $2, last_name = $3 ' +
               'FROM auth_providers_lookup AS b ' +

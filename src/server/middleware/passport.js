@@ -10,10 +10,16 @@ passport.use(googleStrategy);
 passport.use(facebookStrategy);
 
 //token strategy
-passport.use(bearerStrategy);
 
 //serialising and deserialising user objects
-passport.serializeUser(function(user, done) { done(null, user); });
-passport.deserializeUser(function(user, done) { done(null, user); });
+passport.serializeUser(function(user, done) {
+  // console.log('serializeUser ' + JSON.stringify(user));
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  // console.log('deserializeUser ' + JSON.stringify(user));
+  done(null, user);
+});
 
 module.exports = passport;
