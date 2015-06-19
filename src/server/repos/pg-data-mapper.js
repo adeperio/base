@@ -3,7 +3,6 @@
 import _ from 'lodash';
 import Promise from 'bluebird';
 import User from '../models/user.js';
-import Session from '../models/session.js';
 
 //This module takes in postgres database rows and results and maps them to domain models
 //Note: This is promisified
