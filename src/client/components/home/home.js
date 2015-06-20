@@ -4,6 +4,7 @@ import './home.less';
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
 import AuthActions from '../../flux/actions/auth-actions';
+import AuthStore from '../../flux/stores/auth-store';
 import UserActions from '../../flux/actions/user-actions';
 import UserStore from '../../flux/stores/user-store';
 import ActionTypes from '../../flux/constants/action-types';
@@ -16,10 +17,17 @@ export default React.createClass({
   },
 
   componentDidMount: function() {
-
+    AuthStore.on(ActionTypes.SIGNOUT_RES, this.onSignOutResponse);
   },
 
-  onSignOut: function(){
+  onSignOutResponse: function(){
+    if(this.context.router){
+      this.context.router.transitionTo('app');
+    }
+  },
+
+
+  signOut: function(){
     AuthActions.signOut();
   },
 
@@ -36,7 +44,7 @@ export default React.createClass({
           <div className="col-md-10 container-full right-panel">
             <div className="row">
               <div className="header-panel col-md-2 col-md-offset-10">
-                <Bootstrap.Button className="btn-default" onClick={this.onSignOut}>
+                <Bootstrap.Button className="btn-default" onClick={this.signOut}>
                   Sign out
                 </Bootstrap.Button>
               </div>

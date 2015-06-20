@@ -12,16 +12,17 @@ module.exports = {
       .accept('application/json')
       .end((err, res) => {
 
+        console.log('SIGNOUT RESPONSE: ' + JSON.stringify(res.body));
         if(!err && !res.error) {
           console.log("Did signout: SUCCESS");
           Dispatcher.handleServerAction({
-            actionType: ActionTypes.REVOKE_RES,
+            actionType: ActionTypes.SIGNOUT_RES,
             data: res.body
           });
         } else {
           console.log("Did signout: ERROR");
           Dispatcher.handleServerAction({
-            actionType: ActionTypes.REVOKE_ERR,
+            actionType: ActionTypes.SIGNOUT_ERR,
             data: res.error
           });
         }

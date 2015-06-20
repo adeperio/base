@@ -10,9 +10,15 @@ router.get('/signout', function(req, res) {
     req.logout();
     req.session.messages = 'Logged out successfully';
 
+    res.json({
+      err: null,
+      body: {}
+    });
+
   }
 
-  return res.redirect('/');
+
+
 });
 
 module.exports = router;
