@@ -29,9 +29,6 @@ const DispatcherCallBack = function (payload) {
         } else{
           AuthStore.emit(ActionTypes.SIGNOUT_ERR);
         }
-
-
-
         break;
     default:
       // Do nothing

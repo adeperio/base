@@ -7,7 +7,10 @@ var router = express.Router();
 
 router.get('/me', function(req, res) {
 
-  res.json(req.user);
+  if(req.user){
+    res.json(req.user);  
+  }
+
 });
 
 module.exports = router;

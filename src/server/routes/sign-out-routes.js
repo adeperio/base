@@ -6,7 +6,7 @@ var router = express.Router();
 
 router.get('/signout', function(req, res) {
 
-  if(req.isAuthenticated()){
+  if(req.isAuthenticated() && req.user){
     req.logout();
     req.session.messages = 'Logged out successfully';
 
