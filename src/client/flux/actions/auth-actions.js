@@ -12,7 +12,6 @@ module.exports = {
       .accept('application/json')
       .end((err, res) => {
 
-        console.log('SIGNOUT RESPONSE: ' + JSON.stringify(res.body));
         if(!err && !res.error) {
           console.log("Did signout: SUCCESS");
           Dispatcher.handleServerAction({
