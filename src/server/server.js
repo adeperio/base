@@ -66,7 +66,8 @@ server.use(cookieParser());
 server.use(session({
   secret: Config.session.secret,
   resave: false,
-  cookie: { httpOnly:true, secure: true },
+  expires : new Date(Date.now() + 3600000), //1 Hour
+  cookie: { httpOnly:true, secure: true }
 }));
 
 

@@ -4,7 +4,7 @@ import passport from 'passport';
 import passportGoogleOauth2 from 'passport-google-oauth2';
 
 import GoogleUser from './google-user.js';
-import ProviderLookup from '../../provider-lookup.js';
+import ProviderLookup from '../provider-lookup.js';
 import UserRepository from '../../../repos/user-repository.js';
 
 

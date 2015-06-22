@@ -10,12 +10,10 @@ passport.use(facebookStrategy);
 
 //serialising and deserialising user objects
 passport.serializeUser(function(user, done) {
-  // console.log('serializeUser ' + JSON.stringify(user));
   done(null, user);
 });
 
 passport.deserializeUser(function(user, done) {
-  // console.log('deserializeUser ' + JSON.stringify(user));
   done(null, user);
 });
 

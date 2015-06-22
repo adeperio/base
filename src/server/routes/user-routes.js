@@ -3,13 +3,13 @@
 import express from 'express';
 import passport from 'passport';
 import UserRepository from '../repos/user-repository.js';
+import IsAuthenticated from '../middleware/auth/passport-auth-check.js';
+
 var router = express.Router();
 
-router.get('/me', function(req, res) {
+router.get('/me', IsAuthenticated, function(req, res) {
 
-  if(req.user){
-    res.json(req.user);
-  }
+  res.json(req.user);
 
 });
 

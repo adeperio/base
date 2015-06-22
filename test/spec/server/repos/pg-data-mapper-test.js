@@ -47,8 +47,6 @@ describe('pg-data-mapper', function(){
         winston.log('1. ', JSON.stringify(e));
         done(e);
       });
-
-
     })
   });
 

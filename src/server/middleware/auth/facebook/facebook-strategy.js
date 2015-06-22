@@ -5,7 +5,7 @@ import PassportFacebook from 'passport-facebook';
 var FacebookStrategy = PassportFacebook.Strategy;
 
 import FacebookUser from './facebook-user.js';
-import ProviderLookup from '../../auth/provider-lookup.js';
+import ProviderLookup from '../provider-lookup.js';
 import UserRepository from '../../../repos/user-repository.js';
 
 

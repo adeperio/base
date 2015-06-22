@@ -2,20 +2,18 @@
 
 import express from 'express';
 import passport from 'passport';
+import IsAuthenticated from '../middleware/auth/passport-auth-check.js';
 var router = express.Router();
 
-router.get('/signout', function(req, res) {
+router.get('/signout', IsAuthenticated, function(req, res) {
 
-  if(req.isAuthenticated() && req.user){
-    req.logout();
-    req.session.messages = 'Logged out successfully';
+  req.logout();
+  req.session.messages = 'Logged out successfully';
 
-    res.json({
-      err: null,
-      body: {}
-    });
-
-  }
+  res.json({
+    err: null,
+    body: {}
+  });
 
 });
 
