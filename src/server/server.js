@@ -9,6 +9,8 @@ import express from 'express';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import path from 'path';
+import bodyParser from 'body-parser';
+import methodOverride from 'method-override';
 
 import https from 'https';
 import fs from 'fs';
@@ -18,6 +20,8 @@ import express_enforces_ssl from 'express-enforces-ssl';
 import pg from 'pg';
 import ConnectPg from 'connect-pg-simple';
 var pgSession = ConnectPg(session);
+
+import csrf from 'csurf';
 
 import signInRoutes from './routes/sign-in-routes.js';
 import signOutRoutes from './routes/sign-out-routes.js';
@@ -80,6 +84,16 @@ server.use(session({
   cookie: { httpOnly:true, secure: true }
 }));
 
+server.use(express.bodyParser());
+server.use(express.methodOverride());
+
+//csurf protection
+server.use(express.csrf());
+server.use(function (req, res, next) {
+  res.cookie('XSRF-TOKEN', req.csrfToken());
+  res.locals.csrftoken = req.csrfToken();
+  next();
+});
 
 //passport setup
 server.use(passport.initialize());
