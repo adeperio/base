@@ -8,7 +8,7 @@ var router = express.Router();
 router.get('/me', function(req, res) {
 
   if(req.user){
-    res.json(req.user);  
+    res.json(req.user);
   }
 
 });

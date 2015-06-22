@@ -4,8 +4,9 @@ import passport from 'passport';
 import passportGoogleOauth2 from 'passport-google-oauth2';
 
 import GoogleUser from './google-user.js';
-import UserRepository from '../../repos/user-repository.js';
-import ProviderLookup from '../../auth/provider-lookup.js';
+import ProviderLookup from '../../provider-lookup.js';
+import UserRepository from '../../../repos/user-repository.js';
+
 
 var GoogleStrategy = passportGoogleOauth2.Strategy;
 

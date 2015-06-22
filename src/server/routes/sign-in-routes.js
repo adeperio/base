@@ -4,7 +4,7 @@ import express from 'express';
 import passport from 'passport';
 import UserRepository from '../repos/user-repository.js';
 import RandomizerService from '../services/randomizer-service.js';
-import ProviderLookup from '../auth/provider-lookup.js';
+import ProviderLookup from '../middleware/auth/provider-lookup.js';
 
 var router = express.Router();
 

@@ -1,8 +1,8 @@
 'use strict'
 
 import passport from 'passport';
-import googleStrategy from '../auth/google/google-strategy.js';
-import facebookStrategy from '../auth/facebook/facebook-strategy.js';
+import googleStrategy from './google/google-strategy.js';
+import facebookStrategy from './facebook/facebook-strategy.js';
 
 //auth strategies
 passport.use(googleStrategy);
