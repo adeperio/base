@@ -22,6 +22,7 @@ import signUpRoutes from './routes/sign-up-routes.js';
 import userRoutes from './routes/user-routes.js';
 
 import passport from './middleware/auth/passport.js';
+import error from './middleware/error/error.js';
 
 
 var server = express();
@@ -80,6 +81,9 @@ server.use('/auth', signInRoutes);
 server.use('/auth', signOutRoutes);
 server.use('/auth', signUpRoutes);
 server.use('/api/v1', userRoutes);
+
+//Error handler middle ware
+server.use(error);
 
 server.get('/*', function (req, res) {
   res.render('index');
