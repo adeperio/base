@@ -9,7 +9,7 @@ var config = require(appRoot + '/src/server/config.js');
 var mapper = require(appRoot + '/src/server/repos/pg-data-mapper.js');
 var userRows = require(appRoot + '/test/resources/userRows.json');
 var userRowFilled = require(appRoot + '/test/resources/userRowFilled.json');
-var sessionRow = require(appRoot + '/test/resources/sessionRow.json');
+
 
 describe('pg-data-mapper', function(){
 

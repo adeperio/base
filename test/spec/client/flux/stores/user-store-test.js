@@ -50,8 +50,8 @@ describe('user-store', function(){
       // var sessionObject = this.AuthStore.getSessionObject();
       // assert.equal(mockEmail, sessionObject.emailAddress);
       // assert.equal(mockToken, sessionObject.accessToken);
-      //
-      // done();
+
+      done();
     })
   });
 

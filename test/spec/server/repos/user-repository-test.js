@@ -40,10 +40,18 @@ describe('user-repository', function(){
       var randomizer = new RandomizerService();
       var mockProviderId = randomizer.getRandomUUIDv4();
       var userRepo = new UserRepository();
-      userRepo.createUser(ProviderLookup.Google, mockProviderId)
+
+      var mockEmail = randomizer.getRandomUUIDv4().substring(0,4) + '@test.com';
+      var mockFirstName = randomizer.getRandomUUIDv4();
+      var mockLastName = randomizer.getRandomUUIDv4();
+
+      userRepo.createUser(mockEmail, mockFirstName, mockLastName, ProviderLookup.Google, mockProviderId)
         .then(function(createdUser){
             winston.log('debug', JSON.stringify(createdUser));
             assert.isDefined(createdUser, 'there was a user created');
+            assert.equal(mockEmail, createdUser.emailAddress);
+            assert.equal(mockFirstName, createdUser.firstName);
+            assert.equal(mockLastName, createdUser.lastName);
             done();
         }).catch(function(err){
           done(err);
@@ -63,7 +71,7 @@ describe('user-repository', function(){
       var mockFirstName = randomizer.getRandomUUIDv4();
       var mockLastName = randomizer.getRandomUUIDv4();
 
-      userRepo.createUser(ProviderLookup.Google, mockProviderId)
+      userRepo.createUser('', '', '', ProviderLookup.Google, mockProviderId)
         .then(function(users){
             return userRepo.updateUser(mockEmail, mockFirstName, mockLastName, ProviderLookup.Google, mockProviderId);
         }).then(function(updateduser){
