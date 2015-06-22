@@ -15,6 +15,9 @@ import fs from 'fs';
 import sslRootCas from 'ssl-root-cas';
 import helmet from 'helmet';
 import express_enforces_ssl from 'express-enforces-ssl';
+import pg from 'pg';
+import ConnectPg from 'connect-pg-simple';
+var pgSession = ConnectPg(session);
 
 import signInRoutes from './routes/sign-in-routes.js';
 import signOutRoutes from './routes/sign-out-routes.js';
@@ -65,6 +68,12 @@ server.use(express_enforces_ssl()); //this enforces a TLS connection
 //setup express sessions
 server.use(cookieParser());
 server.use(session({
+  store: new pgSession({
+    pg : pg,
+    conString : Config.connectionString,
+    tableName : 'session',
+    schemaName: 'public'
+  }),
   secret: Config.session.secret,
   resave: false,
   expires : new Date(Date.now() + 3600000), //1 Hour
