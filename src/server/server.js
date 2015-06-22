@@ -84,11 +84,11 @@ server.use(session({
   cookie: { httpOnly:true, secure: true }
 }));
 
-server.use(express.bodyParser());
-server.use(express.methodOverride());
+server.use(bodyParser());
+server.use(methodOverride());
 
 //csurf protection
-server.use(express.csrf());
+server.use(csrf());
 server.use(function (req, res, next) {
   res.cookie('XSRF-TOKEN', req.csrfToken());
   res.locals.csrftoken = req.csrfToken();
