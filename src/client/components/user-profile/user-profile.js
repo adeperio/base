@@ -31,7 +31,7 @@ export default React.createClass({
     var emailAddress = '';
     var bio = '';
 
-    if(this.state.me){
+    if(this.state.me) {
       if(this.state.me.firstName || this.state.me.lastName) {
         usersName = this.state.me.firstName + ' ' + this.state.me.lastName;
       }
@@ -44,7 +44,6 @@ export default React.createClass({
         bio = this.state.me.bio
       }
     }
-
 
     return (
       <div className={'user-profile'}>
