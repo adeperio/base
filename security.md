@@ -13,9 +13,3 @@ The SSL approach on this project will be an evolving discussion and open to crit
 2. A configuration that provides a good balance between security, ease of setup, and use-ability.
 3. Where appropriate provide documentation on recommendations for developers to setup.
 4. Ensure assumptions are well documented.
-
-Currently the approach we are taking (again open for critique):
-
-1. In NODE_ENV=production - TLS in production environments should be terminated at the load balancer level - This is something that we are leaving to the developer to manage and ensure is correctly setup.
-2. In NODE_ENV=production - We enforce an SSL connection and disallow requests from http (see https://github.com/adeperio/base/issues/13)
-3. In NODE_ENV=development - Base runs on http when in development
