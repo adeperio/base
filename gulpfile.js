@@ -122,6 +122,11 @@ gulp.task('build', ['clean'], function(cb) {
   runSequence(['certs', 'vendor', 'fonts', 'assets', 'styles', 'bundle'], cb);
 });
 
+gulp.task('dist', ['build'], function(cb) {
+  return gulp.src('src/client/fonts/**')
+    .pipe(gulp.dest('build/fonts'));
+});
+
 // Build and start watching for modifications
 gulp.task('build:watch', function(cb) {
   watch = true;

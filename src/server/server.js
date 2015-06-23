@@ -114,14 +114,32 @@ server.get('/*', function (req, res) {
 
 
 // ========= *** HTTPS setup ***
-// We run in https by default even on local environments
-sslRootCas.inject().addFile(path.join(__dirname, 'certs', 'server', 'my-root-ca.crt.pem'));
-var sslOptions = {
-                key: fs.readFileSync(path.join(__dirname, 'certs', 'server', 'my-server.key.pem')),
-                cert: fs.readFileSync(path.join(__dirname, 'certs', 'server', 'my-server.crt.pem'))
-              };
 
-var httpsServer = https.createServer(sslOptions, server);
+var credentials;
+
+if(process.env.NODE_ENV === 'production'){
+
+  //production and everything else
+  var privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
+  var certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
+  credentials = {key: privateKey, cert: certificate};
+
+}else if(process.env.NODE_ENV === 'development' ){
+
+  // We run in https by default even on local environments
+  sslRootCas.inject().addFile(path.join(__dirname, 'certs', 'server', 'my-root-ca.crt.pem'));
+
+  var privateKey  = fs.readFileSync(path.join(__dirname, 'certs', 'server', 'my-server.key.pem'));
+  var certificate = fs.readFileSync(path.join(__dirname, 'certs', 'server', 'my-server.crt.pem'));
+  credentials = {key: privateKey, cert: certificate};
+
+} else{
+    //SSL mandatory for all environments
+   throw new Error('Environment not supported');
+}
+
+
+var httpsServer = https.createServer(credentials, server);
 
 //Run up the server
 httpsServer.listen(server.get('port'), function() {
