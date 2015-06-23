@@ -17,7 +17,7 @@ export default React.createClass({
   render: function() {
 
     return (
-      <div>
+      <div className="login-container">
         <div className={'login'}>
             <div className="login-box">
               <div className="row header">
@@ -62,10 +62,6 @@ export default React.createClass({
           </div>
         </div>
       </div>
-
-
-
-
 
     );
 

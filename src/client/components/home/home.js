@@ -44,7 +44,7 @@ export default React.createClass({
           <div className="col-md-10 container-full right-panel">
             <div className="row">
               <div className="header-panel col-md-2 col-md-offset-10">
-                <Bootstrap.Button className="btn-default" onClick={this.signOut}>
+                <Bootstrap.Button className="btn-primary" onClick={this.signOut}>
                   Sign out
                 </Bootstrap.Button>
               </div>
