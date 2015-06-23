@@ -10,6 +10,8 @@ var path = require('path');
 var runSequence = require('run-sequence');
 var webpack = require('webpack');
 var argv = require('minimist')(process.argv.slice(2));
+var gulpif = require('gulp-if');
+var production = !!(argv.production);
 
 // Settings
 var RELEASE = !!argv.release;                 // Minimize and optimize during a build?
