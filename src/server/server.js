@@ -119,14 +119,14 @@ var credentials;
 
 if(process.env.NODE_ENV === 'production'){
 
-  //production and everything else
-  var privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
+  var privateKey  = fs.readFileSync('sslcert/server.key', 'utf8'); //keep these in a secure place!
   var certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
   credentials = {key: privateKey, cert: certificate};
 
-}else if(process.env.NODE_ENV === 'development' ){
+}else if(process.env.NODE_ENV === 'development' ){ // We run in https by default even on local environments
 
-  // We run in https by default even on local environments
+  // This will add the well-known CAs to 'https.globalAgent.options.ca'
+  //useful only for custom certs so not used in production
   sslRootCas.inject().addFile(path.join(__dirname, 'certs', 'server', 'my-root-ca.crt.pem'));
 
   var privateKey  = fs.readFileSync(path.join(__dirname, 'certs', 'server', 'my-server.key.pem'));
@@ -140,8 +140,6 @@ if(process.env.NODE_ENV === 'production'){
 
 
 var httpsServer = https.createServer(credentials, server);
-
-//Run up the server
 httpsServer.listen(server.get('port'), function() {
   if (process.send) {
     process.send('online');
