@@ -7,6 +7,10 @@ module.exports = function(){
     case 'development':
         return {
           connectionString: 'postgres://postgres:postgres@localhost:5432/base',
+          tls: {
+            key: '',
+            certificate: ''
+          },
           auth: {
             google: {
               clientID: '',
@@ -27,6 +31,10 @@ module.exports = function(){
     case 'test':
             return {
               connectionString: 'postgres://postgres:postgres@localhost:5432/base-test',
+              tls: {
+                key: '',
+                certificate: ''
+              },
               auth: {
                 google: {
                   clientID: '',
@@ -47,6 +55,10 @@ module.exports = function(){
         case 'production':
             return {
               connectionString: 'postgres://postgres:postgres@productionhost.com:5432/base',
+              tls: {
+                key: '',
+                certificate: ''
+              },
               auth: {
                 google: {
                   clientID: '',
@@ -67,6 +79,10 @@ module.exports = function(){
         default:
             return {
               connectionString: 'postgres://postgres:postgres@localhost:5432/base',
+              tls: {
+                key: '',
+                certificate: ''
+              },
               auth: {
                 google: {
                   clientID: '',

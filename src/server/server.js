@@ -115,29 +115,17 @@ server.get('/*', function (req, res) {
 
 // ========= *** HTTPS setup ***
 
-var credentials;
-
-if(process.env.NODE_ENV === 'production'){
-
-  var privateKey  = fs.readFileSync('sslcert/server.key', 'utf8'); //keep these in a secure place!
-  var certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
-  credentials = {key: privateKey, cert: certificate};
-
-}else if(process.env.NODE_ENV === 'development' ){ // We run in https by default even on local environments
+if(process.env.NODE_ENV === 'development'){
 
   // This will add the well-known CAs to 'https.globalAgent.options.ca'
-  //useful only for custom certs so not used in production
+  // useful only for custom certs so NOT used in production
   sslRootCas.inject().addFile(path.join(__dirname, 'certs', 'server', 'my-root-ca.crt.pem'));
-
-  var privateKey  = fs.readFileSync(path.join(__dirname, 'certs', 'server', 'my-server.key.pem'));
-  var certificate = fs.readFileSync(path.join(__dirname, 'certs', 'server', 'my-server.crt.pem'));
-  credentials = {key: privateKey, cert: certificate};
-
-} else{
-    //SSL mandatory for all environments
-   throw new Error('Environment not supported');
 }
 
+//credentials
+var privateKey  = fs.readFileSync(Config.tls.key, 'utf8');
+var certificate = fs.readFileSync(Config.tls.cert, 'utf8');
+var credentials = {key: privateKey, cert: certificate};
 
 var httpsServer = https.createServer(credentials, server);
 httpsServer.listen(server.get('port'), function() {
