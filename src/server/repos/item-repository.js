@@ -4,14 +4,14 @@ import query from 'pg-query';
 import mapper from './pg-data-mapper.js';
 import validator from 'validator';
 
-function UserRepository () {
+function ItemRepository () {
 
   query.connectionParameters = Config.connectionString;
 
   //this will Insert a user and return the new row or return an existing row based on the provider id
   this.createItem = function(userId, title, description){
 
-      var sql = 'INSERT INTO items (user_id_fkey, title, description) VALUES ($1, \'$2\', \'$3\')';
+      var sql = 'INSERT INTO items (user_id_fkey, title, description) VALUES ($1, $2, $3) RETURNING *';
 
       return query(sql, [userId, title, description])
                 .then(function(result){
@@ -32,4 +32,4 @@ function UserRepository () {
 
 }
 
-module.exports = UserRepository;
+module.exports = ItemRepository;
