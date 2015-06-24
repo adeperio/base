@@ -22,6 +22,14 @@ var createAuthProvidersLookup = 'CREATE TABLE IF NOT EXISTS ' +
     'id SERIAL PRIMARY KEY, ' +
     'name VARCHAR(255) UNIQUE not null)'; //ie google, twitter, facebook
 
+var createItemsTable = 'CREATE TABLE IF NOT EXISTS ' +
+        'items(' +
+        'id SERIAL PRIMARY KEY, ' +
+        'user_id_fkey integer not null references users(id), ' +
+        'title VARCHAR(255) null, ' +
+        'description VARCHAR(255) null, ' +
+        'created timestamp default current_timestamp)';
+
 //** Note this session table script follow the format as defined at https://github.com/voxpelli/node-connect-pg-simple/blob/master/table.sql
 //   The node-connect-pg-simple module uses this to persist sessions to our Postgres Database
 //      Postgres as the session store was used for Base as a
@@ -43,18 +51,23 @@ var insertFacebookProvider = 'insert into auth_providers_lookup (name) VALUES (\
 var dropAuthProvidersLookup = 'DROP TABLE IF EXISTS auth_providers_lookup';
 var dropUsers = 'DROP TABLE IF EXISTS users';
 var dropSession = 'DROP TABLE IF EXISTS session';
+var dropItems = 'DROP TABLE IF EXISTS items';
+
 
 //execute data bootstrap
 
 //drop tables
+client.query(dropItems);
 client.query(dropUsers);
 client.query(dropAuthProvidersLookup);
 client.query(dropSession);
+
 
 //create and bootstrap tables
 client.query(createAuthProvidersLookup);
 client.query(createUsers);
 client.query(usersIndex);
+client.query(createItemsTable);
 client.query(createSessionTable);
 
 client.query(insertGoogleProvider);
