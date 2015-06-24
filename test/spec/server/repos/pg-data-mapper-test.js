@@ -9,6 +9,7 @@ var config = require(appRoot + '/src/server/config.js');
 var mapper = require(appRoot + '/src/server/repos/pg-data-mapper.js');
 var userRows = require(appRoot + '/test/resources/userRows.json');
 var userRowFilled = require(appRoot + '/test/resources/userRowFilled.json');
+var itemRow = require(appRoot + '/test/resources/itemRow.json');
 
 
 describe('pg-data-mapper', function(){
@@ -17,6 +18,22 @@ describe('pg-data-mapper', function(){
     global.Config = new config();
     winston.level = 'debug';
     done();
+  });
+
+  describe('mapToItem', function(){
+    it('should get an item object', function(done){
+
+      mapper.mapToItemAsync(itemRow)
+      .then(function(item){
+        winston.log('debug', JSON.stringify(item));
+        assert.equal(1, item.user._id);
+        assert.equal('testItemTitle', item.title);
+        assert.equal('testdescription', item.description);
+        done();
+      }).catch(function(e){
+        done(e);
+      });
+    })
   });
 
   describe('mapToUser', function(){

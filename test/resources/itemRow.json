@@ -1,0 +1,7 @@
+{
+    "id": 1,
+    "user_id_fkey": 1,
+    "title": "testItemTitle",
+    "description": "testdescription",
+    "created": "2015-06-11T01:15:01.237Z"
+}
