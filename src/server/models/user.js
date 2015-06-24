@@ -1,6 +1,6 @@
 'use strict'
 
-function User(){
+function User() {
 
   this._id = '';
   this.emailAddress = '';
