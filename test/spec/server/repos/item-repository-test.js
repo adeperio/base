@@ -1,4 +1,5 @@
 'use strict'
+require('dotenv').load();
 import winston from 'winston';
 import chai from 'chai';
 var assert = chai.assert;
@@ -16,7 +17,6 @@ describe('item-repository', function(){
   before(function(done){
     global.Config = new config();
     winston.level = 'debug';
-
     var randomizer = new RandomizerService();
     var mockProviderId = randomizer.getRandomUUIDv4();
     var userRepo = new UserRepository();

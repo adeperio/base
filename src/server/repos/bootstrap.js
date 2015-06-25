@@ -1,6 +1,9 @@
+'use strict'
+
+require('dotenv').load();
+
 var pg = require('pg');
 var config = new require('../config.js')();
-
 var client = new pg.Client(config.connectionString);
 client.connect();
 

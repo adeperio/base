@@ -235,7 +235,7 @@ gulp.task('pagespeed', function(cb) {
 });
 
 gulp.task('test', ['bootstrap-test'], shell.task([
-  'export NODE_ENV=test; mocha --recursive --compilers js:mocha-traceur'
+  'mocha --recursive --compilers js:mocha-traceur'
 ]));
 
 gulp.task('bootstrap-test', shell.task([
@@ -243,5 +243,5 @@ gulp.task('bootstrap-test', shell.task([
 ]));
 
 gulp.task('bootstrap', shell.task([
-  'export NODE_ENV=development; node src/server/repos/bootstrap.js'
+  'node src/server/repos/bootstrap.js'
 ]));
