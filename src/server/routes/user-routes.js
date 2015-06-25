@@ -9,8 +9,6 @@ import IsAuthenticated from '../middleware/auth/passport-auth-check.js';
 var router = express.Router();
 
 router.get('/users/me', IsAuthenticated, function(req, res, next) {
-
-
   res.json(req.user);
 });
 
