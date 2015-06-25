@@ -4,7 +4,7 @@ var path = require('path');
 
 (function () {
 
-  require('dotenv').load();
+  require('dotenv').config();
 
 }());
 
