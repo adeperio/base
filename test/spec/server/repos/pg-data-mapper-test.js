@@ -10,6 +10,7 @@ var mapper = require(appRoot + '/src/server/repos/pg-data-mapper.js');
 var userRows = require(appRoot + '/test/resources/userRows.json');
 var userRowFilled = require(appRoot + '/test/resources/userRowFilled.json');
 var itemRow = require(appRoot + '/test/resources/itemRow.json');
+var itemRows = require(appRoot + '/test/resources/itemRows.json');
 
 
 describe('pg-data-mapper', function(){
@@ -21,18 +22,36 @@ describe('pg-data-mapper', function(){
   });
 
   describe('mapToItem', function(){
-    it('should get an item object', function(done){
+    it('should get an item object', function(done) {
 
       mapper.mapToItemAsync(itemRow)
-      .then(function(item){
-        winston.log('debug', JSON.stringify(item));
-        assert.equal(1, item.user._id);
-        assert.equal('testItemTitle', item.title);
-        assert.equal('testdescription', item.description);
-        done();
-      }).catch(function(e){
-        done(e);
-      });
+        .then(function(item) {
+          winston.log('debug', JSON.stringify(item));
+          assert.equal(1, item.user._id);
+          assert.equal('testItemTitle', item.title);
+          assert.equal('testdescription', item.description);
+          done();
+        }).catch(function(e) {
+          done(e);
+        });
+    })
+  });
+
+  describe('mapToItems', function(){
+    it('should get an item object', function(done) {
+
+      mapper.mapToItemsAsync(itemRows)
+        .then(function(items) {
+          winston.log('debug', JSON.stringify(items));
+          assert.equal(2, items.length);
+          assert.equal('testItemTitle1', items[0].title);
+          assert.equal('testdescription1', items[0].description);
+          assert.equal('testItemTitle2', items[1].title);
+          assert.equal('testdescription2', items[1].description);
+          done();
+        }).catch(function(e) {
+          done(e);
+        });
     })
   });
 

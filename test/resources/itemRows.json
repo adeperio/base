@@ -1,0 +1,16 @@
+[
+  {
+      "id": 1,
+      "user_id_fkey": 1,
+      "title": "testItemTitle1",
+      "description": "testdescription1",
+      "created": "2015-06-11T01:15:01.237Z"
+  },
+  {
+      "id": 2,
+      "user_id_fkey": 1,
+      "title": "testItemTitle2",
+      "description": "testdescription2",
+      "created": "2015-06-11T01:15:01.237Z"
+  }
+]

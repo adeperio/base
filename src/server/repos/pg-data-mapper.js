@@ -35,6 +35,21 @@ function Mapper(){
 
   };
 
+  this.mapToItems = function(itemRows, cb){
+
+    var _this = this;
+
+    var items = _.each(itemRows, function(itemRow) {
+
+                      _this.mapToItem(itemRow, function(item){
+                          return item;
+                      });
+                  });
+
+                  
+    cb(null, items);
+  };
+
   this.mapToItem = function(itemRow, cb){
 
     var item = new Item();

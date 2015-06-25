@@ -30,6 +30,27 @@ function ItemRepository () {
                 });
   };
 
+  this.getItemsForUser = function(userId){
+
+    var sql = 'SELECT * FROM items WHERE user_id_fkey = $1;';
+
+    return query(sql, [userId])
+              .then(function(result){
+                  if(result && result[1] && result[1].rows){
+                    return result[1].rows;
+                  } else {
+                    return [];
+                  }
+              })
+              .then(function(itemRows){
+                if(itemRows){
+                  return mapper.mapToItemsAsync(itemRows);
+                } else{
+                  return null;
+                }
+              });
+  };
+
 }
 
 module.exports = ItemRepository;
