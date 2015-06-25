@@ -5,5 +5,6 @@ build
 node_modules
 npm-debug.log
 bower_components
-config.js
 certs
+config.js
+*.env
