@@ -56,4 +56,35 @@ describe('item-repository', function(){
     })
   });
 
+
+  describe('getItemsForUser', function(){
+    it('should return newly created item', function(done){
+
+      var itemRepo = new ItemRepository();
+      var randomizer = new RandomizerService();
+      var mockTitle = randomizer.getRandomUUIDv4();
+      var mockDescription = randomizer.getRandomUUIDv4();
+
+      itemRepo.createItem(User._id, mockTitle, mockDescription)
+        .then(function(createdItem){
+
+          mockTitle = randomizer.getRandomUUIDv4();
+          mockDescription = randomizer.getRandomUUIDv4();
+          return itemRepo.createItem(User._id, mockTitle, mockDescription);
+        })
+        .then(function(createdItem){
+
+          return itemRepo.getItemsForUser(User._id);
+
+        })
+        .then(function(items){
+          assert.equal(2, items.length);
+          done();
+
+        })
+        .catch(function(err){
+            done(err)
+        });
+  });
+
 });
