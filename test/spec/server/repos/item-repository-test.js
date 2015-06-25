@@ -75,16 +75,16 @@ describe('item-repository', function(){
         .then(function(createdItem){
 
           return itemRepo.getItemsForUser(User._id);
-
         })
         .then(function(items){
-          assert.equal(2, items.length);
+          assert.equal(3, items.length);
           done();
 
         })
         .catch(function(err){
             done(err)
         });
+      })
   });
 
 });
