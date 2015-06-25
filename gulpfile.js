@@ -144,7 +144,7 @@ gulp.task('build', ['clean'], function(cb) {
 });
 
 gulp.task('build:dist', ['clean'], function(cb) {
-  runSequence(['certs', 'vendor', 'fonts', 'assets', 'styles', 'bundle', 'env:dist', 'bootstrap-copy:dist', 'copy:dist'], function(){
+  runSequence(['certs', 'vendor', 'fonts', 'assets', 'styles', 'bundle', 'env:dist', 'bootstrap-copy:dist'], function(){
     runSequence(['copy:dist'], cb);
   });
 });
