@@ -2,6 +2,12 @@
 
 var path = require('path');
 
+(function () {
+
+  require('dotenv').load();
+
+}());
+
 module.exports = function(){
   return {
     connectionString: process.env.NODE_ENV === 'test' ? process.env.CONN_STRING_TEST_DB : process.env.CONN_STRING,

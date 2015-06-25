@@ -1,5 +1,5 @@
 'use strict'
-require('dotenv').load();
+
 import winston from 'winston';
 import chai from 'chai';
 var assert = chai.assert;
