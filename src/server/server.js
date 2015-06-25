@@ -3,7 +3,6 @@
 //set configs
 import config from './config.js';
 global.Config = new config();
-
 import express from 'express';
 
 import session from 'express-session';

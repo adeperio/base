@@ -59,6 +59,12 @@ gulp.task('certs', function() {
 });
 
 //.env
+
+gulp.task('env', function() {
+  return gulp.src('conf-development.env')
+    .pipe(gulp.dest('build'));
+});
+
 gulp.task('env:dist', function() {
   return gulp.src('conf-production.env')
     .pipe(gulp.dest('build'));
@@ -134,7 +140,7 @@ gulp.task('bundle', function(cb) {
 
 // Build the app from source code
 gulp.task('build', ['clean'], function(cb) {
-  runSequence(['certs', 'vendor', 'fonts', 'assets', 'styles', 'bundle'], cb);
+  runSequence(['certs', 'vendor', 'fonts', 'assets', 'styles', 'bundle', 'env'], cb);
 });
 
 gulp.task('build:dist', ['clean'], function(cb) {
