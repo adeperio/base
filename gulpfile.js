@@ -36,7 +36,7 @@ gulp.task('default', ['sync']);
 
 // Clean output directory
 gulp.task('clean', del.bind(
-  null, ['.tmp', 'build/*', '!build/.git'], {dot: true}
+  null, ['.tmp', 'build/*', 'dist/*', '!build/.git'], {dot: true}
 ));
 
 
@@ -58,7 +58,22 @@ gulp.task('certs', function() {
     .pipe(gulp.dest('build/certs'));
 });
 
+//.env
+gulp.task('env:dist', function() {
+  return gulp.src('conf-production.env')
+    .pipe(gulp.dest('build'));
+});
 
+//bootstrapjs
+gulp.task('bootstrap-copy:dist', function() {
+  return gulp.src('src/server/repos/bootstrap.js')
+    .pipe(gulp.dest('build'));
+});
+
+gulp.task('copy:dist', function() {
+  return gulp.src('build/**/*')
+    .pipe(gulp.dest('dist'));
+});
 
 // Static files
 gulp.task('assets', function() {
@@ -122,9 +137,10 @@ gulp.task('build', ['clean'], function(cb) {
   runSequence(['certs', 'vendor', 'fonts', 'assets', 'styles', 'bundle'], cb);
 });
 
-gulp.task('dist', ['build'], function(cb) {
-  return gulp.src('src/client/fonts/**')
-    .pipe(gulp.dest('build/fonts'));
+gulp.task('build:dist', ['clean'], function(cb) {
+  runSequence(['certs', 'vendor', 'fonts', 'assets', 'styles', 'bundle', 'env:dist', 'bootstrap-copy:dist', 'copy:dist'], function(){
+    runSequence(['copy:dist'], cb);
+  });
 });
 
 // Build and start watching for modifications
@@ -202,37 +218,7 @@ gulp.task('sync', ['serve'], function(cb) {
   });
 });
 
-// Deploy to GitHub Pages
-gulp.task('deploy', function() {
 
-  // Remove temp folder
-  if (argv.clean) {
-    var os = require('os');
-    var repoPath = path.join(os.tmpdir(), 'tmpRepo');
-    $.util.log('Delete ' + $.util.colors.magenta(repoPath));
-    del.sync(repoPath, {force: true});
-  }
-
-  return gulp.src('build/**/*')
-    .pipe($.if('**/robots.txt', !argv.production ?
-      $.replace('Disallow:', 'Disallow: /') : $.util.noop()))
-    .pipe($.ghPages({
-      remoteUrl: 'https://github.com/{name}/{name}.github.io.git',
-      branch: 'master'
-    }));
-});
-
-// Run PageSpeed Insights
-gulp.task('pagespeed', function(cb) {
-  var pagespeed = require('psi');
-  // Update the below URL to the public URL of your site
-  pagespeed.output('example.com', {
-    strategy: 'mobile'
-    // By default we use the PageSpeed Insights free (no API key) tier.
-    // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE
-    // key: 'YOUR_API_KEY'
-  }, cb);
-});
 
 gulp.task('test', ['bootstrap-test'], shell.task([
   'export NODE_ENV=test; mocha --recursive --compilers js:mocha-traceur'
