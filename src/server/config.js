@@ -4,13 +4,18 @@ var path = require('path');
 
 (function () {
 
-  require('dotenv').config();
+  var env = 'development'; //default to development environment
+  if(process.env.NODE_ENV){
+    env = process.env.NODE_ENV;
+  }
+
+  require('dotenv').config({ path: 'conf-' + env + '.env'});
 
 }());
 
 module.exports = function(){
   return {
-    connectionString: process.env.NODE_ENV === 'test' ? process.env.CONN_STRING_TEST_DB : process.env.CONN_STRING,
+    connectionString: process.env.CONN_STRING,
     tls: {
       key: process.env.TLS_KEY,
       cert: process.env.TLS_CERT
