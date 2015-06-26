@@ -65,15 +65,20 @@ gulp.task('env', function() {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('env:dist', function() {
+gulp.task('copy-env:dist', function() {
   return gulp.src('conf-production.env')
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('dist'));
 });
 
 //bootstrapjs
-gulp.task('bootstrap-copy:dist', function() {
+gulp.task('copy-bootstrap:dist', function() {
   return gulp.src('src/server/repos/bootstrap.js')
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('copy-package-json:dist', function() {
+  return gulp.src('package.json')
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('copy:dist', function() {
@@ -144,10 +149,30 @@ gulp.task('build', ['clean'], function(cb) {
 });
 
 gulp.task('build:dist', ['clean'], function(cb) {
-  runSequence(['certs', 'vendor', 'fonts', 'assets', 'styles', 'bundle', 'env:dist', 'bootstrap-copy:dist'], function(){
+  runSequence(['vendor', 'fonts', 'assets', 'styles', 'bundle', 'copy-env:dist', 'copy-bootstrap:dist', 'copy-package-json:dist'], function(){
     runSequence(['copy:dist'], cb);
   });
 });
+
+gulp.task('deploy:dist', ['build:dist'], function(cb) {
+
+});
+
+
+gulp.task('test', ['bootstrap-test'], shell.task([
+  'export NODE_ENV=test; mocha --recursive --compilers js:mocha-traceur'
+]));
+
+gulp.task('bootstrap-test', shell.task([
+  'export NODE_ENV=test; node src/server/repos/bootstrap.js'
+]));
+
+gulp.task('bootstrap', shell.task([
+  'export NODE_ENV=development; node src/server/repos/bootstrap.js'
+]));
+
+
+
 
 // Build and start watching for modifications
 gulp.task('build:watch', function(cb) {
@@ -223,17 +248,3 @@ gulp.task('sync', ['serve'], function(cb) {
     browserSync.reload(path.relative(__dirname, file.path));
   });
 });
-
-
-
-gulp.task('test', ['bootstrap-test'], shell.task([
-  'export NODE_ENV=test; mocha --recursive --compilers js:mocha-traceur'
-]));
-
-gulp.task('bootstrap-test', shell.task([
-  'export NODE_ENV=test; node src/server/repos/bootstrap.js'
-]));
-
-gulp.task('bootstrap', shell.task([
-  'export NODE_ENV=development; node src/server/repos/bootstrap.js'
-]));

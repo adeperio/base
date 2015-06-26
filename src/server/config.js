@@ -5,6 +5,7 @@ var path = require('path');
 (function () {
 
   var env = 'development'; //default to development environment
+  console.log('process.env.NODE_ENV: ' + JSON.stringify(process.env.NODE_ENV));
   if(process.env.NODE_ENV){
     env = process.env.NODE_ENV;
   }
