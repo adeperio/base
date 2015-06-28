@@ -10,7 +10,7 @@ var path = require('path');
     env = process.env.NODE_ENV;
   }
 
-  require('dotenv').config({ path: 'conf-' + env + '.env'});
+  require('dotenv').config({ path: env + '.env'});
 
 }());
 

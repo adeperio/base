@@ -61,12 +61,12 @@ gulp.task('certs', function() {
 //.env
 
 gulp.task('env', function() {
-  return gulp.src('conf-development.env')
+  return gulp.src('development.env')
     .pipe(gulp.dest('build'));
 });
 
 gulp.task('copy-env:dist', function() {
-  return gulp.src('conf-production.env')
+  return gulp.src('production.env')
     .pipe(gulp.dest('dist'));
 });
 
