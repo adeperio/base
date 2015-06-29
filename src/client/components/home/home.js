@@ -4,6 +4,7 @@ import './home.less';
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
 import UserActions from '../../flux/actions/user-actions';
+import UserItemsActions from '../../flux/actions/user-items-actions';
 import UserStore from '../../flux/stores/user-store';
 import ActionTypes from '../../flux/constants/action-types';
 import UserProfile from '../user-profile';
@@ -28,6 +29,10 @@ export default React.createClass({
     UserActions.signOut();
   },
 
+  addItem: function(){
+    UserItemsActions.addItem('test1', 'description');
+  },
+
   render: function() {
 
     return (
@@ -41,7 +46,7 @@ export default React.createClass({
           <div className="col-md-10 container-full right-panel">
             <div className="row">
               <div className="header-panel col-md-2 col-md-offset-10">
-                <Bootstrap.Button className="btn-primary" onClick={this.signOut}>
+                <Bootstrap.Button className="btn-default" onClick={this.signOut}>
                   Sign out
                 </Bootstrap.Button>
               </div>
@@ -49,6 +54,14 @@ export default React.createClass({
             <div className="row">
               <div className="user-panel col-md-2 col-md-offset-5">
                 <UserProfile/>
+              </div>
+              <div className="user-items-panel col-md-6 col-md-offset-3">
+                <Bootstrap.Button className="btn-primary" onClick={this.addItem}>
+                  Add Item
+                </Bootstrap.Button>
+                <div className="user-items">
+
+                </div>
               </div>
             </div>
           </div>

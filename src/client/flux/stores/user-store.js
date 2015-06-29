@@ -28,11 +28,13 @@ const DispatcherCallBack = function (payload) {
   switch (action.actionType) {
 
     case ActionTypes.ME_RES:
-      var user = action.data;
-      _me.emailAddress = user.emailAddress;
-      _me.firstName = user.firstName;
-      _me.lastName = user.lastName;
-      UserStore.emit(ActionTypes.ME_RES);
+
+        var user = action.data;
+        _me.emailAddress = user.emailAddress;
+        _me.firstName = user.firstName;
+        _me.lastName = user.lastName;
+        UserStore.emit(ActionTypes.ME_RES);
+
       break;
 
     case ActionTypes.SIGNOUT_RES:
@@ -44,6 +46,7 @@ const DispatcherCallBack = function (payload) {
           UserStore.emit(ActionTypes.SIGNOUT_ERR);
         }
         break;
+
 
     default:
       // Do nothing
