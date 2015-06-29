@@ -2,8 +2,7 @@
 import './sign-up.less';
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
-
-import AuthActions from '../../flux/actions/auth-actions';
+import UserActions from '../../flux/actions/user-actions';
 import ActionTypes from '../../flux/constants/action-types';
 
 export default React.createClass({
@@ -48,14 +47,14 @@ export default React.createClass({
 
   onSignUp: function(){
 
-    AuthActions.signUp(this.state.firstNameValue,
+    UserActions.signUp(this.state.firstNameValue,
                         this.state.lastNameValue,
                         this.state.emailValue);
   },
 
   onSignOut: function(){
 
-    AuthActions.signOut();
+    UserActions.signOut();
 
   },
 

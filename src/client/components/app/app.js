@@ -6,7 +6,6 @@ import Router from 'react-router';
 import invariant from 'react/lib/invariant';
 import Home from '../home';
 import ActionTypes from '../../flux/constants/action-types';
-import AuthActions from '../../flux/actions/auth-actions';
 var DefaultRoute = Router.DefaultRoute;
 var Link = Router.Link;
 var Route = Router.Route;

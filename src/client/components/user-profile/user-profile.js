@@ -3,7 +3,6 @@ import './user-profile.less';
 
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
-import AuthActions from '../../flux/actions/auth-actions';
 import UserActions from '../../flux/actions/user-actions';
 import UserStore from '../../flux/stores/user-store';
 import ActionTypes from '../../flux/constants/action-types';
