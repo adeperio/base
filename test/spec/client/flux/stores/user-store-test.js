@@ -47,7 +47,7 @@ describe('user-store', function(){
       // this.registeredCallback(payload);
       //
       //
-      // var sessionObject = this.AuthStore.getSessionObject();
+      // var sessionObject = this.UserStore.getSessionObject();
       // assert.equal(mockEmail, sessionObject.emailAddress);
       // assert.equal(mockToken, sessionObject.accessToken);
 

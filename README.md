@@ -17,35 +17,35 @@ Base aims to scaffold out a modern web application stack, with industry standard
 We love React+Flux and think you will to. Base scaffolds out React components along with related Flux actions and stores, and provides a starter framework for getting a ReactJS front-end chatting with an Express / Postgres back-end.
 
 ##### Secure web application stack using OAuth2.
-We wanted a starter kit that scaffolds out a baseline implementation of a modern secure web application:
-
-1. PassportJS for OAuth2 implementation
-2. Social logins
-3. HelmetJS for a variety ot HTTPS header protection mechanisms
-4. TLS/SSL By default, including for development runs (dev runs with self-signed certs, production builds require third-party certs)
-5. XSS scripting protection
-6. CSRF protections
-7. Secure sessions
+We wanted a starter kit that scaffolds out a baseline implementation of a modern secure web application.
 
 ##### A light and scalabale Web Server
-Express and NodeJS provides a powerful and scalable web stack as a base, but we hope enough flexibility and freedom to use and integrate other web frameworks as preferred on top (e.g Backbone etc).
+Express and NodeJS provides a powerful and scalable web stack as a base. Other than this, we don't impose any other framework choice on the server side. Build or
 
 ##### An RDBMS Alternative
 MongoDB is a very popular persistent store on the web, and with many good reasons. But we thnk there are many apps out there where an RDBMs is still the most relevant choice. We chose Postgres as a fast, scalable, open source, and well supported RDBMS option.
 
 ## Features
 
+The Stack:
+
 Gulp + Webpack + React + Flux + Express + Postgres + Passportjs + Bootstrap + Jade + Mocha + Chai.
 
-1. Out of the box OAuth2 implementation.
-2. Sign-in, Sign-up, and Sign-out.
-3. API endpoint protection using Oauth2 bearer tokens.
-4. Sign in with Google, Facebook Twitter, or Local logins
-5. React+Flux Scaffolding
-6. React-router
-7. WebPack+Gulp Build system
-8. Postgres persistent layer
-9. NodeJS Express web server  
+1. React+Flux Scaffolding
+2. React-router
+3. WebPack+Gulp Build system
+4. Postgres persistent layer
+5. NodeJS Express web server  
+
+Security:
+
+1. PassportJS for OAuth2 sign-ins
+2. Social logins with Google and Facebook
+3. HelmetJS for a variety of header protection mechanisms
+4. TLS/SSL By default, including for development runs (dev runs with self-signed certs, production builds require third-party certs)
+5. XSS scripting protection
+6. CSRF protections
+7. Secure sessions
 
 ## Installation
 
@@ -57,7 +57,25 @@ $ cd MyApp
 $ npm install -g gulp           # Install Gulp task runner globally
 $ npm install                   # Install Node.js components listed in ./package.json
 ```
-### To build for dist
+
+### OAuth2
+
+#### Google
+
+In order to use get user information from Google sign-in, we need the following scopes enabled for your application at console.developers.google.com
+
+https://www.googleapis.com/auth/plus.login
+https://www.googleapis.com/auth/userinfo.email
+https://www.googleapis.com/auth/userinfo.profile
+
+#### Facebook
+
+Facebook OAuth2 also needs the following scopes enabled:
+
+email
+public_profile
+
+### Production Build
 
 ```shell
 gulp build:dist --release
