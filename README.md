@@ -17,7 +17,15 @@ Base aims to scaffold out a modern web application stack, with industry standard
 We love React+Flux and think you will to. Base scaffolds out React components along with related Flux actions and stores, and provides a starter framework for getting a ReactJS front-end chatting with an Express / Postgres back-end.
 
 ##### Secure web application stack using OAuth2.
-We wanted a starter kit that scaffolds out a standard implementation of a modern secure web application.
+We wanted a starter kit that scaffolds out a baseline implementation of a modern secure web application:
+
+1. PassportJS for OAuth2 implementation
+2. Social logins
+3. HelmetJS for a variety ot HTTPS header protection mechanisms
+4. TLS/SSL By default, including for development runs (dev runs with self-signed certs, production builds require third-party certs)
+5. XSS scripting protection
+6. CSRF protections
+7. Secure sessions
 
 ##### A light and scalabale Web Server
 Express and NodeJS provides a powerful and scalable web stack as a base, but we hope enough flexibility and freedom to use and integrate other web frameworks as preferred on top (e.g Backbone etc).
