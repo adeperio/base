@@ -57,6 +57,11 @@ $ cd MyApp
 $ npm install -g gulp           # Install Gulp task runner globally
 $ npm install                   # Install Node.js components listed in ./package.json
 ```
+### To build for dist
+
+```shell
+gulp build:dist --release
+```
 
 ### Config
 
