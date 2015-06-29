@@ -19,7 +19,8 @@ module.exports = function(){
     connectionString: process.env.CONN_STRING,
     tls: {
       key: process.env.TLS_KEY,
-      cert: process.env.TLS_CERT
+      cert: process.env.TLS_CERT,
+      ca: process.env.TLS_CA
     },
     auth: {
       google: {

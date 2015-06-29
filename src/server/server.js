@@ -118,13 +118,16 @@ if(process.env.NODE_ENV === 'development'){
 
   // This will add the well-known CAs to 'https.globalAgent.options.ca'
   // useful only for custom certs so NOT used in production
-  sslRootCas.inject().addFile(path.join(__dirname, 'certs', 'server', 'my-root-ca.crt.pem'));
+  sslRootCas.inject().addFile(Config.tls.ca);
 }
 
 //credentials
 var privateKey  = fs.readFileSync(Config.tls.key, 'utf8');
 var certificate = fs.readFileSync(Config.tls.cert, 'utf8');
-var credentials = {key: privateKey, cert: certificate};
+var credentials = {
+                    key: privateKey,
+                    cert: certificate
+                  };
 
 var httpsServer = https.createServer(credentials, server);
 httpsServer.listen(server.get('port'), function() {
