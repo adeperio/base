@@ -19,21 +19,12 @@
     </section>
 
     <section class="main-content">
-      <h1>
-<a id="base" class="anchor" href="#base" aria-hidden="true"><span class="octicon octicon-link"></span></a>Base</h1>
+      <h2>
+<a id="an-open-source-secure-web-application-starter-kit" class="anchor" href="#an-open-source-secure-web-application-starter-kit" aria-hidden="true"><span class="octicon octicon-link"></span></a>An open-source, secure, web application starter kit.</h2>
+
+<p>Base is a seed / starter kit for a modern web application stack, scaffolded out with a baseline level of security. Built with ReactJS, Flux, Express, and Postgres.</p>
 
 <p><img src="https://github.com/adeperio/base/blob/master/logo.png?raw=true" alt="Alt text" title="Base"></p>
-
-<p>This is a seed / scaffolding project for a web application stack with OAuth2.</p>
-
-<p>Built with ReactJS, Flux, Express, and Postgres.</p>
-
-<p>Base aims to scaffold out a modern web application stack, with industry standard OAuth2 user access functionality and API security, right out of the box. So you can spend more time on what matters most - building, designing and hacking out your apps.</p>
-
-<h2>
-<a id="why" class="anchor" href="#why" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why</h2>
-
-<p><a href="/docs/overview.md">Why Base? Good question ...</a></p>
 
 <h5>
 <a id="a-starter-kit-and-reference-implementation-for-facebooks-reactjsflux" class="anchor" href="#a-starter-kit-and-reference-implementation-for-facebooks-reactjsflux" aria-hidden="true"><span class="octicon octicon-link"></span></a>A starter kit and reference implementation for Facebook's ReactJS+Flux.</h5>
@@ -43,12 +34,12 @@
 <h5>
 <a id="secure-web-application-stack-using-oauth2" class="anchor" href="#secure-web-application-stack-using-oauth2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Secure web application stack using OAuth2.</h5>
 
-<p>We wanted a starter kit that scaffolds out a standard implementation of a modern secure web application.</p>
+<p>We wanted a starter kit that scaffolds out a baseline implementation of a modern secure web application.</p>
 
 <h5>
 <a id="a-light-and-scalabale-web-server" class="anchor" href="#a-light-and-scalabale-web-server" aria-hidden="true"><span class="octicon octicon-link"></span></a>A light and scalabale Web Server</h5>
 
-<p>Express and NodeJS provides a powerful and scalable web stack as a base, but we hope enough flexibility and freedom to use and integrate other web frameworks as preferred on top (e.g Backbone etc).</p>
+<p>Express and NodeJS provides a powerful and scalable web stack as a base. Other than this, we don't impose any other framework choice on the server side.</p>
 
 <h5>
 <a id="an-rdbms-alternative" class="anchor" href="#an-rdbms-alternative" aria-hidden="true"><span class="octicon octicon-link"></span></a>An RDBMS Alternative</h5>
@@ -58,59 +49,30 @@
 <h2>
 <a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
 
+<p>The Stack:</p>
+
 <p>Gulp + Webpack + React + Flux + Express + Postgres + Passportjs + Bootstrap + Jade + Mocha + Chai.</p>
 
 <ol>
-<li>Out of the box OAuth2 implementation.</li>
-<li>Sign-in, Sign-up, and Sign-out.</li>
-<li>API endpoint protection using Oauth2 bearer tokens.</li>
-<li>Sign in with Google, Facebook Twitter, or Local logins</li>
 <li>React+Flux Scaffolding</li>
 <li>React-router</li>
-<li>WebPack+Gulp Build system</li>
-<li>Postgres persistent layer</li>
+<li>WebPack+Gulp</li>
+<li>Postgres</li>
 <li>NodeJS Express web server<br>
 </li>
 </ol>
 
-<h2>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+<p>Security:</p>
 
-<p>Base uses Gulp + Webpack as it's build system. To install base for your app:</p>
-
-<div class="highlight highlight-shell"><pre>$ git clone https://git@github.com:adeperio/base.git MyApp
-$ <span class="pl-c1">cd</span> MyApp
-$ npm install -g gulp           <span class="pl-c"># Install Gulp task runner globally</span>
-$ npm install                   <span class="pl-c"># Install Node.js components listed in ./package.json</span></pre></div>
-
-<h3>
-<a id="config" class="anchor" href="#config" aria-hidden="true"><span class="octicon octicon-link"></span></a>Config</h3>
-
-<p>There is a config.sample.js file in the src/server directory. Before running the server, create a config.js file from this sample file and enter your OAuth2 sign in credentials from your auth provider (clientID, clientSecret, callbackURL).</p>
-
-<h3>
-<a id="database" class="anchor" href="#database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Database</h3>
-
-<p>You will also need to ensure that you have a running instance of Postgresql and correctly bootstrapped with the correct database tables. The connection string for the DB should be entered in your config.js file (e.g. postgres://postgres:postgres@localhost:5432/base).</p>
-
-<p>To bootstrap the database, simply run:</p>
-
-<div class="highlight highlight-shell"><pre>$ gulp bootstrap</pre></div>
-
-<p>To run the application, run:</p>
-
-<div class="highlight highlight-shell"><pre>$ gulp</pre></div>
-
-<h3>
-<a id="tests" class="anchor" href="#tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tests</h3>
-
-<p>Base has a suite of tests that runs against a test database. To run the tests, you will need to make sure you have a running instance of a test Postgres db (e.g. postgres://postgres:postgres@localhost:5432/base-test). The settings for this can be entered under the "TEST" NODE_ENV section of the config.js file.</p>
-
-<p>Base uses Mocha + Chai as its test framework.</p>
-
-<p>Once this is setup, run the tests by:</p>
-
-<div class="highlight highlight-shell"><pre>$ gulp <span class="pl-c1">test</span></pre></div>
+<ol>
+<li>PassportJS for OAuth2</li>
+<li>Social logins (Google and Facebook)</li>
+<li>HelmetJS for header protection mechanisms</li>
+<li>TLS/SSL By default</li>
+<li>XSS protections</li>
+<li>CSRF protections</li>
+<li>Secure sessions</li>
+</ol>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/adeperio/base">Base</a> is maintained by <a href="https://github.com/adeperio">adeperio</a>.</span>
