@@ -1,5 +1,5 @@
 'use strict';
-import './login.less';
+import './sign-in.less';
 
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
@@ -17,9 +17,9 @@ export default React.createClass({
   render: function() {
 
     return (
-      <div className="login-container">
-        <div className={'login'}>
-            <div className="login-box">
+      <div className="sign-in-container">
+        <div className={'sign-in'}>
+            <div className="sign-in-box">
               <div className="row header">
                 <div className="col-md-4 col-md-offset-4">
                   <img src="/logo.png" />
@@ -39,12 +39,12 @@ export default React.createClass({
               </div>
               <div className="row ">
                 <div className="col-md-4 col-md-offset-2">
-                  <Bootstrap.Button className="btn-danger login-button" onClick={this.onGoToGoogleSignIn}>
+                  <Bootstrap.Button className="btn-danger sign-in-button" onClick={this.onGoToGoogleSignIn}>
                     Sign in with Google
                   </Bootstrap.Button>
                 </div>
                 <div className="col-md-4 ">
-                  <Bootstrap.Button className="btn-primary login-button" onClick={this.onGoToFacebookSignIn}>
+                  <Bootstrap.Button className="btn-primary sign-in-button" onClick={this.onGoToFacebookSignIn}>
                     Sign in with Facebook
                   </Bootstrap.Button>
                 </div>

@@ -5,7 +5,7 @@ import Router from 'react-router';
 
 import App from './components/app';
 import Home from './components/home';
-import Login from './components/login';
+import SignIn from './components/sign-in';
 import Error from './components/error';
 
 var DefaultRoute = Router.DefaultRoute;
@@ -18,7 +18,7 @@ var routes = (
   <Route name="app" path="/" handler={App}>
     <Route name="home" path="/home" handler={Home}/>
     <Route name="error" path="/error" handler={Error}/>
-    <DefaultRoute handler={Login}/>
+    <DefaultRoute handler={SignIn}/>
   </Route>
 );
 
