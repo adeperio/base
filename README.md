@@ -134,12 +134,12 @@ Config is loaded into your app using `dotenv`, and can then be accessed througho
 
 By default `.env` files are in `.gitignore` to avoid checking in secrets and settings, so you will need to manually create `.env` files in your repository.
 
+> NEVER check in your configs to repositories. Secrets, credentials and other sensitive settings generally exist in these files
+> so we need to make sure these are kept out of VCS.
+
 There is however a `sample.env` file (not used by Base, and excluded from `.gitignore`) that exists with an example list of settings that Base recognizes and supports.
 
 You can use `sample.env` as a starting point to fill out your config settings. Copy this file and rename the copies to `development.env`, `test.env`, `production.env` etc for each `NODE_ENV` you have.
-
-> NEVER check in your configs to repositories. Secrets, credentials and other sensitive settings generally exist in these files
-> so we need to make sure these are kept out of VCS.
 
 #### Bootstrap
 
