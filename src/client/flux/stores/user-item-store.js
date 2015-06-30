@@ -8,6 +8,7 @@ import Events from 'events';
 import Dispatcher from '../core/dispatcher';
 import ActionTypes from '../constants/action-types';
 import User from '../models/user';
+import UserItem from '../models/user-item';
 
 var EventEmitter = Events.EventEmitter;
 var _userItems = [];
@@ -30,7 +31,10 @@ const DispatcherCallBack = function (payload) {
     case ActionTypes.ADD_ITEM_RES:
         var addedItem = action.data;
         if(addedItem){
-          _userItems.push(addedItem);
+          var item = new UserItem();
+          item.title = addedItem.title;
+          item.description = addedItem.description;
+          _userItems.push(item);
           UserItemStore.emit(ActionTypes.ADD_ITEM_RES);
         } else {
           UserItemStore.emit(ActionTypes.ADD_ITEM_ERR);
@@ -38,8 +42,15 @@ const DispatcherCallBack = function (payload) {
 
         break;
     case ActionTypes.GET_USER_ITEMS_RES:
-        _userItems = action.data;
-        if(_userItems){
+        var items = action.data;
+        if(items){
+
+          _userItems = items.map(function(itemRes){
+            var item = new UserItem();
+            item.title = itemRes.title;
+            item.description = itemRes.description;
+          });
+
           UserItemStore.emit(ActionTypes.GET_USER_ITEMS_RES);
         } else {
           UserItemStore.emit(ActionTypes.GET_USER_ITEMS_ERR);
