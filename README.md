@@ -33,17 +33,17 @@ Gulp + Webpack + React + Flux + Express + Postgres + Passportjs + Bootstrap + Ja
 
 1. React+Flux Scaffolding
 2. React-router
-3. WebPack+Gulp Build system
-4. Postgres persistent layer
+3. WebPack+Gulp
+4. Postgres
 5. NodeJS Express web server  
 
 Security:
 
-1. PassportJS for OAuth2 sign-ins
-2. Social logins with Google and Facebook
-3. HelmetJS for a variety of header protection mechanisms
-4. TLS/SSL By default, including for development runs (dev runs with self-signed certs, production builds require third-party certs)
-5. XSS scripting protection
+1. PassportJS for OAuth2
+2. Social logins (Google and Facebook)
+3. HelmetJS for header protection mechanisms
+4. TLS/SSL By default
+5. XSS protections
 6. CSRF protections
 7. Secure sessions
 
