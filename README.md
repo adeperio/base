@@ -206,3 +206,6 @@ SFTP the contents of this folder to your VPS and run `npm install` to install al
 After this, you can point ForeverJS (or PM2) to your `server.js` file in your `dist` folder on your production server to run the app.
 
 > On the roadmap, Yeoman generators, and Heroku deploys
+
+
+Base is under MIT license - LICENSE.txt
