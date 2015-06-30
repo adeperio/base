@@ -43,6 +43,34 @@ Security:
 
 ## Installation
 
+### Requirements
+
+#### A working instance of Postgres
+The latest version of Postgresql can be found here: http://www.postgresql.org/download/
+
+#### Google and Facebook apps
+
+To sign-in using login with Google and Facebook, you will need to setup your app for OAuth with each provider.
+
+##### Google
+
+Google apps can be setup at console.developers.google.com. In order to use get user information from Google sign-in, we need the following scopes enabled for your application:
+
+* https://www.googleapis.com/auth/plus.login
+* https://www.googleapis.com/auth/userinfo.email
+* https://www.googleapis.com/auth/userinfo.profile
+
+#### Facebook
+
+Facebook apps can be setup for OAuth2 at https://developers.facebook.com/. Facebook oauth also needs the following scopes enabled:
+
+* email
+* public_profile
+
+### Setup
+
+#### Clone
+
 Base uses Gulp + Webpack as it's build system. To install base for your app:
 
 ```shell
@@ -51,23 +79,13 @@ $ cd MyApp
 $ npm install -g gulp           # Install Gulp task runner globally
 $ npm install                   # Install Node.js components listed in ./package.json
 ```
+### Setting your configs
 
-### OAuth2
+There is a config.sample.js file in the src/server directory. Before running the server, create a config.js file from this sample file and enter your OAuth2 sign in credentials from your auth provider (clientID, clientSecret, callbackURL).
 
-#### Google
+#### Bootstrap
 
-In order to use get user information from Google sign-in, we need the following scopes enabled for your application at console.developers.google.com
-
-https://www.googleapis.com/auth/plus.login
-https://www.googleapis.com/auth/userinfo.email
-https://www.googleapis.com/auth/userinfo.profile
-
-#### Facebook
-
-Facebook OAuth2 also needs the following scopes enabled:
-
-email
-public_profile
+Once you clone the repo and install the dependencies, you will need to bootstrap the database with the initial table
 
 ### Production Build
 

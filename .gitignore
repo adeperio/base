@@ -7,4 +7,5 @@ node_modules
 npm-debug.log
 bower_components
 certs
+!sample.env
 *.env
