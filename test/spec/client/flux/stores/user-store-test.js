@@ -26,30 +26,33 @@ describe('user-store', function(){
   describe('getMe', function(){
     it('should return a user object', function(done){
 
-      // var randomizer = new RandomizerService();
-      // var mockEmail = randomizer.getRandomUUIDv4();
-      // var mockToken = randomizer.getRandomUUIDv4();
-      //
-      // sessionStoreGlobal.setSessionGlobal(mockToken, '');
-      //
-      // var user = {
-      //   emailAddress: mockEmail
-      // };
-      //
-      // var payload = {
-      //   source: PayloadSources.VIEW_ACTION,
-      //   action: {
-      //     actionType: ActionTypes.SIGNUP_RES,
-      //     data: user
-      //   }
-      // };
-      //
-      // this.registeredCallback(payload);
-      //
-      //
-      // var sessionObject = this.UserStore.getSessionObject();
-      // assert.equal(mockEmail, sessionObject.emailAddress);
-      // assert.equal(mockToken, sessionObject.accessToken);
+      var randomizer = new RandomizerService();
+      var mockEmail = randomizer.getRandomUUIDv4();
+      var mockFirstName = randomizer.getRandomUUIDv4();
+      var mockLastName = randomizer.getRandomUUIDv4();
+
+      var user = {
+        emailAddress: mockEmail,
+        firstName: mockFirstName,
+        lastName: mockLastName
+      };
+
+      var payload = {
+        source: PayloadSources.VIEW_ACTION,
+        action: {
+          actionType: ActionTypes.ME_RES,
+          data: user
+        }
+      };
+
+      this.registeredCallback(payload);
+
+
+      var me = this.UserStore.getMe();
+
+      assert.equal(mockEmail, me.emailAddress);
+      assert.equal(mockFirstName, me.firstName);
+      assert.equal(mockLastName, me.lastName);
 
       done();
     })
