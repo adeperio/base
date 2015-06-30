@@ -64,7 +64,7 @@ server.use(helmet.contentSecurityPolicy({
 }));
 
 server.use(methodOverride());
-server.use(bodyParser.urlencoded({extended: false}));
+server.use(bodyParser());
 
 //setup express sessions
 server.use(cookieParser());
@@ -86,10 +86,11 @@ server.use(session({
 server.use(passport.initialize());
 server.use(passport.session()); //passport piggy backs of express sessions, still need to set express session options
 
+//CSRF
 var valueFunction = function(req){
     var result = (req.body && req.body._csrf)
       || (req.query && req.query._csrf)
-      || (req.cookies && req.cookies['XSRF-TOKEN']) //our CSRF token is stored here
+      || (req.cookies && req.cookies['XSRF-TOKEN'])
       || (req.headers['csrf-token'])
       || (req.headers['xsrf-token'])
       || (req.headers['x-csrf-token'])

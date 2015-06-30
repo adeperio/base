@@ -15,8 +15,7 @@ router.get('/users/me', IsAuthenticated, function(req, res, next) {
 router.post('/users/me/items', IsAuthenticated, function(req, res, next) {
 
   var itemsToAdd = req.body;
-
-  //just get the first item for now
+  console.dir(req.body);
   var item = itemsToAdd[0];
 
   var itemRepo = new ItemRepository();
@@ -24,7 +23,6 @@ router.post('/users/me/items', IsAuthenticated, function(req, res, next) {
     .then(function(item){
       res.json(item);
     });
-
 });
 
 router.get('/users/me/items', IsAuthenticated, function(req, res, next) {

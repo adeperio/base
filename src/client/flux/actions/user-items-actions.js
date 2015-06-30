@@ -9,7 +9,7 @@ module.exports = {
   addItem: function(title, description){
 
     http.post('/api/v1/users/me/items')
-      .send({ title: title, description: description })
+      .send([{ title: title, description: description }])
       .accept('application/json')
       .end((err, res) => {
 
