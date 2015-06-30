@@ -45,6 +45,7 @@ const DispatcherCallBack = function (payload) {
             var item = new UserItem();
             item.title = itemRes.title;
             item.description = itemRes.description;
+            item.created = itemRes.created;
             return item;
           });
 

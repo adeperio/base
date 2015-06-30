@@ -41,12 +41,15 @@ export default React.createClass({
 
     var items = <div></div>;
 
+
+
     if(this.state.items){
       items = this.state.items.map(function (item) {
             return (
               <div className="item">
                 <h1>{item.title}</h1>
-                <p>{item.description}</p>
+                <p>Created: {item.created}</p>
+                <h2>{item.description}</h2>
               </div>
             );
           });
