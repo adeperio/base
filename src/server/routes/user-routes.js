@@ -15,11 +15,11 @@ router.get('/users/me', IsAuthenticated, function(req, res, next) {
 router.post('/users/me/items', IsAuthenticated, function(req, res, next) {
 
   var itemsToAdd = req.body;
-  console.dir(req.body);
   var item = itemsToAdd[0];
+  var user = req.user;
 
   var itemRepo = new ItemRepository();
-  itemRepo.createItem(item.title, item.description)
+  itemRepo.createItem(user._id, item.title, item.description)
     .then(function(item){
       res.json(item);
     });
