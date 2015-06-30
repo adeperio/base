@@ -4,14 +4,11 @@
 ![Alt text](/logo.png?raw=true "Base")
 
 This is a seed / scaffolding project for a web application stack with OAuth2.
-
 Built with ReactJS, Flux, Express, and Postgres.
-
-Base aims to scaffold out a modern web application stack, with industry standard OAuth2 user access functionality and API security, right out of the box. So you can spend more time on what matters most - building, designing and hacking out your apps.
+Base aims to scaffold out a modern web application stack, with a baseline level of security.
+Spend more time on what matters most - building, designing and hacking out your apps.
 
 ## Why
-
-[Why Base? Good question ...](/docs/overview.md)
 
 ##### A starter kit and reference implementation for Facebook's ReactJS+Flux.
 We love React+Flux and think you will to. Base scaffolds out React components along with related Flux actions and stores, and provides a starter framework for getting a ReactJS front-end chatting with an Express / Postgres back-end.
