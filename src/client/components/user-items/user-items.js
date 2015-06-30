@@ -20,7 +20,6 @@ export default React.createClass({
   componentDidMount: function() {
 
     UserItemStore.on(ActionTypes.GET_USER_ITEMS_RES, this.refreshItems);
-    UserItemStore.on(ActionTypes.ADD_ITEM_RES, this.refreshItems);
     UserItemsActions.getUserItems();
   },
 

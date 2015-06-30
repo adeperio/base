@@ -16,6 +16,8 @@ module.exports = {
         if(!err && !res.error) {
           console.log("Add item: SUCCESS");
 
+          this.getUserItems();
+
           Dispatcher.handleServerAction({
             actionType: ActionTypes.ADD_ITEM_RES,
             data: res.body

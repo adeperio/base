@@ -31,10 +31,6 @@ const DispatcherCallBack = function (payload) {
     case ActionTypes.ADD_ITEM_RES:
         var addedItem = action.data;
         if(addedItem){
-          var item = new UserItem();
-          item.title = addedItem.title;
-          item.description = addedItem.description;
-          _userItems.push(item);
           UserItemStore.emit(ActionTypes.ADD_ITEM_RES);
         } else {
           UserItemStore.emit(ActionTypes.ADD_ITEM_ERR);
