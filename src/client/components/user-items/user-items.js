@@ -32,7 +32,32 @@ export default React.createClass({
     UserItemsActions.addItem('test1', 'description');
   },
 
+  renderItems: function(){
+
+    var items = <div></div>;
+
+    if(this.state.items){
+      items = this.state.items.map(function (item) {
+            return (
+              <div className="item">
+                <h1>Items Title 1</h1>
+                <p>Description</p>
+              </div>
+            );
+          });
+    }
+
+    return (
+      <div className="items">
+        {items}
+      </div>
+    );
+  },
+
   render: function() {
+
+    var items = this.renderItems();
+
     return (
       <div className="user-items">
         <div className="row">
@@ -43,18 +68,7 @@ export default React.createClass({
           </div>
         </div>
         <div className="row">
-          <div className="items">
-            <div className="item">
-              <h1>Items 1</h1>
-
-            </div>
-
-            <div className="item">
-              <h1>Items 2</h1>
-
-            </div>
-
-          </div>
+          {items}
         </div>
 
 

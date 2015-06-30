@@ -50,7 +50,6 @@ export default React.createClass({
         <h1>{usersName}</h1>
         <p>{emailAddress}</p>
         <p>{bio}</p>
-
       </div>
     );
 

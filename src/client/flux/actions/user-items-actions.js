@@ -32,7 +32,7 @@ module.exports = {
 
   getUserItems: function(){
 
-    http.post('/api/v1/users/me/items')
+    http.get('/api/v1/users/me/items')
       .accept('application/json')
       .end((err, res) => {
 
