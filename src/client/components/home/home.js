@@ -34,25 +34,56 @@ export default React.createClass({
 
     return (
       <div className="home row container-full">
-          <div className="col-md-2 container-full left-panel">
+          <div className="col-lg-2 container-full left-panel">
             <div className="logo">
               <img src="/logo.png" />
               <img src="/basejs.svg" />
             </div>
+            <div className="features">
+              <h2>Features</h2>
+              <h3>
+                The Stack:
+              </h3>
+              <ul>
+                <li>ReactJS+Flux</li>
+                <li>React-router</li>
+                <li>WebPack+Gulp </li>
+                <li>Postgres </li>
+                <li>Express/NodeJS</li>
+              </ul>
+
+              <h3>
+                Security:
+              </h3>
+              <ul>
+                <li>PassportJS for OAuth2</li>
+                <li>Social logins (Google, Facebook)</li>
+                <li>HelmetJS for http protections</li>
+                <li>TLS/SSL by default</li>
+                <li>XSS scripting protection</li>
+                <li>CSRF tokens</li>
+                <li>Secure sessions</li>
+              </ul>
+            </div>
+            <div className="footer">
+              <div className="fine-print">
+                <p>Created by @werejoan</p>
+              </div>
+            </div>
           </div>
-          <div className="col-md-10 container-full right-panel">
+          <div className="col-lg-10 container-full right-panel">
             <div className="row">
-              <div className="header-panel col-md-2 col-md-offset-10">
+              <div className="header-panel col-lg-2 col-lg-offset-10">
                 <Bootstrap.Button className="btn-default" onClick={this.signOut}>
                   Sign out
                 </Bootstrap.Button>
               </div>
             </div>
             <div className="row">
-              <div className="user-panel col-md-2 col-md-offset-5">
+              <div className="user-panel col-lg-2 col-lg-offset-5">
                 <UserProfile/>
               </div>
-              <div className="user-items-panel col-md-6 col-md-offset-3">
+              <div className="user-items-panel col-lg-6 col-lg-offset-3">
                 <UserItems />
               </div>
             </div>
