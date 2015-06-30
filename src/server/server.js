@@ -20,7 +20,7 @@ import pg from 'pg';
 import ConnectPg from 'connect-pg-simple';
 var pgSession = ConnectPg(session);
 
-import csrf from 'csurf';
+import csurf from 'csurf';
 
 import signInRoutes from './routes/sign-in-routes.js';
 import signOutRoutes from './routes/sign-out-routes.js';
@@ -43,7 +43,6 @@ server.set('view engine', 'jade');
 //Setup location to static assets
 server.use(express.static(path.join(__dirname)));
 
-
 // ======== *** SECURITY MIDDLEWARE ***
 
 //setup helmet js
@@ -64,9 +63,8 @@ server.use(helmet.contentSecurityPolicy({
     safari5: false
 }));
 
-//enforcing SSL for production environments both
-server.enable('trust proxy'); //use this if working on SSL behind a proxy
-server.use(express_enforces_ssl()); //this enforces a TLS connection
+server.use(methodOverride());
+server.use(bodyParser.urlencoded({extended: false}));
 
 //setup express sessions
 server.use(cookieParser());
@@ -79,24 +77,39 @@ server.use(session({
   }),
   secret: Config.session.secret,
   resave: false,
+  saveUninitialized: true,
   expires : new Date(Date.now() + 3600000), //1 Hour
   cookie: { httpOnly:true, secure: true }
 }));
 
-server.use(bodyParser());
-server.use(methodOverride());
+//passport setup
+server.use(passport.initialize());
+server.use(passport.session()); //passport piggy backs of express sessions, still need to set express session options
 
-//csurf protection
-server.use(csrf());
+var valueFunction = function(req){
+    var result = (req.body && req.body._csrf)
+      || (req.query && req.query._csrf)
+      || (req.cookies && req.cookies['XSRF-TOKEN']) //our CSRF token is stored here
+      || (req.headers['csrf-token'])
+      || (req.headers['xsrf-token'])
+      || (req.headers['x-csrf-token'])
+      || (req.headers['x-xsrf-token']);
+
+    return result;
+};
+
+server.use(csurf({ value: valueFunction }));
+
 server.use(function (req, res, next) {
   res.cookie('XSRF-TOKEN', req.csrfToken());
   res.locals.csrftoken = req.csrfToken();
   next();
 });
 
-//passport setup
-server.use(passport.initialize());
-server.use(passport.session()); //passport piggy backs of express sessions, still need to set express session options
+//enforcing SSL for production environments both
+// server.enable('trust proxy'); //use this if working on SSL behind a proxy
+// server.use(express_enforces_ssl()); //this enforces a TLS connection
+
 
 // ========= *** ROUTES ***
 server.use('/auth', signInRoutes);
@@ -111,10 +124,9 @@ server.get('/*', function (req, res) {
   res.render('index');
 });
 
-
 // ========= *** HTTPS setup ***
 
-if(process.env.NODE_ENV === 'development'){
+if(process.env.NODE_ENV === 'development') {
 
   // This will add the well-known CAs to 'https.globalAgent.options.ca'
   // useful only for custom certs so NOT used in production

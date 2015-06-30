@@ -30,7 +30,7 @@ module.exports = {
       });
   },
 
-  getUserItems: function(title, description){
+  getUserItems: function(){
 
     http.post('/api/v1/users/me/items')
       .accept('application/json')
