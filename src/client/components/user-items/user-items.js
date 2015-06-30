@@ -3,9 +3,11 @@ import './user-items.less';
 
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
+import uuid from 'node-uuid';
 import UserItemStore from '../../flux/stores/user-item-store';
 import UserItemsActions from '../../flux/actions/user-items-actions';
 import ActionTypes from '../../flux/constants/action-types';
+
 
 export default React.createClass({
 
@@ -29,7 +31,11 @@ export default React.createClass({
   },
 
   addItem: function(){
-    UserItemsActions.addItem('test1', 'description');
+    UserItemsActions.addItem('Title ' + this.getRandomString(), 'Description ' + this.getRandomString());
+  },
+
+  getRandomString: function(){
+    return uuid.v4().substring(0, 4);
   },
 
   renderItems: function(){
@@ -40,8 +46,8 @@ export default React.createClass({
       items = this.state.items.map(function (item) {
             return (
               <div className="item">
-                <h1>Items Title 1</h1>
-                <p>Description</p>
+                <h1>{item.title}</h1>
+                <p>{item.description}</p>
               </div>
             );
           });

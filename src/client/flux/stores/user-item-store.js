@@ -49,6 +49,7 @@ const DispatcherCallBack = function (payload) {
             var item = new UserItem();
             item.title = itemRes.title;
             item.description = itemRes.description;
+            return item;
           });
 
           UserItemStore.emit(ActionTypes.GET_USER_ITEMS_RES);
