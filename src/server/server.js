@@ -24,7 +24,6 @@ import csurf from 'csurf';
 
 import signInRoutes from './routes/sign-in-routes.js';
 import signOutRoutes from './routes/sign-out-routes.js';
-import signUpRoutes from './routes/sign-up-routes.js';
 import userRoutes from './routes/user-routes.js';
 
 import passport from './middleware/auth/passport.js';

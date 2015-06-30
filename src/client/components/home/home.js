@@ -6,6 +6,7 @@ import Bootstrap from 'react-bootstrap';
 import UserActions from '../../flux/actions/user-actions';
 import UserItemsActions from '../../flux/actions/user-items-actions';
 import UserStore from '../../flux/stores/user-store';
+import UserItemStore from '../../flux/stores/user-item-store';
 import ActionTypes from '../../flux/constants/action-types';
 import UserProfile from '../user-profile';
 
