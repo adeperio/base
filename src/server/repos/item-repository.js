@@ -32,7 +32,7 @@ function ItemRepository () {
 
   this.getItemsForUser = function(userId){
 
-    var sql = 'SELECT * FROM items WHERE user_id_fkey = $1;';
+    var sql = 'SELECT * FROM items WHERE user_id_fkey = $1 Order By created desc;';
 
     return query(sql, [userId])
               .then(function(result){
