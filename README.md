@@ -161,7 +161,7 @@ To generate a self signed cert, run the following script:
 ```shell
 $ ./make-self-signed-certs.sh myapp.com
 ```
-This will generate all of the necessary certificates and keys in a folder called `certs`.
+This will generate all of the necessary certificates and keys in a folder called `certs`. Props to https://github.com/coolaj86/nodejs-self-signed-certificate-example for this handy script.
 
 Edit your config file and make sure that the correct location for the private key, certificate, and CA file are correctly specified.
 
