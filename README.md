@@ -129,7 +129,7 @@ $ gulp bootstrap
 ```
 > BE CAREFUL to run this on any existing DB instance and this will wipe and reset the database to initial Base settings. This includes wiping all data, tables, and schemas
 
-#### Self-sign Development certs
+#### Self-signed development SSL certs
 
 > On all environments other than test, Base runs on TLS/SSL by default! On production, a commercial certificate should be used, but in development and running locally, we have the option of using self signed certs.
 
