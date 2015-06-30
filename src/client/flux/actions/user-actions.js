@@ -50,27 +50,7 @@ module.exports = {
       });
   },
 
-  signUp: function(firstName, lastName, emailAddress){
 
-    http.get('/auth/signup?firstName=' + firstName + '&lastName=' + lastName + '&emailAddress=' + emailAddress)
-      .accept('application/json')
-      .end((err, res) => {
-
-        if(!err && !res.error) {
-          console.log("Did signup: SUCCESS");
-          Dispatcher.handleServerAction({
-            actionType: ActionTypes.SIGNUP_RES,
-            data: res.body
-          });
-        } else{
-          console.log("Did signup: ERROR");
-          Dispatcher.handleServerAction({
-            actionType: ActionTypes.SIGNUP_ERR,
-            data: res.error
-          });
-        }
-      });
-  }
 
 
 
