@@ -70,7 +70,8 @@ Facebook apps can be setup for OAuth2 at https://developers.facebook.com/. Faceb
 * email
 * public_profile
 
-##### HOSTS file setup
+
+##### Hosts File Setup
 
 > Google and Facebook requires that the callback URI for your app actually goes to a live address. If running your app on localhost (i.e. NODE_ENV=development), OAuth providers will need a way to call back in your app. The easiest way to do this would be to edit your HOSTS file on your computer. On a Mac, type the following in the terminal to edit your file
 
