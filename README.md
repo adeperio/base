@@ -207,5 +207,5 @@ After this, you can point ForeverJS (or PM2) to your `server.js` file in your `d
 
 > On the roadmap, Yeoman generators, and Heroku deploys
 
-
+### MIT
 Base is under MIT license - LICENSE.txt
