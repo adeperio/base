@@ -20,7 +20,7 @@ We love React+Flux and think you will to. Base scaffolds out React components al
 We wanted a starter kit that scaffolds out a baseline implementation of a modern secure web application.
 
 ##### A light and scalabale Web Server
-Express and NodeJS provides a powerful and scalable web stack as a base. Other than this, we don't impose any other framework choice on the server side. Build or
+Express and NodeJS provides a powerful and scalable web stack as a base. Other than this, we don't impose any other framework choice on the server side.
 
 ##### An RDBMS Alternative
 MongoDB is a very popular persistent store on the web, and with many good reasons. But we thnk there are many apps out there where an RDBMs is still the most relevant choice. We chose Postgres as a fast, scalable, open source, and well supported RDBMS option.
