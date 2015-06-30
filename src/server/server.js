@@ -114,7 +114,6 @@ server.use(function (req, res, next) {
 // ========= *** ROUTES ***
 server.use('/auth', signInRoutes);
 server.use('/auth', signOutRoutes);
-server.use('/auth', signUpRoutes);
 server.use('/api/v1', userRoutes);
 
 //Error handler middle ware

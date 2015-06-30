@@ -4,11 +4,10 @@ import './home.less';
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
 import UserActions from '../../flux/actions/user-actions';
-import UserItemsActions from '../../flux/actions/user-items-actions';
 import UserStore from '../../flux/stores/user-store';
-import UserItemStore from '../../flux/stores/user-item-store';
 import ActionTypes from '../../flux/constants/action-types';
 import UserProfile from '../user-profile';
+import UserItems from '../user-items';
 
 export default React.createClass({
 
@@ -17,10 +16,10 @@ export default React.createClass({
   },
 
   componentDidMount: function() {
-    UserStore.on(ActionTypes.SIGNOUT_RES, this.onSignOutResponse);
+    UserStore.on(ActionTypes.SIGNOUT_RES, this.goToLogin);
   },
 
-  onSignOutResponse: function(){
+  goToLogin: function(){
     if(this.context.router){
       this.context.router.transitionTo('app');
     }
@@ -30,9 +29,6 @@ export default React.createClass({
     UserActions.signOut();
   },
 
-  addItem: function(){
-    UserItemsActions.addItem('test1', 'description');
-  },
 
   render: function() {
 
@@ -57,12 +53,7 @@ export default React.createClass({
                 <UserProfile/>
               </div>
               <div className="user-items-panel col-md-6 col-md-offset-3">
-                <Bootstrap.Button className="btn-primary" onClick={this.addItem}>
-                  Add Item
-                </Bootstrap.Button>
-                <div className="user-items">
-
-                </div>
+                <UserItems />
               </div>
             </div>
           </div>

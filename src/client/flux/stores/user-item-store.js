@@ -21,7 +21,7 @@ const UserItemStore = assign({}, EventEmitter.prototype, {
 
 });
 
-//UserStore callback
+//UserItemStore callback
 const DispatcherCallBack = function (payload) {
   var action = payload.action;
 
@@ -52,6 +52,6 @@ const DispatcherCallBack = function (payload) {
 };
 
 
-UserStore.dispatcherToken = Dispatcher.register(DispatcherCallBack);
+UserItemStore.dispatcherToken = Dispatcher.register(DispatcherCallBack);
 
-module.exports = UserStore;
+module.exports = UserItemStore;

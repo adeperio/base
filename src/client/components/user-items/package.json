@@ -1,0 +1,6 @@
+{
+  "name": "user-items",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./user-items.js"
+}
