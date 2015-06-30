@@ -135,7 +135,7 @@ To generate a self signed cert, run the following script:
 ```shell
 $ ./make-self-signed-certs.sh myapp.com
 ```
-This will generate all of the necessary certificates and keys in a folder called certs. Edit your config file and make sure that the correct location for the private key, certificate, and CA file are correctly specified. 
+This will generate all of the necessary certificates and keys in a folder called certs. Edit your config file and make sure that the correct location for the private key, certificate, and CA file are correctly specified.
 
 In the sample.env file, the TLS.KEY, TLS.CERT, and TLS.CA settings have default values for SSL used for development, so it's safe to copy these over to development.env.
 
@@ -163,8 +163,12 @@ $ gulp test
 
 ### Production Build
 
-Base can build out a production
+Base can build out a production distribution in a dist folder. To build out a version for distribution type:
 
 ```shell
 gulp build:dist --release
 ```
+
+This will copy over a production.env file into the dist folder, whilst keeping our any self-signed certs generated. SFTP the contents of this folder to your VPS and run npm install to install all of the dependencies. After this, you can point ForeverJS (or PM2) to your server.js file on your dist folder on your production server to run the app.
+
+> On the roadmap, Yeoman generators, and Heroku deploys
