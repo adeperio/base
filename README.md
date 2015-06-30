@@ -3,10 +3,7 @@
 # Base
 ![Alt text](/logo.png?raw=true "Base")
 
-This is a seed / scaffolding project for a web application stack with OAuth2.
-Built with ReactJS, Flux, Express, and Postgres.
-Base aims to scaffold out a modern web application stack, with a baseline level of security.
-Spend more time on what matters most - building, designing and hacking out your apps.
+Base is a seed / starter kit for a modern web application stack, scaffolded out with a baseline level of security. Built with ReactJS, Flux, Express, and Postgres.
 
 ## Why
 
