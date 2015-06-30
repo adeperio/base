@@ -34,7 +34,7 @@ export default React.createClass({
   },
 
   getRandomString: function(){
-    return uuid.v4().substring(0, 4);
+    return uuid.v4().substring(0, 7);
   },
 
   renderItems: function(){
