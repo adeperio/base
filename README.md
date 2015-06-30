@@ -91,7 +91,7 @@ When specifiying the callback URI's in your Google or Facebook developer console
 > https://myapp.com/auth/google/callback
 
 ##### Other providers
-Base OAuth is built on top of PassportJS functionality, and so other OAuth providers can be added via Passport strategies. More providers are likely to appear on the Base roadmap. Check out http://http://passportjs.org/ for more info.
+Base OAuth is built on top of PassportJS functionality, and so other OAuth providers can be added via Passport strategies. More providers are likely to appear on the Base roadmap. Check out http://passportjs.org/ for more info.
 
 ### Setup
 
