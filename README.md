@@ -9,7 +9,7 @@ Base is a seed / starter kit for a modern web application stack, scaffolded out 
 
 View the demo at https://demo.basestackjs.com
 
-#### Contribute / Requests
+#### Contribute
 
 Check out the [contribute.md](contribute.md)
 
