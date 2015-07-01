@@ -67,7 +67,7 @@ export default React.createClass({
             </div>
             <div className="footer">
               <div className="fine-print">
-                <p>Created by @werejoan</p>
+                <p>Created by @wearejoan</p>
               </div>
             </div>
           </div>
