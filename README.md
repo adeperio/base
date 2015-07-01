@@ -7,7 +7,11 @@ Base is a seed / starter kit for a modern web application stack, scaffolded out 
 
 ## Why
 
-The philosophy around Base was to roll out a baseline set of security features for protection against common web application threats to give developers a kick start when building our their app. Some of the other why's include:
+The philosophy around Base was to roll out a baseline set of security features for protection against common web application threats to give developers a kick start when building our their app.
+
+We're not trying to be a silver bullet, but we are aiming to give developers as big a kick start as possible.
+
+Some of the other why's include:
 
 ##### A starter kit and reference implementation for Facebook's ReactJS+Flux.
 We love React+Flux and think you will to. Base scaffolds out React components along with related Flux actions and stores, and provides a starter framework for getting a ReactJS front-end chatting with an Express / Postgres back-end.
