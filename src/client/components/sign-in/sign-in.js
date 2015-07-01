@@ -1,6 +1,5 @@
 'use strict';
 import './sign-in.less';
-
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
 
@@ -33,7 +32,7 @@ export default React.createClass({
               <div className="row header">
                 <div className="col-md-12">
                     <h2>
-                      An open-source, security focused, web application starter kit. <br/>Built with ReactJS, Flux, Express, and Postgres.
+                      An open-source, security focused, web application starter kit.<br/>Built with ReactJS, Flux, Express, and Postgres.
                     </h2>
                 </div>
               </div>

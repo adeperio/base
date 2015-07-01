@@ -8,7 +8,6 @@ import UserItemStore from '../../flux/stores/user-item-store';
 import UserItemsActions from '../../flux/actions/user-items-actions';
 import ActionTypes from '../../flux/constants/action-types';
 
-
 export default React.createClass({
 
   getInitialState: function() {

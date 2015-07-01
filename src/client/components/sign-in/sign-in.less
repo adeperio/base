@@ -21,6 +21,7 @@
 
         img{
           width:100%;
+          max-width: 150px;
         }
 
         .btn-primary{
@@ -39,6 +40,7 @@
         .sign-in-button{
           width:100%;
           height:50px;
+          margin-bottom: 20px;
         }
     }
   }
@@ -50,5 +52,11 @@
       margin-right: auto;
       text-align:center;
     }
+  }
+
+  @media only screen and (max-width: 480px) {
+     .footer {
+        display: none;
+     }
   }
 }
