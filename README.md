@@ -5,13 +5,13 @@
 
 Base is a seed / starter kit for a modern web application stack, scaffolded out with a baseline level of security. Built with ReactJS, Flux, Express, and Postgres.
 
-### Demo Site
+#### Demo Site
 
 View the demo at https://demo.basestackjs.com
 
-### Feel like contributing, picked up a bug, issue?
+#### Contribute / Suggest
 
-Check out our notes [here](contribute.md)
+Check out the [contribute.md](contribute.md)
 
 ## Why
 
