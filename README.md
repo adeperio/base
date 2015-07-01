@@ -5,6 +5,8 @@
 
 Base is a seed / starter kit for a modern web application stack, scaffolded out with a baseline level of security. Built with ReactJS, Flux, Express, and Postgres.
 
+View the demo at https://demo.basestackjs.com
+
 ## Why
 
 The philosophy around Base was to roll out a baseline set of security features for protection against common web application threats to give developers a kick start when building our their app.
