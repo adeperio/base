@@ -15,7 +15,7 @@ This section includes advice on how to build new features for the project & what
 5. We are trying to make security a first class citizen in this project. If you see a security related bug would be great if you could log an issue so we can help patch it up. There is a security label in the issues so we can get visibility on what security bugs are currently open.
 6. Here are just a few tips on some specifics on the coding style we prefer:
     * File names use lowercase and hyphens
-    * We try and follow the BDD style of structuring the solution
+    * We try and follow the DDD style of structuring the solution
     * Class definitions are capitalised
     * Method, instance and variable names use lower camel case.
     * DB Table names and field names follow a lowercase / underscore naming pattern (e.g. email_address)
