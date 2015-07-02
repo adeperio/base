@@ -1,5 +1,5 @@
 'use strict';
-import './home.less';
+import './user-home.less';
 
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
@@ -33,7 +33,7 @@ export default React.createClass({
   render: function() {
 
     return (
-      <div className="home row container-full">
+      <div className="user-home row container-full">
           <div className="col-lg-2 container-full left-panel">
             <div className="logo">
               <img src="/logo.png" />

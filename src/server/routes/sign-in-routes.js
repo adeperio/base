@@ -29,7 +29,7 @@ router.get('/google/callback', passport.authenticate('google', { session: true, 
 
           // set the message
           req.session.messages = 'Login successfully';
-          return res.redirect('/home');
+          return res.redirect('/user-home');
         });
 
     }
@@ -52,7 +52,7 @@ router.get('/facebook/callback', passport.authenticate('facebook', { session: tr
 
           // set the message
           req.session.messages = 'Login successfully';
-          return res.redirect('/home');
+          return res.redirect('/user-home');
         });
 
     }
