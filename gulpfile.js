@@ -173,7 +173,7 @@ gulp.task('bootstrap-db', shell.task([
 ]));
 
 gulp.task('certs', shell.task([
-  './make-self-signed-certs.sh -d ' + DOMAIN
+  './make-self-signed-certs.sh'
 ]));
 
 
