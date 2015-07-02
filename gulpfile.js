@@ -13,8 +13,10 @@ var argv = require('minimist')(process.argv.slice(2));
 var gulpif = require('gulp-if');
 var production = !!(argv.production);
 
-// Settings
+// Gulp command line arguments
 var RELEASE = !!argv.release;                 // Minimize and optimize during a build?
+var DOMAIN = argv.d;
+console.log('DOMAIN: ' + DOMAIN);
 var AUTOPREFIXER_BROWSERS = [                 // https://github.com/ai/autoprefixer
   'ie >= 10',
   'ie_mob >= 10',
@@ -53,7 +55,7 @@ gulp.task('fonts', function() {
 });
 
 //certs
-gulp.task('certs', function() {
+gulp.task('copy-certs', function() {
   return gulp.src('certs/**')
     .pipe(gulp.dest('build/certs'));
 });
@@ -145,7 +147,7 @@ gulp.task('bundle', function(cb) {
 
 // Build the app from source code
 gulp.task('build', ['clean'], function(cb) {
-  runSequence(['certs', 'vendor', 'fonts', 'assets', 'styles', 'bundle', 'env'], cb);
+  runSequence(['copy-certs', 'vendor', 'fonts', 'assets', 'styles', 'bundle', 'env'], cb);
 });
 
 gulp.task('build:dist', ['clean'], function(cb) {
@@ -153,11 +155,6 @@ gulp.task('build:dist', ['clean'], function(cb) {
     runSequence(['copy:dist'], cb);
   });
 });
-
-gulp.task('deploy:dist', ['build:dist'], function(cb) {
-
-});
-
 
 gulp.task('test', ['bootstrap-test'], shell.task([
   'export NODE_ENV=test; mocha --recursive --compilers js:mocha-traceur'
@@ -167,11 +164,17 @@ gulp.task('bootstrap-test', shell.task([
   'export NODE_ENV=test; node src/server/repos/bootstrap.js'
 ]));
 
-gulp.task('bootstrap', shell.task([
+gulp.task('bootstrap', function(cb) {
+  runSequence(['bootstrap-db', 'certs'], cb);
+});
+
+gulp.task('bootstrap-db', shell.task([
   'export NODE_ENV=development; node src/server/repos/bootstrap.js'
 ]));
 
-
+gulp.task('certs', shell.task([
+  './make-self-signed-certs.sh -d ' + DOMAIN
+]));
 
 
 // Build and start watching for modifications
