@@ -13,12 +13,6 @@ View the demo at https://demo.basestackjs.com
 
 Check out the [contribute.md](contribute.md)
 
-#### Roadmap
-
-We have a number of issues sitting in Ready tags and Backlog tags that we intend to work on.
-
-At the moment, a lot of the initial setup is quite manual so probably going to start prioritising up a Yeoman generator.
-
 ## Why
 
 The philosophy around Base was to roll out a baseline set of security features for protection against common web application threats to give developers a kick start when building our their app.
