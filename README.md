@@ -78,7 +78,7 @@ $ cd MyApp
 $ npm install -g gulp           # Install Gulp task runner globally
 $ npm install                   # Install Node.js components listed in ./package.json
 ```
-### Setting your configs
+#### Setting your configs
 
 Configs are stores in `.env` files that correspond to the running `NODE_ENV` value.
 
@@ -108,7 +108,7 @@ $ gulp bootstrap
 
 The bootstrap script also creates self signed certs for use in development. In the `sample.env` file, the `TLS.KEY`, `TLS.CERT`, and `TLS.CA` settings have default values for SSL used for development, so it's safe to copy these over to `development.env`.
 
-### Running Base
+#### Running Base
 And finally, to run the application, type:
 
 ```shell
