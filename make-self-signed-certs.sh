@@ -1,7 +1,8 @@
 #!/bin/bash
+
+# Props to https://github.com/coolaj86/nodejs-self-signed-certificate-example for this handy script.
 if [ ! -d "certs" ] ; then
   FQDN="FullyQualifiedDomainName" #since this is just for development this can be random
-
 
   # make directories to work from
   mkdir -p certs/{server,client,ca,tmp}

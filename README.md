@@ -172,21 +172,7 @@ $ gulp bootstrap
 ```
 > BE CAREFUL to run this on any existing DB instance and this will wipe and reset the database to initial Base settings. This includes wiping all data, tables, and schemas
 
-#### Self-signed development SSL certs
-
-> On all environments other than test, Base runs on TLS/SSL by default! On production, a commercial certificate should be used, but in development and running locally, we have the option of using self signed certs.
-
-To generate a self signed cert, run the following script:
-
-```shell
-$ ./make-self-signed-certs.sh myapp.com
-```
-This will generate all of the necessary certificates and keys in a folder called `certs`. Props to https://github.com/coolaj86/nodejs-self-signed-certificate-example for this handy script.
-
-Edit your config file and make sure that the correct location for the private key, certificate, and CA file are correctly specified.
-
-In the `sample.env` file, the `TLS.KEY`, `TLS.CERT`, and `TLS.CA` settings have default values for SSL used for development, so it's safe to copy these over to `development.env`.
-
+The bootstrap script also creates self signed certs for use in development. In the `sample.env` file, the `TLS.KEY`, `TLS.CERT`, and `TLS.CA` settings have default values for SSL used for development, so it's safe to copy these over to `development.env`.
 
 ### Running Base
 And finally, to run the application, type:
