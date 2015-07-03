@@ -59,7 +59,7 @@ Security:
 
 ### Requirements
 
-* The latest version of PostgreSQL can be found here: http://www.postgresql.org/download/.
+* A running instance of PostgreSQL is required. The latest version of PostgreSQL can be found here: http://www.postgresql.org/download/.
 * To prep Base for social logins, you will need to setup your app's OAuth details for respective providers - more details here [auth.md](docs/auth.md)
 
 ### Setup
