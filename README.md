@@ -70,8 +70,6 @@ Security:
 
 ### Setup
 
-#### Clone
-
 Base uses Gulp + Webpack as it's build system. To install base for your app:
 
 ```shell
