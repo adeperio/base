@@ -22,16 +22,16 @@ We're not trying to be a silver bullet, but we are aiming to give developers as 
 Some of the other why's include:
 
 ##### A starter kit and reference implementation for Facebook's ReactJS+Flux.
-We love React+Flux and think you will to. Base scaffolds out React components along with related Flux actions and stores, and provides a starter framework for getting a ReactJS front-end chatting with an Express / Postgres back-end.
+We love React+Flux and think you will too. Base scaffolds out React components along with related Flux actions and stores, and provides a starter framework for getting a ReactJS front-end chatting with an Express / Postgres back-end.
 
 ##### Secure web application stack using OAuth2.
 We wanted a starter kit that scaffolds out a baseline implementation of a modern secure web application.
 
-##### A light and scalabale Web Server
+##### A light and scalable Web Server
 Express and NodeJS provides a powerful and scalable web stack as a base. Other than this, we don't impose any other framework choice on the server side.
 
 ##### An RDBMS Alternative
-MongoDB is a very popular persistent store on the web, and with many good reasons. But we thnk there are many apps out there where an RDBMs is still the most relevant choice. We chose Postgres as a fast, scalable, open source, and well supported RDBMS option.
+MongoDB is a very popular persistent store on the web, and with many good reasons. But we think there are many apps out there where an RDBMs is still the most relevant choice. We chose Postgres as a fast, scalable, open source, and well supported RDBMS option.
 
 ## Features
 
@@ -133,7 +133,7 @@ Base can build out a production distribution in a `dist` folder. To build out a 
 gulp build:dist --release
 ```
 
-This will copy over a `production.env` file into the `dist` folder, whilst keeping our any self-signed certs generated.
+This will copy over a `production.env` file into the `dist` folder, whilst keeping out any self-signed certs generated.
 
 SFTP the contents of this folder to your VPS and run `npm install` to install all of the dependencies.
 
