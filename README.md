@@ -15,7 +15,7 @@ Check out the [contribute.md](contribute.md)
 
 ## Why
 
-The philosophy around Base was to roll out a baseline set of security features for protection against common web application threats to give developers a kick start when building our their app.
+The philosophy around Base was to roll out a baseline set of security features for protection against common web application threats to give developers a kick start when building out their app.
 
 We're not trying to be a silver bullet, but we are aiming to give developers as big a kick start as possible.
 
