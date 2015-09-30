@@ -19,7 +19,6 @@ import express_enforces_ssl from 'express-enforces-ssl';
 import pg from 'pg';
 import ConnectPg from 'connect-pg-simple';
 var pgSession = ConnectPg(session);
-
 import csurf from 'csurf';
 
 import signInRoutes from './routes/sign-in-routes.js';
@@ -35,7 +34,7 @@ var server = express();
 // ======== *** VIEWS AND TEMPLATES ***
 
 //Set port
-server.set('port', (process.env.PORT || 5000));
+server.set('port', (Config.port || 5000));
 server.set('views', path.join(__dirname, 'templates'));
 server.set('view engine', 'jade');
 

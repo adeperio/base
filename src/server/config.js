@@ -15,6 +15,7 @@ var path = require('path');
 module.exports = function(){
   return {
     connectionString: process.env.CONN_STRING,
+    port: process.env.PORT,
     tls: {
       key: process.env.TLS_KEY,
       cert: process.env.TLS_CERT,
