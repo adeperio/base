@@ -1,6 +1,6 @@
 'use strict';
 
-import Dispatcher from '../core/dispatcher';
+import Dispatcher from '../core/Dispatcher';
 import ActionTypes from '../constants/action-types';
 import http from 'superagent';
 
