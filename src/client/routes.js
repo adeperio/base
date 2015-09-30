@@ -16,7 +16,7 @@ var RouteHandler = Router.RouteHandler;
 
 var routes = (
   <Route name="app" path="/" handler={App}>
-    <Route name="user-home" path="/home" handler={UserHome}/>
+    <Route name="user-home" path="/user-home" handler={UserHome}/>
     <Route name="error" path="/error" handler={Error}/>
     <DefaultRoute handler={SignIn}/>
   </Route>
