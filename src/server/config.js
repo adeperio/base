@@ -9,13 +9,13 @@ var path = require('path');
     env = process.env.NODE_ENV;
   }
   require('dotenv').config({ path: env + '.env'});
-
+  console.log('PORT: ' + process.env.PORT)
 }());
 
 module.exports = function(){
   return {
     connectionString: process.env.CONN_STRING,
-    port: process.env.PORT,
+    port: 3000,
     tls: {
       key: process.env.TLS_KEY,
       cert: process.env.TLS_CERT,
