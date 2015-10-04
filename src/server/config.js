@@ -9,7 +9,6 @@ var path = require('path');
     env = process.env.NODE_ENV;
   }
   require('dotenv').config({ path: env + '.env'});
-  console.log('PORT: ' + process.env.PORT)
 }());
 
 module.exports = function(){

@@ -31,10 +31,9 @@ var AUTOPREFIXER_BROWSERS = [                 // https://github.com/ai/autoprefi
 
 var src = {};
 var watch = false;
-var browserSync;
 
 // The default task
-gulp.task('default', ['sync']);
+gulp.task('default', ['serve']);
 
 // Clean output directory
 gulp.task('clean', del.bind(
@@ -204,17 +203,17 @@ gulp.task('serve', ['build:watch'], function(cb) {
     });
     child.once('message', function(message) {
       if (message.match(/^online$/)) {
-        if (browserSync) {
-          browserSync.reload();
-        }
+
         if (!started) {
           started = true;
           gulp.watch(src.server, function() {
             $.util.log('Restarting development server.');
             server.kill('SIGTERM');
             server = startup();
+
           });
           cb();
+          console.log("Server started. Go to https://yourdomain.com:3000");
         }
       }
     });
@@ -223,31 +222,5 @@ gulp.task('serve', ['build:watch'], function(cb) {
 
   process.on('exit', function() {
     server.kill('SIGTERM');
-  });
-});
-
-// Launch BrowserSync development server
-gulp.task('sync', ['serve'], function(cb) {
-  browserSync = require('browser-sync');
-
-  browserSync({
-    notify: false,
-    // Run as an https by setting 'https: true'
-    // Note: this uses an unsigned certificate which on first access
-    //       will present a certificate warning in the browser.
-    https: true,
-    // Informs browser-sync to proxy our Express app which would run
-    // at the following location
-    proxy: 'https://localhost:5000'
-  }, cb);
-
-  process.on('exit', function() {
-    browserSync.exit();
-  });
-
-  gulp.watch(['build/**/*.*'].concat(
-    src.server.map(function(file) {return '!' + file;})
-  ), function(file) {
-    browserSync.reload(path.relative(__dirname, file.path));
   });
 });
