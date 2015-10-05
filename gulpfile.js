@@ -214,7 +214,7 @@ gulp.task('serve', ['build:watch'], function(cb) {
           });
           cb();
           console.log("Server started. Go to https://yourdomain.com:3000");
-          console.log("Remember to edit your hosts file to match your localhost with the domain in your callback URL");
+          console.log("Remember to edit your hosts file to match localhost with the domain in your callback URL");
         }
       }
     });
