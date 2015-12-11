@@ -171,6 +171,14 @@ gulp.task('bootstrap-db', shell.task([
   'export NODE_ENV=development; node src/server/repos/bootstrap.js'
 ]));
 
+gulp.task('db-migrate', shell.task([
+  'export DATABASE_URL=' + process.env.DATABASE_URL + '; ./node_modules/node-pg-migrate/bin/pg-migrate up'
+]));
+
+gulp.task('db-rollback', shell.task([
+  'export DATABASE_URL=' + process.env.DATABASE_URL + '; ./node_modules/node-pg-migrate/bin/pg-migrate down'
+]));
+
 gulp.task('certs', shell.task([
   './make-self-signed-certs.sh'
 ]));
