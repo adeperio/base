@@ -59,7 +59,7 @@ Security:
 
 ### Requirements
 
-* A running instance of PostgreSQL is required. The latest version of PostgreSQL can be found here: http://www.postgresql.org/download/.
+* A running instance of PostgreSQL is required. The latest version of PostgreSQL can be found here: http://www.postgresql.org/download/. pgAdmin - the defacto admin platform for PostgreSQL can also be downloaded here: http://pgadmin.org/
 * To prep Base for social logins, you will need to setup your app's OAuth details for respective providers - more details here [auth.md](docs/auth.md)
 
 ### Setup
@@ -103,7 +103,12 @@ $ gulp bootstrap
 The bootstrap script also creates self signed certs for use in development. In the `sample.env` file, the `TLS.KEY`, `TLS.CERT`, and `TLS.CA` settings have default values for SSL used for development, so it's safe to copy these over to `development.env`.
 
 #### Running Base
-And finally, to run the application, type:
+
+* Check that you have a running instance of Postgres and that your DB is live.
+* Make sure your port in your .env profile matches your running Postgres port
+* Make sure that you have an empty DB already created. gulp bootstrap does not create a DB automatically, just the tables
+
+then to run the application, type:
 
 ```shell
 $ gulp
