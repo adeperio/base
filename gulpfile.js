@@ -168,7 +168,9 @@ gulp.task('bootstrap', function(cb) {
 
 gulp.task('bootstrap-db', shell.task([
   'export NODE_ENV=development; node src/server/repos/bootstrap.js'
-]));
+], {
+  errorMessage: 'Command `<%= command %>` failed with exit code <%= error.code %>. \n Check that you have a running instance of Postgres and that your DB is live.'
+}));
 
 gulp.task('certs', shell.task([
   './make-self-signed-certs.sh'
