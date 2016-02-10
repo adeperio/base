@@ -40,7 +40,6 @@ gulp.task('clean', del.bind(
   null, ['.tmp', 'build/*', 'dist/*', '!build/.git'], {dot: true}
 ));
 
-
 // 3rd party libraries
 gulp.task('vendor', function() {
   return gulp.src('node_modules/bootstrap/dist/fonts/**')
@@ -213,8 +212,9 @@ gulp.task('serve', ['build:watch'], function(cb) {
 
           });
           cb();
-          console.log("Server started. Go to https://yourdomain.com:3000");
+          console.log("Server started. Go to https://<yourdomain>.com:3000");
           console.log("Remember to edit your hosts file to match localhost with the domain in your social login / OAuth callback URLs");
+          console.log("e.g: <yourdomain>.com   localhost");
         }
       }
     });
