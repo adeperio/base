@@ -143,7 +143,9 @@ var credentials = {
 
 var httpsServer = https.createServer(credentials, server);
 httpsServer.listen(server.get('port'), function() {
+
   if (process.send) {
+    console.log('The server is running at https://<yourdomain>.com:' + server.get('port'));
     process.send('online');
   } else {
     console.log('The server is running at http://localhost:' + server.get('port'));
