@@ -216,7 +216,7 @@ gulp.task('serve', ['build:watch'], function(cb) {
           cb();
           console.log("Server started. Go to https://<yourdomain>.com:3000 (don't forget the 's' in https!)");
           console.log("Remember to edit your hosts file to match localhost with the domain in your social login / OAuth callback URLs");
-          console.log("e.g: <yourdomain>.com   localhost");
+          console.log("e.g: 127.0.0.1 <yourdomain>.com");
         }
       }
     });
