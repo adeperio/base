@@ -57,10 +57,26 @@ Security:
 
 ## Installation
 
-### Requirements
+### Manual Install Requirements
+
+Before running the install scripts for Base, there's a few manual steps that you'll need to do to get up and running.
 
 * A running instance of PostgreSQL is required. The latest version of PostgreSQL can be found here: http://www.postgresql.org/download/. pgAdmin - the defacto admin platform for PostgreSQL can also be downloaded here: http://pgadmin.org/
-* To prep Base for social logins, you will need to setup your app's OAuth details for respective providers - more details here [auth.md](docs/auth.md)
+* When you install Postgres, open up pgAdmin, and create a brand new empty database. The Gulp scripts don't create this database automatically. The name of this database needs to be indicated in your DB connection string in your .env file.
+* To prep Base for social logins, you will need to setup your app's OAuth details for each of the respective providers you intend to use (Facebook login, Google login etc)- more details here [auth.md](docs/auth.md)
+* To run Base locally in development and to use social logins, OAuth providers (Facebook, Google) need an actual resolvable domain to use for the redirect URI. localhost won't cut it for the redirect URI's. You will need to edit your hosts file (on a Mac /etc/hosts) and add the line: `127.0.0.1 <your-app-domain>.com`
+
+
+#### Setting your environment settings and config
+
+Configs are stores in `.env` files in the root directory of Base that correspond to the running `NODE_ENV` value. So if you're running in development, Base will look for `development.env` config in the root directory of your project. Config is loaded into your app using `dotenv`, and can then be accessed throughout your app using `config.js`
+
+By default `.env` files are in `.gitignore` to avoid checking in secrets and settings, so you will need to manually create `.env` files in your repository.
+
+> NEVER check in your configs to repositories. Secrets, credentials and other sensitive settings generally exist in these files
+> so we need to make sure these are kept out of VCS.
+
+There is however a `sample.env` file (not used by Base, and excluded from `.gitignore`) that exists with an example list of settings that Base recognizes and supports. You can use `sample.env` as a starting point to fill out your config settings. Copy this file and rename the copies to `development.env`, `test.env`, `production.env` etc for each `NODE_ENV` you have.
 
 ### Setup
 
@@ -72,22 +88,7 @@ $ cd MyApp
 $ npm install -g gulp           # Install Gulp task runner globally
 $ npm install                   # Install Node.js components listed in ./package.json
 ```
-#### Setting your configs
 
-Configs are stores in `.env` files that correspond to the running `NODE_ENV` value.
-
-So if you're running in production, Base will look for `production.env` config in the root directory of your project.
-
-Config is loaded into your app using `dotenv`, and can then be accessed throughout your app using `config.js`
-
-By default `.env` files are in `.gitignore` to avoid checking in secrets and settings, so you will need to manually create `.env` files in your repository.
-
-> NEVER check in your configs to repositories. Secrets, credentials and other sensitive settings generally exist in these files
-> so we need to make sure these are kept out of VCS.
-
-There is however a `sample.env` file (not used by Base, and excluded from `.gitignore`) that exists with an example list of settings that Base recognizes and supports.
-
-You can use `sample.env` as a starting point to fill out your config settings. Copy this file and rename the copies to `development.env`, `test.env`, `production.env` etc for each `NODE_ENV` you have.
 
 #### Bootstrap
 
