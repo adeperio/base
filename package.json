@@ -6,7 +6,7 @@
   "repository": "https://github.com/adeperio/base",
   "license": "MIT",
   "engines": {
-    "node": ">= 0.12.5",
+    "node": ">= 5.4.1",
     "npm": ">= 2.1"
   },
   "dependencies": {
