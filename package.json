@@ -1,12 +1,12 @@
 {
   "name": "base",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Base",
   "repository": "https://github.com/adeperio/base",
   "license": "MIT",
   "engines": {
-    "node": ">= 5.4.1",
+    "node": ">= 5.6.0",
     "npm": ">= 2.1"
   },
   "dependencies": {
