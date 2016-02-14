@@ -92,6 +92,30 @@ $ npm install                   # Install Node.js components listed in ./package
 
 #### Bootstrap
 
+------
+
+Proposed change to use migrations to manage the schema using [node-pg-migrate](https://github.com/theoephraim/node-pg-migrate)
+
+Example Migrations are in the ``./migrations`` folder
+
+```shell
+$ DATABASE_URL=myapp-development gulp db-migrate
+```
+
+```
+$ DATABASE_URL=myapp-development gulp db-rollback
+```
+
+This change would allow the schema to be managed and updated.
+
+One complexity I found was trying to figure out how to extract the database configuration in ``./src/server/config.js`` into a format that could be used in the gulpfile.js (where the NODE_ENV is not set in advance)
+
+The current gulp tasks ``db-migrate`` and ``db-rollback`` require the DATABASE_URL to be set on the command line, and won't run without it
+
+TODO: Do you have any thoughts on either using migrations or how to set the config
+
+------
+
 Once you clone the repo, install the dependencies, and set your configs, you will need to bootstrap the database with the initial tables.
 
 To bootstrap a NEW database, simply run:

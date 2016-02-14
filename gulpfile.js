@@ -172,6 +172,14 @@ gulp.task('bootstrap-db', shell.task([
   errorMessage: 'Command `<%= command %>` failed with exit code <%= error.code %>.\n***** Check that you have a running instance of Postgres and that your DB is live.\n***** Make sure your port in your .env profile matches your running Postgres port\n***** Make sure that you have an empty DB already created. This script does not create a DB automatically, just the tables\n***** Postgres can be downloaded at http://www.postgresql.org/download/'
 }));
 
+gulp.task('db-migrate', shell.task([
+  'export DATABASE_URL=' + process.env.DATABASE_URL + '; ./node_modules/node-pg-migrate/bin/pg-migrate up'
+]));
+
+gulp.task('db-rollback', shell.task([
+  'export DATABASE_URL=' + process.env.DATABASE_URL + '; ./node_modules/node-pg-migrate/bin/pg-migrate down'
+]));
+
 gulp.task('certs', shell.task([
   './make-self-signed-certs.sh'
 ]));
