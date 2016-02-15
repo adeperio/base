@@ -107,7 +107,7 @@ describe('user-repository', function(){
   });
 
   describe('createUser', function(){
-    it('should ERROR if inserting an existign row', function(done){
+    it('should ERROR if inserting an existing row', function(done){
 
       var userRepo = new UserRepository();
 

@@ -9,6 +9,7 @@ import localSignInStrategy from './local/local-sign-in-strategy.js';
 passport.use(googleStrategy);
 passport.use(facebookStrategy);
 passport.use('local-signin', localSignInStrategy);
+passport.use('local-signup', localSignInStrategy);
 
 //serialising and deserialising user objects
 passport.serializeUser(function(user, done) {
