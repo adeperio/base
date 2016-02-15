@@ -31,6 +31,11 @@ function UserRepository () {
               });
   };
 
+  this.createUser = function(emailAddress, password){
+
+      var sql = '';
+  };
+
   //this will Insert a user and return the new row or return an existing row based on the provider id
   this.createOrRetrieveUser = function(emailAddress, firstName, lastName, authProviderName, providerUserId){
 

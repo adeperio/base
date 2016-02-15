@@ -72,7 +72,7 @@ gulp.task('copy-env:dist', function() {
 
 //bootstrapjs
 gulp.task('copy-bootstrap:dist', function() {
-  return gulp.src('src/server/repos/bootstrap.js')
+  return gulp.src('src/server/bootstrap.js')
     .pipe(gulp.dest('dist'));
 });
 
@@ -159,7 +159,7 @@ gulp.task('test', ['bootstrap-test'], shell.task([
 ]));
 
 gulp.task('bootstrap-test', shell.task([
-  'export NODE_ENV=test; node src/server/repos/bootstrap.js'
+  'export NODE_ENV=test; node src/server/bootstrap.js'
 ]));
 
 gulp.task('bootstrap', function(cb) {
@@ -167,7 +167,7 @@ gulp.task('bootstrap', function(cb) {
 });
 
 gulp.task('bootstrap-db', shell.task([
-  'export NODE_ENV=development; node src/server/repos/bootstrap.js'
+  'export NODE_ENV=development; node src/server/bootstrap.js'
 ], {
   errorMessage: 'Command `<%= command %>` failed with exit code <%= error.code %>.\n***** Check that you have a running instance of Postgres and that your DB is live.\n***** Make sure your port in your .env profile matches your running Postgres port\n***** Make sure that you have an empty DB already created. This script does not create a DB automatically, just the tables\n***** Postgres can be downloaded at http://www.postgresql.org/download/'
 }));
