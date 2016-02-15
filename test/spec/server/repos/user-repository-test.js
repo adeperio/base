@@ -34,6 +34,61 @@ describe('user-repository', function(){
     })
   });
 
+  describe('createUser', function(){
+    it('should return newly inserted user row or retun null', function(done){
+
+      var userRepo = new UserRepository();
+
+      var randomizer = new RandomizerService();
+      var mockPassword = randomizer.getRandomUUIDv4();
+      var mockEmail = randomizer.getRandomUUIDv4().substring(0,4) + '@test.com';
+
+      userRepo.createUser(mockEmail, mockPassword)
+        .then(function(createdUser){
+            winston.log('debug', JSON.stringify(createdUser));
+            assert.isDefined(createdUser, 'there was a user created');
+            assert.equal(mockEmail, createdUser.emailAddress);
+            done();
+        }).catch(function(err){
+          done(err);
+        });
+    })
+  });
+
+  describe('createUser', function(){
+    it('should ERROR if inserting an existign row', function(done){
+
+      var userRepo = new UserRepository();
+
+      var randomizer = new RandomizerService();
+      var mockPassword = randomizer.getRandomUUIDv4();
+      var mockEmail = randomizer.getRandomUUIDv4().substring(0,4) + '@test.com';
+
+      userRepo.createUser(mockEmail, mockPassword)
+        .then(function(createdUser){
+            winston.log('debug', JSON.stringify(createdUser));
+            assert.isDefined(createdUser, 'there was a user created');
+            assert.equal(mockEmail, createdUser.emailAddress);
+
+            userRepo.createUser(mockEmail, mockPassword)
+              .then(function(createdUser){
+                  winston.log('debug', JSON.stringify(createdUser));
+                  assert.isDefined(createdUser, 'there was a user created');
+                  assert.equal(mockEmail, createdUser.emailAddress);
+                  done();
+              }).catch(function(err){
+                assert.isDefined(err, 'Checks for existing record correctly');
+                done();
+              });
+
+        }).catch(function(err){
+          done(err);
+        });
+
+
+    })
+  });
+
   describe('createOrRetrieveUser', function(){
     it('should return newly inserted user row or an existing user row', function(done){
 

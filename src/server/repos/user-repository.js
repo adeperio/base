@@ -34,11 +34,11 @@ function UserRepository () {
   this.createUser = function(emailAddress, password){
 
     var sql = 'insert into users (email_address, password) ' +
-              '    select $1, $2 ' +
-              '    where not exists (select 1 from users where "email_address" = $1 and "password" = $2) ' +
-              '    returning users.* ';
+              'select $1, $2 ' +
+              'where not exists (select 1 from users where "email_address" = $3) ' +
+              'returning users.* ';
 
-      var params = [emailAddress, password];
+      var params = [emailAddress, password, emailAddress];
 
       return query(sql, params)
                 .then(function(result){
