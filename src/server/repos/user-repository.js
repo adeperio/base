@@ -33,7 +33,28 @@ function UserRepository () {
 
   this.createUser = function(emailAddress, password){
 
-      var sql = '';
+    var sql = 'insert into users (email_address, password) ' +
+              '    select $1, $2 ' +
+              '    where not exists (select 1 from users where "email_address" = $1 and "password" = $2) ' +
+              '    returning users.* ';
+
+      var params = [emailAddress, password];
+
+      return query(sql, params)
+                .then(function(result){
+                    if(result && result[1] && result[1].rows && result[1].rows.length == 1){
+                      return result[1].rows[0];
+                    } else {
+                      throw new Error('There was a problem creating the user');
+                    }
+                })
+                .then(function(userRow){
+                  if(userRow){
+                    return mapper.mapToUserAsync(userRow);
+                  } else{
+                    return null;
+                  }
+                });
   };
 
   //this will Insert a user and return the new row or return an existing row based on the provider id
