@@ -42,12 +42,12 @@ export default React.createClass({
               </div>
               <div className="row">
                 <div className="col-md-6 ">
-                  <div className="col-md-10 col-md-offset-1 sign-in-area">
+                  <div className="col-md-10 col-md-offset-2 sign-in-area">
                     <Bootstrap.Button className="btn-danger sign-in-button" onClick={this.onGoToGoogleSignIn}>
                       Sign in with Google
                     </Bootstrap.Button>
                   </div>
-                  <div className="col-md-10 col-md-offset-1">
+                  <div className="col-md-10 col-md-offset-2">
                     <Bootstrap.Button className="btn-primary sign-in-button" onClick={this.onGoToFacebookSignIn}>
                       Sign in with Facebook
                     </Bootstrap.Button>
