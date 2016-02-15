@@ -25,7 +25,7 @@ describe('item-repository', function(){
     var mockFirstName = randomizer.getRandomUUIDv4();
     var mockLastName = randomizer.getRandomUUIDv4();
 
-    userRepo.createUser(mockEmail, mockFirstName, mockLastName, ProviderLookup.Google, mockProviderId)
+    userRepo.createOrRetrieveUser(mockEmail, mockFirstName, mockLastName, ProviderLookup.Google, mockProviderId)
       .then(function(createdUser){
           global.User = createdUser;
           done();

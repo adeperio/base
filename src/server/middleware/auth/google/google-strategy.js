@@ -23,7 +23,7 @@ module.exports = new GoogleStrategy({
     var lastName = profile.name.familyName;
 
     var userRepo = new UserRepository();
-    userRepo.createUser(emailAddress, firstName, lastName, ProviderLookup.Google, profile.id)
+    userRepo.createOrRetrieveUser(emailAddress, firstName, lastName, ProviderLookup.Google, profile.id)
     .then(function(user){
         if(user){
           done(null, user);

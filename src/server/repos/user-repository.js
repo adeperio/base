@@ -32,7 +32,7 @@ function UserRepository () {
   };
 
   //this will Insert a user and return the new row or return an existing row based on the provider id
-  this.createUser = function(emailAddress, firstName, lastName, authProviderName, providerUserId){
+  this.createOrRetrieveUser = function(emailAddress, firstName, lastName, authProviderName, providerUserId){
 
       var sql = 'with d as ( ' +
                 '    select id FROM auth_providers_lookup ' +

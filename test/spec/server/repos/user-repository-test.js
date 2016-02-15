@@ -34,7 +34,7 @@ describe('user-repository', function(){
     })
   });
 
-  describe('createUser', function(){
+  describe('createOrRetrieveUser', function(){
     it('should return newly inserted user row or an existing user row', function(done){
 
       var randomizer = new RandomizerService();
@@ -45,7 +45,7 @@ describe('user-repository', function(){
       var mockFirstName = randomizer.getRandomUUIDv4();
       var mockLastName = randomizer.getRandomUUIDv4();
 
-      userRepo.createUser(mockEmail, mockFirstName, mockLastName, ProviderLookup.Google, mockProviderId)
+      userRepo.createOrRetrieveUser(mockEmail, mockFirstName, mockLastName, ProviderLookup.Google, mockProviderId)
         .then(function(createdUser){
             winston.log('debug', JSON.stringify(createdUser));
             assert.isDefined(createdUser, 'there was a user created');
@@ -71,7 +71,7 @@ describe('user-repository', function(){
       var mockFirstName = randomizer.getRandomUUIDv4();
       var mockLastName = randomizer.getRandomUUIDv4();
 
-      userRepo.createUser('', '', '', ProviderLookup.Google, mockProviderId)
+      userRepo.createOrRetrieveUser('', '', '', ProviderLookup.Google, mockProviderId)
         .then(function(users){
             return userRepo.updateUser(mockEmail, mockFirstName, mockLastName, ProviderLookup.Google, mockProviderId);
         }).then(function(updateduser){

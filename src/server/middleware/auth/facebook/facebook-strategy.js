@@ -21,7 +21,7 @@ module.exports = new FacebookStrategy({
     var lastName = profile.name.familyName;
 
     var userRepo = new UserRepository();
-    userRepo.createUser(emailAddress, firstName, lastName, ProviderLookup.Facebook, profile.id)
+    userRepo.createOrRetrieveUser(emailAddress, firstName, lastName, ProviderLookup.Facebook, profile.id)
     .then(function(user){
         if(user){
           done(null, user);
