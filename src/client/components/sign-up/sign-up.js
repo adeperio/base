@@ -1,5 +1,5 @@
 'use strict';
-import './sign-in.less';
+import './sign-up.less';
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
 
@@ -18,9 +18,9 @@ export default React.createClass({
     var signUpUrl = '/signup';
 
     return (
-      <div className="sign-in-container">
-        <div className={'sign-in'}>
-            <div className="sign-in-box">
+      <div className="sign-up-container">
+        <div className={'sign-up'}>
+            <div className="sign-up-box">
               <div className="row header">
                 <div className="col-md-4 col-md-offset-4">
                   <img src="/logo.png" />
@@ -39,32 +39,17 @@ export default React.createClass({
                 </div>
               </div>
               <div className="row">
-                <div className="col-md-6 ">
-                  <div className="col-md-10 col-md-offset-2 sign-in-area">
-                    <Bootstrap.Button className="btn-danger sign-in-button" onClick={this.onGoToGoogleSignIn}>
-                      Sign in with Google
-                    </Bootstrap.Button>
-                  </div>
-                  <div className="col-md-10 col-md-offset-2">
-                    <Bootstrap.Button className="btn-primary sign-in-button" onClick={this.onGoToFacebookSignIn}>
-                      Sign in with Facebook
-                    </Bootstrap.Button>
-                  </div>
+              <div className="col-md-10 col-md-offset-2 sign-up-area">
+                <div className="col-md-10 sign-up-area">
+                  <Bootstrap.Input type="email" placeholder="Email" />
+                  <Bootstrap.Input type="password" placeholder="Password" />
                 </div>
-                <div className="col-md-6 sign-in-local">
-                  <div className="col-md-10 sign-in-area">
-                    <Bootstrap.Input type="email" placeholder="Email" />
-                    <Bootstrap.Input type="password" placeholder="Password" />
-                  </div>
-                  <div className="col-md-5 col-md-offset-5">
-                    <Bootstrap.Button className="btn-default sign-in-button" onClick={this.onGoToGoogleSignIn}>
-                      Local Sign In
-                    </Bootstrap.Button>
-                  </div>
-                  <div className="col-md-5 col-md-offset-5">
-                    <a href={signUpUrl}>Or sign up here.</a>
-                  </div>
+                <div className="col-md-5 col-md-offset-5">
+                  <Bootstrap.Button className="btn-default sign-up-button" onClick={this.onGoToGoogleSignIn}>
+                    Sign Up
+                  </Bootstrap.Button>
                 </div>
+              </div>
 
               </div>
 
