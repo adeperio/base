@@ -23,6 +23,7 @@ import csurf from 'csurf';
 
 import signInRoutes from './routes/sign-in-routes.js';
 import signOutRoutes from './routes/sign-out-routes.js';
+import signUpRoutes from './routes/sign-up-routes.js';
 import userRoutes from './routes/user-routes.js';
 
 import passport from './middleware/auth/passport.js';
@@ -113,6 +114,7 @@ server.use(function (req, res, next) {
 // ========= *** ROUTES ***
 server.use('/auth', signInRoutes);
 server.use('/auth', signOutRoutes);
+server.use('/auth', signUpRoutes);
 server.use('/api/v1', userRoutes);
 
 //Error handler middle ware
