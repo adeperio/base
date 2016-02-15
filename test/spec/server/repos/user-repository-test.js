@@ -34,6 +34,25 @@ describe('user-repository', function(){
     })
   });
 
+  describe('getUserForEmailAndPassword', function(){
+    it('should get no user', function(done){
+
+      var userRepo = new UserRepository();
+      var randomizer = new RandomizerService();
+      var mockPassword = randomizer.getRandomUUIDv4();
+      var mockEmail = randomizer.getRandomUUIDv4().substring(0,4) + '@test.com';
+
+      userRepo.getUserForEmailAndPassword(mockEmail, mockPassword)
+      .then(function(user){
+          assert.isNull(user, 'user is null');
+          done();
+      }).catch(function(err){
+        done(err);
+      });
+    })
+  });
+
+
   describe('createUser', function(){
     it('should return newly inserted user row or retun null', function(done){
 

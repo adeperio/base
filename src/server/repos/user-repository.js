@@ -31,6 +31,30 @@ function UserRepository () {
               });
   };
 
+  this.getUserForEmailAndPassword = function(emailAddress, password) {
+
+    var sql = 'SELECT users.* FROM users ' +
+                'WHERE "email_address" = $1 AND "password" = $2';
+
+    var paramsArray = [emailAddress, password];
+    
+    return query(sql, paramsArray)
+              .then(function(result) {
+                  if(result && result[1] && result[1].rows && result[1].rows.length == 1) {
+                    return result[1].rows[0];
+                  } else {
+                    return null;
+                  }
+              })
+              .then(function(userRow){
+                  if(userRow){
+                    return mapper.mapToUserAsync(userRow);
+                  } else {
+                    return null;
+                  }
+              });
+  };
+
   this.createUser = function(emailAddress, password){
 
     var sql = 'insert into users (email_address, password) ' +
