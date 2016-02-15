@@ -58,7 +58,7 @@ export default React.createClass({
                   </div>
                   <div className="col-md-5 col-md-offset-5">
                     <Bootstrap.Button className="btn-default sign-in-button" onClick={this.onGoToGoogleSignIn}>
-                      Local Sign In
+                      Sign In
                     </Bootstrap.Button>
                   </div>
                   <div className="col-md-5 col-md-offset-5">

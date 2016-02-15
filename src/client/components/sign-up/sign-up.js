@@ -39,7 +39,6 @@ export default React.createClass({
                   <div className="col-md-6 col-md-offset-3">
                     <Bootstrap.Input type="email" placeholder="Email" />
                     <Bootstrap.Input type="password" placeholder="Password" />
-                    <Bootstrap.Input type="password" placeholder="Confirm Password" />
                     <Bootstrap.Button className="btn-default sign-up-button" onClick={this.onSignUp}>
                       Sign Up
                     </Bootstrap.Button>
