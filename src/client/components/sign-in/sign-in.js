@@ -15,7 +15,7 @@ export default React.createClass({
 
   render: function() {
 
-    var signUpUrl = '/signup';
+    var signUpUrl = '/sign-up';
 
     return (
       <div className="sign-in-container">

@@ -5,17 +5,14 @@ import Bootstrap from 'react-bootstrap';
 
 export default React.createClass({
 
-  onGoToGoogleSignIn: function(){
-    window.location = '/auth/connect/google';
-  },
 
-  onGoToFacebookSignIn: function(){
+  onSignUp: function(){
     window.location = '/auth/connect/facebook';
   },
 
   render: function() {
 
-    var signUpUrl = '/signup';
+    var signInUrl = '/';
 
     return (
       <div className="sign-up-container">
@@ -39,20 +36,19 @@ export default React.createClass({
                 </div>
               </div>
               <div className="row">
-              <div className="col-md-10 col-md-offset-2 sign-up-area">
-                <div className="col-md-10 sign-up-area">
-                  <Bootstrap.Input type="email" placeholder="Email" />
-                  <Bootstrap.Input type="password" placeholder="Password" />
-                </div>
-                <div className="col-md-5 col-md-offset-5">
-                  <Bootstrap.Button className="btn-default sign-up-button" onClick={this.onGoToGoogleSignIn}>
-                    Sign Up
-                  </Bootstrap.Button>
-                </div>
-              </div>
+                  <div className="col-md-6 col-md-offset-3">
+                    <Bootstrap.Input type="email" placeholder="Email" />
+                    <Bootstrap.Input type="password" placeholder="Password" />
+                    <Bootstrap.Input type="password" placeholder="Confirm Password" />
+                    <Bootstrap.Button className="btn-default sign-up-button" onClick={this.onSignUp}>
+                      Sign Up
+                    </Bootstrap.Button>
+                    <a href={signInUrl}>Already Registered? Sign in here. </a>
+                  </div>
+                  <div className="col-md-6 col-md-offset-3">
 
+                  </div>
               </div>
-
             </div>
         </div>
         <div className="footer">
