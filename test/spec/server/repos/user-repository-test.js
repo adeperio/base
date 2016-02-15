@@ -35,6 +35,38 @@ describe('user-repository', function(){
   });
 
   describe('getUserForEmailAndPassword', function(){
+    it('should retrieve one user', function(done){
+
+      var userRepo = new UserRepository();
+
+      var randomizer = new RandomizerService();
+      var mockPassword = randomizer.getRandomUUIDv4();
+      var mockEmail = randomizer.getRandomUUIDv4().substring(0,4) + '@test.com';
+
+      userRepo.createUser(mockEmail, mockPassword)
+        .then(function(createdUser){
+            winston.log('debug', JSON.stringify(createdUser));
+            assert.isDefined(createdUser, 'there was a user created');
+            assert.equal(mockEmail, createdUser.emailAddress);
+
+            userRepo.getUserForEmailAndPassword(mockEmail, mockPassword)
+            .then(function(user){
+                winston.log('debug', JSON.stringify(user));
+                assert.isDefined(user, 'there was a user created');
+                assert.equal(mockEmail, user.emailAddress);
+                done();
+            }).catch(function(err){
+              done(err);
+            });
+
+
+        }).catch(function(err){
+          done(err);
+        });
+    })
+  });
+
+  describe('getUserForEmailAndPassword', function(){
     it('should get no user', function(done){
 
       var userRepo = new UserRepository();
