@@ -8,6 +8,12 @@ import ProviderLookup from '../middleware/auth/provider-lookup.js';
 
 var router = express.Router();
 
+router.post('/connect/local', passport.authenticate('local-signin', {
+        successRedirect : '/user-home', // redirect to the secure profile section
+        failureRedirect : '/', // redirect back to the sign in page if there is an error
+        failureFlash : true // allow flash messages
+    }));
+
 //The authentication url for google
 router.get('/connect/google', passport.authenticate('google', { scope:
     [ 'https://www.googleapis.com/auth/plus.login',
