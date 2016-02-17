@@ -11,6 +11,8 @@ var ActionTypes = keyMirror({
   //User
   ME_RES: null,
   ME_ERR: null,
+  SIGNUP_RES: null,
+  SIGNUP_ERR: null,
   SIGNOUT_RES: null,
   SIGNOUT_ERR: null,
 

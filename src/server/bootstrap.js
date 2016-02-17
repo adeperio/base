@@ -55,7 +55,6 @@ var dropUsers = 'DROP TABLE IF EXISTS users';
 var dropSession = 'DROP TABLE IF EXISTS session';
 var dropItems = 'DROP TABLE IF EXISTS items';
 
-
 //execute data bootstrap
 
 //drop tables

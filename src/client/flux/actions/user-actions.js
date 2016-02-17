@@ -8,6 +8,7 @@ module.exports = {
 
   getMe: function(){
     http.get('/api/v1/users/me')
+      .send([{ title: title, description: description }])
       .accept('application/json')
       .end((err, res) => {
 
@@ -22,6 +23,29 @@ module.exports = {
           console.log("Did get me: ERROR");
           Dispatcher.handleServerAction({
             actionType: ActionTypes.ME_ERR,
+            data: res.error
+          });
+        }
+      });
+  },
+
+  signUp: function(emailAddress, password){
+
+    http.post('/auth/signup')
+      .send([{ emailAddress: emailAddress, password: password }])
+      .accept('application/json')
+      .end((err, res) => {
+
+        if(!err && !res.error) {
+          console.log("Did sign up: SUCCESS");
+          Dispatcher.handleServerAction({
+            actionType: ActionTypes.SIGNUP_RES,
+            data: res.body
+          });
+        } else {
+          console.log("Did sign up: ERROR");
+          Dispatcher.handleServerAction({
+            actionType: ActionTypes.SIGNUP_ERR,
             data: res.error
           });
         }

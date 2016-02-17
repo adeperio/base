@@ -2,12 +2,20 @@
 import './sign-up.less';
 import React from 'react';
 import Bootstrap from 'react-bootstrap';
+import UserActions from '../../flux/actions/user-actions';
+import UserStore from '../../flux/stores/user-store';
+import ActionTypes from '../../flux/constants/action-types';
 
 export default React.createClass({
 
 
-  onSignUp: function(){
-    window.location = '/auth/connect/facebook';
+  handleSubmit(event) {
+    event.preventDefault()
+
+    const email = this.refs.email.value
+    const pass = this.refs.pass.value
+
+    UserActions.signUp(email, pass);
   },
 
   render: function() {
@@ -37,12 +45,15 @@ export default React.createClass({
               </div>
               <div className="row">
                   <div className="col-md-6 col-md-offset-3">
-                    <Bootstrap.Input type="email" placeholder="Email" />
-                    <Bootstrap.Input type="password" placeholder="Password" />
-                    <Bootstrap.Button className="btn-default sign-up-button" onClick={this.onSignUp}>
+                  <form onSubmit={this.handleSubmit}>
+                    <Bootstrap.Input ref="email" type="email" placeholder="Email" />
+                    <Bootstrap.Input ref="pass" type="password" placeholder="Password" />
+                    <Bootstrap.Button type="submit" className="btn-default sign-up-button">
                       Sign Up
                     </Bootstrap.Button>
+                  </form>
                     <a href={signInUrl}>Already Registered? Sign in here. </a>
+
                   </div>
                   <div className="col-md-6 col-md-offset-3">
 
