@@ -1,6 +1,7 @@
 
 import passport from 'passport';
 import passportLocal from 'passport-local';
+import UserRepository from '../../../repos/user-repository.js';
 
 var LocalStrategy = passportLocal.Strategy;
 

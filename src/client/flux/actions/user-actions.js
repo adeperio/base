@@ -32,7 +32,7 @@ module.exports = {
   signUp: function(emailAddress, password){
 
     http.post('/auth/signup')
-      .send([{ emailAddress: emailAddress, password: password }])
+      .send({ emailAddress: emailAddress, password: password })
       .accept('application/json')
       .end((err, res) => {
         if(!err && !res.error) {
