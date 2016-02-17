@@ -21,10 +21,10 @@ import ConnectPg from 'connect-pg-simple';
 var pgSession = ConnectPg(session);
 import csurf from 'csurf';
 
-import signInRoutes from './routes/sign-in-routes.js';
-import signOutRoutes from './routes/sign-out-routes.js';
-import signUpRoutes from './routes/sign-up-routes.js';
-import userRoutes from './routes/user-routes.js';
+import signInRoutes from './middleware/routes/sign-in-routes.js';
+import signOutRoutes from './middleware/routes/sign-out-routes.js';
+import signUpRoutes from './middleware/routes/sign-up-routes.js';
+import userRoutes from './middleware/routes/user-routes.js';
 
 import passport from './middleware/auth/passport.js';
 import error from './middleware/error/error.js';

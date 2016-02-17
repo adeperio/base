@@ -2,7 +2,7 @@
 
 import express from 'express';
 import passport from 'passport';
-import IsAuthenticated from '../middleware/auth/passport-auth-check.js';
+import IsAuthenticated from '../auth/passport-auth-check.js';
 var router = express.Router();
 
 router.get('/signout', IsAuthenticated, function(req, res) {

@@ -2,9 +2,9 @@
 
 import express from 'express';
 import passport from 'passport';
-import UserRepository from '../repos/user-repository.js';
-import ItemRepository from '../repos/item-repository.js';
-import IsAuthenticated from '../middleware/auth/passport-auth-check.js';
+import UserRepository from '../../repos/user-repository.js';
+import ItemRepository from '../../repos/item-repository.js';
+import IsAuthenticated from '../auth/passport-auth-check.js';
 
 var router = express.Router();
 
