@@ -138,7 +138,7 @@ var privateKey  = fs.readFileSync(Config.tls.key, 'utf8');
 var certificate = fs.readFileSync(Config.tls.cert, 'utf8');
 var ca = fs.readFileSync(Config.tls.ca, 'utf8');
 var checkCerts = (process.env.NODE_ENV != 'development'); //this checks certificates if in production but not on dev (as on dev we are using self signed)
-console.log('Check CERTS: ' + checkCerts);
+console.log('CHECKING CERTS: ' + checkCerts);
 var credentials = {
                     key: privateKey,
                     cert: certificate,
