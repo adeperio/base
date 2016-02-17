@@ -8,9 +8,25 @@ var router = express.Router();
 //callback route after successful google authentication
 router.post('/signup', passport.authenticate('local-signup', {
         successRedirect : '/user-home', // redirect to the secure profile section
-        failureRedirect : '/signup', // redirect back to the signup page if there is an error
+        failureRedirect : '/user-home', // redirect back to the signup page if there is an error
         failureFlash : false // allow flash messages
-    })
+    },
+
+        function(req, res) {
+            
+            req.logIn(req.user, function(err) {
+
+              if (err) {
+                req.session.messages = "Error";
+                return res.redirect('/error');
+              }
+
+              // set the message
+              req.session.messages = 'Login successfully';
+              return res.redirect('/user-home');
+            });
+
+        })
 );
 
 module.exports = router;

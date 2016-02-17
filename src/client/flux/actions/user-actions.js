@@ -35,7 +35,6 @@ module.exports = {
       .send([{ emailAddress: emailAddress, password: password }])
       .accept('application/json')
       .end((err, res) => {
-
         if(!err && !res.error) {
           console.log("Did sign up: SUCCESS");
           Dispatcher.handleServerAction({
