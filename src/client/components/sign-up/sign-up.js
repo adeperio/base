@@ -23,7 +23,7 @@ export default React.createClass({
 
     var email = this.state.email.trim();
     var pass = this.state.pass.trim();
-    console.log('Email: ' + email + ' Pass: ' + pass)
+    
     if (!pass || !email) {
       return;
     }

@@ -20,13 +20,13 @@ module.exports = new LocalStrategy({
 
                   //TODO: Validate password here
 
-                  done(null, user);
+                  return done(null, user);
                 }else{
-                  done(null, null);
+                  return done(null, null);
                 }
 
             }).catch(function(err){
-                done(err, null);
+                return done(err, null);
             });
   }
 );

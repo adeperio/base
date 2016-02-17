@@ -31,6 +31,7 @@ module.exports = {
 
   signUp: function(emailAddress, password){
 
+    console.log('Email: ' + emailAddress + ' Pass: ' + password)
     http.post('/auth/signup')
       .send({ emailAddress: emailAddress, password: password })
       .accept('application/json')

@@ -26,13 +26,13 @@ module.exports = new GoogleStrategy({
     userRepo.createOrRetrieveUser(emailAddress, firstName, lastName, ProviderLookup.Google, profile.id)
     .then(function(user){
         if(user){
-          done(null, user);
+          return done(null, user);
         }else{
-          done(null, null);
+          return done(null, null);
         }
 
     }).catch(function(err){
-        done(err, null);
+        return done(err, null);
     });
   }
 );
