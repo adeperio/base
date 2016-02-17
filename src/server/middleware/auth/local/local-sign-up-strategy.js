@@ -32,7 +32,7 @@ module.exports = new LocalStrategy({
 
             }).catch(function(err){
                 console.log('User signed up UNSUCCESSFULLY: ' + JSON.stringify(err));
-                return done(err);
+                return done(null, false, err)
             });
   }
 );

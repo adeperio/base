@@ -18,18 +18,26 @@ router.post('/signup', passport.authenticate('local-signup', {
             console.log('Res: ' + JSON.stringify(res));
             console.log('Err: ' + JSON.stringify(err));
 
-            req.logIn(req.user, function(err) {
+            if(!err){
 
-              if (err) {
-                req.session.messages = "Error";
-                return res.redirect('/error');
-              }
+              req.logIn(req.user, function(err) {
 
-              // set the message
-              req.session.messages = 'Login successfully';
-              return res.redirect('/user-home');
-            });
+                if (err) {
+                  req.session.messages = "Error";
+                  return res.redirect('/error');
+                }
 
+                // set the message
+                req.session.messages = 'Login successfully';
+                return res.redirect('/user-home');
+              });
+
+            } else {
+
+              //return back to sign up page
+              return res.redirect('/error');
+
+            }
         })
 );
 

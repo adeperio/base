@@ -34,8 +34,8 @@ describe('user-repository', function(){
     })
   });
 
-  describe('getUserForEmailAndPassword', function(){
-    it('should retrieve one user', function(done){
+  describe('createUser', function(){
+    it('should create one user', function(done){
 
       var userRepo = new UserRepository();
 
