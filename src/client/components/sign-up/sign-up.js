@@ -8,14 +8,28 @@ import ActionTypes from '../../flux/constants/action-types';
 
 export default React.createClass({
 
+  getInitialState: function() {
+    return {email: '', pass: ''};
+  },
+  handleEmailChange: function(e) {
+    this.setState({email: e.target.value});
+  },
+  handlePassChange: function(e) {
+    this.setState({pass: e.target.value});
+  },
 
   handleSubmit(event) {
     event.preventDefault()
 
-    const email = this.refs.email.value
-    const pass = this.refs.pass.value
+    var email = this.state.email.trim();
+    var pass = this.state.pass.trim();
+    console.log('Email: ' + email + ' Pass: ' + pass)
+    if (!pass || !email) {
+      return;
+    }
 
     UserActions.signUp(email, pass);
+    this.setState({email: '', pass: ''});
   },
 
   render: function() {
@@ -46,8 +60,16 @@ export default React.createClass({
               <div className="row">
                   <div className="col-md-6 col-md-offset-3">
                   <form onSubmit={this.handleSubmit}>
-                    <Bootstrap.Input ref="email" type="email" placeholder="Email" />
-                    <Bootstrap.Input ref="pass" type="password" placeholder="Password" />
+                    <Bootstrap.Input
+                        type="email"
+                        placeholder="Email"
+                        value={this.state.email}
+                        onChange={this.handleEmailChange}/>
+                    <Bootstrap.Input
+                        type="password"
+                        placeholder="Password"
+                        value={this.state.pass}
+                        onChange={this.handlePassChange} />
                     <Bootstrap.Button type="submit" className="btn-default sign-up-button">
                       Sign Up
                     </Bootstrap.Button>

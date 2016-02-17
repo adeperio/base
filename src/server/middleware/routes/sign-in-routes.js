@@ -9,6 +9,7 @@ import ProviderLookup from '../auth/provider-lookup.js';
 var router = express.Router();
 
 router.post('/connect/local', passport.authenticate('local-signin', {
+        session: true,
         successRedirect : '/user-home', // redirect to the secure profile section
         failureRedirect : '/', // redirect back to the sign in page if there is an error
         failureFlash : false // allow flash messages
@@ -60,7 +61,7 @@ router.get('/facebook/callback', passport.authenticate('facebook', { session: tr
           req.session.messages = 'Login successfully';
           return res.redirect('/user-home');
         });
-
+ 
     }
 );
 
