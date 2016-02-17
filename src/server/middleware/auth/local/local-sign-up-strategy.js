@@ -7,7 +7,7 @@ var LocalStrategy = passportLocal.Strategy;
 //** LocalStrategy to handle Sign Ups and Registrations
 
 module.exports = new LocalStrategy({
-
+  
         // by default, local strategy uses username and password, we will override with email
         usernameField : 'emailAddress',
         passwordField : 'password',
