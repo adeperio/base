@@ -1,4 +1,4 @@
-
+'use strict'
 import passport from 'passport';
 import passportLocal from 'passport-local';
 import UserRepository from '../../../repos/user-repository.js';
@@ -13,7 +13,6 @@ module.exports = new LocalStrategy({
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },function(req, emailAddress, password, done) {
 
-
         var userRepo = new UserRepository();
 
         //TODO: Hash password here
@@ -25,11 +24,9 @@ module.exports = new LocalStrategy({
                   //if a new user was successfully created...
                   console.log('User signed up successfully');
                   return done(null, createdNewUser);
-
                 }else{
                   console.log('User signed up UNSUCCESSFULLY');
                   return done(null, false, { message: 'Incorrect username.' });
-
                 }
 
             }).catch(function(err){
