@@ -14,13 +14,12 @@ router.post('/signup', passport.authenticate('local-signup', {
     },
 
         function(req, res, err) {
+
             console.log('Req: ' + JSON.stringify(req));
             console.log('Res: ' + JSON.stringify(res));
             console.log('Err: ' + JSON.stringify(err));
 
             if(!err){
-
-              
               req.logIn(req.user, function(err) {
                 console.log('Passport - Logged in');
                 if (err) {

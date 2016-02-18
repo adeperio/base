@@ -22,11 +22,9 @@ module.exports = new LocalStrategy({
 
                   return done(null, user);
                 }else{
-                  return done(null, null);
+                  //error
+                  done(null, false, { message: 'Incorrect username.' });
                 }
 
-            }).catch(function(err){
-                return done(err, null);
             });
-  }
-);
+});

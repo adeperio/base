@@ -23,15 +23,14 @@ module.exports = new LocalStrategy({
                 if(createdNewUser){
                   //if a new user was successfully created...
                   console.log('User signed up successfully');
-                  return done(null, createdNewUser);
+                  done(null, createdNewUser);
+                  return;
                 }else{
                   console.log('User signed up UNSUCCESSFULLY');
-                  return done(null, false, { message: 'Incorrect username.' });
+                  done(null, false, { message: 'Incorrect username.' });
+                  return;
                 }
 
-            }).catch(function(err){
-                console.log('In Catch: User signed up UNSUCCESSFULLY: ' + JSON.stringify(err));
-                return done(null, false, err)
             });
   }
 );
