@@ -19,7 +19,7 @@ module.exports = new LocalStrategy({
                 if(user){
 
                   //TODO: Validate password here
-
+                  
                   return done(null, user);
                 }else{
                   //error

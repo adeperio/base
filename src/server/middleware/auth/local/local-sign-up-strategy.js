@@ -11,6 +11,7 @@ module.exports = new LocalStrategy({
         usernameField : 'emailAddress',
         passwordField : 'password',
         passReqToCallback : true // allows us to pass back the entire request to the callback
+
     },function(req, emailAddress, password, done) {
 
         var userRepo = new UserRepository();
@@ -24,13 +25,18 @@ module.exports = new LocalStrategy({
                   //if a new user was successfully created...
                   console.log('User signed up successfully');
                   done(null, createdNewUser);
+
                   return;
                 }else{
                   console.log('User signed up UNSUCCESSFULLY');
                   done(null, false, { message: 'Incorrect username.' });
+                  promise.break();
                   return;
                 }
+            }).catch(function(err){
 
+                console.log('In Catch: User signed up UNSUCCESSFULLY: ' + JSON.stringify(err));
+                return done(null, false, err)
             });
   }
 );

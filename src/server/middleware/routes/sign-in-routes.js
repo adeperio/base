@@ -50,6 +50,10 @@ router.get('/facebook/callback', passport.authenticate('facebook', { session: tr
 
     function(req, res) {
 
+        // console.log('Req: ' + JSON.stringify(req));
+        // console.log('Res: ' + JSON.stringify(res));
+        // console.log('Err: ' + JSON.stringify(err));
+
         req.logIn(req.user, function(err) {
 
           if (err) {
@@ -61,7 +65,7 @@ router.get('/facebook/callback', passport.authenticate('facebook', { session: tr
           req.session.messages = 'Login successfully';
           return res.redirect('/user-home');
         });
- 
+
     }
 );
 
