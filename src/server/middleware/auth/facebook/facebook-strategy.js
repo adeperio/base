@@ -12,9 +12,12 @@ import UserRepository from '../../../repos/user-repository.js';
 module.exports = new FacebookStrategy({
     clientID:     Config.auth.facebook.clientID,
     clientSecret: Config.auth.facebook.clientSecret,
-    callbackURL:  Config.auth.facebook.callbackURL
+    callbackURL:  Config.auth.facebook.callbackURL,
+    profileFields: ['id', 'displayName', 'email']
   },
   function(accessToken, refreshToken, profile, done) {
+
+    console.log('Profile: ' + JSON.stringify(profile));
 
     var emailAddress = profile.emails[0].value;
     var firstName = profile.name.givenName;
