@@ -8,7 +8,6 @@ module.exports = {
 
   getMe: function(){
     http.get('/api/v1/users/me')
-      .send([{ title: title, description: description }])
       .accept('application/json')
       .end((err, res) => {
 

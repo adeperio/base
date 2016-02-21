@@ -13,11 +13,9 @@ module.exports = new FacebookStrategy({
     clientID:     Config.auth.facebook.clientID,
     clientSecret: Config.auth.facebook.clientSecret,
     callbackURL:  Config.auth.facebook.callbackURL,
-    profileFields: ['id', 'displayName', 'email']
+    profileFields: ['id', 'name', 'displayName', 'email']
   },
   function(accessToken, refreshToken, profile, done) {
-
-    console.log('Profile: ' + JSON.stringify(profile));
 
     var emailAddress = profile.emails[0].value;
     var firstName = profile.name.givenName;
@@ -27,6 +25,7 @@ module.exports = new FacebookStrategy({
     userRepo.createOrRetrieveUser(emailAddress, firstName, lastName, ProviderLookup.Facebook, profile.id)
     .then(function(user){
         if(user){
+
           return done(null, user);
         }else{
           return done(null, null);

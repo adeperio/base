@@ -37,7 +37,7 @@ function UserRepository () {
                 'WHERE "email_address" = $1 AND "password" = $2';
 
     var paramsArray = [emailAddress, password];
-    
+
     return query(sql, paramsArray)
               .then(function(result) {
                   if(result && result[1] && result[1].rows && result[1].rows.length == 1) {
@@ -101,7 +101,9 @@ function UserRepository () {
 
       return query(sql, [authProviderName, authProviderName, providerUserId, providerUserId, emailAddress, firstName, lastName])
                 .then(function(result){
+
                     if(result && result[1] && result[1].rows && result[1].rows.length == 1){
+                      console.log('result[1].rows[0]: ' + JSON.stringify(result[1].rows[0]));
                       return result[1].rows[0];
                     } else {
                       throw new Error('There was a problem creating the user');

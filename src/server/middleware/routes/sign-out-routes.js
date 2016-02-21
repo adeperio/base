@@ -7,13 +7,11 @@ var router = express.Router();
 
 router.get('/signout', IsAuthenticated, function(req, res) {
 
-  req.logout();
-  req.session.messages = 'Logged out successfully';
 
-  res.json({
-    err: null,
-    body: {}
-  });
+  req.logout();
+  console.log('Signed out');
+  req.session.messages = 'Logged out successfully';
+  return res.redirect('/');
 
 });
 
