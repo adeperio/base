@@ -38,9 +38,10 @@ const DispatcherCallBack = function (payload) {
       break;
 
     case ActionTypes.SIGNOUT_RES:
-        var signoutResponseBody = action.data;
+        var err = action.data;
 
-        if(signoutResponseBody){
+        if(!err){
+
           UserStore.emit(ActionTypes.SIGNOUT_RES);
         } else{
           UserStore.emit(ActionTypes.SIGNOUT_ERR);

@@ -8,12 +8,13 @@ import FacebookUser from './facebook-user.js';
 import ProviderLookup from '../provider-lookup.js';
 import UserRepository from '../../../repos/user-repository.js';
 
-
 module.exports = new FacebookStrategy({
+
     clientID:     Config.auth.facebook.clientID,
     clientSecret: Config.auth.facebook.clientSecret,
     callbackURL:  Config.auth.facebook.callbackURL,
     profileFields: ['id', 'name', 'displayName', 'email']
+
   },
   function(accessToken, refreshToken, profile, done) {
 

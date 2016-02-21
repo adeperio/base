@@ -21,6 +21,7 @@ export default React.createClass({
 
   goToLogin: function(){
     if(this.context.router){
+      console.log('Navigating home...');
       this.context.router.transitionTo('app');
     }
   },
