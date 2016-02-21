@@ -12,16 +12,11 @@ router.post('/signup', passport.authenticate('local-signup', {
         failureRedirect : '/error', // redirect back to the signup page if there is an error
         failureFlash : false // allow flash messages
     },
-
         function(req, res, err) {
-
-            console.log('Req: ' + JSON.stringify(req));
-            console.log('Res: ' + JSON.stringify(res));
-            console.log('Err: ' + JSON.stringify(err));
 
             if(!err){
               req.logIn(req.user, function(err) {
-                console.log('Passport - Logged in');
+
                 if (err) {
                   req.session.messages = "Error";
                   return res.redirect('/error');
@@ -33,7 +28,6 @@ router.post('/signup', passport.authenticate('local-signup', {
             } else {
               //return back to sign up page
               return res.redirect('/error');
-
             }
         })
 );

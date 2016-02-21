@@ -49,19 +49,16 @@ router.get('/connect/facebook', passport.authenticate('facebook', { scope : ['em
 router.get('/facebook/callback', passport.authenticate('facebook', { session: true, failureRedirect: "/error" }),
 
     function(req, res) {
-      
-        req.logIn(req.user, function(err) {
 
+        req.logIn(req.user, function(err) {
           if (err) {
             req.session.messages = "Error";
             return res.redirect('/error');
           }
-
           // set the message
           req.session.messages = 'Login successfully';
           return res.redirect('/user-home');
         });
-
     }
 );
 

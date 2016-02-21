@@ -30,7 +30,7 @@ module.exports = {
 
   signUp: function(emailAddress, password){
 
-    console.log('Email: ' + emailAddress + ' Pass: ' + password)
+    
     http.post('/auth/signup')
       .send({ emailAddress: emailAddress, password: password })
       .accept('application/json')
@@ -43,9 +43,15 @@ module.exports = {
           });
         } else {
           console.log("Did sign up: ERROR");
+
+          var errObject = err;
+          if(res.error){
+            errObject = res.error;
+          }
+
           Dispatcher.handleServerAction({
             actionType: ActionTypes.SIGNUP_ERR,
-            data: res.error
+            data: errObject
           });
         }
       });
