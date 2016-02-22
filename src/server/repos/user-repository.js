@@ -69,7 +69,7 @@ function UserRepository () {
                     if(result && result[1] && result[1].rows && result[1].rows.length == 1){
                       return result[1].rows[0];
                     } else {
-                      throw new Error('There was a problem creating the user');
+                      return null;
                     }
                 })
                 .then(function(userRow){

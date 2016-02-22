@@ -18,7 +18,7 @@ module.exports = {
             actionType: ActionTypes.ME_RES,
             data: res.body
           });
-          
+
         } else{
           console.log("Did get me: ERROR");
           Dispatcher.handleServerAction({
@@ -37,20 +37,18 @@ module.exports = {
       .accept('application/json')
       .end((err, res) => {
         console.log('Signup response received...');
-        if(!err && !res.error) {
+        if(!err && res && !res.error) {
           console.log("Did sign up: SUCCESS");
           Dispatcher.handleServerAction({
             actionType: ActionTypes.SIGNUP_RES,
             data: res.body
           });
         } else {
-          console.log("Did sign up: ERROR");
 
-          var errObject = err;
-
+          console.log("Did sign up: ERROR: " + JSON.stringify(res.error));
           Dispatcher.handleServerAction({
             actionType: ActionTypes.SIGNUP_ERR,
-            data: errObject
+            data: res.error
           });
         }
       });
