@@ -18,6 +18,7 @@ module.exports = {
             actionType: ActionTypes.ME_RES,
             data: res.body
           });
+          
         } else{
           console.log("Did get me: ERROR");
           Dispatcher.handleServerAction({
@@ -30,11 +31,12 @@ module.exports = {
 
   signUp: function(emailAddress, password){
 
-    
+
     http.post('/auth/signup')
       .send({ emailAddress: emailAddress, password: password })
       .accept('application/json')
       .end((err, res) => {
+        console.log('Signup response received...');
         if(!err && !res.error) {
           console.log("Did sign up: SUCCESS");
           Dispatcher.handleServerAction({
@@ -45,9 +47,6 @@ module.exports = {
           console.log("Did sign up: ERROR");
 
           var errObject = err;
-          if(res.error){
-            errObject = res.error;
-          }
 
           Dispatcher.handleServerAction({
             actionType: ActionTypes.SIGNUP_ERR,

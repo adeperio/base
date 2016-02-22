@@ -11,25 +11,32 @@ router.post('/signup', passport.authenticate('local-signup', {
         successRedirect : '/user-home', // redirect to the secure profile section
         failureRedirect : '/error', // redirect back to the signup page if there is an error
         failureFlash : false // allow flash messages
-    },
-        function(req, res, err) {
+    }),
+    function(req, res) {
+        console.log('Signing up...');
+        if(res)
+        {
+          console.log('Error Signing up:');
 
-            if(!err){
-              req.logIn(req.user, function(err) {
-
-                if (err) {
-                  req.session.messages = "Error";
-                  return res.redirect('/error');
-                }
-                // set the message
-                req.session.messages = 'Login successfully';
-                return res.redirect('/user-home');
-              });
-            } else {
-              //return back to sign up page
+          req.logIn(req.user, function(err)
+          {
+            if (err) {
+              req.session.messages = "Error";
               return res.redirect('/error');
             }
-        })
+            // set the message
+            req.session.messages = 'Login successfully';
+            return res.redirect('/user-home');
+          });
+
+        } else {
+
+          //return back to sign up page
+          console.log('Error Signing up:');
+          req.session.messages = "Error";
+          return res.redirect('/error');
+        }
+    }
 );
 
 module.exports = router;

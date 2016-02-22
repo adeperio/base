@@ -2,6 +2,7 @@
 
 import passport from 'passport';
 import PassportFacebook from 'passport-facebook';
+
 var FacebookStrategy = PassportFacebook.Strategy;
 
 import FacebookUser from './facebook-user.js';
@@ -15,8 +16,7 @@ module.exports = new FacebookStrategy({
     callbackURL:  Config.auth.facebook.callbackURL,
     profileFields: ['id', 'name', 'displayName', 'email']
 
-  },
-  function(accessToken, refreshToken, profile, done) {
+  }, function(accessToken, refreshToken, profile, done) {
 
     var emailAddress = profile.emails[0].value;
     var firstName = profile.name.givenName;
@@ -24,16 +24,15 @@ module.exports = new FacebookStrategy({
 
     var userRepo = new UserRepository();
     userRepo.createOrRetrieveUser(emailAddress, firstName, lastName, ProviderLookup.Facebook, profile.id)
-    .then(function(user){
-        if(user){
+      .then(function(user){
+          if(user){
+            return done(null, user);
+          }else{
+            return done(null, null);
+          }
 
-          return done(null, user);
-        }else{
-          return done(null, null);
-        }
-
-    }).catch(function(err){
-        return done(err, null);
-    });
+      }).catch(function(err){
+          return done(err, null, {message: 'There was a problem logging with Facebook'});
+      });
   }
 );

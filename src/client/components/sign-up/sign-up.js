@@ -8,6 +8,28 @@ import ActionTypes from '../../flux/constants/action-types';
 
 export default React.createClass({
 
+  componentDidMount: function() {
+    UserStore.on(ActionTypes.SIGNUP_RES, this.goToUserHome);
+    UserStore.on(ActionTypes.SIGNUP_ERR, this.goToError);
+  },
+
+  goToUserHome: function(){
+
+
+    if(this.context.router){
+      this.context.router.transitionTo('user-home');
+    }
+  },
+
+  goToError: function(){
+    console.log('Navigating to error...');
+
+    if(this.context.router){
+      console.log('Navigating to error...');
+      this.context.router.transitionTo('error');
+    }
+  },
+
   getInitialState: function() {
     return {email: '', pass: ''};
   },
@@ -23,7 +45,7 @@ export default React.createClass({
 
     var email = this.state.email.trim();
     var pass = this.state.pass.trim();
-    
+
     if (!pass || !email) {
       return;
     }

@@ -18,7 +18,7 @@ function ItemRepository () {
                     if(result && result[1] && result[1].rows && result[1].rows.length == 1){
                       return result[1].rows[0];
                     } else {
-                      throw new Error('There was a problem creating the user');
+                      throw new Error('There was a problem creating the item');
                     }
                 })
                 .then(function(itemRow){

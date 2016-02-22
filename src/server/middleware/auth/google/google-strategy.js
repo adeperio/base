@@ -32,7 +32,7 @@ module.exports = new GoogleStrategy({
         }
 
     }).catch(function(err){
-        return done(err, null);
+        return done(err, null, {message: 'There was a problem logging with Google'});
     });
   }
 );

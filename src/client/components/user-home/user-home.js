@@ -17,6 +17,14 @@ export default React.createClass({
 
   componentDidMount: function() {
     UserStore.on(ActionTypes.SIGNOUT_RES, this.goToLogin);
+    UserStore.on(ActionTypes.SIGNOUT_ERR, this.goToError);
+  },
+
+  goToError: function(){
+    if(this.context.router){
+      console.log('Navigating to error...');
+      this.context.router.transitionTo('error');
+    }
   },
 
   goToLogin: function(){
