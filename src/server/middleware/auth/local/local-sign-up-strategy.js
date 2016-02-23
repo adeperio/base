@@ -8,7 +8,8 @@ var LocalStrategy = passportLocal.Strategy;
 module.exports = new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
         usernameField : 'emailAddress',
-        passwordField : 'password'
+        passwordField : 'password',
+        passReqToCallback : false
     },
     function(emailAddress, password, done) {
 
@@ -16,6 +17,7 @@ module.exports = new LocalStrategy({
 
           userRepo.createUser(emailAddress, password)
                       .then(function(createdNewUser) {
+                              
                               if(createdNewUser) {
                                   return done(null, createdNewUser);
                               } else {

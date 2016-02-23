@@ -31,12 +31,11 @@ module.exports = {
 
   signUp: function(emailAddress, password){
 
-
     http.post('/auth/signup')
       .send({ emailAddress: emailAddress, password: password })
       .accept('application/json')
       .end((err, res) => {
-        console.log('Signup response received...');
+        console.log('Signup response received: ' + JSON.stringify(res));
         if(!err && res && !res.error) {
           console.log("Did sign up: SUCCESS");
           Dispatcher.handleServerAction({
