@@ -35,7 +35,7 @@ module.exports = {
       .send({ emailAddress: emailAddress, password: password })
       .accept('application/json')
       .end((err, res) => {
-        console.log('Signup response received: ' + JSON.stringify(res));
+
         if(!err && res && !res.error) {
           console.log("Did sign up: SUCCESS");
           Dispatcher.handleServerAction({
@@ -44,7 +44,7 @@ module.exports = {
           });
         } else {
 
-          console.log("Did sign up: ERROR: " + JSON.stringify(res.error));
+          console.log("Did sign up: ERROR ");
           Dispatcher.handleServerAction({
             actionType: ActionTypes.SIGNUP_ERR,
             data: res.error
