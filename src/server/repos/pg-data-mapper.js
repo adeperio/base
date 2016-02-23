@@ -12,18 +12,18 @@ function Mapper(){
   //will map postgres results to an array of user objects
   this.mapToUsers = function(userRows, cb){
 
-    var users = _.each(userRows, function(userRow){
+    var users = _.each(userRows, function(userRow) {
                     return userRow;
                   });
 
     cb(null, users);
-
   };
 
   //will map a single user row to a user object
   this.mapToUser = function(userRow, cb){
 
     var user = new User();
+    
     user._id = userRow.id;
     user.emailAddress = userRow.email_address;
     user.firstName = userRow.first_name;
@@ -46,7 +46,7 @@ function Mapper(){
                       });
                   });
 
-                  
+
     cb(null, items);
   };
 
