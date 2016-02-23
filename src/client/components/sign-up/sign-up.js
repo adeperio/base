@@ -8,14 +8,16 @@ import ActionTypes from '../../flux/constants/action-types';
 
 export default React.createClass({
 
+  contextTypes: {
+    router: React.PropTypes.func
+  },
+
   componentDidMount: function() {
     UserStore.on(ActionTypes.SIGNUP_RES, this.goToUserHome);
     UserStore.on(ActionTypes.SIGNUP_ERR, this.goToError);
   },
 
   goToUserHome: function(){
-
-
     if(this.context.router){
       this.context.router.transitionTo('user-home');
     }
