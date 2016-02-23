@@ -57,7 +57,7 @@ function UserRepository () {
 
   this.createUser = function(emailAddress, password){
 
-    var sql = 'insert into users (email_address, password) ' +
+     var sql = 'insert into users (email_address, password) ' +
               'select $1, $2 ' +
               'where not exists (select 1 from users where "email_address" = $3) ' +
               'returning users.* ';
@@ -69,7 +69,7 @@ function UserRepository () {
                     if(result && result[1] && result[1].rows && result[1].rows.length == 1){
                       return result[1].rows[0];
                     } else {
-                      return null;
+                      throw new Error('There was a problem creating the user');
                     }
                 })
                 .then(function(userRow){

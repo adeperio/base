@@ -19,12 +19,12 @@ module.exports = new LocalStrategy({
                               if(createdNewUser) {
                                   return done(null, createdNewUser);
                               } else {
-                                  done(new Error('Could not sign up user'));
+                                  done(new Error('Could not sign up user'), false);
                               }
                             },
                             function(err)
                             {
-                                done(new Error('Could not sign up user'));
+                                done(err);
                             }
                       );
         }
