@@ -18,7 +18,6 @@ const UserStore = assign({}, EventEmitter.prototype, {
   getMe: function() {
     return _me;
   }
-
 });
 
 //UserStore callback
@@ -48,6 +47,7 @@ const DispatcherCallBack = function (payload) {
 
     case ActionTypes.SIGNUP_RES:
         var user = action.data;
+        console.log('Sign Up Response: ' + JSON.stringify(user));
         if(!user){
           UserStore.emit(ActionTypes.SIGNUP_ERR);
 

@@ -13,8 +13,7 @@ var GoogleStrategy = passportGoogleOauth2.Strategy;
 module.exports = new GoogleStrategy({
   clientID:     Config.auth.google.clientID,
   clientSecret: Config.auth.google.clientSecret,
-  callbackURL:  Config.auth.google.callbackURL,
-  passReqToCallback   : true
+  callbackURL:  Config.auth.google.callbackURL
   },
   function(request, accessToken, refreshToken, profile, done) {
 
