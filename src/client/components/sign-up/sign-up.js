@@ -14,26 +14,23 @@ export default React.createClass({
 
   componentDidMount: function() {
     UserStore.on(ActionTypes.SIGNUP_RES, this.goToUserHome);
-    UserStore.on(ActionTypes.SIGNUP_ERR, this.goToError);
+    UserStore.on(ActionTypes.SIGNUP_ERR, this.onError);
   },
 
-  goToUserHome: function(){
-    if(this.context.router){
+  goToUserHome: function() {
+    this.setState({inError: false});
+    if(this.context.router) {
       this.context.router.transitionTo('user-home');
     }
   },
 
-  goToError: function(){
-    console.log('Navigating to error...');
+  onError: function(){
 
-    if(this.context.router){
-      console.log('Navigating to error...');
-      this.context.router.transitionTo('error');
-    }
+    this.setState({inError: true});
   },
 
   getInitialState: function() {
-    return {email: '', pass: ''};
+    return {email: '', pass: '', inError: false};
   },
   handleEmailChange: function(e) {
     this.setState({email: e.target.value});
@@ -41,7 +38,6 @@ export default React.createClass({
   handlePassChange: function(e) {
     this.setState({pass: e.target.value});
   },
-
   handleSubmit(event) {
     event.preventDefault()
 
@@ -83,23 +79,23 @@ export default React.createClass({
               </div>
               <div className="row">
                   <div className="col-md-6 col-md-offset-3">
+                  <p className={this.state.inError ? '' : 'hidden'}>There was an error signing up.</p>
                   <form onSubmit={this.handleSubmit}>
                     <Bootstrap.Input
                         type="email"
                         placeholder="Email"
                         value={this.state.email}
-                        onChange={this.handleEmailChange}/>
+                        onChange={this.handleEmailChange} />
                     <Bootstrap.Input
                         type="password"
                         placeholder="Password"
                         value={this.state.pass}
-                        onChange={this.handlePassChange} />
+                        onChange={this.handlePassChange}  />
                     <Bootstrap.Button type="submit" className="btn-default sign-up-button">
                       Sign Up
                     </Bootstrap.Button>
                   </form>
                     <a href={signInUrl}>Already Registered? Sign in here. </a>
-
                   </div>
                   <div className="col-md-6 col-md-offset-3">
 
