@@ -12,9 +12,9 @@ var RandomizerService = require(appRoot + '/src/server/services/randomizer-servi
 var ProviderLookup = require(appRoot + '/src/server/middleware/auth/provider-lookup.js');
 var config = require(appRoot + '/src/server/config.js');
 
-describe('item-repository', function(){
+describe('item-repository', function() {
 
-  before(function(done){
+  before(function(done) {
     global.Config = new config();
     winston.level = 'debug';
     var randomizer = new RandomizerService();
