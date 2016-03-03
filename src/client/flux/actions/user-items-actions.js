@@ -2,13 +2,13 @@
 
 import Dispatcher from '../core/dispatcher';
 import ActionTypes from '../constants/action-types';
-import http from 'superagent';
+import https from 'superagent';
 
 module.exports = {
 
   addItem: function(title, description){
 
-    http.post('/api/v1/users/me/items')
+    https.post('/api/v1/users/me/items')
       .send([{ title: title, description: description }])
       .accept('application/json')
       .end((err, res) => {
@@ -33,7 +33,7 @@ module.exports = {
 
   getUserItems: function(){
 
-    http.get('/api/v1/users/me/items')
+    https.get('/api/v1/users/me/items')
       .accept('application/json')
       .end((err, res) => {
 

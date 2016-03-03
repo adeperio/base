@@ -2,12 +2,12 @@
 
 import Dispatcher from '../core/dispatcher';
 import ActionTypes from '../constants/action-types';
-import http from 'superagent';
+import https from 'superagent';
 
 module.exports = {
 
   getMe: function(){
-    http.get('/api/v1/users/me')
+    https.get('/api/v1/users/me')
       .accept('application/json')
       .end((err, res) => {
 
@@ -31,7 +31,7 @@ module.exports = {
 
   signUp: function(emailAddress, password){
 
-    http.post('/auth/signup')
+    https.post('/auth/signup')
       .send({ emailAddress: emailAddress, password: password })
       .accept('application/json')
       .end((err, res) => {
@@ -55,7 +55,7 @@ module.exports = {
 
   signOut: function(){
 
-    http.get('/auth/signout')
+    https.get('/auth/signout')
       .accept('application/json')
       .end((err, res) => {
 
