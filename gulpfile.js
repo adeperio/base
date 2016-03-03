@@ -154,7 +154,7 @@ gulp.task('build:dist', ['clean'], function(cb) {
   });
 });
 
-gulp.task('test', ['bootstrap-test'], shell.task([
+gulp.task('test', ['serve'], shell.task([
   'export NODE_ENV=test; mocha --recursive --compilers js:mocha-traceur'
 ]));
 
