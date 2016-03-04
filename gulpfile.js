@@ -155,11 +155,11 @@ gulp.task('build:dist', ['clean'], function(cb) {
 });
 
 gulp.task('test', ['serve'], shell.task([
-  'export NODE_ENV=test; mocha --recursive --compilers js:mocha-traceur'
+  'export NODE_ENV=test NODE_TLS_REJECT_UNAUTHORIZED=0; mocha --recursive --compilers js:mocha-traceur'
 ]));
 
 gulp.task('bootstrap-test', shell.task([
-  'export NODE_ENV=test; node src/server/bootstrap.js'
+  'export NODE_ENV=test NODE_TLS_REJECT_UNAUTHORIZED=0; node src/server/bootstrap.js'
 ]));
 
 gulp.task('bootstrap', function(cb) {

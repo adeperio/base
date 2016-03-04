@@ -21,9 +21,9 @@ describe('sign-up-route', function(){
     it('should return newly created user', function(done) {
 
         https.post('https://basestackjs.com:3000/auth/signup')
+          .ca(cert)
           .send({ emailAddress: 'test@test.com', password: 'password' })
           .accept('application/json')
-          .ca(cert)
           .end((err, res) => {
 
               console.log('Test Response: ' + JSON.stringify(err));
