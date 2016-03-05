@@ -15,8 +15,7 @@ var production = !!(argv.production);
 
 // Gulp command line arguments
 var RELEASE = !!argv.release;                 // Minimize and optimize during a build?
-var DOMAIN = argv.d;
-console.log('DOMAIN: ' + DOMAIN);
+
 var AUTOPREFIXER_BROWSERS = [                 // https://github.com/ai/autoprefixer
   'ie >= 10',
   'ie_mob >= 10',
@@ -197,7 +196,7 @@ gulp.task('serve', ['build:watch'], function(cb) {
   var started = false;
   var cp = require('child_process');
   var assign = require('react/lib/Object.assign');
-
+  console.log('Serve process.env: ' + JSON.stringify(process.env));
   var server = (function startup() {
     var child = cp.fork('build/server.js', {
       env: assign({NODE_ENV: 'development'}, process.env)
