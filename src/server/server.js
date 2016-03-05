@@ -85,26 +85,37 @@ server.use(session({
 server.use(passport.initialize());
 server.use(passport.session()); //passport piggy backs of express sessions, still need to set express session options
 
-//CSRF
-var valueFunction = function(req){
-    var result = (req.body && req.body._csrf)
-      || (req.query && req.query._csrf)
-      || (req.cookies && req.cookies['XSRF-TOKEN'])
-      || (req.headers['csrf-token'])
-      || (req.headers['xsrf-token'])
-      || (req.headers['x-csrf-token'])
-      || (req.headers['x-xsrf-token']);
+if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
 
-    return result;
-};
+  // This will add the well-known CAs to 'https.globalAgent.options.ca'
+  // useful only for custom certs so NOT used in production
+  sslRootCas.inject().addFile(Config.tls.ca);
+}
 
-server.use(csurf({ value: valueFunction }));
+if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
+  //CSURF
+  var valueFunction = function(req){
+      var result = (req.body && req.body._csrf)
+        || (req.query && req.query._csrf)
+        || (req.cookies && req.cookies['XSRF-TOKEN'])
+        || (req.headers['csrf-token'])
+        || (req.headers['xsrf-token'])
+        || (req.headers['x-csrf-token'])
+        || (req.headers['x-xsrf-token']);
 
-server.use(function (req, res, next) {
-  res.cookie('XSRF-TOKEN', req.csrfToken());
-  res.locals.csrftoken = req.csrfToken();
-  next();
-});
+      return result;
+  };
+
+  console.log('Adding CSURF');
+  server.use(csurf({ value: valueFunction }));
+
+  server.use(function (req, res, next) {
+    res.cookie('XSRF-TOKEN', req.csrfToken());
+    res.locals.csrftoken = req.csrfToken();
+    next();
+  });
+
+}
 
 //enforcing SSL for production environments both
 // server.enable('trust proxy'); //use this if working on SSL behind a proxy
@@ -126,7 +137,7 @@ server.get('/*', function (req, res) {
 
 // ========= *** HTTPS setup ***
 
-if(process.env.NODE_ENV === 'development') {
+if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
 
   // This will add the well-known CAs to 'https.globalAgent.options.ca'
   // useful only for custom certs so NOT used in production
