@@ -26,9 +26,7 @@ describe('sign-up-route', function(){
         .send({ emailAddress: mockEmail, password: mockPassword })
         .end((err, res) => {
 
-          console.log(JSON.stringify(err));
-          console.log(JSON.stringify(res.body));
-
+          // assert.isNull(res.req, 'there is no req object');
           assert.isDefined(res.body, 'there was a user created');
           assert.equal(mockEmail, res.body.emailAddress);
             done();

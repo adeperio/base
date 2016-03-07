@@ -10,7 +10,6 @@ module.exports = new LocalStrategy({
         usernameField : 'emailAddress',
         passwordField : 'password',
         passReqToCallback : false // allows us to pass back the entire request to the callback
-
     },function(req, emailAddress, password, done) {
 
         var userRepo = new UserRepository();
@@ -25,6 +24,5 @@ module.exports = new LocalStrategy({
                   //error
                   done(null, false, { message: 'Incorrect username.' });
                 }
-
             });
 });

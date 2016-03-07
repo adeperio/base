@@ -8,9 +8,7 @@ var router = express.Router();
 //callback route after successful google authentication
 //note no redirects can happen on post
 router.post('/signup', passport.authenticate('local-signup', {
-
         session: true
-
     }),function(req, res) {
 
         console.log('Signup created user in route : ' + JSON.stringify(req.user));
