@@ -14,7 +14,9 @@ router.get('/signin', passport.authenticate('local-signin', {
         session: true
     }),function(req, res) {
 
+        
         req.logIn(req.user, function(err) {
+
 
           if (err) {
             req.session.messages = "Error";

@@ -47,7 +47,7 @@ export default React.createClass({
       return;
     }
 
-    console.log('Email:' + email+ 'Pass: ' + pass);
+    
     UserActions.signIn(email, pass);
     this.setState({email: '', pass: ''});
   },

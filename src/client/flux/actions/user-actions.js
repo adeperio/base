@@ -49,8 +49,6 @@ module.exports = {
       .accept('application/json')
       .end((err, res) => {
 
-        console.log('Sign-in error action: ' + JSON.stringify(res.error));
-
         if(!err && res && !res.error) {
           Dispatcher.handleServerAction({
             actionType: ActionTypes.SIGNIN_RES,
