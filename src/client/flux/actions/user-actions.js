@@ -37,6 +37,7 @@ module.exports = {
       .accept('application/json')
       .end((err, res) => {
 
+        console.log("Did sign up: SUCCESS: " + JSON.stringify(res));
         if(!err && res && !res.error) {
           console.log("Did sign up: SUCCESS");
           Dispatcher.handleServerAction({
