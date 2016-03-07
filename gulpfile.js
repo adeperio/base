@@ -15,7 +15,6 @@ var production = !!(argv.production);
 
 // Gulp command line arguments
 var RELEASE = !!argv.release;                 // Minimize and optimize during a build?
-
 var AUTOPREFIXER_BROWSERS = [                 // https://github.com/ai/autoprefixer
   'ie >= 10',
   'ie_mob >= 10',
@@ -153,8 +152,13 @@ gulp.task('build:dist', ['clean'], function(cb) {
   });
 });
 
-gulp.task('test', ['serve'], shell.task([
-  'export NODE_ENV=test NODE_TLS_REJECT_UNAUTHORIZED=0; mocha --recursive --compilers js:mocha-traceur'
+gulp.task('test-environment', function(){
+  process.env.NODE_ENV='test';
+
+});
+
+gulp.task('test', ['test-environment', 'serve'], shell.task([
+  // 'export NODE_ENV=test NODE_TLS_REJECT_UNAUTHORIZED=0; mocha --recursive --compilers js:mocha-traceur'
 ]));
 
 gulp.task('bootstrap-test', shell.task([
@@ -196,10 +200,11 @@ gulp.task('serve', ['build:watch'], function(cb) {
   var started = false;
   var cp = require('child_process');
   var assign = require('react/lib/Object.assign');
-  console.log('Serve process.env: ' + JSON.stringify(process.env));
+
   var server = (function startup() {
+
     var child = cp.fork('build/server.js', {
-      env: assign({NODE_ENV: 'development'}, process.env)
+      env: assign({NODE_ENV:'test'}, process.env)
     });
     child.once('message', function(message) {
       if (message.match(/^online$/)) {
@@ -207,6 +212,7 @@ gulp.task('serve', ['build:watch'], function(cb) {
         if (!started) {
           started = true;
           gulp.watch(src.server, function() {
+
             $.util.log('Restarting development server.');
             server.kill('SIGTERM');
             server = startup();

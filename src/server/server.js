@@ -1,8 +1,24 @@
 'use strict';
 
+
+
+
+//For some reason accessing process.env.NODE_ENV is not matching up the actual JSON object returned by JSON.stringify(env)
+//So we are doing this wierd loop through the JSON object properties and gettign the NODE_ENV that way
+//Need to investigate this further
+var nodeEnv = process.env;
+for (var key in process.env) {
+  if (process.env.hasOwnProperty(key) && key == 'NODE_ENV') {
+
+    nodeEnv = process.env[key];
+  }
+}
+console.log('Server.js - process.env.NODE_ENV: ' + JSON.stringify(nodeEnv));
+
 //set configs
 import config from './config.js';
 global.Config = new config();
+
 import express from 'express';
 
 import session from 'express-session';
@@ -85,14 +101,13 @@ server.use(session({
 server.use(passport.initialize());
 server.use(passport.session()); //passport piggy backs of express sessions, still need to set express session options
 
-if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
+if(nodeEnv === 'development' || nodeEnv === 'production') {
 
   // This will add the well-known CAs to 'https.globalAgent.options.ca'
   // useful only for custom certs so NOT used in production
   sslRootCas.inject().addFile(Config.tls.ca);
 }
-
-if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
+if(nodeEnv === 'development' || nodeEnv === 'production') {
   //CSURF
   var valueFunction = function(req){
       var result = (req.body && req.body._csrf)
@@ -105,7 +120,6 @@ if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'productio
 
       return result;
   };
-
   console.log('Adding CSURF');
   server.use(csurf({ value: valueFunction }));
 
@@ -137,7 +151,7 @@ server.get('/*', function (req, res) {
 
 // ========= *** HTTPS setup ***
 
-if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
+if(nodeEnv === 'development' || nodeEnv === 'production') {
 
   // This will add the well-known CAs to 'https.globalAgent.options.ca'
   // useful only for custom certs so NOT used in production
@@ -148,7 +162,7 @@ if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'productio
 var privateKey  = fs.readFileSync(Config.tls.key, 'utf8');
 var certificate = fs.readFileSync(Config.tls.cert, 'utf8');
 var ca = fs.readFileSync(Config.tls.ca, 'utf8');
-var checkCerts = (process.env.NODE_ENV != 'development'); //this checks certificates if in production but not on dev (as on dev we are using self signed)
+var checkCerts = (nodeEnv != 'development' && nodeEnv != 'test'); //this checks certificates if in production but not on dev (as on dev we are using self signed)
 console.log('CHECKING CERTS: ' + checkCerts);
 var credentials = {
                     key: privateKey,
