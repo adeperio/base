@@ -1,8 +1,5 @@
 'use strict';
 
-
-
-
 //For some reason accessing process.env.NODE_ENV is not matching up the actual JSON object returned by JSON.stringify(env)
 //So we are doing this wierd loop through the JSON object properties and gettign the NODE_ENV that way
 //Need to investigate this further
@@ -107,8 +104,12 @@ if(nodeEnv === 'development' || nodeEnv === 'production') {
   // useful only for custom certs so NOT used in production
   sslRootCas.inject().addFile(Config.tls.ca);
 }
+
+
+
 if(nodeEnv === 'development' || nodeEnv === 'production') {
   //CSURF
+  console.log('ADDING CSURF: true');
   var valueFunction = function(req){
       var result = (req.body && req.body._csrf)
         || (req.query && req.query._csrf)
@@ -120,7 +121,7 @@ if(nodeEnv === 'development' || nodeEnv === 'production') {
 
       return result;
   };
-  console.log('Adding CSURF');
+
   server.use(csurf({ value: valueFunction }));
 
   server.use(function (req, res, next) {
@@ -128,6 +129,10 @@ if(nodeEnv === 'development' || nodeEnv === 'production') {
     res.locals.csrftoken = req.csrfToken();
     next();
   });
+
+} else {
+
+  console.log('ADDING CSURF: false');
 
 }
 
@@ -162,7 +167,8 @@ if(nodeEnv === 'development' || nodeEnv === 'production') {
 var privateKey  = fs.readFileSync(Config.tls.key, 'utf8');
 var certificate = fs.readFileSync(Config.tls.cert, 'utf8');
 var ca = fs.readFileSync(Config.tls.ca, 'utf8');
-var checkCerts = (nodeEnv != 'development' && nodeEnv != 'test'); //this checks certificates if in production but not on dev (as on dev we are using self signed)
+var checkCerts = (nodeEnv != 'test'); //this checks certificates if in production but not on dev (as on dev we are using self signed)
+
 console.log('CHECKING CERTS: ' + checkCerts);
 var credentials = {
                     key: privateKey,

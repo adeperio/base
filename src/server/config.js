@@ -3,13 +3,21 @@
 var path = require('path');
 
 (function () {
-  
-  var env = 'development'; //default to development environment
 
-  if(process.env.NODE_ENV){
-    env = process.env.NODE_ENV;
+  //For some reason accessing process.env.NODE_ENV is not matching up the actual JSON object returned by JSON.stringify(env)
+  //So we are doing this wierd loop through the JSON object properties and gettign the NODE_ENV that way
+  //Need to investigate this further
+  var nodeEnv = process.env;
+  for (var key in process.env) {
+    if (process.env.hasOwnProperty(key) && key == 'NODE_ENV') {
+
+      nodeEnv = process.env[key];
+    }
   }
-  require('dotenv').config({ path: env + '.env'});
+  console.log('Config.js - process.env.NODE_ENV: ' + JSON.stringify(nodeEnv));
+
+
+  require('dotenv').config({ path: nodeEnv + '.env'});
 }());
 
 module.exports = function(){

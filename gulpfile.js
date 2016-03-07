@@ -30,8 +30,7 @@ var AUTOPREFIXER_BROWSERS = [                 // https://github.com/ai/autoprefi
 var src = {};
 var watch = false;
 
-// The default task
-gulp.task('default', ['serve']);
+
 
 // Clean output directory
 gulp.task('clean', del.bind(
@@ -152,13 +151,20 @@ gulp.task('build:dist', ['clean'], function(cb) {
   });
 });
 
+
+gulp.task('development-environment', function(){
+  process.env.NODE_ENV='development';
+});
+
+// The default task
+gulp.task('default', ['development-environment', 'serve']);
+
 gulp.task('test-environment', function(){
   process.env.NODE_ENV='test';
-
 });
 
 gulp.task('test', ['test-environment', 'serve'], shell.task([
-  // 'export NODE_ENV=test NODE_TLS_REJECT_UNAUTHORIZED=0; mocha --recursive --compilers js:mocha-traceur'
+  'export NODE_ENV=test NODE_TLS_REJECT_UNAUTHORIZED=0; mocha --recursive --compilers js:mocha-traceur'
 ]));
 
 gulp.task('bootstrap-test', shell.task([
@@ -204,7 +210,7 @@ gulp.task('serve', ['build:watch'], function(cb) {
   var server = (function startup() {
 
     var child = cp.fork('build/server.js', {
-      env: assign({NODE_ENV:'test'}, process.env)
+      env: assign({NODE_ENV:JSON.stringify(process.env.NODE_ENV)}, process.env)
     });
     child.once('message', function(message) {
       if (message.match(/^online$/)) {
