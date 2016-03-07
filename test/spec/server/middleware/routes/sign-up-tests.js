@@ -66,6 +66,4 @@ describe('User Sign Up', function(){
         done();
     })
   });
-
-
 });
