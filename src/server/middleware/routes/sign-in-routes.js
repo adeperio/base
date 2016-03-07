@@ -12,9 +12,9 @@ var router = express.Router();
 //note no redirects can happen on post
 router.get('/signin', passport.authenticate('local-signin', {
         session: true
-    }),function(req, res) {
+    })
+    ,function(req, res) {
 
-        
         req.logIn(req.user, function(err) {
 
 
