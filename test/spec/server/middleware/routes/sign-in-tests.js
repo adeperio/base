@@ -27,7 +27,7 @@ describe('User Sign In', function(){
         .send({ emailAddress: mockEmail, password: mockPassword })
         .end((err, res) => {
 
-            httpsAgent.get('https://basestackjs.com:3000/auth/signin')
+            httpsAgent.post('https://basestackjs.com:3000/auth/signin')
               .send({ emailAddress: mockEmail, password: mockPassword })
               .end((err, res) => {
 
@@ -50,7 +50,7 @@ describe('User Sign In', function(){
       httpsAgent.post('https://basestackjs.com:3000/auth/signup')
         .send({ emailAddress: mockEmail, password: mockPassword })
         .end((err, res) => {
-            httpsAgent.get('https://basestackjs.com:3000/auth/signin')
+            httpsAgent.post('https://basestackjs.com:3000/auth/signin')
               .send({ emailAddress: mockEmail, password: 'boguspassword' })
               .end((err, resSignIn) => {
                   assert.isUndefined(resSignIn.body.emailAddress, 'user was not logged in');

@@ -44,8 +44,8 @@ module.exports = {
 
   signIn: function(emailAddress, password){
 
-    https.get('/auth/signin')
-      .send({ emailAddress: 'testme1@test.com', password: 'password' })
+    https.post('/auth/signin')
+      .send({ emailAddress: emailAddress, password: password })
       .accept('application/json')
       .end((err, res) => {
 
