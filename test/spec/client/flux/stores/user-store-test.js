@@ -47,7 +47,6 @@ describe('user-store', function(){
 
       this.registeredCallback(payload);
 
-
       var me = this.UserStore.getMe();
 
       assert.equal(mockEmail, me.emailAddress);

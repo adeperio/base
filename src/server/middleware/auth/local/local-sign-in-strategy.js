@@ -17,11 +17,7 @@ module.exports = new LocalStrategy({
         userRepo.getUserForEmailAndPassword(emailAddress, password)
             .then(function(user){
 
-                
                 if(user){
-
-                  //TODO: Validate password here
-
                   return done(null, user);
                 }else{
                   //error

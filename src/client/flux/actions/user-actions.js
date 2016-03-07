@@ -4,7 +4,6 @@ import Dispatcher from '../core/dispatcher';
 import ActionTypes from '../constants/action-types';
 import https from 'superagent';
 
-
 module.exports = {
 
   getMe: function(){
@@ -63,22 +62,13 @@ module.exports = {
 
         if(!err && !res.error) {
           console.log("Did signout: SUCCESS");
-          Dispatcher.handleServerAction({
-            actionType: ActionTypes.SIGNOUT_RES,
-            data: res.body
+          Dispatcher.handleServerAction({ actionType: ActionTypes.SIGNOUT_RES, data: res.body
           });
         } else {
           console.log("Did signout: ERROR");
-          Dispatcher.handleServerAction({
-            actionType: ActionTypes.SIGNOUT_ERR,
-            data: res.error
-          });
+          Dispatcher.handleServerAction({ actionType: ActionTypes.SIGNOUT_ERR, data: res.error });
         }
       });
   },
-
-
-
-
 
 };

@@ -19,7 +19,7 @@ router.post('/signup', passport.authenticate('local-signup', {
           }
 
           // set the message
-          req.session.messages = 'Login successfully';
+          req.session.messages = 'Signed up successfully';
           return res.json(req.user);
         });
 
