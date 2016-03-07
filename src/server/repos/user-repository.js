@@ -103,7 +103,6 @@ function UserRepository () {
                 .then(function(result){
 
                     if(result && result[1] && result[1].rows && result[1].rows.length == 1){
-                      console.log('result[1].rows[0]: ' + JSON.stringify(result[1].rows[0]));
                       return result[1].rows[0];
                     } else {
                       throw new Error('There was a problem creating the user');

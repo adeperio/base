@@ -57,7 +57,26 @@ const DispatcherCallBack = function (payload) {
     case ActionTypes.SIGNUP_ERR:
         var err = action.data;
         if(err){
+          console.log('Sign-up error: ' + JSON.stringify(err));
           UserStore.emit(ActionTypes.SIGNUP_ERR);
+        }
+        break;
+
+    case ActionTypes.SIGNIN_RES:
+        var user = action.data;
+        if(user){
+          _me.emailAddress = user.emailAddress;
+          _me.firstName = user.firstName;
+          _me.lastName = user.lastName;
+          UserStore.emit(ActionTypes.SIGNIN_RES);
+        }
+        break;
+
+    case ActionTypes.SIGNIN_ERR:
+        var err = action.data;
+        if(err){
+          
+          UserStore.emit(ActionTypes.SIGNIN_ERR);
         }
         break;
 

@@ -16,18 +16,18 @@ module.exports = new LocalStrategy({
           var userRepo = new UserRepository();
 
           userRepo.createUser(emailAddress, password)
-                      .then(function(createdNewUser) {
-                              
-                              if(createdNewUser) {
-                                  return done(null, createdNewUser);
-                              } else {
-                                  done(new Error('Could not sign up user'), false);
-                              }
-                            },
-                            function(err)
-                            {
-                                done(err);
-                            }
-                      );
+              .then(function(createdNewUser) {
+
+                      if(createdNewUser) {
+                          return done(null, createdNewUser);
+                      } else {
+                          done(new Error('Could not sign up user'), false);
+                      }
+                    },
+                    function(err)
+                    {
+                        done(err);
+                    }
+              );
         }
 );

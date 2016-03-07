@@ -27,7 +27,6 @@ module.exports = {
       .accept('application/json')
       .end((err, res) => {
 
-
         if(!err && res && !res.error) {
           Dispatcher.handleServerAction({
             actionType: ActionTypes.SIGNUP_RES,
@@ -45,11 +44,12 @@ module.exports = {
 
   signIn: function(emailAddress, password){
 
-    https.get('/auth/signup')
+    https.get('/auth/signin')
       .send({ emailAddress: emailAddress, password: password })
       .accept('application/json')
       .end((err, res) => {
 
+        console.log('Sign-in error action: ' + JSON.stringify(res.error));
 
         if(!err && res && !res.error) {
           Dispatcher.handleServerAction({

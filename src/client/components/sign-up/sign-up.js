@@ -25,7 +25,6 @@ export default React.createClass({
   },
 
   onError: function(){
-
     this.setState({inError: true});
   },
 

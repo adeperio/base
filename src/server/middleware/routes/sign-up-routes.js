@@ -14,7 +14,7 @@ router.post('/signup', passport.authenticate('local-signup', {
         req.logIn(req.user, function(err) {
 
           if (err) {
-            req.session.messages = "Error";
+            req.session.messages = "Error signing up";
             return res.json({ error: 'There was an error signing up'});
           }
 
