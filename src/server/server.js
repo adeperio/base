@@ -167,7 +167,8 @@ if(nodeEnv === 'development' || nodeEnv === 'production') {
 var privateKey  = fs.readFileSync(Config.tls.key, 'utf8');
 var certificate = fs.readFileSync(Config.tls.cert, 'utf8');
 var ca = fs.readFileSync(Config.tls.ca, 'utf8');
-var checkCerts = (nodeEnv != 'test'); //this checks certificates if in production but not on dev (as on dev we are using self signed)
+//this checks certificates ONLY in production but not on dev (as on dev we are using self signed)
+var checkCerts = (nodeEnv === 'production');
 
 console.log('CHECKING CERTS: ' + checkCerts);
 var credentials = {
