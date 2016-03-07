@@ -43,6 +43,29 @@ module.exports = {
       });
   },
 
+  signIn: function(emailAddress, password){
+
+    https.get('/auth/signup')
+      .send({ emailAddress: emailAddress, password: password })
+      .accept('application/json')
+      .end((err, res) => {
+
+
+        if(!err && res && !res.error) {
+          Dispatcher.handleServerAction({
+            actionType: ActionTypes.SIGNIN_RES,
+            data: res.body
+          });
+        } else {
+
+          Dispatcher.handleServerAction({
+            actionType: ActionTypes.SIGNIN_ERR,
+            data: res.error
+          });
+        }
+      });
+  },
+
   signOut: function(){
 
     https.get('/auth/signout')

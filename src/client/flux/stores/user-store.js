@@ -29,29 +29,27 @@ const DispatcherCallBack = function (payload) {
     case ActionTypes.ME_RES:
 
         var user = action.data;
-        _me.emailAddress = user.emailAddress;
-        _me.firstName = user.firstName;
-        _me.lastName = user.lastName;
-        UserStore.emit(ActionTypes.ME_RES);
-
+        if(user){
+          _me.emailAddress = user.emailAddress;
+          _me.firstName = user.firstName;
+          _me.lastName = user.lastName;
+          UserStore.emit(ActionTypes.ME_RES);
+        }
       break;
 
-    case ActionTypes.SIGNOUT_RES:
+    case ActionTypes.ME_ERR:
         var err = action.data;
-        if(!err){
-          UserStore.emit(ActionTypes.SIGNOUT_RES);
-        } else{
-          UserStore.emit(ActionTypes.SIGNOUT_ERR);
+        if(err){
+          UserStore.emit(ActionTypes.ME_ERR);
         }
-        break;
+      break;
 
     case ActionTypes.SIGNUP_RES:
         var user = action.data;
-        console.log('Sign Up Response: ' + JSON.stringify(user));
-        if(!user){
-          UserStore.emit(ActionTypes.SIGNUP_ERR);
-
-        } else{
+        if(user){
+          _me.emailAddress = user.emailAddress;
+          _me.firstName = user.firstName;
+          _me.lastName = user.lastName;
           UserStore.emit(ActionTypes.SIGNUP_RES);
         }
         break;
@@ -63,12 +61,19 @@ const DispatcherCallBack = function (payload) {
         }
         break;
 
+    case ActionTypes.SIGNOUT_RES:
+        var err = action.data;
+        if(!err){
+          UserStore.emit(ActionTypes.SIGNOUT_RES);
+        } else{
+          UserStore.emit(ActionTypes.SIGNOUT_ERR);
+        }
+        break;
 
     default:
       // Do nothing
   }
 };
-
 
 UserStore.dispatcherToken = Dispatcher.register(DispatcherCallBack);
 
