@@ -10,11 +10,9 @@ var router = express.Router();
 
 //callback route after successful google authentication
 //note no redirects can happen on post
-router.get('/signin-username', passport.authenticate('local-signin', {
+router.get('/signin', passport.authenticate('local-signin', {
         session: true
     }),function(req, res) {
-
-        console.log('Sign-in for user: ' + JSON.stringify(req.user));
 
         req.logIn(req.user, function(err) {
 
@@ -25,14 +23,12 @@ router.get('/signin-username', passport.authenticate('local-signin', {
 
           // set the message
           req.session.messages = 'Login successfully';
-          console.log('Sign-in - ' + JSON.stringify(req.user));
           return res.json(req.user);
         });
 
     }
   );
 
-module.exports = router;
 
 router.post('/connect/local', passport.authenticate('local-signin', {
         session: true,

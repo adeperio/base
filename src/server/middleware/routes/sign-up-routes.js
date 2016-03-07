@@ -11,7 +11,6 @@ router.post('/signup', passport.authenticate('local-signup', {
         session: true
     }),function(req, res) {
 
-        console.log('Signup created user in route : ' + JSON.stringify(req.user));
         req.logIn(req.user, function(err) {
 
           if (err) {
@@ -21,7 +20,6 @@ router.post('/signup', passport.authenticate('local-signup', {
 
           // set the message
           req.session.messages = 'Login successfully';
-          console.log('In Signup - ' + JSON.stringify(req.user));
           return res.json(req.user);
         });
 

@@ -12,7 +12,7 @@ var RandomizerService = require(appRoot + '/src/server/services/randomizer-servi
 var ProviderLookup = require(appRoot + '/src/server/middleware/auth/provider-lookup.js');
 var config = require(appRoot + '/src/server/config.js');
 
-describe('item-repository', function() {
+describe('Item Repository Tests', function() {
 
   before(function(done) {
     global.Config = new config();

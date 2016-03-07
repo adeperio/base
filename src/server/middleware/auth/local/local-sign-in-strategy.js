@@ -10,11 +10,14 @@ module.exports = new LocalStrategy({
         usernameField : 'emailAddress',
         passwordField : 'password',
         passReqToCallback : false // allows us to pass back the entire request to the callback
-    },function(req, emailAddress, password, done) {
+    },function(emailAddress, password, done) {
+
 
         var userRepo = new UserRepository();
         userRepo.getUserForEmailAndPassword(emailAddress, password)
             .then(function(user){
+
+                
                 if(user){
 
                   //TODO: Validate password here

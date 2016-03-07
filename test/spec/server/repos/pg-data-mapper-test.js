@@ -13,7 +13,7 @@ var itemRow = require(appRoot + '/test/resources/itemRow.json');
 var itemRows = require(appRoot + '/test/resources/itemRows.json');
 
 
-describe('pg-data-mapper', function(){
+describe('Data Mapper Tests', function(){
 
   before(function(done){
     global.Config = new config();
