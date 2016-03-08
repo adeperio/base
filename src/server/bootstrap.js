@@ -11,7 +11,7 @@ var createUsers = 'CREATE TABLE IF NOT EXISTS ' +
     'auth_provider_lookup_id_fkey integer references auth_providers_lookup(id) null, ' +
     'auth_provider_user_id VARCHAR(255) null, ' + //user designation from auth proivder
     'email_address VARCHAR(255) null, ' +
-    'password VARCHAR(512) null, ' +
+    'password VARCHAR(2048) null, ' +
     'first_name VARCHAR(255) null, ' +
     'last_name VARCHAR(255) null, ' +
     'bio VARCHAR(1024) null, ' +

@@ -31,6 +31,35 @@ function UserRepository () {
               });
   };
 
+  this.getUserForEmail = function(emailAddress) {
+
+    var sql = 'SELECT users.* FROM users ' +
+                'WHERE "email_address" = $1';
+
+    var paramsArray = [emailAddress];
+
+    return query(sql, paramsArray)
+              .then(function(result) {
+
+                  if(result && result[1] && result[1].rows && result[1].rows.length == 1) {
+
+                    return result[1].rows[0];
+                  } else {
+
+                    return null;
+                  }
+              })
+              .then(function(userRow){
+                  if(userRow){
+
+                    return mapper.mapToUserAsync(userRow);
+                  } else {
+                    return null;
+                  }
+              });
+  };
+
+
   this.getUserForEmailAndPassword = function(emailAddress, password) {
 
     var sql = 'SELECT users.* FROM users ' +
@@ -40,6 +69,7 @@ function UserRepository () {
 
     return query(sql, paramsArray)
               .then(function(result) {
+
                   if(result && result[1] && result[1].rows && result[1].rows.length == 1) {
                     return result[1].rows[0];
                   } else {
@@ -48,6 +78,7 @@ function UserRepository () {
               })
               .then(function(userRow){
                   if(userRow){
+
                     return mapper.mapToUserAsync(userRow);
                   } else {
                     return null;
@@ -63,7 +94,6 @@ function UserRepository () {
               'returning users.* ';
 
       var params = [emailAddress, password, emailAddress];
-
       return query(sql, params)
                 .then(function(result){
                     if(result && result[1] && result[1].rows && result[1].rows.length == 1){

@@ -59,16 +59,16 @@ describe('Data Mapper Tests', function(){
     it('should get a user object', function(done){
 
       mapper.mapToUserAsync(userRowFilled)
-      .then(function(user){
-        winston.log('debug', JSON.stringify(user));
-        assert.equal('test1@email.com', user.emailAddress);
-        assert.equal('firstName1', user.firstName);
-        assert.equal('lastName1', user.lastName);
-        assert.equal('myuser1bio', user.bio);
-        done();
-      }).catch(function(e){
-        done(e);
-      });
+        .then(function(user){
+          winston.log('debug', JSON.stringify(user));
+          assert.equal('test1@email.com', user.emailAddress);
+          assert.equal('firstName1', user.firstName);
+          assert.equal('lastName1', user.lastName);
+          assert.equal('myuser1bio', user.bio);
+          done();
+        }).catch(function(e){
+          done(e);
+        });
     })
   });
 

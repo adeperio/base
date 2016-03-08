@@ -54,7 +54,9 @@ function PasswordCrypto () {
 
         salt.copy(combined, 8);
         hash.copy(combined, salt.length + 8);
-        callback(null, combined);
+
+        var combinedHex = combined.toString('hex');
+        callback(null, combinedHex);
       });
     });
   }
@@ -70,8 +72,9 @@ function PasswordCrypto () {
    *   hashPassword.
    * @param {!function(?Error, !boolean)}
    */
-  this.verifyPassword = function(password, combined, callback) {
+  this.verifyPassword = function(password, combinedHex, callback) {
     // extract the salt and hash from the combined buffer
+    var combined = new Buffer(combinedHex, 'hex');
     var saltBytes = combined.readUInt32BE(0);
     var hashBytes = combined.length - saltBytes - 8;
     var iterations = combined.readUInt32BE(4);
@@ -80,6 +83,7 @@ function PasswordCrypto () {
 
     // verify the salt and hash against the password
     crypto.pbkdf2(password, salt, iterations, hashBytes, function(err, verify) {
+
       if (err) {
         return callback(err, false);
       }

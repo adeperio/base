@@ -23,9 +23,12 @@ describe('User Sign In', function(){
       var mockPassword = randomizer.getRandomUUIDv4();
       var mockEmail = randomizer.getRandomUUIDv4().substring(0,4) + '@test.com';
 
+
       httpsAgent.post('https://basestackjs.com:3000/auth/signup')
         .send({ emailAddress: mockEmail, password: mockPassword })
         .end((err, res) => {
+
+            assert.isDefined(res.body, 'there was a user created');
 
             httpsAgent.post('https://basestackjs.com:3000/auth/signin')
               .send({ emailAddress: mockEmail, password: mockPassword })
@@ -50,6 +53,7 @@ describe('User Sign In', function(){
       httpsAgent.post('https://basestackjs.com:3000/auth/signup')
         .send({ emailAddress: mockEmail, password: mockPassword })
         .end((err, res) => {
+            assert.isDefined(res.body, 'there was a user created');
             httpsAgent.post('https://basestackjs.com:3000/auth/signin')
               .send({ emailAddress: mockEmail, password: 'boguspassword' })
               .end((err, resSignIn) => {

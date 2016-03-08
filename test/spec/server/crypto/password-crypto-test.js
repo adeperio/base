@@ -19,6 +19,7 @@ describe('Password Crypto', function(){
 
   describe('hashPassword', function() {
     it('should correctly return hash of a password', function(done) {
+
         var pwd = 'my-password';
 
         var passwordCrypto = new PasswordCrypto();
@@ -42,11 +43,11 @@ describe('Password Crypto', function(){
             assert.isDefined(key);
 
             passwordCrypto.verifyPassword(pwd, key, function(err, isVerified) {
-                  
+
                   assert.isNull(err);
                   assert.isTrue(isVerified);
                   done();
-            })
+            });
         });
     })
   });

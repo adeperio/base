@@ -4,6 +4,7 @@ function User() {
 
   this._id = '';
   this.emailAddress = '';
+  this.password = '';
   this.firstName = '';
   this.lastName = '';
   this.bio = '';
