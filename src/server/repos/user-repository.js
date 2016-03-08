@@ -128,6 +128,7 @@ function UserRepository () {
 
     if(!validator.isEmail(emailAddress) && !validator.isNull(emailAddress)){
       throw new Error('This is not a valid email address');
+
     } else {
       return query(sql, [emailAddress, firstName, lastName, authProviderName, providerUserId])
               .then(function(result){

@@ -1,24 +1,22 @@
 'use strict'
 
-import query from 'pg-query';
-import mapper from './pg-data-mapper.js';
 import validator from 'validator';
+import crypto from 'crypto';
 
 function PasswordCrypto () {
 
-  query.connectionParameters = Config.connectionString;
-
-  //this will Insert a user and return the new row or return an existing row based on the provider id
-  this.hashPassword = function(){
-
-
+  this.hashPassword = function(password, cb){
+    crypto.pbkdf2(password, 'salt', 100000, 512, 'sha512', (err, key) => {
+        if (err) throw err;
+        cb(err, key);
+    });
   };
 
   this.verifyPassword = function(){
 
 
-  };
 
+  };
 
 }
 
