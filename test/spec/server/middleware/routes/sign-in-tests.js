@@ -59,4 +59,28 @@ describe('User Sign In', function(){
         });
     })
   });
+
+  describe('sign in user with invalid email address', function() {
+    it('should return a null user', function(done) {
+
+        //TODO
+        done();
+    })
+  });
+
+  describe('sign in user with blank email address', function() {
+    it('should return a null user', function(done) {
+
+        //TODO
+        done();
+    })
+  });
+
+  describe('sign in user with blank password', function() {
+    it('should return a null user', function(done) {
+
+        //TODO
+        done();
+    })
+  });
 });
