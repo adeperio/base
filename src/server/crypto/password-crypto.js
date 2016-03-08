@@ -16,7 +16,7 @@ var config = {
   // individual password, so larger is better. however, larger also means longer
   // to hash the password. tune so that hashing the password takes about a
   // second
-  iterations: 872791
+  iterations: 10000
 };
 
 function PasswordCrypto () {
