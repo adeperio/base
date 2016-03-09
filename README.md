@@ -4,7 +4,7 @@
 
 *** Base now supports ***
 
-1. Username and Password Sign-in and Sign-up
+1. Username and Password Sign-in and Sign-up with password hashing
 2. Integration tests on server endpoints
 
 # Base
