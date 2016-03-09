@@ -1,5 +1,10 @@
 [![Stories in Ready](https://badge.waffle.io/adeperio/base.png?label=ready&title=Ready)](https://waffle.io/adeperio/base) [![Stories in Progress](https://badge.waffle.io/adeperio/base.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/adeperio/base)[![Security Backlog](https://badge.waffle.io/adeperio/base.svg?label=security&title=security)](http://waffle.io/adeperio/base)[![Backlog](https://badge.waffle.io/adeperio/base.svg?label=backlog&title=backlog)](http://waffle.io/adeperio/base)
 
+# Latest
+*** Base now supports ***
+1. Username and Password Sign-in and Sign-up
+2. Integration tests on server endpoints
+
 # Base
 ![Alt text](/logo.png?raw=true "Base")
 
@@ -48,12 +53,13 @@ Gulp + Webpack + React + Flux + Express + Postgres + Passportjs + Bootstrap + Ja
 Security:
 
 1. PassportJS for OAuth2
-2. Social logins (Google and Facebook)
-3. HelmetJS for header protection mechanisms
-4. TLS/SSL By default
-5. XSS protections
-6. CSRF protections
-7. Secure sessions
+2. Username and Password Sign-in and Sign-up
+3. Social logins (Google and Facebook)
+4. HelmetJS for header protection mechanisms
+5. TLS/SSL By default
+6. XSS protections
+7. CSRF protections
+8. Secure sessions
 
 ## Installation
 
