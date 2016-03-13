@@ -5,9 +5,9 @@ import assign from 'react/lib/Object.assign';
 import _ from 'lodash';
 import Events from 'events';
 
-import Dispatcher from '../core/dispatcher';
+import Dispatcher from '../core/Dispatcher';
 import ActionTypes from '../constants/action-types';
-import User from '../models/user';
+import User from '../models/User';
 
 var EventEmitter = Events.EventEmitter;
 var _me = new User();
