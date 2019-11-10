@@ -66,13 +66,15 @@ var styleSources = ["'self'", "'unsafe-inline'", "ajax.googleapis.com"];
 var connectSources = ["'self'"];
 
 server.use(helmet.contentSecurityPolicy({
+  directives: {
     defaultSrc: ["'self'"],
     scriptSrc: scriptSources,
     styleSrc: styleSources,
     connectSrc: connectSources,
-    reportOnly: false,
-    setAllHeaders: false,
-    safari5: false
+  },
+  reportOnly: false,
+  setAllHeaders: false,
+  safari5: false
 }));
 
 server.use(methodOverride());
