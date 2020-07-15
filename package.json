@@ -29,7 +29,7 @@
     "front-matter": "1.0.0",
     "helmet": "*",
     "jade": "1.9.2",
-    "lodash": "^3.4.0",
+    "lodash": "^4.17.19",
     "method-override": "^2.3.3",
     "moment": "^2.10.3",
     "node-uuid": "^1.4.3",
