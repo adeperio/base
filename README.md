@@ -8,6 +8,8 @@
 2. Integration tests on server endpoints
 
 # Base
+
+[![Join the chat at https://gitter.im/adeperio/base](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/adeperio/base?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 ![Alt text](/logo.png?raw=true "Base")
 
 Base is a seed / starter kit for a modern web application stack, scaffolded out with a baseline level of security. Built with ReactJS, Flux, Express, and Postgres.
